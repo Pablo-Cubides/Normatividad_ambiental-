@@ -1,0 +1,48 @@
+{
+  "pais": "Estados Unidos",
+  "paisCodigo": "estados-unidos",
+  "dominio": "agua",
+  "version": "2.0.0",
+  "fuentePrincipal": "EPA - Safe Drinking Water Act (SDWA), Clean Water Act (CWA)",
+  "registros": [
+    {
+      "categoria": "Agua Potable (Consumo Humano)",
+      "parametro": "Plomo (Pb)",
+      "limite": "≤15",
+      "unidad": "µg/L",
+      "referencia": { "norma": "EPA - Lead and Copper Rule" },
+      "notas": ["Nivel de acción en el grifo"]
+    },
+    {
+      "categoria": "Aguas Recreativas (Contacto Primario)",
+      "parametro": "E. coli",
+      "limite": "126",
+      "unidad": "UFC/100 mL",
+      "referencia": { "norma": "EPA - Recreational Water Quality Criteria" },
+      "notas": ["Promedio geométrico (media de 30 días)"]
+    },
+    {
+      "categoria": "Reúso de Aguas Residuales (California Title 22)",
+      "parametro": "Coliformes Totales",
+      "limite": "≤2.2",
+      "unidad": "NMP/100 mL",
+      "notas": ["Para riego de cultivos de consumo humano crudo (tratamiento terciario)"]
+    },
+    {
+      "categoria": "Protección de Vida Acuática de Agua Dulce",
+      "parametro": "Amoníaco (no ionizado)",
+      "limite": "<0.02",
+      "unidad": "mg/L",
+      "referencia": { "norma": "EPA - Aquatic Life Criteria" }
+    }
+  ],
+  "sectors": {
+    "agua-potable": {
+      "name": "Agua Potable",
+      "parameters": [
+        { "parameter": "Arsénico", "value": "≤10", "unit": "µg/L" },
+        { "parameter": "pH", "value": "6.5 - 8.5" }
+      ]
+    }
+  }
+}

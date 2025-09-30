@@ -1,0 +1,23 @@
+{
+  "pais": "Perú",
+  "dominio": "calidad-aire",
+  "version": "2025-09-28",
+  "registros": [
+    {
+      "parametro": "PM10",
+      "limite": "50 μg/m3 (24h)",
+      "unidad": "μg/m³",
+      "notas": ["Límite de calidad ambiental"],
+      "referencia": { "norma": "Norma de calidad del aire - MINAM", "entidad": "Ministerio del Ambiente", "anio": "varias" },
+      "categoria": "otros"
+    },
+    {
+      "parametro": "PM2.5",
+      "limite": "25 μg/m3 (24h)",
+      "unidad": "μg/m³",
+      "notas": ["Partículas finas"],
+      "referencia": { "norma": "MINAM - estándares de calidad", "entidad": "Ministerio del Ambiente", "anio": "varias" },
+      "categoria": "otros"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "pais": "El Salvador",
+  "paisCodigo": "el-salvador",
+  "dominio": "agua",
+  "version": "2.0.0",
+  "fuentePrincipal": "Norma Salvadoreña Obligatoria (NSO) 13.07.01:08 (Agua Potable), RTS 13.05.01:18 (Descargas), Ley General de Recursos Hídricos (2022)",
+  "sectors": {
+    "agua-potable": {
+      "name": "Agua Potable",
+      "description": "Requisitos para agua potable según la Norma Salvadoreña Obligatoria (NSO).",
+      "parameters": [
+        { "parameter": "Coliformes Fecales (E. coli)", "value": "0", "unit": "NMP/100 mL", "source": "NSO 13.07.01:08" },
+        { "parameter": "pH", "value": "6.5 - 8.5", "source": "NSO 13.07.01:08" },
+        { "parameter": "Turbiedad", "value": "≤5", "unit": "NTU", "source": "NSO 13.07.01:08" }
+      ]
+    },
+    "riego": {
+      "name": "Riego Agrícola",
+      "description": "Guías técnicas para el uso de agua en riego sin restricciones, basadas en recomendaciones de la OMS.",
+      "parameters": [
+        { "parameter": "Coliformes Fecales", "value": "≤1000", "unit": "NMP/100 mL", "notes": "Guía técnica" }
+      ]
+    },
+    "vertimiento": {
+      "name": "Vertido de Efluentes",
+      "description": "Límites para la descarga de efluentes ordinarios a cuerpos receptores, según el Reglamento Técnico Salvadoreño (RTS).",
+      "parameters": [
+        { "parameter": "DBO5", "value": "≤60", "unit": "mg/L", "source": "RTS 13.05.01:18" }
+      ]
+    }
+  }
+}

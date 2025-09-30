@@ -1,0 +1,12 @@
+{
+  "country": "México",
+  "domain": "agua",
+  "generated": [
+    "mexico-riego.json",
+    "mexico-ganaderia.json",
+    "mexico-recreacion.json",
+    "mexico-reuso.json",
+    "mexico-acuicultura.json"
+  ],
+  "_notes": "Candidatos generados automáticamente para revisión."
+}

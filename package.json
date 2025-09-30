@@ -1,0 +1,36 @@
+{
+  "name": "norms_app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@radix-ui/react-select": "^2.2.6",
+    "@radix-ui/react-slot": "^1.2.3",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.268.0",
+    "next": "^15.5.4",
+    "pdf-parse": "^1.1.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tailwind-merge": "^3.3.1",
+    "zod": "^4.1.11"
+  },
+  "devDependencies": {
+    "@types/node": "^20.4.2",
+    "@types/pdf-parse": "^1.1.5",
+    "@types/react": "^18.0.38",
+    "@types/react-dom": "^18.0.11",
+    "autoprefixer": "^10.4.21",
+    "eslint": "9.36.0",
+    "eslint-config-next": "15.5.4",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.2.2"
+  }
+}

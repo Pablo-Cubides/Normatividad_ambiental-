@@ -1,0 +1,27 @@
+{
+  "pais": "Unión Europea",
+  "paisCodigo": "union-europea",
+  "dominio": "residuos-solidos",
+  "version": "2.0.0",
+  "fuentePrincipal": "Directiva 2008/98/CE (Directiva Marco de Residuos)",
+  "registros": [
+    {
+      "categoria": "Jerarquía de Residuos",
+      "parametro": "Orden de Prioridad",
+      "limite": "1. Prevención, 2. Preparación para la reutilización, 3. Reciclaje, 4. Outro tipo de valorización (ej. energética), 5. Eliminación",
+      "referencia": { "norma": "Directiva 2008/98/CE" }
+    },
+    {
+      "categoria": "Responsabilidad Ampliada del Productor (RAP)",
+      "parametro": "Obligación de los Productores",
+      "limite": "Los productores de determinados productos (ej. envases, aparatos electrónicos) deben financiar la gestión de sus residuos post-consumo.",
+      "notas": ["Implementado a nivel de cada Estado miembro"]
+    },
+    {
+      "categoria": "Clasificación de Residuos",
+      "parametro": "Lista Europea de Residuos (LER)",
+      "limite": "Todos los residuos se clasifican según un código LER armonizado, que determina si son peligrosos o no.",
+      "referencia": { "norma": "Decisión 2000/532/CE" }
+    }
+  ]
+}

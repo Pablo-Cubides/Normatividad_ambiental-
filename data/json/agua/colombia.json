@@ -1,0 +1,75 @@
+{
+  "pais": "Colombia",
+  "paisCodigo": "colombia",
+  "dominio": "agua",
+  "version": "2.0.0",
+  "fuentePrincipal": "Decreto 1594 de 1984, Resolución 2115 de 2007, Resolución 0631 de 2015",
+  "registros": [
+    {
+      "categoria": "Consumo humano y doméstico (fuente de agua cruda)",
+      "parametro": "Coliformes Totales",
+      "limite": "≤1000",
+      "unidad": "NMP/100 mL",
+      "notas": ["Agua cruda que requiere tratamiento convencional para ser potable"]
+    },
+    {
+      "categoria": "Consumo humano y doméstico (agua tratada)",
+      "parametro": "Coliformes Fecales (E. coli)",
+      "limite": "0",
+      "unidad": "NMP/100 mL",
+      "referencia": { "norma": "Resolución 2115 de 2007" }
+    },
+    {
+      "categoria": "Uso agrícola (riego)",
+      "parametro": "Coliformes Fecales",
+      "limite": "≤1000",
+      "unidad": "NMP/100 mL",
+      "notas": ["Para riego de cultivos de consumo crudo"]
+    },
+    {
+      "categoria": "Uso pecuario (bebida de animales)",
+      "parametro": "Nitratos + Nitritos",
+      "limite": "≤100",
+      "unidad": "mg/L como N"
+    },
+    {
+      "categoria": "Uso recreativo (contacto primario)",
+      "parametro": "Coliformes Fecales",
+      "limite": "≤200",
+      "unidad": "NMP/100 mL"
+    },
+    {
+      "categoria": "Preservación de Flora y Fauna",
+      "parametro": "Oxígeno Disuelto",
+      "limite": "≥5",
+      "unidad": "mg/L",
+      "notas": ["Para aguas dulces frías"]
+    },
+    {
+      "categoria": "Preservación de Flora y Fauna",
+      "parametro": "Mercurio (Hg)",
+      "limite": "≤0.00001",
+      "unidad": "mg/L",
+      "notas": ["Valor extremadamente bajo para protección de vida acuática"]
+    }
+  ],
+  "sectors": {
+    "agua-potable": {
+      "name": "Agua Potable",
+      "description": "Parámetros para agua destinada al consumo humano",
+      "parameters": [
+        { "parameter": "pH", "value": "6.5 - 9.0", "unit": "Unidades de pH", "source": "Resolución 2115/2007" },
+        { "parameter": "Turbiedad", "value": "≤2", "unit": "NTU", "source": "Resolución 2115/2007" },
+        { "parameter": "Coliformes Fecales", "value": "0", "unit": "NMP/100 mL", "source": "Resolución 2115/2007" }
+      ]
+    },
+    "riego": {
+      "name": "Riego Agrícola",
+      "description": "Parámetros para agua utilizada en riego",
+      "parameters": [
+        { "parameter": "Coliformes Fecales", "value": "≤1000", "unit": "NMP/100 mL", "notas": ["Para cultivos de consumo crudo"] },
+        { "parameter": "pH", "value": "4.5 - 9.0", "unit": "unidades" }
+      ]
+    }
+  }
+}

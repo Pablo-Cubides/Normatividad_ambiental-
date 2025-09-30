@@ -1,0 +1,41 @@
+
+{
+  "pais": "Perú",
+  "paisCodigo": "peru",
+  "dominio": "agua",
+  "version": "1.0.0",
+  "fuente": "Estándares de Calidad Ambiental (ECA) para Agua, D.S. N° 004-2017-MINAM",
+  "registros": [
+    {
+      "categoria": "Aguas superficiales destinadas a la producción de Agua Potable",
+      "parametro": "Coliformes Termotolerantes",
+      "limite": "2000",
+      "unidad": "NMP/100 mL",
+      "notas": ["Para aguas que pueden ser potabilizadas con tratamiento avanzado"]
+    },
+    {
+      "categoria": "Aguas superficiales destinadas a la producción de Agua Potable",
+      "parametro": "pH",
+      "limite": "6.5 - 9.0",
+      "unidad": "unidades de pH"
+    },
+    {
+      "categoria": "Riego de vegetales y bebida de animales",
+      "parametro": "Arsénico",
+      "limite": "0.1",
+      "unidad": "mg/L"
+    },
+    {
+      "categoria": "Riego de vegetales y bebida de animales",
+      "parametro": "Cadmio",
+      "limite": "0.01",
+      "unidad": "mg/L"
+    },
+    {
+      "categoria": "Riego de vegetales y bebida de animales",
+      "parametro": "Plomo",
+      "limite": "0.05",
+      "unidad": "mg/L"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "pais": "Argentina",
+  "paisCodigo": "argentina",
+  "dominio": "residuos-solidos",
+  "version": "2.0.0",
+  "fuentePrincipal": "Ley 25.916/2004 (Gestión de RSU), Ley 24.051/1991 (Residuos Peligrosos)",
+  "registros": [
+    {
+      "categoria": "Gestión Integral de Residuos Sólidos Urbanos (RSU)",
+      "parametro": "Jerarquía de Gestión",
+      "limite": "Prevención > Reciclaje > Disposición final",
+      "referencia": { "norma": "Ley 25.916/2004" }
+    },
+    {
+      "categoria": "Residuos Peligrosos",
+      "parametro": "Manejo 'Cradle-to-Grave'",
+      "limite": "El generador es responsable del residuo desde su creación hasta su disposición final",
+      "referencia": { "norma": "Ley 24.051/1991" }
+    },
+    {
+      "categoria": "Residuos Peligrosos",
+      "parametro": "Prohibición de Importación",
+      "limite": "Prohibida la importación de residuos peligrosos",
+      "referencia": { "norma": "Ley 24.051/1991" }
+    }
+  ]
+}

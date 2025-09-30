@@ -1,0 +1,15 @@
+{
+  "pais": "Research Council (NRC) o CCME de Canadá. Un criterio común es nitrato ≤100 mg/L",
+  "dominio": "agua",
+  "version": "2025-09-30",
+  "registros": [
+    {
+      "parametro": "Research Council (NRC) o CCME de Canadá. Un criterio común es nitrato ≤100 mg/L",
+      "limite": "",
+      "unidad": null,
+      "notas": [],
+      "referencia": {},
+      "categoria": "metales"
+    }
+  ]
+}

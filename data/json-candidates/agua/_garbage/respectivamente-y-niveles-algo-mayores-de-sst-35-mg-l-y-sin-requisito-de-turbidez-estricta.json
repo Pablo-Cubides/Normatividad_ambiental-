@@ -1,0 +1,15 @@
+{
+  "pais": "respectivamente y niveles algo mayores de SST (≤35 mg/L) y sin requisito de turbidez estricta,",
+  "dominio": "agua",
+  "version": "2025-09-30",
+  "registros": [
+    {
+      "parametro": "respectivamente y niveles algo mayores de SST (≤35 mg/L) y sin requisito de turbidez estricta,",
+      "limite": "",
+      "unidad": null,
+      "notas": [],
+      "referencia": {},
+      "categoria": "fisicoquímico"
+    }
+  ]
+}

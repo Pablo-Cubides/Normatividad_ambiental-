@@ -1,0 +1,15 @@
+{
+  "pais": "≤0.01 mg/L; sólidos disueltos ≤1500 mg/L; aluminio ≤0.2 mg/L; etcagqlabs.clsiss.gob.cl. La",
+  "dominio": "agua",
+  "version": "2025-09-30",
+  "registros": [
+    {
+      "parametro": "≤0.01 mg/L; sólidos disueltos ≤1500 mg/L; aluminio ≤0.2 mg/L; etcagqlabs.clsiss.gob.cl. La",
+      "limite": "",
+      "unidad": null,
+      "notas": [],
+      "referencia": {},
+      "categoria": "fisicoquímico"
+    }
+  ]
+}

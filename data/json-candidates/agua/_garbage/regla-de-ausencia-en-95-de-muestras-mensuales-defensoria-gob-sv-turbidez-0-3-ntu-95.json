@@ -1,0 +1,15 @@
+{
+  "pais": "regla de ausencia en 95% de muestras mensuales)defensoria.gob.sv, turbidez <0.3 NTU (95%",
+  "dominio": "agua",
+  "version": "2025-09-30",
+  "registros": [
+    {
+      "parametro": "regla de ausencia en 95% de muestras mensuales)defensoria.gob.sv, turbidez <0.3 NTU (95%",
+      "limite": "",
+      "unidad": null,
+      "notas": [],
+      "referencia": {},
+      "categoria": "fisicoquímico"
+    }
+  ]
+}

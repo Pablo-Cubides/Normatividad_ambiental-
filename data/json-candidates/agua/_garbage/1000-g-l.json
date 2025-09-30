@@ -1,0 +1,15 @@
+{
+  "pais": "1000 μg/L",
+  "dominio": "agua",
+  "version": "2025-09-30",
+  "registros": [
+    {
+      "parametro": "1000 μg/L máx (Cr)defensori a.gob.sv Zin c (Zn, μg/",
+      "limite": "",
+      "unidad": null,
+      "notas": [],
+      "referencia": {},
+      "categoria": "otros"
+    }
+  ]
+}

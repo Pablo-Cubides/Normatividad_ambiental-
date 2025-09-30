@@ -1,0 +1,27 @@
+{
+  "pais": "Estados Unidos",
+  "paisCodigo": "estados-unidos",
+  "dominio": "residuos-solidos",
+  "version": "2.0.0",
+  "fuentePrincipal": "Resource Conservation and Recovery Act (RCRA) de 1976",
+  "registros": [
+    {
+      "categoria": "Residuos Peligrosos (Subtitle C)",
+      "parametro": "Responsabilidad del Generador",
+      "limite": "El generador es responsable del residuo 'de la cuna a la tumba' (cradle to grave)",
+      "referencia": { "norma": "RCRA, Subtitle C" }
+    },
+    {
+      "categoria": "Residuos Peligrosos (Subtitle C)",
+      "parametro": "Criterios de Peligrosidad",
+      "limite": "Ignitabilidad, Corrosividad, Reactividad, Toxicidad",
+      "referencia": { "norma": "40 CFR Part 261" }
+    },
+    {
+      "categoria": "Residuos Sólidos Municipales (Subtitle D)",
+      "parametro": "Disposición Final",
+      "limite": "En rellenos sanitarios que cumplen con estándares federales (liners, control de lixiviados, etc.)",
+      "notas": ["Prohibición de vertederos a cielo abierto"]
+    }
+  ]
+}

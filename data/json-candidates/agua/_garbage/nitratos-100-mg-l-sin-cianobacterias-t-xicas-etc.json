@@ -1,0 +1,15 @@
+{
+  "pais": "nitratos <100 mg/L, sin cianobacterias tóxicas, etc.).",
+  "dominio": "agua",
+  "version": "2025-09-30",
+  "registros": [
+    {
+      "parametro": "nitratos <100 mg/L, sin cianobacterias tóxicas, etc.).",
+      "limite": "",
+      "unidad": null,
+      "notas": [],
+      "referencia": {},
+      "categoria": "metales"
+    }
+  ]
+}

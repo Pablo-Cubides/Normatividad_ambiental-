@@ -1,0 +1,15 @@
+{
+  "pais": "UFC/100 mL y Enterococos ≤185 UFC/100 mLpmc.ncbi.nlm.nih.gov. Estos corresponden",
+  "dominio": "agua",
+  "version": "2025-09-30",
+  "registros": [
+    {
+      "parametro": "UFC/100 mL y Enterococos ≤185 UFC/100 mLpmc.ncbi.nlm.nih.gov. Estos corresponden",
+      "limite": "",
+      "unidad": null,
+      "notas": [],
+      "referencia": {},
+      "categoria": "microbiológico"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "pais": "Tabla - Estándares de calidad del agua en la Unión Europea por sector:",
+  "dominio": "agua",
+  "version": "2025-09-30",
+  "registros": [
+    {
+      "parametro": "Tabla",
+      "limite": "t",
+      "unidad": null,
+      "notas": [
+        "Esándares de calidad del agua en la Unión Europea por sector - Pará metr o Agua"
+      ],
+      "referencia": {},
+      "categoria": "otros"
+    }
+  ]
+}

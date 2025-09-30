@@ -1,0 +1,15 @@
+{
+  "pais": "para recreación con contacto se sugiere ≤200 NMP/100 mL de coliformes",
+  "dominio": "agua",
+  "version": "2025-09-30",
+  "registros": [
+    {
+      "parametro": "para recreación con contacto se sugiere ≤200 NMP/100 mL de coliformes",
+      "limite": "",
+      "unidad": null,
+      "notas": [],
+      "referencia": {},
+      "categoria": "microbiológico"
+    }
+  ]
+}

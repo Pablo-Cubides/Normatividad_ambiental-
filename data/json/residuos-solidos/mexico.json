@@ -1,0 +1,45 @@
+{
+  "pais": "México",
+  "paisCodigo": "mexico",
+  "dominio": "residuos-solidos",
+  "version": "2.0.0",
+  "fuentePrincipal": "Ley General para la Prevención y Gestión Integral de los Residuos (LGPGIR), NOM-052-SEMARNAT-2005",
+  "registros": [
+    {
+      "categoria": "Clasificación de Residuos Peligrosos (CRETIB)",
+      "parametro": "Corrosividad",
+      "limite": "pH ≤ 2.0 o ≥ 12.5",
+      "referencia": { "norma": "NOM-052-SEMARNAT-2005" }
+    },
+    {
+      "categoria": "Clasificación de Residuos Peligrosos (CRETIB)",
+      "parametro": "Reactividad",
+      "limite": "Reactivo a agua, explota, etc.",
+      "referencia": { "norma": "NOM-052-SEMARNAT-2005" }
+    },
+    {
+      "categoria": "Clasificación de Residuos Peligrosos (CRETIB)",
+      "parametro": "Explosividad",
+      "limite": "Capaz de producir una reacción detonante",
+      "referencia": { "norma": "NOM-052-SEMARNAT-2005" }
+    },
+    {
+      "categoria": "Clasificación de Residuos Peligrosos (CRETIB)",
+      "parametro": "Toxicidad Ambiental",
+      "limite": "Concentración de lixiviado supera límites de la NOM-052",
+      "referencia": { "norma": "NOM-052-SEMARNAT-2005" }
+    },
+    {
+      "categoria": "Clasificación de Residuos Peligrosos (CRETIB)",
+      "parametro": "Inflamabilidad",
+      "limite": "Punto de inflamación < 60°C",
+      "referencia": { "norma": "NOM-052-SEMARNAT-2005" }
+    },
+    {
+      "categoria": "Clasificación de Residuos Peligrosos (CRETIB)",
+      "parametro": "Biológico-Infeccioso",
+      "limite": "Contiene patógenos",
+      "referencia": { "norma": "NOM-087-SEMARNAT-SSA1-2002" }
+    }
+  ]
+}

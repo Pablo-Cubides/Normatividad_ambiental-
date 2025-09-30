@@ -1,0 +1,15 @@
+{
+  "pais": "≤2 mg/L P",
+  "dominio": "agua",
+  "version": "2025-09-30",
+  "registros": [
+    {
+      "parametro": "≤2 mg/L P",
+      "limite": "",
+      "unidad": null,
+      "notas": [],
+      "referencia": {},
+      "categoria": "otros"
+    }
+  ]
+}

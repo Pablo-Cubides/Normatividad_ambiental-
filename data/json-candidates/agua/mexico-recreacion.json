@@ -1,0 +1,18 @@
+{
+  "country": "México",
+  "normativeReference": "Guías de playas y recreación (Programa de Playas, DOF), resumen automático",
+  "lastUpdate": "2020",
+  "sectors": {
+    "recreacion": {
+      "name": "Recreación (Contacto Directo / Secundario)",
+      "description": "Valores guía para aguas recreativas; basados en programas nacionales y guías OMS.",
+      "parameters": [
+        { "parameter": "Coliformes fecales (contacto primario)", "value": "≤ 200", "unit": "NMP/100 mL", "source": "Guía OMS / Programas nacionales" },
+        { "parameter": "Coliformes totales (contacto secundario)", "value": "≤ 5000", "unit": "NMP/100 mL", "source": "Guía OMS" },
+        { "parameter": "pH", "value": "6.5 - 8.5", "unit": "unidades", "source": "Guía OMS" }
+      ]
+    }
+  },
+  "_generatedFrom": "data/extracted_text.txt",
+  "_confidence": "medium"
+}

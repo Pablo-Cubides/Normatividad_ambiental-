@@ -1,0 +1,15 @@
+{
+  "pais": "público, permite hasta 5000 NMP coliformes/100 mL, etc. Además, la NOM-001-SEMARNAT-",
+  "dominio": "agua",
+  "version": "2025-09-30",
+  "registros": [
+    {
+      "parametro": "público, permite hasta 5000 NMP coliformes/100 mL, etc. Además, la NOM-001-SEMARNAT-",
+      "limite": "",
+      "unidad": null,
+      "notas": [],
+      "referencia": {},
+      "categoria": "microbiológico"
+    }
+  ]
+}

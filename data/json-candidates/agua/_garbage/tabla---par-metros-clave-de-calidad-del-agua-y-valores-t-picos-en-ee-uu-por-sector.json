@@ -1,0 +1,17 @@
+{
+  "pais": "Tabla - Parámetros clave de calidad del agua y valores típicos en EE.UU. por sector:",
+  "dominio": "agua",
+  "version": "2025-09-30",
+  "registros": [
+    {
+      "parametro": "Tabla",
+      "limite": "t",
+      "unidad": null,
+      "notas": [
+        "Parámeros clave de calidad del agua y valores típicos en EE.UU. por sector - Pará met ro Agua"
+      ],
+      "referencia": {},
+      "categoria": "otros"
+    }
+  ]
+}

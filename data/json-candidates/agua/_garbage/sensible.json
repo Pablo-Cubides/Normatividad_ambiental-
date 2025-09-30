@@ -1,0 +1,15 @@
+{
+  "pais": "sensible",
+  "dominio": "agua",
+  "version": "2025-09-30",
+  "registros": [
+    {
+      "parametro": "n P 80%",
+      "limite": "",
+      "unidad": null,
+      "notas": [],
+      "referencia": {},
+      "categoria": "otros"
+    }
+  ]
+}

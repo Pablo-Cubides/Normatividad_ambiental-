@@ -1,0 +1,15 @@
+{
+  "pais": "secundario en poblaciones >2000 hab con DBO₅ ≤25 mg/L, DQO ≤125 mg/L, SST ≤35 mg/L",
+  "dominio": "agua",
+  "version": "2025-09-30",
+  "registros": [
+    {
+      "parametro": "secundario en poblaciones >2000 hab con DBO₅ ≤25 mg/L, DQO ≤125 mg/L, SST ≤35 mg/L",
+      "limite": "",
+      "unidad": null,
+      "notas": [],
+      "referencia": {},
+      "categoria": "metales"
+    }
+  ]
+}

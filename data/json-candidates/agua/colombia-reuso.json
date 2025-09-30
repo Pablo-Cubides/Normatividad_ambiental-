@@ -1,0 +1,20 @@
+{
+  "country": "Colombia",
+  "normativeReference": "Resolución 1256/2021 (uso de aguas residuales tratadas) y Decreto 1594/1984 (contexto)",
+  "lastUpdate": "2021",
+  "sectors": {
+    "reuso": {
+      "name": "Reúso de Aguas Residuales (Agrícola/Industrial)",
+      "description": "Criterios para reúso de aguas residuales tratadas según Res. 1256/2021; define usos agrícolas e industriales con parámetros específicos.",
+      "parameters": [
+        { "parameter": "Conductividad eléctrica", "value": "valores por clase de reúso (ver resolución)", "unit": "μS/cm", "source": "Res. 1256/2021" },
+        { "parameter": "Sólidos totales", "value": "según resolución", "unit": "mg/L", "source": "Res. 1256/2021" },
+        { "parameter": "Coliformes totales", "value": "≤ 2000", "unit": "NMP/100 mL", "source": "Resumen en documento comparativo" },
+        { "parameter": "Metales pesados (As, Pb, Cd)", "value": "límites específicos por uso", "unit": "mg/L", "source": "Res. 1256/2021" }
+      ]
+    }
+  },
+  "_generatedFrom": "data/extracted_text.txt (segmentos que mencionan Res.1256/2021 y reúso)",
+  "_confidence": "medium",
+  "_notes": "Valores aproximados: revisar la Resolución 1256/2021 para límites por uso (agrícola vs industrial)."
+}

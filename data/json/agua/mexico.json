@@ -1,0 +1,40 @@
+{
+  "pais": "México",
+  "paisCodigo": "mexico",
+  "dominio": "agua",
+  "version": "2.0.0",
+  "fuentePrincipal": "NOM-127-SSA1-2021 (Agua para uso y consumo humano), NOM-001-SEMARNAT-2021 (Descargas), NOM-003-SEMARNAT-1997 (Reúso)",
+  "sectors": {
+    "agua-potable": {
+      "name": "Agua para Uso y Consumo Humano",
+      "description": "Límites permisibles de calidad del agua para uso y consumo humano, según la NOM-127-SSA1-2021.",
+      "parameters": [
+        { "parameter": "Arsénico Total", "value": "≤0.01", "unit": "mg/L", "source": "NOM-127", "notes": "Límite actualizado para alinearse con la OMS" },
+        { "parameter": "Coliformes Fecales", "value": "0", "unit": "NMP/100 mL", "source": "NOM-127" },
+        { "parameter": "Turbiedad", "value": "≤5", "unit": "NTU", "source": "NOM-127" },
+        { "parameter": "pH", "value": "6.5 - 8.5", "source": "NOM-127" }
+      ]
+    },
+    "riego": {
+      "name": "Riego Agrícola con Agua Residual Tratada",
+      "description": "Límites para el riego de cultivos de consumo crudo con aguas residuales tratadas.",
+      "parameters": [
+        { "parameter": "Coliformes Fecales", "value": "≤1000", "unit": "NMP/100 mL", "source": "NOM-001" }
+      ]
+    },
+    "vertimiento": {
+      "name": "Descarga a Cuerpos de Agua Nacionales",
+      "description": "Límites de contaminantes para las descargas de aguas residuales en cuerpos receptores propiedad de la Nación.",
+      "parameters": [
+        { "parameter": "Fósforo Total", "value": "≤10", "unit": "mg/L", "source": "NOM-001", "notes": "Para cuerpos de agua que se destinan a riego agrícola" }
+      ]
+    },
+    "reuso": {
+      "name": "Reúso en Servicios al Público",
+      "description": "Límites máximos permisibles de contaminantes para las aguas residuales tratadas que se reusen en servicios al público con contacto directo.",
+      "parameters": [
+        { "parameter": "Coliformes Fecales", "value": "≤240", "unit": "NMP/100 mL", "source": "NOM-003" }
+      ]
+    }
+  }
+}

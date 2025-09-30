@@ -1,0 +1,21 @@
+{
+  "country": "México",
+  "normativeReference": "NOM-127-SSA1-1994; NOM-003-SEMARNAT; guías FDA/FAO (resumen automático)",
+  "lastUpdate": "2023",
+  "sectors": {
+    "riego": {
+      "name": "Riego Agrícola",
+      "description": "Valores guía para uso de agua en riego; basados en recomendaciones FAO/FDA y normas mexicanas aplicables.",
+      "parameters": [
+        { "parameter": "pH", "value": "5.5 - 8.5", "unit": "unidades", "source": "Resumen de guías (FAO/NOM)" },
+        { "parameter": "Coliformes fecales", "value": "≤ 1000", "unit": "NMP/100 mL", "source": "Guías OMS/FAO (aplicación en México)" },
+        { "parameter": "E. coli", "value": "≤ 100", "unit": "UFC/100 mL", "source": "FDA/FAO recomendación para cultivos comestibles" },
+        { "parameter": "Conductividad eléctrica", "value": "según tolerancia de cultivo (clases)", "unit": "μS/cm", "source": "NOM-003 / FAO" },
+        { "parameter": "Arsénico", "value": "≤ 0.1", "unit": "mg/L", "source": "Guía FAO / resúmenes normativos" }
+      ]
+    }
+  },
+  "_generatedFrom": "data/extracted_text.txt (secciones sobre México)",
+  "_confidence": "medium",
+  "_notes": "Candidato automático. Revisar NOMs y guías originales para confirmar límites y unidades exactas."
+}

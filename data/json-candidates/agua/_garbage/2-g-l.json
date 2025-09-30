@@ -1,0 +1,15 @@
+{
+  "pais": "2 μg/L)",
+  "dominio": "agua",
+  "version": "2025-09-30",
+  "registros": [
+    {
+      "parametro": "2 μg/L) n.d. 1",
+      "limite": "",
+      "unidad": null,
+      "notas": [],
+      "referencia": {},
+      "categoria": "otros"
+    }
+  ]
+}

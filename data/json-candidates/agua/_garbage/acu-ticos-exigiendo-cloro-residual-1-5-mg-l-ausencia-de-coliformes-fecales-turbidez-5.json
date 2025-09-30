@@ -1,0 +1,17 @@
+{
+  "pais": "acuáticos (exigiendo cloro residual 1–5 mg/L, ausencia de coliformes fecales, turbidez <5",
+  "dominio": "agua",
+  "version": "2025-09-30",
+  "registros": [
+    {
+      "parametro": "acuáticos (exigiendo cloro residual 1",
+      "limite": "5",
+      "unidad": "mg/L",
+      "notas": [
+        ", ausencia de coliformes fecales, turbidez <5 NTU, etc.)dof.gob.mx. Para recreación sin contacto directo (deportes acuáticos,"
+      ],
+      "referencia": {},
+      "categoria": "fisicoquímico"
+    }
+  ]
+}

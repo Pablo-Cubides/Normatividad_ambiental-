@@ -1,0 +1,15 @@
+{
+  "pais": "(y <23 en 1 sola muestra)epa.gov, turbidez ≤2 NTU, DBO₅ ≤10 mg/L. Para usos menos",
+  "dominio": "agua",
+  "version": "2025-09-30",
+  "registros": [
+    {
+      "parametro": "(y <23 en 1 sola muestra)epa.gov, turbidez ≤2 NTU, DBO₅ ≤10 mg/L. Para usos menos",
+      "limite": "",
+      "unidad": null,
+      "notas": [],
+      "referencia": {},
+      "categoria": "fisicoquímico"
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "pais": "Argentina",
+  "paisCodigo": "argentina",
+  "dominio": "agua",
+  "version": "2.0.0",
+  "fuentePrincipal": "Código Alimentario Argentino (CAA), Guías de Calidad de Agua para Riego y Bebida de Animales (SENASA), Directrices para Aguas Recreativas (MSAL)",
+  "registros": [
+    {
+      "categoria": "Agua Potable",
+      "parametro": "Arsénico (As)",
+      "limite": "≤0.01",
+      "unidad": "mg/L",
+      "referencia": { "norma": "Código Alimentario Argentino (CAA)" }
+    },
+    {
+      "categoria": "Agua Potable",
+      "parametro": "E. coli",
+      "limite": "0",
+      "unidad": "NMP/100 mL",
+      "referencia": { "norma": "CAA" }
+    },
+    {
+      "categoria": "Riego Agrícola",
+      "parametro": "Coliformes Fecales",
+      "limite": "≤1000",
+      "unidad": "NMP/100 mL",
+      "notas": ["Guía para riego de hortalizas consumidas crudas"]
+    },
+    {
+      "categoria": "Bebida de Animales (Ganadería)",
+      "parametro": "Nitratos (NO3)",
+      "limite": "<100",
+      "unidad": "mg/L",
+      "notas": ["Para evitar metahemoglobinemia en bovinos"]
+    },
+    {
+      "categoria": "Aguas Recreativas",
+      "parametro": "Enterococos",
+      "limite": "<200",
+      "unidad": "UFC/100 mL",
+      "referencia": { "norma": "Directrices Sanitarias MSAL 2017" }
+    }
+  ],
+  "sectors": {
+    "agua-potable": {
+      "name": "Agua Potable y Uso Alimentario",
+      "parameters": [
+        { "parameter": "pH", "value": "6.5 - 8.5" },
+        { "parameter": "Arsénico", "value": "≤0.01", "unit": "mg/L" },
+        { "parameter": "E. coli", "value": "0", "unit": "UFC/100 mL" }
+      ]
+    },
+    "riego": {
+      "name": "Riego Agrícola",
+      "parameters": [
+        { "parameter": "Coliformes fecales", "value": "≤1000", "unit": "NMP/100 mL" }
+      ]
+    }
+  }
+}

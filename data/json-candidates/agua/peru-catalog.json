@@ -1,0 +1,12 @@
+{
+  "country": "Perú",
+  "domain": "agua",
+  "generated": [
+    "peru-riego.json",
+    "peru-ganaderia.json",
+    "peru-recreacion.json",
+    "peru-reuso.json",
+    "peru-acuicultura.json"
+  ],
+  "_notes": "Candidatos generados automáticamente para revisión."
+}

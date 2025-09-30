@@ -1,0 +1,15 @@
+{
+  "pais": "mg/L (medido como N)epa.gov, nitrito 1 mg/L (como N), arsénico 10 μg/L, plomo 15 μg/L",
+  "dominio": "agua",
+  "version": "2025-09-30",
+  "registros": [
+    {
+      "parametro": "mg/L (medido como N)epa.gov, nitrito 1 mg/L (como N), arsénico 10 μg/L, plomo 15 μg/L",
+      "limite": "",
+      "unidad": null,
+      "notas": [],
+      "referencia": {},
+      "categoria": "metales"
+    }
+  ]
+}

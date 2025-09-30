@@ -1,0 +1,28 @@
+{
+  "pais": "Brasil",
+  "dominio": "calidad-aire",
+  "version": "2025-09-28",
+  "referencia": {
+    "norma": "Res. CONAM A 506/2024"
+  },
+  "registros": [
+    {
+      "parametro": "MP10",
+      "limite": "45 (24 h), 15 (anual)",
+      "unidad": "µg/m³",
+      "notas": ["Padrón final (PF) de Conama, basado en OMS 2021"]
+    },
+    {
+      "parametro": "MP2.5",
+      "limite": "15 (24 h), 5 (anual)",
+      "unidad": "µg/m³",
+      "notas": ["Padrón final (PF) de Conama, basado en OMS 2021"]
+    },
+    {
+      "parametro": "SO2",
+      "limite": "40 (24 h), 20 (anual)",
+      "unidad": "µg/m³",
+      "notas": ["Padrón final (PF) de Conama"]
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "pais": "Colombia",
+  "paisCodigo": "colombia",
+  "dominio": "residuos-solidos",
+  "version": "2.0.0",
+  "fuentePrincipal": "Ley 142/1994, Decreto 1077/2015, Resolución 2184/2019",
+  "registros": [
+    {
+      "categoria": "Separación en la Fuente (Código de Colores)",
+      "parametro": "Residuos Orgánicos Aprovechables",
+      "limite": "Color Verde",
+      "referencia": { "norma": "Resolución 2184 de 2019" }
+    },
+    {
+      "categoria": "Separación en la Fuente (Código de Colores)",
+      "parametro": "Residuos Aprovechables (Plástico, Vidrio, Metales, Papel y Cartón)",
+      "limite": "Color Blanco"
+    },
+    {
+      "categoria": "Separación en la Fuente (Código de Colores)",
+      "parametro": "Residuos no Aprovechables",
+      "limite": "Color Negro"
+    },
+    {
+      "categoria": "Residuos Peligrosos (RESPEL)",
+      "parametro": "Obligación de Registro",
+      "limite": "Los generadores deben registrarse ante la autoridad ambiental",
+      "referencia": { "norma": "Ley 1252/2008" }
+    }
+  ]
+}

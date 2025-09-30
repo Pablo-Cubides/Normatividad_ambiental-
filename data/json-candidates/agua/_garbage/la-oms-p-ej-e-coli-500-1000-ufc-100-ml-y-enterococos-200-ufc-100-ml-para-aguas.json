@@ -1,0 +1,17 @@
+{
+  "pais": "la OMS: p.ej., E. coli < 500–1000 UFC/100 mL y enterococos < 200 UFC/100 mL para aguas",
+  "dominio": "agua",
+  "version": "2025-09-30",
+  "registros": [
+    {
+      "parametro": "la OMS",
+      "limite": ".",
+      "unidad": null,
+      "notas": [
+        "pej., E. coli < 500 - 1000 UFC/100 mL y enterococos < 200 UFC/100 mL para aguas"
+      ],
+      "referencia": {},
+      "categoria": "otros"
+    }
+  ]
+}

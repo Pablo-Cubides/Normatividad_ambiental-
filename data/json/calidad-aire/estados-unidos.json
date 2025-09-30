@@ -1,0 +1,52 @@
+{
+  "pais": "Estados Unidos",
+  "dominio": "calidad-aire",
+  "version": "2025-09-28",
+  "referencia": {
+    "norma": "Clean Air Act / EPA (NAAQS)"
+  },
+  "registros": [
+    {
+      "parametro": "CO",
+      "limite": "9.0 (8 h), 35 (1 h)",
+      "unidad": "ppm",
+      "notas": ["NAAQS primarios (no exceder)"]
+    },
+    {
+      "parametro": "Pb (Plomo)",
+      "limite": "0.15 (media aritm. 3-mes)",
+      "unidad": "µg/m³",
+      "notas": ["NAAQS primario/secundario (rolling 3 mes.)"]
+    },
+    {
+      "parametro": "NO2",
+      "limite": "100 (1 h), 53 (anual)",
+      "unidad": "ppb",
+      "notas": ["NAAQS primario (percentil 98, 3años)"]
+    },
+    {
+      "parametro": "O3",
+      "limite": "0.070 (8 h)",
+      "unidad": "ppm",
+      "notas": ["NAAQS primario/secundario (4to máx 8h)"]
+    },
+    {
+      "parametro": "PM2.5",
+      "limite": "9.0 (anual), 35 (24 h)",
+      "unidad": "µg/m³",
+      "notas": ["NAAQS primario (3 años)"]
+    },
+    {
+      "parametro": "PM10",
+      "limite": "150 (24 h)",
+      "unidad": "µg/m³",
+      "notas": ["NAAQS primario/secundario"]
+    },
+    {
+      "parametro": "SO2",
+      "limite": "75 (1 h)",
+      "unidad": "ppb",
+      "notas": ["NAAQS primario (99° perc. 1h, 3 años)"]
+    }
+  ]
+}

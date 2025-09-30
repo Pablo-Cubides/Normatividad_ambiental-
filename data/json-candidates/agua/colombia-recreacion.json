@@ -1,0 +1,20 @@
+{
+  "country": "Colombia",
+  "normativeReference": "Decreto 1594/1984; Res. 2115/2007; referencias en documento comparativo",
+  "lastUpdate": "2007",
+  "sectors": {
+    "recreacion": {
+      "name": "Recreación (Contacto primario y secundario)",
+      "description": "Criterios para aguas recreativas con contacto primario (natación) y secundario (deportes náuticos sin inmersión).",
+      "parameters": [
+        { "parameter": "Coliformes fecales (contacto primario)", "value": "≤ 200", "unit": "NMP/100 mL", "source": "Decreto 1594/1984 (tabla resumen)" },
+        { "parameter": "Coliformes totales (contacto secundario)", "value": "≤ 5000", "unit": "NMP/100 mL", "source": "Decreto 1594/1984 (tabla resumen)" },
+        { "parameter": "Oxígeno disuelto", "value": "≥ 5 mg/L (o ≥70% sat.)", "unit": "mg/L / % sat.", "source": "Decreto 1594/1984" },
+        { "parameter": "pH", "value": "5.0 - 9.0", "unit": "unidades", "source": "Decreto 1594/1984" }
+      ]
+    }
+  },
+  "_generatedFrom": "data/extracted_text.txt (tabla Colombia)",
+  "_confidence": "medium",
+  "_notes": "Revisar Res. 2115/2007 y documentos complementarios para confirmar criterios y unidades exactas."
+}

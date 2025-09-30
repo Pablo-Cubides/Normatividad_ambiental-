@@ -1,0 +1,19 @@
+{
+  "country": "México",
+  "normativeReference": "NOM-127 y guías FAO/NRC (resumen)",
+  "lastUpdate": "2023",
+  "sectors": {
+    "ganaderia": {
+      "name": "Bebida de Animales (Ganadería)",
+      "description": "Valores guía para bebida de animales; extraído del compendio comparativo.",
+      "parameters": [
+        { "parameter": "pH", "value": "6.0 - 9.0", "unit": "unidades", "source": "Guías NRC/FAO" },
+        { "parameter": "Coliformes fecales", "value": "≤ 500", "unit": "NMP/100 mL", "source": "Guía técnica" },
+        { "parameter": "Nitratos", "value": "≤ 100", "unit": "mg/L", "source": "Guía técnica" }
+      ]
+    }
+  },
+  "_generatedFrom": "data/extracted_text.txt",
+  "_confidence": "low-medium",
+  "_notes": "Revisar fuentes locales (NOMs) para confirmar límites." 
+}

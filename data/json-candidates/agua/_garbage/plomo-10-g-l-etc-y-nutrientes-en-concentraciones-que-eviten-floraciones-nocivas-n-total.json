@@ -1,0 +1,15 @@
+{
+  "pais": "plomo <10 μg/L, etc.) y nutrientes en concentraciones que eviten floraciones nocivas (N total",
+  "dominio": "agua",
+  "version": "2025-09-30",
+  "registros": [
+    {
+      "parametro": "plomo <10 μg/L, etc.) y nutrientes en concentraciones que eviten floraciones nocivas (N total",
+      "limite": "",
+      "unidad": null,
+      "notas": [],
+      "referencia": {},
+      "categoria": "metales"
+    }
+  ]
+}

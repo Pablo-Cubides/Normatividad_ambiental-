@@ -1,0 +1,28 @@
+{
+  "pais": "Chile",
+  "dominio": "residuos-solidos",
+  "version": "2025-09-28",
+  "referencia": {
+    "norma": "Ley 20.920/2016 (REP), DS 148/2003, Ley 19.300"
+  },
+  "registros": [
+    {
+      "parametro": "Marco General",
+      "limite": "Jerarquía: prevención, reutilización, reciclaje, valorización, eliminación",
+      "unidad": "N/A",
+      "notas": ["Principio 'el que contamina paga'", "Establece Responsabilidad Extendida del Productor (REP)"]
+    },
+    {
+      "parametro": "Residuos Peligrosos",
+      "limite": "Regidos por Ley 19.300 y reglamentos específicos",
+      "unidad": "N/A",
+      "notas": ["Generadores deben clasificarlos y contratar gestores autorizados"]
+    },
+    {
+      "parametro": "RSU (domiciliarios)",
+      "limite": "Reglamento DS 148/2003 exige segregación básica",
+      "unidad": "N/A",
+      "notas": ["Disposición final en rellenos sanitarios certificados"]
+    }
+  ]
+}

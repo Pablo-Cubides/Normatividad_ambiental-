@@ -1,0 +1,39 @@
+{
+  "pais": "Unión Europea",
+  "paisCodigo": "union-europea",
+  "dominio": "agua",
+  "version": "2.0.0",
+  "fuentePrincipal": "Directiva (UE) 2020/2184 (Agua Potable), Directiva 2006/7/CE (Aguas de Baño), Reglamento (UE) 2020/741 (Reutilización de Aguas), Directiva 2013/39/UE (Normas de Calidad Ambiental)",
+  "sectors": {
+    "agua-potable": {
+      "name": "Agua Potable",
+      "description": "Agua para consumo humano directo, conforme a la Directiva (UE) 2020/2184.",
+      "parameters": [
+        { "parameter": "Arsénico", "value": "≤10", "unit": "µg/L", "source": "2020/2184" },
+        { "parameter": "pH", "value": "6.5 - 9.5", "source": "2020/2184" },
+        { "parameter": "Plomo (Pb)", "value": "≤5", "unit": "µg/L", "source": "2020/2184", "notes": "Valor paramétrico que se reducirá progresivamente" }
+      ]
+    },
+    "recreacion": {
+      "name": "Aguas de Baño (Contacto Primario)",
+      "description": "Calidad para aguas de baño interiores según la Directiva 2006/7/CE.",
+      "parameters": [
+        { "parameter": "Enterococos intestinales", "value": "≤330", "unit": "UFC/100 mL", "source": "2006/7/CE", "notes": "Percentil 90" }
+      ]
+    },
+    "reuso": {
+      "name": "Reutilización en Agricultura",
+      "description": "Requisitos para la reutilización de aguas depuradas en riego agrícola (Clase A) según el Reglamento (UE) 2020/741.",
+      "parameters": [
+        { "parameter": "E. coli", "value": "≤10", "unit": "UFC/100 mL", "source": "2020/741" }
+      ]
+    },
+    "conservacion": {
+      "name": "Calidad Ambiental en Aguas Superficiales",
+      "description": "Normas de calidad ambiental para sustancias prioritarias en aguas superficiales interiores, según la Directiva 2013/39/UE.",
+      "parameters": [
+        { "parameter": "Mercurio (Hg)", "value": "≤0.05", "unit": "µg/L", "source": "2013/39/UE", "notes": "Valor medio anual" }
+      ]
+    }
+  }
+}

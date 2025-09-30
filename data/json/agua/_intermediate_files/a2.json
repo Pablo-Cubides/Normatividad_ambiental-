@@ -1,0 +1,33 @@
+{
+  "pais": "A2,",
+  "dominio": "agua",
+  "version": "2025-09-30",
+  "registros": [
+    {
+      "parametro": "<3 mg/L (para alta calidad",
+      "limite": "",
+      "unidad": null,
+      "notas": [],
+      "referencia": {},
+      "categoria": "otros"
+    },
+    {
+      "parametro": "<3 mg/L (cuerpos clase I recreaci ón)",
+      "limite": "- - ≤50",
+      "unidad": "mg/L",
+      "notas": [
+        "(reúso agrícola según Decr"
+      ],
+      "referencia": {},
+      "categoria": "metales"
+    },
+    {
+      "parametro": "≤50 mg/L (aguas residuales domésticas tratadas, Res.631)sup Pará met ro Agua Potabl e (Calid ad en red) In d us tri a Al i m e nt os (a gu a d e pr oc es o) Agricult ura / Riego (agua de riego) Gana dería (agua bebid a anim ales) In du str ia Ge ne ral (pr oc es os in du str ial es) Acuicul tura / Pesca (vida acuátic a) Recreac ión c/Conta cto (natació n) Recr eaci ón s/Co ntac to (pais ajis mo) Us o Po rt ua rio (tr an sp ort e) Ene rgía (hid roel éct rica s, enf ria mie nto) Reuso Aguas Residua les (agrícol a) Vertimiento a Cuerpos Receptores (mg",
+      "limite": "",
+      "unidad": null,
+      "notas": [],
+      "referencia": {},
+      "categoria": "metales"
+    }
+  ]
+}

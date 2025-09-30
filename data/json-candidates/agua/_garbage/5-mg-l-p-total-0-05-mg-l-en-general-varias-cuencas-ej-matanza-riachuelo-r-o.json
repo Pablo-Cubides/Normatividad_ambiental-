@@ -1,0 +1,15 @@
+{
+  "pais": "<**≤**5 mg/L, P total <0.05 mg/L en general). Varias cuencas (Ej. Matanza-Riachuelo, Río",
+  "dominio": "agua",
+  "version": "2025-09-30",
+  "registros": [
+    {
+      "parametro": "<**≤**5 mg/L, P total <0.05 mg/L en general). Varias cuencas (Ej. Matanza-Riachuelo, Río",
+      "limite": "",
+      "unidad": null,
+      "notas": [],
+      "referencia": {},
+      "categoria": "metales"
+    }
+  ]
+}

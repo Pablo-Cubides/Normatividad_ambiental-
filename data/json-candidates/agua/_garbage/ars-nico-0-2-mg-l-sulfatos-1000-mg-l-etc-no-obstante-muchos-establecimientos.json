@@ -1,0 +1,17 @@
+{
+  "pais": "(arsénico <0.2 mg/L, sulfatos <1000 mg/L, etc.) – no obstante, muchos establecimientos",
+  "dominio": "agua",
+  "version": "2025-09-30",
+  "registros": [
+    {
+      "parametro": "(arsénico <0.2 mg/L, sulfatos <1000 mg/L, etc.)",
+      "limite": "",
+      "unidad": null,
+      "notas": [
+        "no obstante, muchos establecimientos"
+      ],
+      "referencia": {},
+      "categoria": "metales"
+    }
+  ]
+}

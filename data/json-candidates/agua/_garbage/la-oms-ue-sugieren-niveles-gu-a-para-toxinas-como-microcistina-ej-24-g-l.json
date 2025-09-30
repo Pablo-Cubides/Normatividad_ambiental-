@@ -1,0 +1,15 @@
+{
+  "pais": "la OMS/UE sugieren niveles guía para toxinas como microcistina (ej. 24 μg/L",
+  "dominio": "agua",
+  "version": "2025-09-30",
+  "registros": [
+    {
+      "parametro": "la OMS/UE sugieren niveles guía para toxinas como microcistina (ej. 24 μg/L",
+      "limite": "",
+      "unidad": null,
+      "notas": [],
+      "referencia": {},
+      "categoria": "metales"
+    }
+  ]
+}

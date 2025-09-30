@@ -1,0 +1,48 @@
+{
+  "pais": "Chile",
+  "paisCodigo": "chile",
+  "dominio": "agua",
+  "version": "2.0.0",
+  "fuentePrincipal": "NCh 1333 Of. 1978 (Requisitos de calidad del agua para diferentes usos), NCh 409/1:2005 (Agua potable), D.S. 90/2000 (Descarga de efluentes)",
+  "sectors": {
+    "agua-potable": {
+      "name": "Agua Potable",
+      "description": "Requisitos de calidad para agua potable según la norma NCh 409/1:2005.",
+      "parameters": [
+        { "parameter": "Arsénico (As)", "value": "≤0.01", "unit": "mg/L", "source": "NCh 409/1" },
+        { "parameter": "E. coli", "value": "0", "unit": "NMP/100 mL", "source": "NCh 409/1" },
+        { "parameter": "Turbiedad", "value": "≤2-5", "unit": "NTU", "source": "NCh 409/1" },
+        { "parameter": "pH", "value": "6.5 - 8.5", "source": "NCh 409/1" }
+      ]
+    },
+    "riego": {
+      "name": "Riego Agrícola",
+      "description": "Requisitos de calidad para riego agrícola, especialmente para vegetales consumidos crudos.",
+      "parameters": [
+        { "parameter": "Coliformes Fecales", "value": "≤1000", "unit": "NMP/100 mL", "source": "NCh 1333" },
+        { "parameter": "pH", "value": "5.5 - 9.0", "source": "NCh 1333" }
+      ]
+    },
+    "ganaderia": {
+      "name": "Bebida de Animales",
+      "description": "El agua para bebida de animales debe cumplir con los requisitos de la norma de agua potable.",
+      "parameters": [
+        { "parameter": "Calidad General", "value": "Cumplir NCh 409", "unit": "N/A", "source": "NCh 1333" }
+      ]
+    },
+    "recreacion": {
+      "name": "Recreación con Contacto Directo",
+      "description": "Límites para aguas de baño y recreación con contacto primario.",
+      "parameters": [
+        { "parameter": "Coliformes Fecales", "value": "≤1000", "unit": "NMP/100 mL", "source": "NCh 1333" }
+      ]
+    },
+    "conservacion": {
+      "name": "Conservación de la Vida Acuática",
+      "description": "Requisitos para la protección de la vida acuática en aguas superficiales.",
+      "parameters": [
+        { "parameter": "Oxígeno Disuelto", "value": "≥5", "unit": "mg/L", "source": "NCh 1333" }
+      ]
+    }
+  }
+}

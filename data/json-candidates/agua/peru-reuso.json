@@ -1,0 +1,17 @@
+{
+  "country": "Perú",
+  "normativeReference": "Regulaciones nacionales y guías internacionales (resumen automático)",
+  "lastUpdate": "2020",
+  "sectors": {
+    "reuso": {
+      "name": "Reúso de Aguas Residuales",
+      "description": "Criterios por clase de reúso; verificar normativa nacional para límites exactos.",
+      "parameters": [
+        { "parameter": "Coliformes totales", "value": "según clase (ver normativa)", "unit": "NMP/100 mL", "source": "Resumen normativo" },
+        { "parameter": "Turbiedad", "value": "según clase", "unit": "NTU", "source": "Resumen normativo" }
+      ]
+    }
+  },
+  "_generatedFrom": "data/extracted_text.txt",
+  "_confidence": "low-medium"
+}

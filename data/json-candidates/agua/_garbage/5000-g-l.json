@@ -1,0 +1,15 @@
+{
+  "pais": "5000 μg/L",
+  "dominio": "agua",
+  "version": "2025-09-30",
+  "registros": [
+    {
+      "parametro": "5000 μg/L (guía riego",
+      "limite": "",
+      "unidad": null,
+      "notas": [],
+      "referencia": {},
+      "categoria": "otros"
+    }
+  ]
+}

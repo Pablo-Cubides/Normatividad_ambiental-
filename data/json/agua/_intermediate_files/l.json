@@ -1,0 +1,15 @@
+{
+  "pais": "/L)",
+  "dominio": "agua",
+  "version": "2025-09-30",
+  "registros": [
+    {
+      "parametro": "≤40 mg/L (límite genérico vertimientos )pgplegal.co m Turb idez",
+      "limite": "",
+      "unidad": null,
+      "notas": [],
+      "referencia": {},
+      "categoria": "otros"
+    }
+  ]
+}

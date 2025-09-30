@@ -1,0 +1,46 @@
+{
+  "pais": "El Salvador",
+  "dominio": "calidad-aire",
+  "version": "2025-09-28",
+  "referencia": {
+    "norma": "NSO 13.11.01:01 (MARN)"
+  },
+  "registros": [
+    {
+      "parametro": "SO2",
+      "limite": "80 (anual), 365 (24 h)",
+      "unidad": "µg/m³",
+      "notas": ["Nivel base (aire ambiente)"]
+    },
+    {
+      "parametro": "CO",
+      "limite": "10000 (8 h), 40000 (1 h)",
+      "unidad": "µg/m³",
+      "notas": ["Nivel base (aire ambiente)"]
+    },
+    {
+      "parametro": "NO2",
+      "limite": "100 (anual), 150 (24 h), 235 (1 h)",
+      "unidad": "µg/m³",
+      "notas": ["Nivel base (aire ambiente)"]
+    },
+    {
+      "parametro": "O3",
+      "limite": "60 (anual), 120 (8 h)",
+      "unidad": "µg/m³",
+      "notas": ["Nivel base (aire ambiente)"]
+    },
+    {
+      "parametro": "PM10",
+      "limite": "50 (anual), 150 (24 h)",
+      "unidad": "µg/m³",
+      "notas": ["Nivel base (aire ambiente)"]
+    },
+    {
+      "parametro": "PM2.5",
+      "limite": "15 (anual), 65 (24 h)",
+      "unidad": "µg/m³",
+      "notas": ["Nivel base (aire ambiente)"]
+    }
+  ]
+}

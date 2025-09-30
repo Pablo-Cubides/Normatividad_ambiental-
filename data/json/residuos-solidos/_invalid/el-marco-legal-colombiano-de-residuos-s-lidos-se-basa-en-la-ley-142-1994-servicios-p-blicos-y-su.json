@@ -1,0 +1,17 @@
+{
+  "pais": "El marco legal colombiano de residuos sólidos se basa en la Ley 142/1994 (servicios públicos) y su",
+  "dominio": "residuos-solidos",
+  "version": "2025-09-30",
+  "registros": [
+    {
+      "parametro": "reglamentación (Decreto 1713/2002), junto con políticas nacionales (CONPES 3874/2016minambiente.gov.co) y resoluciones sectoriales. Se establecen jerarquías de manejo (prevención, reutilización, reciclaje, valorización energética y disposición final) conforme a la política de economía circularminambiente.gov.cominambiente.gov.co. A nivel regional actúan el Ministerio de Ambiente (MADS) y las Corporaciones Autónomas Regionales (CAR), y el Ministerio de Vivienda regula el servicio de aseo. Los generadores domiciliarios deben segregar residuos (orgánicos, aprovechables, no aprovechables según código de colores",
+      "limite": "",
+      "unidad": null,
+      "notas": [
+        "verde,blanco, negro)minambiente.gov.co y suscribir contrato con operador. Los residuos peligrosos (RESPEL) se rigen por la Ley 1252/2008 y el Decreto 4741/2005, obligando a registro de generadores y manejo especialfuncionpublica.gov.co. La Resolución 1257/2021 y la 0472/2017 reglamentan residuos de construcción (RCD)minambiente.gov.cocerlatam.com. Para RAEE, la Ley 1672/2013 y la Resolución 851/2022 establecen sistemas de recolección (Responsabilidad Ampliada del Productor)minambiente.gov.co. La Resolución 591/2024 (MinSalud/MADS) actualiza el manual de residuos hospitalarios (PGRSS) con clasificaciones sanitario-patológico. En general, se permiten rellenos sanitarios con celda impermeable, incineración controlada o procesos de valorización certificados (prohibido quemar a cielo abierto o disponer sin control)funcionpublica.gov.cofuncionpublica.gov.co. Sanciones ambientales (Ley 1333/2009) y vigilancia de la Superservicios (servicios públicos) y entes ambientales son aplicables. Tipo de resid uo Normativa aplicable (Ley/Decreto/R esolución) Clasificación utilizada Obligaciones del generador Método s de disposic ión autoriza dos Autori dad compe tente Ref. Resi duos sólid os urba nos"
+      ],
+      "referencia": {},
+      "categoria": "fisicoquímico"
+    }
+  ]
+}

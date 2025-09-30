@@ -1,0 +1,15 @@
+{
+  "pais": "mg/L, coliformes fecales ≤1000 NMP/100 mL para aguas receptoras usadas en riego",
+  "dominio": "agua",
+  "version": "2025-09-30",
+  "registros": [
+    {
+      "parametro": "mg/L, coliformes fecales ≤1000 NMP/100 mL para aguas receptoras usadas en riego",
+      "limite": "",
+      "unidad": null,
+      "notas": [],
+      "referencia": {},
+      "categoria": "microbiológico"
+    }
+  ]
+}

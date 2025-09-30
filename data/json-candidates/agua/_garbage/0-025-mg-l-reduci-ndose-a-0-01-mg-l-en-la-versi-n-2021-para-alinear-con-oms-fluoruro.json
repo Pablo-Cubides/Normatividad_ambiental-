@@ -1,0 +1,15 @@
+{
+  "pais": "0.025 mg/L (reduciéndose a 0.01 mg/L en la versión 2021 para alinear con OMS); fluoruro:",
+  "dominio": "agua",
+  "version": "2025-09-30",
+  "registros": [
+    {
+      "parametro": "0.025 mg/L (reduciéndose a 0.01 mg/L en la versión 2021 para alinear con OMS); fluoruro:",
+      "limite": "",
+      "unidad": null,
+      "notas": [],
+      "referencia": {},
+      "categoria": "otros"
+    }
+  ]
+}

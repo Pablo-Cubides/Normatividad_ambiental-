@@ -1,0 +1,32 @@
+{
+  "country": "Brasil",
+  "dominio": "residuos-solidos",
+  "normativeReference": "Política Nacional de Residuos Sólidos (PNRS) – Lei 12.305/2010",
+  "lastUpdate": "2010",
+  "registros": [
+    {
+      "parametro": "Marco General",
+      "limite": "Jerarquía: prevención, preparación para la reutilización, reciclaje, valorización energética y disposición final",
+      "unidad": "N/A",
+      "notas": ["Lei 12.305/2010 - PNRS"]
+    },
+    {
+      "parametro": "Residuos Peligrosos",
+      "limite": "Gestión conforme a normativa sectorial y requisitos de registro",
+      "unidad": "N/A",
+      "notas": ["Registro de generadores, manifiesto de transporte"]
+    },
+    {
+      "parametro": "Residuos de Salud (RSH)",
+      "limite": "Clasificación y manejo según normativa sanitaria",
+      "unidad": "N/A",
+      "notas": ["CONAMA / normativa sanitaria aplicable"]
+    },
+    {
+      "parametro": "Generación per cápita (urbano)",
+      "limite": "0.8 - 1.2 kg/persona/día",
+      "unidad": "kg/persona/día",
+      "notas": ["Valores orientativos según zona"]
+    }
+  ]
+}

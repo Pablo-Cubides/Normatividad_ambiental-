@@ -1,0 +1,17 @@
+{
+  "pais": "(como NO₃), arsénico 0.010 mg/L, cadmio ~0.003–0.005 mg/L, plomo ~0.010–0.015",
+  "dominio": "agua",
+  "version": "2025-09-30",
+  "registros": [
+    {
+      "parametro": "(como NO₃), arsénico 0.010 mg/L, cadmio ~0.003",
+      "limite": "0.005",
+      "unidad": "mg/L",
+      "notas": [
+        ", plomo ~0.010 - 0.015"
+      ],
+      "referencia": {},
+      "categoria": "metales"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "country": "Brasil",
+  "normativeReference": "Portaria MS/GM (Brasil) y resoluciones ambientales (CONAMA)",
+  "lastUpdate": "2025-09-30",
+  "sectors": {
+    "agua-potable": {
+      "name": "Agua Potable",
+      "description": "Límites y criterios para agua para consumo humano (resumen).",
+      "parameters": [
+        { "parameter": "Coliformes totales", "value": "Ausentes", "unit": "NMP/100 mL", "source": "Portaria MS" },
+        { "parameter": "Escherichia coli", "value": "0", "unit": "UFC/100 mL", "source": "Portaria MS" },
+        { "parameter": "pH", "value": "6.5 - 8.5", "unit": "unidades", "source": "Portaria MS" },
+        { "parameter": "Turbidez", "value": "\u2264 5", "unit": "NTU", "source": "Portaria MS" },
+        { "parameter": "Arsénico", "value": "\u2264 0.01", "unit": "mg/L", "source": "Portaria MS / CONAMA" }
+      ]
+    },
+    "riego": {
+      "name": "Riego Agrícola",
+      "description": "Valores guía para uso agrícola (resumen internacional aplicable a Brasil).",
+      "parameters": [
+        { "parameter": "pH", "value": "5.5 - 8.5", "unit": "unidades", "source": "Guías FAO / Portaria técnica" },
+        { "parameter": "Coliformes fecales", "value": "\u2264 1000", "unit": "NMP/100 mL", "source": "Guía FAO" }
+      ]
+    }
+  }
+}

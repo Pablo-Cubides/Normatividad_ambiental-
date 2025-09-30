@@ -1,0 +1,52 @@
+{
+  "pais": "Chile",
+  "dominio": "calidad-aire",
+  "version": "2025-09-28",
+  "referencia": {
+    "norma": "Norma Primaria de Calidad del Aire (NPCA)"
+  },
+  "registros": [
+    {
+      "parametro": "CO",
+      "limite": "30 (1 h); 10 (8 h)",
+      "unidad": "mg/m³",
+      "notas": ["Percentil 99 diario"]
+    },
+    {
+      "parametro": "O3",
+      "limite": "120 (8 h máx móvil)",
+      "unidad": "µg/m³",
+      "notas": ["Percentil 99 diario"]
+    },
+    {
+      "parametro": "NO2",
+      "limite": "200 (1 h); 100 (24 h); 40 (anual)",
+      "unidad": "µg/m³",
+      "notas": ["Percentil 99"]
+    },
+    {
+      "parametro": "SO2",
+      "limite": "350 (1 h); 150 (24 h); 60 (anual)",
+      "unidad": "µg/m³",
+      "notas": []
+    },
+    {
+      "parametro": "PM2.5",
+      "limite": "50 (24 h); 20 (anual)",
+      "unidad": "µg/m³",
+      "notas": ["Percentil 98"]
+    },
+    {
+      "parametro": "PM10",
+      "limite": "130 (24 h)",
+      "unidad": "µg/m³",
+      "notas": ["Percentil 98"]
+    },
+    {
+      "parametro": "Pb (Plomo)",
+      "limite": "0.5 (anual)",
+      "unidad": "µg/m³",
+      "notas": []
+    }
+  ]
+}

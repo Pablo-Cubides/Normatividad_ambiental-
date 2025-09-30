@@ -1,0 +1,15 @@
+{
+  "pais": "fecales. El criterio nacional recomienda que en agua de baño E. coli no exceda 126 UFC/100",
+  "dominio": "agua",
+  "version": "2025-09-30",
+  "registros": [
+    {
+      "parametro": "fecales. El criterio nacional recomienda que en agua de baño E. coli no exceda 126 UFC/100",
+      "limite": "",
+      "unidad": null,
+      "notas": [],
+      "referencia": {},
+      "categoria": "microbiológico"
+    }
+  ]
+}

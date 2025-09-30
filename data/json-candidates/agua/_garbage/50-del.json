@@ -1,0 +1,15 @@
+{
+  "pais": "50% del",
+  "dominio": "agua",
+  "version": "2025-09-30",
+  "registros": [
+    {
+      "parametro": "50% del n.d. (no en directiva baño) n.d. n.d. Criterio",
+      "limite": "",
+      "unidad": null,
+      "notas": [],
+      "referencia": {},
+      "categoria": "otros"
+    }
+  ]
+}

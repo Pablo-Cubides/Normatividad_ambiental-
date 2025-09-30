@@ -1,0 +1,15 @@
+{
+  "pais": "mg/L), orgánicos (pesticidas individuales <0.03 μg/L típicamente) y radioactividad (alfa total",
+  "dominio": "agua",
+  "version": "2025-09-30",
+  "registros": [
+    {
+      "parametro": "mg/L), orgánicos (pesticidas individuales <0.03 μg/L típicamente) y radioactividad (alfa total",
+      "limite": "",
+      "unidad": null,
+      "notas": [],
+      "referencia": {},
+      "categoria": "metales"
+    }
+  ]
+}

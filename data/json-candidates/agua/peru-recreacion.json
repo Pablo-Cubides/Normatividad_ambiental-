@@ -1,0 +1,17 @@
+{
+  "country": "Perú",
+  "normativeReference": "DS N° 031-2010-SA; guías OMS/FAO (resumen)",
+  "lastUpdate": "2010",
+  "sectors": {
+    "recreacion": {
+      "name": "Recreación",
+      "description": "Criterios para aguas recreativas (contacto directo y secundario).",
+      "parameters": [
+        { "parameter": "Coliformes fecales (contacto primario)", "value": "≤ 200", "unit": "NMP/100 mL", "source": "Guía OMS" },
+        { "parameter": "Coliformes totales (contacto secundario)", "value": "≤ 5000", "unit": "NMP/100 mL", "source": "Guía OMS" }
+      ]
+    }
+  },
+  "_generatedFrom": "data/extracted_text.txt",
+  "_confidence": "medium"
+}

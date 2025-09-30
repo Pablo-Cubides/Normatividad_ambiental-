@@ -1,0 +1,15 @@
+{
+  "pais": "≤3 mg/L (aguas",
+  "dominio": "agua",
+  "version": "2025-09-30",
+  "registros": [
+    {
+      "parametro": "≤3 mg/L (aguas tratadas bien",
+      "limite": "",
+      "unidad": null,
+      "notas": [],
+      "referencia": {},
+      "categoria": "metales"
+    }
+  ]
+}

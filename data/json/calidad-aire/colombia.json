@@ -1,0 +1,31 @@
+{
+  "pais": "Colombia",
+  "dominio": "calidad-aire",
+  "version": "2025-09-28",
+  "registros": [
+    {
+      "parametro": "Material Particulado (PM10)",
+      "limite": "50 μg/m3 (24h)",
+      "unidad": "μg/m³",
+      "notas": ["Valor límite de corto plazo", "Monitoreo con estaciones fijas"],
+      "referencia": { "norma": "Decreto 1077 de 2015 (compila criterios)", "entidad": "Ministerio de Ambiente y Desarrollo Sostenible", "anio": 2015 },
+      "categoria": "otros"
+    },
+    {
+      "parametro": "Material Particulado (PM2.5)",
+      "limite": "25 μg/m3 (24h)",
+      "unidad": "μg/m³",
+      "notas": ["Considerado para salud respiratoria"],
+      "referencia": { "norma": "Decreto 1077 de 2015", "entidad": "Ministerio de Ambiente", "anio": 2015 },
+      "categoria": "otros"
+    },
+    {
+      "parametro": "Dióxido de Azufre (SO2)",
+      "limite": "350 μg/m3 (1h)",
+      "unidad": "μg/m³",
+      "notas": ["Protege contra irritación respiratoria"],
+      "referencia": { "norma": "Decreto 1077 de 2015", "entidad": "Ministerio de Ambiente", "anio": 2015 },
+      "categoria": "otros"
+    }
+  ]
+}

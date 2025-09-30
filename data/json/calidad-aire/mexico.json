@@ -1,0 +1,23 @@
+{
+  "pais": "México",
+  "dominio": "calidad-aire",
+  "version": "2025-09-28",
+  "registros": [
+    {
+      "parametro": "Óxidos de Nitrógeno (NO2)",
+      "limite": "200 μg/m3 (1h)",
+      "unidad": "μg/m³",
+      "notas": ["Contribuye a smog fotoquímico"],
+      "referencia": { "norma": "Norma Oficial Mexicana (NOM) - SSA", "entidad": "Secretaría de Salud", "anio": "varias" },
+      "categoria": "otros"
+    },
+    {
+      "parametro": "Ozono (O3)",
+      "limite": "120 μg/m3 (8h)",
+      "unidad": "μg/m³",
+      "notas": ["Evitar exposición extendida"],
+      "referencia": { "norma": "NOM-020-SSA1-1993 (ejemplo)", "entidad": "Secretaría de Salud", "anio": 1993 },
+      "categoria": "otros"
+    }
+  ]
+}

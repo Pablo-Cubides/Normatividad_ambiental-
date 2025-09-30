@@ -1,0 +1,40 @@
+{
+  "pais": "Argentina",
+  "dominio": "calidad-aire",
+  "version": "2025-09-28",
+  "referencia": {
+    "norma": "Ley 20.284/1973 (PEN) Anexo II"
+  },
+  "registros": [
+    {
+      "parametro": "CO",
+      "limite": "10 (8 h, norma base); 50 (1 h, prevención)",
+      "unidad": "ppm",
+      "notas": ["Valores para estado normal (prevención), alerta, alarma y emergencia"]
+    },
+    {
+      "parametro": "NOx (principalmente NO2)",
+      "limite": "0.45 (1 h), 0.15 (24 h)",
+      "unidad": "ppm",
+      "notas": ["Plan de prevención de situaciones críticas"]
+    },
+    {
+      "parametro": "SO2",
+      "limite": "0.03 (promedio mensual); 1 (1 h alerta)",
+      "unidad": "ppm",
+      "notas": ["Incluye niveles de alerta, alarma, emergencia"]
+    },
+    {
+      "parametro": "O3",
+      "limite": "0.10 (1 h); 0.15 (alerta)",
+      "unidad": "ppm",
+      "notas": ["Valores de plan de emergencia (alerta/alarma)"]
+    },
+    {
+      "parametro": "Partículas en suspensión (total)",
+      "limite": "150 (promedio mensual)",
+      "unidad": "mg/m³",
+      "notas": ["Material particulado total; basada en promedios mensuales"]
+    }
+  ]
+}

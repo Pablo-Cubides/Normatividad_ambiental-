@@ -1,0 +1,15 @@
+{
+  "pais": "mg/L; grasas emulsificadas ≤10 mg/L; color ≤100 Pt-Co; discos Secchi visibles a ≥1.2 m; sin",
+  "dominio": "agua",
+  "version": "2025-09-30",
+  "registros": [
+    {
+      "parametro": "mg/L; grasas emulsificadas ≤10 mg/L; color ≤100 Pt-Co; discos Secchi visibles a ≥1.2 m; sin",
+      "limite": "",
+      "unidad": null,
+      "notas": [],
+      "referencia": {},
+      "categoria": "fisicoquímico"
+    }
+  ]
+}
