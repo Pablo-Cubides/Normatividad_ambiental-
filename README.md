@@ -50,6 +50,27 @@ Actualmente, la aplicación cubre los siguientes dominios y países:
 
 3.  Abre [http://localhost:3000](http://localhost:3000) en tu navegador para ver la aplicación.
 
+## Testing
+
+La aplicación incluye pruebas automatizadas para asegurar la calidad del código.
+
+### Ejecutar Tests
+
+```bash
+npm test
+```
+
+### Ejecutar Tests con Cobertura
+
+```bash
+npm test -- --coverage
+```
+
+### Tests Disponibles
+
+- **API Tests**: Pruebas unitarias para los endpoints `/api/paises` y `/api/normas`
+- **Mocking**: Los tests usan mocks para el sistema de archivos y dependencias externas
+
 ## Tech Stack
 
 *   Next.js
@@ -57,6 +78,7 @@ Actualmente, la aplicación cubre los siguientes dominios y países:
 *   TypeScript
 *   Tailwind CSS
 *   Zod for data validation
+*   Jest for testing
 
 ## Estructura del Proyecto
 

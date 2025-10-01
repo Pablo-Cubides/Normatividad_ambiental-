@@ -97,7 +97,7 @@ export default function FundamentalsPage() {
               </div>
               <div>
                 <h4 className="font-semibold text-green-900">Parámetro</h4>
-                <p className="text-green-800">Nombre del elemento o compuesto que se está midiendo (ej: 'Coliformes totales', 'pH', 'Plomo')</p>
+                <p className="text-green-800">Nombre del elemento o compuesto que se está midiendo (ej: &apos;Coliformes totales&apos;, &apos;pH&apos;, &apos;Plomo&apos;)</p>
               </div>
             </div>
 
@@ -107,7 +107,7 @@ export default function FundamentalsPage() {
               </div>
               <div>
                 <h4 className="font-semibold text-green-900">Límite Máximo Permisible (VMP)</h4>
-                <p className="text-green-800">Valor máximo aceptable del parámetro (ej: '≤ 0.01 mg/L', '6.5 - 8.5', 'Ausentes')</p>
+                <p className="text-green-800">Valor máximo aceptable del parámetro (ej: &apos;≤ 0.01 mg/L&apos;, &apos;6.5 - 8.5&apos;, &apos;Ausentes&apos;)</p>
               </div>
             </div>
 
@@ -117,7 +117,7 @@ export default function FundamentalsPage() {
               </div>
               <div>
                 <h4 className="font-semibold text-green-900">Unidad de Medida</h4>
-                <p className="text-green-800">Unidades en que se expresa el valor (ej: "mg/L", "NMP/100 mL", "UNT")</p>
+                <p className="text-green-800">Unidades en que se expresa el valor (ej: &quot;mg/L&quot;, &quot;NMP/100 mL&quot;, &quot;UNT&quot;)</p>
               </div>
             </div>
 

@@ -176,11 +176,11 @@ function ExploreContent() {
       <div className="container px-4 py-8 mx-auto">
         <div className="max-w-6xl mx-auto">
           <Card className="mb-8">
-            <CardHeader><CardTitle>Seleccionar Dominio y País</CardTitle></CardHeader>
+            <CardHeader><CardTitle>Paso 1: Seleccionar Dominio y País</CardTitle></CardHeader>
             <CardContent>
-              <div className="grid gap-4 mb-6 md:grid-cols-3">
+              <div className="grid gap-4 md:grid-cols-2">
                 <DomainSelector domain={domain} onDomainChange={handleDomainChange} />
-                                <div>
+                <div>
                   <label className="block mb-2 text-sm font-medium text-gray-700">País:</label>
                   <select
                     value={selectedCountry}
@@ -196,33 +196,59 @@ function ExploreContent() {
                     ))}
                   </select>
                 </div>
-                {domain === 'agua' && (
-                  <>
-                    <SectorSelector selectedSector={selectedSector} onSectorChange={setSelectedSector} availableSectorIds={availableSectorIds} disabled={!selectedCountry || availableSectorIds.length === 0} />
-                    <div>
-                      <label className="block mb-2 text-sm font-medium text-gray-700">Buscar parámetro:</label>
-                      <div className="relative">
-                        <Search className="absolute w-4 h-4 text-gray-400 transform -translate-y-1/2 left-3 top-1/2" />
-                        <Input type="text" placeholder="Ej: coliformes, pH..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="pl-10" disabled={!selectedCountry} />
-                      </div>
-                    </div>
-                  </>
-                )}
               </div>
             </CardContent>
           </Card>
+
+
 
           {loading && <Card><CardContent className="p-8 text-center"><div className="w-8 h-8 mx-auto mb-4 border-b-2 border-blue-600 rounded-full animate-spin"></div><p className="text-gray-600">Cargando datos...</p></CardContent></Card>}
           {error && <Card className="border-red-200 bg-red-50"><CardContent className="p-6"><div className="flex items-center gap-3"><AlertTriangle className="w-5 h-5 text-red-600" /><p className="text-red-800">{error}</p></div></CardContent></Card>}
           {!selectedCountry && !loading && <Card><CardContent className="p-8 text-center"><div className="mb-4 text-6xl">🌍</div><h3 className="mb-2 text-xl font-semibold text-gray-900">Selecciona un país para comenzar</h3><p className="text-gray-600">Elige un país para consultar sus estándares.</p></CardContent></Card>}
 
           {data && countryInfo && !loading && (
-            <>
-              <ResultsDisplay data={data} countryInfo={countryInfo} filteredSectors={filteredSectors} />
+            <div className="mt-8">
+              {domain === 'agua' && data.sectors ? (
+                <>
+                  {selectedSector === 'todos' ? (
+                    <div>
+                      <h3 className="text-2xl font-bold mb-4">Sectores de Uso del Agua</h3>
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {Object.entries(data.sectors).map(([sectorId, sectorData]) => {
+                          const sectorInfo = WATER_USE_SECTORS.find(s => s.id === sectorId) || { id: sectorId, nombre: sectorId, descripcion: `Datos para ${sectorId}`, icon: '📊' };
+                          return (
+                            <Card key={sectorId} onClick={() => setSelectedSector(sectorId)} className="cursor-pointer hover:shadow-md">
+                              <CardHeader>
+                                <div className="flex items-center gap-3">
+                                  <span className="text-2xl">{sectorInfo.icon}</span>
+                                  <div>
+                                    <CardTitle className="text-md">{sectorInfo.nombre}</CardTitle>
+                                    <p className="text-sm text-gray-600">{(sectorData as any).description || sectorInfo.descripcion}</p>
+                                  </div>
+                                </div>
+                              </CardHeader>
+                            </Card>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  ) : (
+                    <div>
+                      <Button onClick={() => setSelectedSector('todos')} className="mb-4">
+                        <ArrowLeft className="w-4 h-4 mr-2" />
+                        Volver a todos los sectores
+                      </Button>
+                      <ResultsDisplay data={data} countryInfo={countryInfo} filteredSectors={filteredSectors} />
+                    </div>
+                  )}
+                </>
+              ) : (
+                <ResultsDisplay data={data} countryInfo={countryInfo} filteredSectors={filteredSectors} />
+              )}
               <Card className="mt-8 border-yellow-200 bg-yellow-50"><CardContent className="p-6"><div className="flex items-start gap-3">
                 <AlertTriangle className="h-5 w-5 text-yellow-600 mt-0.5" /><div><h3 className="mb-2 font-semibold text-yellow-900">Aviso de Vigencia</h3><p className="text-sm text-yellow-800">Esta información es referencial. Siempre verifica la vigencia de las normas consultando las autoridades competentes.</p></div>
               </div></CardContent></Card>
-            </>
+            </div>
           )}
         </div>
       </div>

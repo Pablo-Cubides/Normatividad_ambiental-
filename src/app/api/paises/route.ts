@@ -2,6 +2,16 @@ import { NextRequest, NextResponse } from 'next/server';
 import path from 'path';
 import fs from 'fs';
 
+// ISO 3166-1 alpha-2 country codes (subset for Latin America and relevant countries)
+const VALID_ISO_CODES = new Set([
+  'ar', 'bo', 'br', 'cl', 'co', 'cr', 'cu', 'do', 'ec', 'sv', 'gt', 'hn', 'mx', 'ni', 'pa', 'py', 'pe', 'uy', 've',
+  'us', 'ca', 'es', 'pt', 'it', 'fr', 'de', 'gb', 'jp', 'cn', 'in', 'au', 'nz'
+]);
+
+function isValidISOCountryCode(code: string): boolean {
+  return VALID_ISO_CODES.has(code.toLowerCase());
+}
+
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const domain = searchParams.get('dominio') || 'agua';
@@ -38,12 +48,10 @@ export async function GET(request: NextRequest) {
           canonicalCandidates.push(f);
           countriesMap[code] = countryName.trim() || code;
         }
-      } catch (e) {
+      } catch (_) {
         // skip files we can't parse as JSON
       }
     }
-
-  const canonicalSet = new Set(canonicalCandidates.map(f => f.replace(/\.json$/i, '').toLowerCase()));
 
     // Also inspect json-candidates for this domain: files named <country>-*.json
     try {
@@ -64,13 +72,13 @@ export async function GET(request: NextRequest) {
             const obj = JSON.parse(txt);
             const name = obj.country || obj.pais || obj.name || prefix;
             countriesMap[prefix] = name;
-          } catch (e) {
+          } catch (_) {
             countriesMap[prefix] = countriesMap[prefix] || prefix;
           }
         }
       }
-    } catch (e) {
-      console.error('Failed reading candidates dir', e);
+    } catch (_e) {
+      console.error('Failed reading candidates dir', _e);
     }
 
     // Final sanitization: drop slug-like codes that look normative
@@ -88,8 +96,9 @@ export async function GET(request: NextRequest) {
       return false;
     };
 
-    let countries = Object.keys(countriesMap)
+    const countries = Object.keys(countriesMap)
       .filter(code => !isSlugLike(code, String(countriesMap[code] || '')))
+      
       .map(code => ({ code, name: countriesMap[code] }));
 
     // Sort alphabetically by name

@@ -1,7 +1,5 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
-
 type Domain = 'agua' | 'calidad-aire' | 'residuos-solidos' | '';
 
 interface DomainSelectorProps {

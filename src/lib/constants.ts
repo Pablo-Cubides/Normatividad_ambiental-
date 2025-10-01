@@ -12,5 +12,3 @@ export const flagMap: Record<string, string> = {
 	"mx": "🇲🇽",
 	"pe": "🇵🇪",
 };
-
-export default { flagMap };

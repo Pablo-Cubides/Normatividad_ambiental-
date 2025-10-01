@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Select: React.FC<React.PropsWithChildren<{ value?: string; onValueChange?: (v: string) => void; disabled?: boolean }>> = ({ children, value, onValueChange, disabled }) => {
+export const Select: React.FC<React.PropsWithChildren<{ value?: string; onValueChange?: (v: string) => void; disabled?: boolean }>> = ({ children }) => {
   return (
     <div>
       {/* Expect children to include SelectTrigger/SelectContent in original code; for simplicity, render native select when items are provided */}
