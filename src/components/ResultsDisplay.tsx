@@ -1,5 +1,6 @@
  'use client';
 
+import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -16,10 +17,37 @@ interface ResultsDisplayProps {
 }
 
 export function ResultsDisplay({ data, countryInfo, filteredSectors }: ResultsDisplayProps) {
+  type MutableData = Partial<UnifiedNorm> & { reference?: unknown; referencia?: unknown; registros?: unknown; version?: string; lastUpdate?: string; fuentePrincipal?: string };
+  const mutable = data as MutableData;
   // Now returns a consistent object shape, using the Spanish properties
   const getSectorInfo = (sectorId: string) => 
     WATER_USE_SECTORS.find(s => s.id === sectorId) || 
     { id: sectorId, nombre: sectorId, descripcion: '', icon: '📊' };
+
+  // Helpers to safely access possibly-unknown/legacy fields without using `any`
+  const asRecord = (v: unknown): Record<string, unknown> => (typeof v === 'object' && v !== null) ? (v as Record<string, unknown>) : {};
+  const getParamLimit = (param: RecordNorm) => {
+    const p = asRecord(param);
+    const value = p['value'];
+    if (typeof value === 'string' || typeof value === 'number') return String(value);
+    const limit = p['limit'] ?? p['limite'];
+    return typeof limit === 'string' || typeof limit === 'number' ? String(limit) : '';
+  };
+  const getReferenceStandard = (obj: unknown) => {
+    const r = asRecord(obj);
+    const std = r['standard'] ?? r['norma'];
+    return typeof std === 'string' ? std : (typeof std === 'number' ? String(std) : '');
+  };
+  const getRecordLimit = (r: RecordNorm) => {
+    const rec = asRecord(r);
+    const lim = rec['limit'] ?? rec['limite'];
+    return typeof lim === 'string' || typeof lim === 'number' ? String(lim) : '';
+  };
+  const getRecordNotes = (r: RecordNorm) => {
+    const rec = asRecord(r);
+    const notes = rec['notes'] ?? rec['notas'];
+    return Array.isArray(notes) ? (notes as unknown[]).map(String) : [] as string[];
+  };
 
   const renderWaterContent = () => (
     <>
@@ -82,9 +110,9 @@ export function ResultsDisplay({ data, countryInfo, filteredSectors }: ResultsDi
                       {(Array.isArray(sectorData.parameters) ? sectorData.parameters : []).map((param: RecordNorm, paramIndex: number) => (
                         <tr key={paramIndex} className="hover:bg-gray-50">
                           <td className="p-4 font-medium text-gray-900">{param.parameter ?? param.parametro}</td>
-                          <td className="p-4 font-mono text-blue-700">{(param as any).value ?? (param.limit ?? param.limite)}</td>
+                          <td className="p-4 font-mono text-blue-700">{getParamLimit(param)}</td>
                           <td className="p-4 text-gray-600">{param.unit ?? param.unidad ?? '-'}</td>
-                          <td className="p-4 text-sm text-gray-600">{(param.reference as any)?.standard ?? ''}</td>
+                          <td className="p-4 text-sm text-gray-600">{getReferenceStandard((param as unknown) && (asRecord(param)['reference'] ?? asRecord(param)['referencia']) )}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -99,10 +127,10 @@ export function ResultsDisplay({ data, countryInfo, filteredSectors }: ResultsDi
   );
 
   const renderRecordsContent = () => {
-    const records = (data.records ?? (data as any).registros) as RecordNorm[] | undefined;
-    const reference = (data as any).reference ?? (data as any).referencia;
-    const version = (data as any).version ?? (data as any).lastUpdate ?? '';
-    const sourceText = (data as any).fuentePrincipal || (reference?.norma) || (reference?.standard) || 'N/A';
+  const records = (mutable.records ?? (mutable.registros as unknown)) as RecordNorm[] | undefined;
+  const reference = (mutable.reference ?? mutable.referencia) as unknown;
+  const version = (mutable.version ?? mutable.lastUpdate ?? '') as string;
+  const sourceText = (mutable.fuentePrincipal as string) || ((reference && (reference as any).norma) ?? (reference && (reference as any).standard) ) || 'N/A';
 
     return (
       <Card className="print-friendly">

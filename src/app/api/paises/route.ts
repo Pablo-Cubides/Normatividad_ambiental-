@@ -26,7 +26,7 @@ export async function GET(request: NextRequest) {
   const cached = cache[cacheKey];
   if (cached && Date.now() - cached.ts < TTL_MS) {
     logger.info('countries:cache:hit', { domain });
-    return NextResponse.json(cached.value as any);
+    return NextResponse.json(cached.value as unknown);
   }
 
     try {
