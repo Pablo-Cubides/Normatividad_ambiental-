@@ -1,6 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import path from 'path';
 import fs from 'fs';
+import { logger } from '@/lib/logger';
+
+// Simple in-memory cache with TTL for small dataset (serverless-safe only for single instance)
+const cache: Record<string, { ts: number; value: unknown }> = {};
+const TTL_MS = 1000 * 60 * 5; // 5 minutes
 
 // ISO 3166-1 alpha-2 country codes (subset for Latin America and relevant countries)
 const VALID_ISO_CODES = new Set([
@@ -15,11 +20,21 @@ function isValidISOCountryCode(code: string): boolean {
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const domain = searchParams.get('dominio') || 'agua';
+  const cacheKey = `countries:${domain}`;
 
-  try {
+  // serve from cache when fresh
+  const cached = cache[cacheKey];
+  if (cached && Date.now() - cached.ts < TTL_MS) {
+    logger.info('countries:cache:hit', { domain });
+    return NextResponse.json(cached.value as any);
+  }
+
+    try {
     const dir = path.join(process.cwd(), 'data', 'json', domain);
     if (!fs.existsSync(dir)) {
-      return NextResponse.json({ countries: [] });
+      const empty = { countries: [] };
+      cache[cacheKey] = { ts: Date.now(), value: empty };
+      return NextResponse.json(empty);
     }
 
     // Strict policy: only consider files whose basename does NOT contain a hyphen
@@ -78,7 +93,7 @@ export async function GET(request: NextRequest) {
         }
       }
     } catch (_e) {
-      console.error('Failed reading candidates dir', _e);
+      logger.warn('Failed reading candidates dir', { domain, error: String(_e) });
     }
 
     // Final sanitization: drop slug-like codes that look normative
@@ -104,9 +119,12 @@ export async function GET(request: NextRequest) {
     // Sort alphabetically by name
     countries.sort((a, b) => a.name.localeCompare(b.name));
 
-    return NextResponse.json({ countries });
+    const result = { countries };
+    cache[cacheKey] = { ts: Date.now(), value: result };
+    logger.info('countries:listed', { domain, count: countries.length });
+    return NextResponse.json(result);
   } catch (e) {
-    console.error('Error listing countries for domain', domain, e);
+    logger.error('Error listing countries for domain', { domain, error: String(e) });
     return NextResponse.json({ countries: [] }, { status: 500 });
   }
 }
