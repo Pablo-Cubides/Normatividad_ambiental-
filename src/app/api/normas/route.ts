@@ -5,17 +5,29 @@ import { UnifiedNormSchema } from '../../../lib/schemas';
 import { ZodError } from 'zod';
 import { appendFileSync } from 'fs';
 import { normalizeData, mergeCandidates } from '../../../lib/utils';
+import { logger } from '@/lib/logger';
+
+// Simple in-memory cache for norma responses
+const cache: Record<string, { ts: number; value: unknown }> = {};
+const TTL_MS = 1000 * 60 * 5; // 5 minutes
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const country = searchParams.get('pais');
   const domain = searchParams.get('dominio') || 'agua'; // Default to 'agua'
 
+  const cacheKey = `norma:${domain}:${country}`;
+  const cached = cache[cacheKey];
+  if (cached && Date.now() - cached.ts < TTL_MS) {
+    logger.info('normas:cache:hit', { domain, country });
+    return NextResponse.json(cached.value as any);
+  }
+
   if (!country) {
     return NextResponse.json({ error: 'El parámetro "pais" es requerido' }, { status: 400 });
   }
 
-  try {
+    try {
     const filePath = path.join(process.cwd(), 'data', 'json', domain, `${country.toLowerCase()}.json`);
 
     if (!fs.existsSync(filePath)) {
@@ -37,14 +49,14 @@ export async function GET(request: NextRequest) {
       return NextResponse.json(validatedData);
     } catch (validationError) {
       const zerr = validationError as ZodError;
-      console.error(`Validation error for ${domain}/${country}.json:`, zerr.issues);
+      logger.warn('normas:validation_failed', { domain, country, issues: zerr.issues });
 
       try {
         const logPath = path.join(process.cwd(), 'data', 'json', '_validation.log');
         const entry = `${new Date().toISOString()} | ${domain}/${country}.json | ${JSON.stringify(zerr.issues)}\n`;
         appendFileSync(logPath, entry, { encoding: 'utf8' });
       } catch (logErr) {
-        console.error('Failed to write validation log:', logErr);
+        logger.warn('normas:failed_write_validation_log', { domain, country, error: String(logErr) });
       }
 
       try {
@@ -78,9 +90,11 @@ export async function GET(request: NextRequest) {
         if (bestEffort.reference && !bestEffort.referencia) bestEffort.referencia = { norma: bestEffort.reference.standard };
         if (bestEffort.referencia && !bestEffort.reference) bestEffort.reference = { standard: bestEffort.referencia.norma ?? bestEffort.referencia };
 
-        return NextResponse.json({ ...bestEffort, _validation: zerr.flatten() });
+        const result = { ...bestEffort, _validation: zerr.flatten() };
+        cache[cacheKey] = { ts: Date.now(), value: result };
+        return NextResponse.json(result);
       } catch (e) {
-        console.error('Failed to coerce normalized data for frontend fallback:', e);
+        logger.error('normas:coerce_failed', { domain, country, error: String(e) });
         return NextResponse.json(
           {
             error: 'La estructura del archivo de datos está corrupta o no es válida y no fue posible normalizarla automáticamente.',
@@ -92,7 +106,7 @@ export async function GET(request: NextRequest) {
     }
 
   } catch (fileError) {
-    console.error(`API error for country ${country} and domain ${domain}:`, fileError);
+    logger.error('normas:file_error', { domain, country, error: String(fileError) });
     return NextResponse.json(
       { error: 'Error interno del servidor al leer el archivo.' },
       { status: 500 }

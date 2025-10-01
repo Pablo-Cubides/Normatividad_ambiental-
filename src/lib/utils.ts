@@ -1,6 +1,7 @@
 
 import path from 'path';
 import fs from 'fs';
+import { logger } from '@/lib/logger';
 
 // Normalizes Spanish/alternate keys into the canonical schema expected by Zod.
 export const normalizeData = (raw: any) => {
@@ -46,7 +47,8 @@ export const mergeCandidates = (original: any, domain: string, country: string) 
     const candidatesDir = path.join(process.cwd(), 'data', 'json-candidates', domain);
     if (!fs.existsSync(candidatesDir)) return original;
 
-    const files = fs.readdirSync(candidatesDir);
+  let files = fs.readdirSync(candidatesDir);
+  if (!Array.isArray(files)) files = [];
     const countryPrefix = (country || '').toLowerCase();
 
     const merged = { ...original, _candidates: [] };
@@ -75,13 +77,14 @@ export const mergeCandidates = (original: any, domain: string, country: string) 
           (merged._candidates as any[]).push(f);
         }
       } catch (e) {
-        console.error('Failed to read/parse candidate', full, e);
+        // avoid throwing if a single candidate is bad; log and continue
+        try { logger.warn('mergeCandidates:bad_candidate', { file: full, error: String(e) }); } catch { /* ignore */ }
       }
     }
 
     return merged;
   } catch (e) {
-    console.error('Error merging candidates:', e);
+    try { logger.error('mergeCandidates:failed', { domain, country, error: String(e) }); } catch { /* ignore */ }
     return original;
   }
 };
