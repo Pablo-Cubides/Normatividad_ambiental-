@@ -26,10 +26,7 @@ export function CountrySelector({ countries, selectedCountry, onCountryChange, i
         <SelectContent>
           {countries.map((country) => (
             <SelectItem key={country.code} value={country.code}>
-              <span className="flex items-center gap-2">
-                <span>{country.flag}</span>
-                <span>{country.name}</span>
-              </span>
+              <span>{country.name}</span>
             </SelectItem>
           ))}
         </SelectContent>

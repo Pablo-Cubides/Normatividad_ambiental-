@@ -3,7 +3,8 @@
 import { useState, useEffect } from 'react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useRouter } from 'next/navigation';
-import { flagMap } from '../lib/constants';
+import { getFlagEmoji } from '../lib/constants';
+import type { UnifiedNorm } from '@/lib/schemas';
 
 // Define the type for the country object we expect from the API
 interface ApiCountry {
@@ -35,19 +36,22 @@ export function CountrySelector({ domain }: CountrySelectorProps) {
           throw new Error('Failed to fetch countries');
         }
         const data: { countries: ApiCountry[] } = await response.json();
-        
+
         const enhancedCountries = data.countries.map(country => ({
           ...country,
-          flag: flagMap[country.code] || '🏳️' // Default flag
+          flag: getFlagEmoji(country.code, country.name)
         }));
 
         setCountries(enhancedCountries);
 
         // Load saved country from localStorage after countries are fetched
-        const storageKey = `selected-country-${domain || 'default'}`;
-        const saved = localStorage.getItem(storageKey);
-        if (saved && enhancedCountries.find(c => c.code === saved)) {
-          setSelectedCountry(saved);
+        // Only access localStorage in the browser
+        if (typeof window !== 'undefined' && window.localStorage) {
+          const storageKey = `selected-country-${domain || 'default'}`;
+          const saved = window.localStorage.getItem(storageKey);
+          if (saved && enhancedCountries.find(c => c.code === saved)) {
+            setSelectedCountry(saved);
+          }
         }
       } catch (error) {
         console.error(error);
@@ -78,10 +82,7 @@ export function CountrySelector({ domain }: CountrySelectorProps) {
       <SelectContent>
         {countries.map((country) => (
           <SelectItem key={country.code} value={country.code}>
-            <span className="flex items-center gap-2">
-              <span>{country.flag}</span>
-              <span>{country.name}</span>
-            </span>
+            <span>{country.name}</span>
           </SelectItem>
         ))}
       </SelectContent>

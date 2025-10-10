@@ -10,8 +10,8 @@ import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { ArrowLeft, Search, Download, AlertTriangle, ExternalLink } from 'lucide-react';
 import { SECTORES_USO, WaterUseType } from '@/lib/types';
-import { flagMap } from '@/lib/constants';
-import { UnifiedNorm } from '@/lib/schemas';
+import { getFlagEmoji } from '@/lib/constants';
+import type { UnifiedNorm, SectorNorm, RecordNorm } from '@/lib/schemas';
 import { logger } from '@/lib/logger';
 
 // Type definitions for the component
@@ -19,9 +19,8 @@ interface ApiCountry { code: string; name: string; }
 interface Country extends ApiCountry { flag: string; }
 
 // Minimal shapes for the API responses used by this UI.
-interface SectorParam { parameter: string; value: string; unit?: string; source?: string }
-interface SectorData { name: string; description: string; parameters: SectorParam[] }
-interface CountryData { sectors?: Record<string, SectorData>; records?: any[]; registros?: any[]; normativeReference?: string; reference?: any; lastUpdate?: string }
+interface SectorData { name?: string; description?: string; parameters?: RecordNorm[] }
+interface CountryData { sectors?: Record<string, SectorData>; records?: RecordNorm[]; registros?: RecordNorm[]; normativeReference?: string; reference?: unknown; lastUpdate?: string }
 
 function ExploreContent() {
   const searchParams = useSearchParams();
@@ -33,7 +32,7 @@ function ExploreContent() {
   const [selectedCountry, setSelectedCountry] = useState<string>('');
   const [selectedSector, setSelectedSector] = useState<string>('todos');
   const [searchQuery, setSearchQuery] = useState<string>('');
-  const [data, setData] = useState<any | null>(null); // Using 'any' to handle multiple data structures
+  const [data, setData] = useState<UnifiedNorm | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string>('');
   // Start with no domain selected so user chooses which dataset to explore first
@@ -83,7 +82,7 @@ function ExploreContent() {
         const response = await fetch(`/api/paises?dominio=${domain}`);
         if (!response.ok) throw new Error('No se pudieron cargar los países');
         const data: { countries: ApiCountry[] } = await response.json();
-        const enhancedCountries = data.countries.map((c: ApiCountry) => ({ ...c, flag: flagMap[c.code] || '🏳️' }));
+  const enhancedCountries = data.countries.map((c: ApiCountry) => ({ ...c, flag: getFlagEmoji(c.code, c.name) }));
         setCountries(enhancedCountries);
       } catch (err) {
         const msg = err instanceof Error ? err.message : 'Error desconocido';
@@ -105,8 +104,8 @@ function ExploreContent() {
         const text = await response.text().catch(() => '');
         throw new Error(`Servidor respondió con ${response.status}: ${text}`);
       }
-      const countryData: CountryData = await response.json();
-      setData(countryData as unknown as CountryData);
+  const countryData: UnifiedNorm = await response.json();
+  setData(countryData);
       try { localStorage.setItem(`selected-country-${domain}`, countryCode); } catch { /* ignore */ }
     } catch (err) {
       const msg = err instanceof Error ? err.message : 'Error desconocido cargando datos del país';
@@ -158,13 +157,13 @@ function ExploreContent() {
   };
 
   // Logic to filter data for the water sector
-  const sectors = data?.sectors as Record<string, SectorData> | undefined;
-  const filteredSectors: [string, SectorData][] = sectors ? Object.entries(sectors).filter(([sectorId, sectorData]) => {
+  const sectors = data?.sectors as Record<string, SectorNorm> | undefined;
+  const filteredSectors: [string, SectorNorm][] = sectors ? Object.entries(sectors).filter(([sectorId, sectorData]) => {
     if (selectedSector !== 'todos' && sectorId !== selectedSector) return false;
     if (searchQuery) {
       const query = searchQuery.toLowerCase();
       const matchesSector = (sectorData.name || '').toLowerCase().includes(query) || (sectorData.description || '').toLowerCase().includes(query);
-      const matchesParam = Array.isArray(sectorData.parameters) && sectorData.parameters.some((p: SectorParam) => (p.parameter || '').toLowerCase().includes(query));
+      const matchesParam = Array.isArray(sectorData.parameters) && sectorData.parameters.some((p: RecordNorm) => ((p.parameter ?? p.parametro) || '').toLowerCase().includes(query));
       return matchesSector || matchesParam;
     }
     return true;
@@ -174,7 +173,7 @@ function ExploreContent() {
   // show those in the sector selector. This prevents showing a sector that
   // would render an empty table.
   const availableSectorIds: string[] = useMemo(() => {
-    const s = data?.sectors as Record<string, SectorData> | undefined;
+    const s = data?.sectors as Record<string, SectorNorm> | undefined;
     if (!s) return [];
     return Object.entries(s)
       .filter(([, sd]) => Array.isArray(sd?.parameters) && sd.parameters.length > 0)
@@ -195,10 +194,51 @@ function ExploreContent() {
   const getSectorInfo = (sectorId: string) => SECTORES_USO.find(s => s.id === sectorId) || { id: sectorId, nombre: sectorId, descripcion: '', icon: '📊' };
   const countryInfo = countries.find(c => c.code === selectedCountry);
 
+  const getRefStandard = (ref?: unknown): string | undefined => {
+    if (!ref || typeof ref !== 'object') return undefined;
+    const r = ref as Record<string, unknown>;
+    if (typeof r.standard === 'string') return r.standard;
+    if (typeof r.norma === 'string') return r.norma;
+    return undefined;
+  };
+
+  // Helpers to robustly extract limit/value fields from records that may
+  // come in different shapes (value, valor, limit, limite, etc.)
+  const asRecord = (v: unknown): Record<string, unknown> => (typeof v === 'object' && v !== null) ? (v as Record<string, unknown>) : {};
+  const getParamLimit = (param: RecordNorm): string => {
+    const p = asRecord(param);
+    // Common variants we've seen in data
+    const candidates = ['value', 'valor', 'valor_value', 'limit', 'limite', 'valor_limite', 'valor_string', 'val', 'valor_val'];
+    for (const k of candidates) {
+      const v = p[k];
+      if (typeof v === 'string' || typeof v === 'number') return String(v);
+      // sometimes value is wrapped in an object like { text: '...' }
+      if (v && typeof v === 'object') {
+        const vv = (v as Record<string, unknown>)['text'] ?? (v as Record<string, unknown>)['value'];
+        if (typeof vv === 'string' || typeof vv === 'number') return String(vv);
+      }
+    }
+    return '';
+  };
+  const getRecordLimit = (r: RecordNorm): string => {
+    const rec = asRecord(r);
+    const candidates = ['limit', 'limite', 'valor', 'value', 'valor_limite', 'valor_string'];
+    for (const k of candidates) {
+      const v = rec[k];
+      if (typeof v === 'string' || typeof v === 'number') return String(v);
+    }
+    return '';
+  };
+  const getRecordNotes = (r: RecordNorm): string[] => {
+    const rec = asRecord(r);
+    const notes = rec['notes'] ?? rec['notas'] ?? rec['observaciones'];
+    return Array.isArray(notes) ? (notes as unknown[]).map(String) : [];
+  };
+
   const renderWaterContent = () => (
     <>
       <Card className="mb-6"><CardContent className="p-6"><div className="flex items-center justify-between">
-        <div className="flex items-center gap-4"><span className="text-4xl">{countryInfo?.flag}</span><div><h2 className="text-2xl font-bold text-gray-900">{countryInfo?.name}</h2><p className="text-gray-600">{filteredSectors.length} sectores de agua encontrados</p></div></div>
+                  <div className="flex items-center gap-4"><span className="inline-flex w-10 h-10 text-3xl items-center justify-center leading-none flag-emoji">{countryInfo?.flag}</span><div><h2 className="text-2xl font-bold text-gray-900">{countryInfo?.name}</h2><p className="text-gray-600">{filteredSectors.length} sectores de agua encontrados</p></div></div>
         <Button variant="outline" className="no-print" onClick={() => window.print()}><Download className="w-4 h-4 mr-2" />Imprimir/PDF</Button>
       </div></CardContent></Card>
 
@@ -209,11 +249,11 @@ function ExploreContent() {
             <Card id={`sector-${sectorId}`} key={sectorId} className="print-friendly">
               <CardHeader className="border-b bg-gray-50/50"><div className="flex items-center justify-between">
                 <div className="flex items-center gap-3"><span className="text-2xl">{sectorInfo.icon}</span><div><CardTitle className="text-xl text-gray-900">{sectorData.name}</CardTitle><p className="text-sm text-gray-600">{sectorData.description}</p></div></div>
-                <Badge variant="outline" className="text-xs">{sectorData.parameters.length} parámetros</Badge>
+                <Badge variant="outline" className="text-xs">{Array.isArray(sectorData.parameters) ? sectorData.parameters.length : 0} parámetros</Badge>
               </div></CardHeader>
               <CardContent className="p-0">
                 <div className="p-4 border-b bg-blue-50/50"><div className="flex items-center gap-2 text-sm">
-                  <ExternalLink className="w-4 h-4 text-blue-600" /><span className="font-semibold text-blue-900">{data.normativeReference}</span><span className="text-gray-600"> - Actualizado: {data.lastUpdate}</span>
+                  <ExternalLink className="w-4 h-4 text-blue-600" /><span className="font-semibold text-blue-900">{data?.normativeReference}</span><span className="text-gray-600"> - Actualizado: {data?.lastUpdate}</span>
                 </div></div>
                 <div id={`sector-table-${sectorId}`} className="overflow-x-auto"><table>
                   <thead className="bg-gray-50"><tr>
@@ -221,12 +261,18 @@ function ExploreContent() {
                     <th className="p-4 font-semibold text-left text-gray-900">Unidad</th><th className="p-4 font-semibold text-left text-gray-900">Fuente</th>
                   </tr></thead>
                   <tbody className="divide-y divide-gray-200">
-                    {sectorData.parameters.map((param: any, paramIndex: number) => (
-                      <tr key={paramIndex} className="hover:bg-gray-50">
-                        <td className="p-4 font-medium text-gray-900">{param.parameter}</td><td className="p-4 font-mono text-blue-700">{param.value}</td>
-                        <td className="p-4 text-gray-600">{param.unit}</td><td className="p-4 text-sm text-gray-600">{param.source}</td>
-                      </tr>
-                    ))}
+                    {Array.isArray(sectorData.parameters) ? sectorData.parameters.map((param: RecordNorm, paramIndex: number) => {
+                      const limit = getParamLimit(param);
+                      const refStd = getRefStandard(param.reference ?? (param as unknown && (asRecord(param)['reference'] ?? asRecord(param)['referencia'])));
+                      return (
+                        <tr key={paramIndex} className="hover:bg-gray-50">
+                          <td className="p-4 font-medium text-gray-900">{param.parameter ?? param.parametro}</td>
+                          <td className="p-4 font-mono text-blue-700">{limit}</td>
+                          <td className="p-4 text-gray-600">{param.unit ?? param.unidad ?? '-'}</td>
+                          <td className="p-4 text-sm text-gray-600">{refStd ?? ''}</td>
+                        </tr>
+                      );
+                    }) : null}
                   </tbody>
                 </table></div>
               </CardContent>
@@ -237,14 +283,28 @@ function ExploreContent() {
       <div className="mt-4">
         <Button variant="ghost" size="sm" onClick={() => { setSelectedSector('todos'); router.push(`/explorar?dominio=${domain}&pais=${selectedCountry}`); }}>Mostrar todos</Button>
       </div>
-      {filteredSectors.length === 0 && <Card><CardContent className="p-8 text-center"><AlertTriangle className="w-12 h-12 mx-auto mb-4 text-gray-400" /><h3 className="mb-2 text-lg font-semibold text-gray-900">No se encontraron sectores</h3><p className="text-gray-600">Intenta cambiar los filtros o el término de búsqueda.</p></CardContent></Card>}
+      {/* Only show the 'no sectors' warning when the country actually provides sectors
+          and the applied filters/search produce zero results. If the country does not
+          divide standards into sectors (no `data.sectors`) we should not display an
+          error — the table or other content (records) will be shown elsewhere. */}
+      {data?.sectors && filteredSectors.length === 0 && (
+        <Card>
+          <CardContent className="p-8 text-center">
+            <AlertTriangle className="w-12 h-12 mx-auto mb-4 text-gray-400" />
+            <h3 className="mb-2 text-lg font-semibold text-gray-900">No se encontraron sectores</h3>
+            <p className="text-gray-600">Intenta cambiar los filtros o el término de búsqueda.</p>
+          </CardContent>
+        </Card>
+      )}
     </>
   );
 
   const renderRecordsContent = () => {
-    const records = data.records ?? data.registros ?? [];
-    const reference = data.reference ?? data.referencia;
-    const version = data.version ?? data.lastUpdate ?? '';
+  const records = (data?.records ?? data?.registros ?? []) as RecordNorm[];
+  type MutableData = Partial<UnifiedNorm> & { reference?: unknown; referencia?: unknown; version?: string; lastUpdate?: string };
+  const mutable = (data as MutableData | null) ?? null;
+  const reference = mutable ? (mutable.reference ?? mutable.referencia) : undefined;
+    const version = (mutable?.version ?? mutable?.lastUpdate ?? '') as string;
 
     return (
       <Card className="print-friendly">
@@ -254,19 +314,19 @@ function ExploreContent() {
         </div></CardHeader>
         <CardContent className="p-0">
           <div className="p-4 border-b bg-blue-50/50"><div className="flex items-center gap-2 text-sm">
-            <ExternalLink className="w-4 h-4 text-blue-600" /><span className="font-semibold text-blue-900">Fuente: {reference?.norma || reference?.standard || 'N/A'}</span><span className="text-gray-600"> - Extraído: {version}</span>
+            <ExternalLink className="w-4 h-4 text-blue-600" /><span className="font-semibold text-blue-900">Fuente: {getRefStandard(reference) ?? 'N/A'}</span><span className="text-gray-600"> - Extraído: {version}</span>
           </div></div>
           <div className="overflow-x-auto"><table>
             <thead className="bg-gray-50"><tr>
               <th className="p-4 font-semibold text-left text-gray-900">Parámetro</th><th className="p-4 font-semibold text-left text-gray-900">Límite</th>
               <th className="p-4 font-semibold text-left text-gray-900">Unidad</th><th className="p-4 font-semibold text-left text-gray-900">Notas</th>
             </tr></thead>
-            <tbody className="divide-y divide-gray-200">
-              {records.map((r: any, idx: number) => {
+              <tbody className="divide-y divide-gray-200">
+                {records.map((r: RecordNorm, idx: number) => {
                 const param = r.parameter ?? r.parametro ?? '';
-                const lim = r.limit ?? r.limite ?? '';
+                const lim = getRecordLimit(r);
                 const unit = r.unit ?? r.unidad ?? '-';
-                const notes = r.notes ?? r.notas ?? [];
+                const notes = getRecordNotes(r);
                 return (
                   <tr key={idx} className="align-top hover:bg-gray-50">
                     <td className="p-4 font-medium text-gray-900">{param}</td><td className="p-4 font-mono text-blue-700">{lim}</td>
@@ -319,7 +379,7 @@ function ExploreContent() {
                       <SelectContent>
                         {countries.map((country) => (
                           <SelectItem key={country.code} value={country.code}>
-                            <span className="flex items-center gap-2"><span>{country.flag}</span><span>{country.name}</span></span>
+                            <span>{country.name}</span>
                           </SelectItem>
                         ))}
                       </SelectContent>
@@ -365,7 +425,7 @@ function ExploreContent() {
           {/* Results Display */}
           {data && countryInfo && !loading && (
             <>
-              {data.sectors && renderWaterContent()}
+              {domain === 'agua' && data.sectors && renderWaterContent()}
               {(data.records || data.registros) && renderRecordsContent()}
               
               <Card className="mt-8 border-yellow-200 bg-yellow-50"><CardContent className="p-6"><div className="flex items-start gap-3">
