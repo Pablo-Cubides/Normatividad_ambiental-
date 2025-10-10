@@ -1,0 +1,8 @@
+{
+  "version": 2,
+  "buildCommand": "cd Norms_app && npm run build",
+  "devCommand": "cd Norms_app && npm run dev",
+  "installCommand": "cd Norms_app && npm install",
+  "framework": "nextjs",
+  "outputDirectory": "Norms_app/.next"
+}
