@@ -1,27 +1,44 @@
 {
   "pais": "Estados Unidos",
-  "paisCodigo": "estados-unidos",
   "dominio": "residuos-solidos",
-  "version": "2.0.0",
-  "fuentePrincipal": "Resource Conservation and Recovery Act (RCRA) de 1976",
+  "normativeReference_es": "Resource Conservation and Recovery Act (RCRA)",
+  "normativeSources": [
+    {
+      "name": "Resource Conservation and Recovery Act (RCRA)",
+      "url": "https://www.epa.gov/rcra",
+      "description": "RCRA - manejo de residuos y desechos peligrosos",
+      "type": "official",
+      "lastValidated": "2025-10-21"
+    }
+  ],
   "registros": [
     {
-      "categoria": "Residuos Peligrosos (Subtitle C)",
-      "parametro": "Responsabilidad del Generador",
-      "limite": "El generador es responsable del residuo 'de la cuna a la tumba' (cradle to grave)",
-      "referencia": { "norma": "RCRA, Subtitle C" }
+      "categoria": "Peligrosos",
+      "parametro": "Regulación",
+      "limite": "Sistema federal 'cuna a la tumba'. Clasificación por listas/características. Categorías de generadores por volumen. Sistema de manifiesto. TSDFs autorizadas.",
+      "referencia": { "norma": "RCRA Subtítulo C (40 CFR Partes 260-279)" },
+      "notas": ["Autoridad: EPA (establece normas); Estados autorizados (implementadores primarios)"]
     },
     {
-      "categoria": "Residuos Peligrosos (Subtitle C)",
-      "parametro": "Criterios de Peligrosidad",
-      "limite": "Ignitabilidad, Corrosividad, Reactividad, Toxicidad",
-      "referencia": { "norma": "40 CFR Part 261" }
+      "categoria": "Sólidos Municipales",
+      "parametro": "Regulación",
+      "limite": "Gestión liderada por los estados. La EPA establece criterios mínimos para vertederos. Prohíbe el vertido a cielo abierto.",
+      "referencia": { "norma": "RCRA Subtítulo D (40 CFR Partes 239-259)" },
+      "notas": ["Autoridad: Agencias Ambientales Estatales; Gobiernos Locales"]
     },
     {
-      "categoria": "Residuos Sólidos Municipales (Subtitle D)",
-      "parametro": "Disposición Final",
-      "limite": "En rellenos sanitarios que cumplen con estándares federales (liners, control de lixiviados, etc.)",
-      "notas": ["Prohibición de vertederos a cielo abierto"]
+      "categoria": "RCD",
+      "parametro": "Regulación",
+      "limite": "Principalmente regulación estatal/local como residuo sólido. Normas federales para la inspección previa de materiales peligrosos (amianto, plomo).",
+      "referencia": { "norma": "RCRA Subtítulo D; NESHAP (para amianto)" },
+      "notas": ["Autoridad: Agencias Estatales/Locales; EPA (para componentes peligrosos específicos)"]
+    },
+    {
+      "categoria": "Orgánicos",
+      "parametro": "Regulación",
+      "limite": "Altamente variable. Impulsado por mandatos estatales de desviación de vertederos y programas municipales de compostaje.",
+      "referencia": { "norma": "Sin mandato federal; Leyes estatales/locales" },
+      "notas": ["Autoridad: Gobiernos Estatales/Locales"]
     }
   ]
 }

@@ -1,57 +1,82 @@
 import { NextRequest } from 'next/server';
 import { GET } from '../src/app/api/paises/route';
 
-// Mock fs and path
-jest.mock('fs', () => ({
-  existsSync: jest.fn(),
-  readdirSync: jest.fn(),
-  readFileSync: jest.fn(),
-}));
-
-jest.mock('path', () => ({
-  join: jest.fn(),
-}));
-
-const mockFs = require('fs');
-const mockPath = require('path');
-
 describe('/api/paises', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
-  it('returns countries for agua domain', async () => {
-    // Mock file system
-    mockFs.existsSync.mockReturnValue(true);
-    mockFs.readdirSync.mockReturnValue(['colombia.json', 'brasil.json']);
-    mockFs.readFileSync.mockImplementation((path: string) => {
-      if (path.includes('colombia.json')) {
-        return JSON.stringify({ country: 'Colombia', normativeReference: 'Test' });
-      }
-      if (path.includes('brasil.json')) {
-        return JSON.stringify({ country: 'Brasil', normativeReference: 'Test' });
-      }
-      return '{}';
-    });
-    mockPath.join.mockImplementation((...args: string[]) => args.join('/'));
-
-    const request = new NextRequest('http://localhost:3000/api/paises?dominio=agua');
-    const response = await GET(request);
-    const data = await response.json();
-
-    expect(response.status).toBe(200);
-    expect(data.countries).toBeDefined();
+  it('should return countries list when no dominio specified', async () => {
+    const req = new NextRequest('http://localhost:3000/api/paises');
+    const res = await GET(req);
+    expect(res.status).toBe(200);
+    const data = await res.json();
+    expect(data).toHaveProperty('countries');
     expect(Array.isArray(data.countries)).toBe(true);
   });
 
-  it('returns empty array for invalid domain', async () => {
-    mockFs.existsSync.mockReturnValue(false);
+  it('should return countries list for valid dominio', async () => {
+    const req = new NextRequest('http://localhost:3000/api/paises?dominio=agua');
+    const res = await GET(req);
+    expect(res.status).toBe(200);
+    const data = await res.json();
+    expect(data).toHaveProperty('countries');
+    expect(Array.isArray(data.countries)).toBe(true);
+    expect(data.countries.length).toBeGreaterThan(0);
+  });
 
-    const request = new NextRequest('http://localhost:3000/api/paises?dominio=invalid');
-    const response = await GET(request);
-    const data = await response.json();
+  it('should return countries for calidad-aire dominio', async () => {
+    const req = new NextRequest('http://localhost:3000/api/paises?dominio=calidad-aire');
+    const res = await GET(req);
+    expect(res.status).toBe(200);
+    const data = await res.json();
+    expect(data).toHaveProperty('countries');
+    expect(Array.isArray(data.countries)).toBe(true);
+  });
 
-    expect(response.status).toBe(200);
-    expect(data.countries).toEqual([]);
+  it('should include cache headers', async () => {
+    const req = new NextRequest('http://localhost:3000/api/paises?dominio=agua');
+    const res = await GET(req);
+    expect(res.headers.get('Cache-Control')).toContain('public');
+    expect(res.headers.has('X-Cache-Status')).toBe(true);
+  });
+
+  it('should return cache HIT on second request', async () => {
+    const url = 'http://localhost:3000/api/paises?dominio=vertimientos';
+    
+    const req1 = new NextRequest(url);
+    const res1 = await GET(req1);
+    expect(res1.headers.get('X-Cache-Status')).toBe('MISS');
+
+    const req2 = new NextRequest(url);
+    const res2 = await GET(req2);
+    expect(res2.headers.get('X-Cache-Status')).toBe('HIT');
+  });
+
+  it('should return countries with code and name structure', async () => {
+    const req = new NextRequest('http://localhost:3000/api/paises?dominio=agua');
+    const res = await GET(req);
+    const data = await res.json();
+    
+    expect(data.countries.length).toBeGreaterThan(0);
+    
+    // Check structure of first country
+    const firstCountry = data.countries[0];
+    expect(firstCountry).toHaveProperty('code');
+    expect(firstCountry).toHaveProperty('name');
+    expect(typeof firstCountry.code).toBe('string');
+    expect(typeof firstCountry.name).toBe('string');
+  });
+
+  it('should return countries for all valid dominios', async () => {
+    const validDominios = ['agua', 'calidad-aire', 'residuos-solidos', 'vertimientos'];
+    
+    for (const dominio of validDominios) {
+      const req = new NextRequest(`http://localhost:3000/api/paises?dominio=${dominio}`);
+      const res = await GET(req);
+      expect(res.status).toBe(200);
+      const data = await res.json();
+      expect(data.countries).toBeDefined();
+    }
   });
 });

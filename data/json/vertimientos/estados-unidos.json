@@ -1,0 +1,77 @@
+{
+  "pais": "Estados Unidos",
+  "dominio": "vertimientos",
+  "version": "2025-10-23",
+  "normativeReference_es": "40 CFR Part 133 (tratamiento secundario municipal), 40 CFR Part 419 Subparte B (refinación - cracking), 40 CFR Part 440 Subparte J (minería metales base y preciosos), 40 CFR Part 412 Subparte B (CAFO - patos).",
+  "normativeSources": [
+    {
+      "name": "Clean Water Act (CWA)",
+      "url": "https://www.epa.gov/laws-regulations/summary-clean-water-act",
+      "description": "Primary federal law governing water pollution (NPDES permits and effluent limits)",
+      "type": "government",
+      "lastValidated": "2025-10-23"
+    }
+  ],
+  "sectors": {
+    "municipal_tratamiento_secundario": {
+      "name": "POTW – Estándares de tratamiento secundario",
+      "normativeReference": "40 CFR §133.102",
+      "normativeReference_url": "https://www.ecfr.gov/current/title-40/chapter-I/subchapter-D/part-133/section-133.102",
+      "parameters": [
+        { "parametro": "DBO5 (promedio 30 días)", "limite": "30 mg/L; remoción ≥85%" },
+        { "parametro": "DBO5 (promedio 7 días)", "limite": "45 mg/L" },
+        { "parametro": "SST (promedio 30 días)", "limite": "30 mg/L; remoción ≥85%" },
+        { "parametro": "SST (promedio 7 días)", "limite": "45 mg/L" },
+        { "parametro": "pH", "limite": "6.0 – 9.0" },
+        { "parametro": "CBOD5 (opcional, prom. 30 días)", "limite": "25 mg/L; remoción ≥85%" },
+        { "parametro": "CBOD5 (opcional, prom. 7 días)", "limite": "40 mg/L" }
+      ]
+    },
+    "refinacion_cracking": {
+      "name": "Refinación de petróleo – Subcategoría Cracking (BPT)",
+      "normativeReference": "40 CFR §419.22",
+      "normativeReference_url": "https://www.ecfr.gov/current/title-40/chapter-I/subchapter-N/part-419/subpart-B/section-419.22",
+      "parameters": [
+        { "parametro": "DBO5", "limite": "Máx día: 22.7 kg/1000 m³; Prom 30 días: 12.0 kg/1000 m³" },
+        { "parametro": "SST", "limite": "Máx día: 15.8; Prom 30 días: 10.1 kg/1000 m³" },
+        { "parametro": "DQO", "limite": "Máx día: 117.0; Prom 30 días: 60.3 kg/1000 m³" },
+        { "parametro": "Aceites y grasas", "limite": "Máx día: 6.9; Prom 30 días: 3.7 kg/1000 m³" },
+        { "parametro": "Compuestos fenólicos", "limite": "Máx día: 0.168; Prom 30 días: 0.076 kg/1000 m³" },
+        { "parametro": "Amoníaco como N", "limite": "Máx día: 2.81; Prom 30 días: 1.27 kg/1000 m³" },
+        { "parametro": "Sulfuro", "limite": "Máx día: 0.149; Prom 30 días: 0.068 kg/1000 m³" },
+        { "parametro": "Cromo total", "limite": "Máx día: 0.345; Prom 30 días: 0.20 kg/1000 m³" },
+        { "parametro": "Cromo hexavalente", "limite": "Máx día: 0.028; Prom 30 días: 0.012 kg/1000 m³" },
+        { "parametro": "pH", "limite": "Rango operativo (ver nota regulatoria)" }
+      ]
+    },
+    "mineria_metales_base_preciosos": {
+      "name": "Minerales de Cu, Pb, Zn, Au, Ag, Mo (BPT)",
+      "normativeReference": "40 CFR §440.102",
+      "normativeReference_url": "https://www.ecfr.gov/current/title-40/chapter-I/subchapter-N/part-440/subpart-J/section-440.102",
+      "parameters": [
+        { "parametro": "Drenaje de mina – SST", "limite": "Máx día: 30 mg/L; Prom 30 días: 20 mg/L" },
+        { "parametro": "Drenaje de mina – Cobre (Cu)", "limite": "Máx día: 0.30 mg/L; Prom 30 días: 0.15 mg/L" },
+        { "parametro": "Drenaje de mina – Zinc (Zn)", "limite": "Máx día: 1.5 mg/L; Prom 30 días: 0.75 mg/L" },
+        { "parametro": "Drenaje de mina – Plomo (Pb)", "limite": "Máx día: 0.6 mg/L; Prom 30 días: 0.3 mg/L" },
+        { "parametro": "Drenaje de mina – Mercurio (Hg)", "limite": "Máx día: 0.002 mg/L; Prom 30 días: 0.001 mg/L" },
+        { "parametro": "Drenaje de mina – pH", "limite": "6.0 – 9.0" },
+        { "parametro": "Molinos (flotación) – SST", "limite": "Máx día: 30 mg/L; Prom 30 días: 20 mg/L" },
+        { "parametro": "Molinos – Cobre (Cu)", "limite": "Máx día: 0.30 mg/L; Prom 30 días: 0.15 mg/L" },
+        { "parametro": "Molinos – Zinc (Zn)", "limite": "Máx día: 1.0 mg/L; Prom 30 días: 0.5 mg/L" },
+        { "parametro": "Molinos – Plomo (Pb)", "limite": "Máx día: 0.6 mg/L; Prom 30 días: 0.3 mg/L" },
+        { "parametro": "Molinos – Mercurio (Hg)", "limite": "Máx día: 0.002 mg/L; Prom 30 días: 0.001 mg/L" },
+        { "parametro": "Molinos – Cadmio (Cd)", "limite": "Máx día: 0.10 mg/L; Prom 30 días: 0.05 mg/L" },
+        { "parametro": "Molinos – pH", "limite": "6.0 – 9.0" }
+      ]
+    },
+    "cafo_patos": {
+      "name": "CAFO – Patos (BPT)",
+      "normativeReference": "40 CFR §412.22",
+      "normativeReference_url": "https://www.ecfr.gov/current/title-40/chapter-I/subchapter-N/part-412/subpart-B/section-412.22",
+      "parameters": [
+        { "parametro": "DBO5", "limite": "Máx diario: 1.66 kg/1000 patos; Prom mensual: 0.91 kg/1000 patos" },
+        { "parametro": "Coliformes fecales", "limite": "≤ 400 NMP/100 mL en todo momento" }
+      ]
+    }
+  }
+}

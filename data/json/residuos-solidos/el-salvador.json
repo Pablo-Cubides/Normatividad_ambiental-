@@ -1,0 +1,44 @@
+{
+  "pais": "El Salvador",
+  "dominio": "residuos-solidos",
+  "normativeReference_es": "Ley de Gestión Integral de Residuos y Fomento al Reciclaje (LEGIR) y su Reglamento",
+  "normativeSources": [
+    {
+      "name": "LEGIR - Ley de Gestión Integral de Residuos",
+      "url": "https://bibliotecaambiental.ambiente.gob.sv/documentos/decreto-no-527-ley-de-gestion-integral-de-residuos-y-fomento-al-reciclaje/",
+      "description": "LEGIR - marco legal para residuos",
+      "type": "government",
+      "lastValidated": "2025-10-21"
+    }
+  ],
+  "registros": [
+    {
+      "categoria": "Todos los Residuos",
+      "parametro": "Marco Legal",
+      "limite": "Marco integral para todos los residuos. Objetivo de fomentar la economía circular.",
+      "referencia": { "norma": "Ley de Gestión Integral de Residuos y Fomento al Reciclaje (LEGIR) y su Reglamento" },
+      "notas": ["Autoridad: Ministerio de Medio Ambiente y Recursos Naturales (MARN)"]
+    },
+    {
+      "categoria": "Peligrosos (RESPEL)",
+      "parametro": "Control",
+      "limite": "Sujeto a las disposiciones más estrictas de la ley, con control y seguimiento a través del registro RGIR.",
+      "referencia": { "norma": "Enmarcado en la LEGIR" },
+      "notas": ["Autoridad: MARN"]
+    },
+    {
+      "categoria": "Municipales y Orgánicos",
+      "parametro": "Gestión",
+      "limite": "Énfasis en la separación en la fuente y la valorización. Responsabilidad municipal para implementar programas de recolección diferenciada y compostaje.",
+      "referencia": { "norma": "Enmarcado en la LEGIR" },
+      "notas": ["Autoridad: MARN (rectoría); Municipalidades (ejecución)"]
+    },
+    {
+      "categoria": "RCD",
+      "parametro": "Gestión",
+      "limite": "Fomento del aprovechamiento y reciclaje de materiales. Prevención de la disposición inadecuada.",
+      "referencia": { "norma": "Enmarcado en la LEGIR" },
+      "notas": ["Autoridad: MARN (rectoría); Municipalidades (control local)"]
+    }
+  ]
+}

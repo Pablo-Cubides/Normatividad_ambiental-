@@ -1,41 +1,59 @@
-
 {
   "pais": "Perú",
-  "paisCodigo": "peru",
   "dominio": "agua",
-  "version": "1.0.0",
-  "fuente": "Estándares de Calidad Ambiental (ECA) para Agua, D.S. N° 004-2017-MINAM",
-  "registros": [
-    {
-      "categoria": "Aguas superficiales destinadas a la producción de Agua Potable",
-      "parametro": "Coliformes Termotolerantes",
-      "limite": "2000",
-      "unidad": "NMP/100 mL",
-      "notas": ["Para aguas que pueden ser potabilizadas con tratamiento avanzado"]
+  "normativeReference_es": "Anexo I del Reglamento de la Calidad del Agua para Consumo Humano, D.S. 004-2017-MINAM",
+  "sectors": {
+    "agua_potable": {
+      "name": "Límites Máximos Permisibles de Parámetros Microbiológicos y Parasitológicos",
+      "normativeReference": "Decreto Supremo N.° 031-2010-SA",
+      "normativeReference_url": "https://www.gob.pe/institucion/minsa/normas-legales/244805-031-2010-sa",
+      "parameters": [
+        { "parametro": "Bacterias Coliformes Totales", "limite": "0 UFC/100 mL a 35°C" },
+        { "parametro": "E. Coli", "limite": "0 UFC/100 mL a 44,5°C" },
+        { "parametro": "Bacterias Heterotróficas", "limite": "500 UFC/mL a 35°C" },
+        { "parametro": "Olor", "limite": "Aceptable" },
+        { "parametro": "Sabor", "limite": "Aceptable" },
+        { "parametro": "Color", "limite": "15 UCV escala Pt/Co" },
+        { "parametro": "Turbiedad", "limite": "5 UNT" },
+        { "parametro": "pH", "limite": "6,5 a 8,5" },
+        { "parametro": "Sólidos totales disueltos", "limite": "1000 mg/L" },
+        { "parametro": "Arsénico", "limite": "0,010 mg As/L" },
+        { "parametro": "Cadmio", "limite": "0,003 mg Cd/L" },
+        { "parametro": "Cromo total", "limite": "0,050 mg Cr/L" },
+        { "parametro": "Plomo", "limite": "0,010 mg Pb/L" }
+      ]
     },
-    {
-      "categoria": "Aguas superficiales destinadas a la producción de Agua Potable",
-      "parametro": "pH",
-      "limite": "6.5 - 9.0",
-      "unidad": "unidades de pH"
+    "produccion_agua_potable_A1": {
+      "name": "ECA para Agua: Categoría 1 - A1: Potabilizable con desinfección",
+      "normativeReference": "Decreto Supremo N.° 031-2010-SA",
+      "normativeReference_url": "https://www.gob.pe/institucion/minsa/normas-legales/244805-031-2010-sa",
+      "parameters": [
+        { "parametro": "Aceites y Grasas", "limite": "0,5 mg/L" },
+        { "parametro": "Cianuro Total", "limite": "0,07 mg/L" },
+        { "parametro": "Color (verdadero)", "limite": "15 Pt/Co" },
+        { "parametro": "Demanda Bioquímica de Oxígeno (DBO5)", "limite": "3 mg/L" }
+      ]
     },
-    {
-      "categoria": "Riego de vegetales y bebida de animales",
-      "parametro": "Arsénico",
-      "limite": "0.1",
-      "unidad": "mg/L"
+    "riego_vegetales_bebida_animales_D1": {
+        "name": "ECA para Agua: Categoría 3 - D1: Riego de Vegetales y Bebida de Animales",
+    "normativeReference": "Decreto Supremo N° 002-2008-MINAM",
+    "normativeReference_url": "https://www.minam.gob.pe/disposiciones/decreto-supremo-n-002-2008-minam/",
+        "parameters": [
+            { "parametro": "Arsénico", "limite": "0,01 mg/L" },
+            { "parametro": "Boro", "limite": "0,75 mg/L" },
+            { "parametro": "Cadmio", "limite": "0,005 mg/L" },
+            { "parametro": "Cromo Total", "limite": "0,1 mg/L" },
+            { "parametro": "Coliformes Termotolerantes", "limite": "≤ 200 NMP/100 ml" }
+        ]
     },
-    {
-      "categoria": "Riego de vegetales y bebida de animales",
-      "parametro": "Cadmio",
-      "limite": "0.01",
-      "unidad": "mg/L"
-    },
-    {
-      "categoria": "Riego de vegetales y bebida de animales",
-      "parametro": "Plomo",
-      "limite": "0.05",
-      "unidad": "mg/L"
+    "conservacion_ambiente_acuatico_E1": {
+        "name": "ECA para Agua: Categoría 4 - E1: Conservación del Ambiente Acuático en Lagunas y lagos",
+        "parameters": [
+            { "parametro": "Oxígeno Disuelto", "limite": "≥ 5 mg/L" },
+            { "parametro": "pH", "limite": "6,5 a 9,0" },
+            { "parametro": "Arsénico", "limite": "0,15 mg/L" },
+            { "parametro": "Cadmio Disuelto", "limite": "0,00025 mg/L" }
+        ]
     }
-  ]
+  }
 }

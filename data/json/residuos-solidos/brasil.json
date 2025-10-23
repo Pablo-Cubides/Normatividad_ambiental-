@@ -2,31 +2,48 @@
   "country": "Brasil",
   "dominio": "residuos-solidos",
   "normativeReference": "Política Nacional de Residuos Sólidos (PNRS) – Lei 12.305/2010",
+  "normativeSources": [
+    {
+      "name": "Política Nacional de Resíduos Sólidos - Lei 12.305/2010",
+      "url": "https://panorama.solutions/sites/default/files/recurso_politica_nacional_de_residuos_solidos.pdf",
+      "description": "Marco legal brasileño sobre gestión integral de residuos sólidos",
+      "type": "government",
+      "lastValidated": "2025-10-21"
+    }
+  ],
   "lastUpdate": "2010",
   "registros": [
     {
       "parametro": "Marco General",
       "limite": "Jerarquía: prevención, preparación para la reutilización, reciclaje, valorización energética y disposición final",
       "unidad": "N/A",
-      "notas": ["Lei 12.305/2010 - PNRS"]
+      "notas": ["Lei 12.305/2010 - PNRS"],
+      "normativeReference": "Lei 12.305/2010 - PNRS",
+      "normativeReference_url": "https://panorama.solutions/sites/default/files/recurso_politica_nacional_de_residuos_solidos.pdf"
     },
     {
       "parametro": "Residuos Peligrosos",
       "limite": "Gestión conforme a normativa sectorial y requisitos de registro",
       "unidad": "N/A",
-      "notas": ["Registro de generadores, manifiesto de transporte"]
+      "notas": ["Registro de generadores, manifiesto de transporte"],
+      "normativeReference": "Lei 12.305/2010 - PNRS",
+      "normativeReference_url": "https://panorama.solutions/sites/default/files/recurso_politica_nacional_de_residuos_solidos.pdf"
     },
     {
       "parametro": "Residuos de Salud (RSH)",
       "limite": "Clasificación y manejo según normativa sanitaria",
       "unidad": "N/A",
-      "notas": ["CONAMA / normativa sanitaria aplicable"]
+      "notas": ["CONAMA / normativa sanitaria aplicable"],
+      "normativeReference": "Lei 12.305/2010 - PNRS",
+      "normativeReference_url": "https://panorama.solutions/sites/default/files/recurso_politica_nacional_de_residuos_solidos.pdf"
     },
     {
       "parametro": "Generación per cápita (urbano)",
       "limite": "0.8 - 1.2 kg/persona/día",
       "unidad": "kg/persona/día",
-      "notas": ["Valores orientativos según zona"]
+      "notas": ["Valores orientativos según zona"],
+      "normativeReference": "Lei 12.305/2010 - PNRS",
+      "normativeReference_url": "https://panorama.solutions/sites/default/files/recurso_politica_nacional_de_residuos_solidos.pdf"
     }
   ]
 }

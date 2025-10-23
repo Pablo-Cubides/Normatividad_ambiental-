@@ -8,7 +8,8 @@ declare module '*.css';
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [elemName: string]: any;
+      // Using `unknown` reduces accidental `any` propagation while allowing JSX extensibility
+      [elemName: string]: unknown;
     }
   }
 }

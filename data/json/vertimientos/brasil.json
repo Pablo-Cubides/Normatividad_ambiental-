@@ -1,0 +1,53 @@
+{
+  "pais": "Brasil",
+  "dominio": "vertimientos",
+  "version": "2025-10-23",
+  "normativeReference_es": "CONAMA 430/2011 (condiciones y patrones de lanzamiento) complementa CONAMA 357/2005.",
+  "normativeSources": [
+    {
+      "name": "Resolução CONAMA nº 430/2011",
+      "url": "https://conama.mma.gov.br/index.php?id=26119&option=com_sisconama&task=documento.download",
+      "description": "Condições e padrões de lançamento de efluentes",
+      "type": "official",
+      "lastValidated": "2025-10-23"
+    }
+  ],
+  "sectors": {
+    "conama_430_generales": {
+      "name": "Condiciones y valores máximos de vertimiento (generales)",
+      "normativeReference": "Resolução CONAMA nº 430/2011",
+      "normativeReference_url": "https://conama.mma.gov.br/index.php?id=26119&option=com_sisconama&task=documento.download",
+      "parameters": [
+        { "parametro": "pH", "limite": "5–9" },
+        { "parametro": "Temperatura", "limite": "< 40 °C y ΔT en cuerpo receptor ≤ 3 °C" },
+        { "parametro": "Materiales sedimentables (cono Imhoff, 1 h)", "limite": "≤ 1 mL/L" },
+        { "parametro": "Aceites y grasas", "limite": "Minerales ≤ 20 mg/L; Vegetales/animales ≤ 50 mg/L" },
+        { "parametro": "Materiales flotantes", "limite": "Ausencia" },
+        { "parametro": "DBO5", "limite": "Remoción mínima 60% (cuando aplique)" }
+      ]
+    },
+    "conama_430_inorganicos": {
+      "name": "Parámetros inorgánicos – valores máximos",
+      "normativeReference": "Resolução CONAMA nº 430/2011",
+      "normativeReference_url": "https://conama.mma.gov.br/index.php?id=26119&option=com_sisconama&task=documento.download",
+      "parameters": [
+        { "parametro": "Arsênico total", "limite": "0.5 mg/L" },
+        { "parametro": "Bário total", "limite": "5.0 mg/L" },
+        { "parametro": "Boro total", "limite": "5.0 mg/L" },
+        { "parametro": "Cádmio total", "limite": "0.2 mg/L" },
+        { "parametro": "Cianeto livre / total", "limite": "Livre 0.2 mg/L; Total 1.0 mg/L" },
+        { "parametro": "Cobre dissolvido", "limite": "1.0 mg/L" },
+        { "parametro": "Cromo hexavalente / trivalente", "limite": "Cr(VI) 0.1 mg/L; Cr(III) 1.0 mg/L" },
+        { "parametro": "Chumbo total", "limite": "0.5 mg/L" },
+        { "parametro": "Manganês dissolvido", "limite": "1.0 mg/L" },
+        { "parametro": "Mercúrio total", "limite": "0.01 mg/L" },
+        { "parametro": "Níquel total", "limite": "2.0 mg/L" },
+        { "parametro": "Nitrogênio amoniacal total", "limite": "20.0 mg/L N" },
+        { "parametro": "Prata total", "limite": "0.1 mg/L" },
+        { "parametro": "Selênio total", "limite": "0.30 mg/L" },
+        { "parametro": "Sulfeto", "limite": "1.0 mg/L S" },
+        { "parametro": "Zinco total", "limite": "5.0 mg/L" }
+      ]
+    }
+  }
+}

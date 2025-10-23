@@ -1,52 +1,28 @@
 {
   "pais": "Estados Unidos",
   "dominio": "calidad-aire",
-  "version": "2025-09-28",
-  "referencia": {
-    "norma": "Clean Air Act / EPA (NAAQS)"
-  },
+  "normativeReference_es": "EPA National Ambient Air Quality Standards (NAAQS) - Clean Air Act",
   "registros": [
+    { "parametro": "CO", "limite": "9 ppm (10 mg/m³)", "notas": ["8 horas - NAAQS"] },
+    { "parametro": "CO", "limite": "35 ppm (40 mg/m³)", "notas": ["1 hora - NAAQS"] },
+    { "parametro": "NO2", "limite": "0.053 ppm (100 µg/m³)", "notas": ["Anual (Media Aritmética) - NAAQS"] },
+    { "parametro": "NO2", "limite": "0.100 ppm (188 µg/m³)", "notas": ["1 hora - NAAQS"] },
+    { "parametro": "O3", "limite": "0.070 ppm (137 µg/m³)", "notas": ["8 horas - NAAQS"] },
+    { "parametro": "SO2", "limite": "75 ppb (196 µg/m³)", "notas": ["1 hora - NAAQS"] },
+    { "parametro": "PM10", "limite": "150 µg/m³", "notas": ["24 horas - NAAQS"] },
+    { "parametro": "PM2.5", "limite": "9.0 µg/m³", "notas": ["Anual (Media Aritmética) - NAAQS"] },
+    { "parametro": "PM2.5", "limite": "35 µg/m³", "notas": ["24 horas - NAAQS"] },
+    { "parametro": "O3", "limite": "0.09 ppm (180 µg/m³)", "notas": ["1 hora - California CAAQS"] },
+    { "parametro": "PM10", "limite": "50 µg/m³", "notas": ["24 horas - California CAAQS"] },
+    { "parametro": "PM2.5", "limite": "12 µg/m³", "notas": ["Anual (Media Aritmética) - California CAAQS"] }
+  ]
+  ,
+  "normativeSources": [
     {
-      "parametro": "CO",
-      "limite": "9.0 (8 h), 35 (1 h)",
-      "unidad": "ppm",
-      "notas": ["NAAQS primarios (no exceder)"]
-    },
-    {
-      "parametro": "Pb (Plomo)",
-      "limite": "0.15 (media aritm. 3-mes)",
-      "unidad": "µg/m³",
-      "notas": ["NAAQS primario/secundario (rolling 3 mes.)"]
-    },
-    {
-      "parametro": "NO2",
-      "limite": "100 (1 h), 53 (anual)",
-      "unidad": "ppb",
-      "notas": ["NAAQS primario (percentil 98, 3años)"]
-    },
-    {
-      "parametro": "O3",
-      "limite": "0.070 (8 h)",
-      "unidad": "ppm",
-      "notas": ["NAAQS primario/secundario (4to máx 8h)"]
-    },
-    {
-      "parametro": "PM2.5",
-      "limite": "9.0 (anual), 35 (24 h)",
-      "unidad": "µg/m³",
-      "notas": ["NAAQS primario (3 años)"]
-    },
-    {
-      "parametro": "PM10",
-      "limite": "150 (24 h)",
-      "unidad": "µg/m³",
-      "notas": ["NAAQS primario/secundario"]
-    },
-    {
-      "parametro": "SO2",
-      "limite": "75 (1 h)",
-      "unidad": "ppb",
-      "notas": ["NAAQS primario (99° perc. 1h, 3 años)"]
+      "name": "EPA National Ambient Air Quality Standards",
+      "url": "https://www.epa.gov/criteria-air-pollutants",
+      "description": "Calidad del Aire",
+      "type": "official"
     }
   ]
 }

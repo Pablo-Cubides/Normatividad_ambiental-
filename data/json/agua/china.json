@@ -1,0 +1,54 @@
+{
+  "pais": "China",
+  "dominio": "agua",
+  "normativeReference_es": "Estándares para la Calidad del Agua Potable (GB 5749-2022), Estándares de Calidad Ambiental para Aguas Superficiales (GB 3838-2002)",
+  "sectors": {
+    "agua_potable": {
+      "name": "Estándares para la Calidad del Agua Potable (GB 5749-2022)",
+      "normativeReference": "GB 5749-2022",
+      "normativeReference_url": "https://favv-afsca.be/sites/default/files/export/vtp/cn/03/20240606_GB5749_2022.pdf",
+      "parameters": [
+        { "parametro": "Coliformes totales", "limite": "No detectable" },
+        { "parametro": "Escherichia coli", "limite": "No detectable" },
+        { "parametro": "Número total de colonias", "limite": "100 NMP/mL o UFC/mL" },
+        { "parametro": "Arsénico", "limite": "0.01 mg/L" },
+        { "parametro": "Cadmio", "limite": "0.005 mg/L" },
+        { "parametro": "Cromo (hexavalente)", "limite": "0.05 mg/L" },
+        { "parametro": "Plomo", "limite": "0.01 mg/L" },
+        { "parametro": "Mercurio", "limite": "0.001 mg/L" },
+        { "parametro": "Cianuro", "limite": "0.05 mg/L" },
+        { "parametro": "Fluoruro", "limite": "1.0 mg/L" },
+        { "parametro": "Nitrato", "limite": "10 mg/L" },
+        { "parametro": "Cloroformo", "limite": "0.06 mg/L" },
+        { "parametro": "pH", "limite": "No menor de 6.5 y no mayor de 8.5" },
+        { "parametro": "Aluminio", "limite": "0.2 mg/L" },
+        { "parametro": "Hierro", "limite": "0.3 mg/L" },
+        { "parametro": "Manganeso", "limite": "0.1 mg/L" }
+      ]
+    },
+    "aguas_superficiales_clase_I": {
+      "name": "Estándares de Calidad Ambiental para Aguas Superficiales (GB 3838-2002) - Clase I",
+      "normativeReference": "GB 3838-2002",
+      "normativeReference_url": "https://english.mee.gov.cn/Resources/standards/water_environment/quality_standard/200710/t20071024_111792.shtml",
+      "parameters": [
+        { "parametro": "pH", "limite": "6-9" },
+        { "parametro": "Oxígeno Disuelto (OD)", "limite": "≥ 7.5 mg/L" },
+        { "parametro": "Demanda Química de Oxígeno (CODMn)", "limite": "≤ 2 mg/L" },
+        { "parametro": "Fósforo Total (como P)", "limite": "≤ 0.02 mg/L (ríos)" },
+        { "parametro": "Arsénico (As)", "limite": "≤ 0.05 mg/L" }
+      ]
+    },
+    "aguas_superficiales_clase_II": {
+      "name": "Estándares de Calidad Ambiental para Aguas Superficiales (GB 3838-2002) - Clase II",
+      "normativeReference": "GB 3838-2002",
+      "normativeReference_url": "https://english.mee.gov.cn/Resources/standards/water_environment/quality_standard/200710/t20071024_111792.shtml",
+      "parameters": [
+        { "parametro": "pH", "limite": "6-9" },
+        { "parametro": "Oxígeno Disuelto (OD)", "limite": "≥ 6 mg/L" },
+        { "parametro": "Demanda Química de Oxígeno (CODMn)", "limite": "≤ 4 mg/L" },
+        { "parametro": "Fósforo Total (como P)", "limite": "≤ 0.1 mg/L (ríos)" },
+        { "parametro": "Arsénico (As)", "limite": "≤ 0.05 mg/L" }
+      ]
+    }
+  }
+}

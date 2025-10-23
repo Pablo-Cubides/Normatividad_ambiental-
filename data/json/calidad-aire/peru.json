@@ -1,23 +1,29 @@
 {
   "pais": "Perú",
   "dominio": "calidad-aire",
-  "version": "2025-09-28",
+  "normativeReference_es": "D.S. N° 003-2017-MINAM",
   "registros": [
+    { "parametro": "Benceno", "limite": "2 µg/m³", "notas": ["Anual"] },
+    { "parametro": "SO2", "limite": "250 µg/m³", "notas": ["24 horas"] },
+    { "parametro": "NO2", "limite": "200 µg/m³", "notas": ["1 hora"] },
+    { "parametro": "NO2", "limite": "100 µg/m³", "notas": ["Anual"] },
+    { "parametro": "PM2.5", "limite": "50 µg/m³", "notas": ["24 horas"] },
+    { "parametro": "PM2.5", "limite": "25 µg/m³", "notas": ["Anual"] },
+    { "parametro": "PM10", "limite": "100 µg/m³", "notas": ["24 horas"] },
+    { "parametro": "PM10", "limite": "50 µg/m³", "notas": ["Anual"] },
+    { "parametro": "CO", "limite": "30,000 µg/m³", "notas": ["1 hora"] },
+    { "parametro": "CO", "limite": "10,000 µg/m³", "notas": ["8 horas"] },
+    { "parametro": "O3", "limite": "100 µg/m³", "notas": ["8 horas"] },
+    { "parametro": "Plomo (Pb) en PM10", "limite": "1.5 µg/m³", "notas": ["Mensual"] },
+    { "parametro": "Plomo (Pb) en PM10", "limite": "0.5 µg/m³", "notas": ["Anual"] }
+  ]
+  ,
+  "normativeSources": [
     {
-      "parametro": "PM10",
-      "limite": "50 μg/m3 (24h)",
-      "unidad": "μg/m³",
-      "notas": ["Límite de calidad ambiental"],
-      "referencia": { "norma": "Norma de calidad del aire - MINAM", "entidad": "Ministerio del Ambiente", "anio": "varias" },
-      "categoria": "otros"
-    },
-    {
-      "parametro": "PM2.5",
-      "limite": "25 μg/m3 (24h)",
-      "unidad": "μg/m³",
-      "notas": ["Partículas finas"],
-      "referencia": { "norma": "MINAM - estándares de calidad", "entidad": "Ministerio del Ambiente", "anio": "varias" },
-      "categoria": "otros"
+      "name": "Decreto Supremo N° 003-2017-MINAM",
+      "url": "https://www.minam.gob.pe/disposiciones/decreto-supremo-n-003-2017-minam/",
+      "description": "Aire",
+      "type": "government"
     }
   ]
 }

@@ -1,28 +1,25 @@
 {
   "pais": "Brasil",
   "dominio": "calidad-aire",
-  "version": "2025-09-28",
-  "referencia": {
-    "norma": "Res. CONAM A 506/2024"
-  },
-  "registros": [
+  "normativeReference_es": "CONAMA 506/2024",
+  "normativeSources": [
     {
-      "parametro": "MP10",
-      "limite": "45 (24 h), 15 (anual)",
-      "unidad": "µg/m³",
-      "notas": ["Padrón final (PF) de Conama, basado en OMS 2021"]
-    },
-    {
-      "parametro": "MP2.5",
-      "limite": "15 (24 h), 5 (anual)",
-      "unidad": "µg/m³",
-      "notas": ["Padrón final (PF) de Conama, basado en OMS 2021"]
-    },
-    {
-      "parametro": "SO2",
-      "limite": "40 (24 h), 20 (anual)",
-      "unidad": "µg/m³",
-      "notas": ["Padrón final (PF) de Conama"]
+      "name": "CONAMA 506/2024",
+      "url": "https://braziliannr.com/brazilian-environmental-legislation/conama-resolution-506-2024/",
+      "description": "Actualización de estándares de calidad del aire",
+      "type": "government",
+      "lastValidated": "2025-10-21"
     }
+  ],
+  "registros": [
+    { "parametro": "PM10", "limite": "45 µg/m³", "notas": ["Estándar Final (PF) - 24 horas"], "normativeReference": "CONAMA 506/2024", "normativeReference_url": "https://braziliannr.com/brazilian-environmental-legislation/conama-resolution-506-2024/" },
+    { "parametro": "PM10", "limite": "15 µg/m³", "notas": ["Estándar Final (PF) - Anual"], "normativeReference": "CONAMA 506/2024", "normativeReference_url": "https://braziliannr.com/brazilian-environmental-legislation/conama-resolution-506-2024/" },
+    { "parametro": "PM2.5", "limite": "15 µg/m³", "notas": ["Estándar Final (PF) - 24 horas"], "normativeReference": "CONAMA 506/2024", "normativeReference_url": "https://braziliannr.com/brazilian-environmental-legislation/conama-resolution-506-2024/" },
+    { "parametro": "PM2.5", "limite": "5 µg/m³", "notas": ["Estándar Final (PF) - Anual"], "normativeReference": "CONAMA 506/2024", "normativeReference_url": "https://braziliannr.com/brazilian-environmental-legislation/conama-resolution-506-2024/" },
+    { "parametro": "SO2", "limite": "40 µg/m³", "notas": ["Estándar Final (PF) - 24 horas"], "normativeReference": "CONAMA 506/2024", "normativeReference_url": "https://braziliannr.com/brazilian-environmental-legislation/conama-resolution-506-2024/" },
+    { "parametro": "NO2", "limite": "200 µg/m³", "notas": ["Estándar Final (PF) - 1 hora"], "normativeReference": "CONAMA 506/2024", "normativeReference_url": "https://braziliannr.com/brazilian-environmental-legislation/conama-resolution-506-2024/" },
+    { "parametro": "NO2", "limite": "10 µg/m³", "notas": ["Estándar Final (PF) - Anual"], "normativeReference": "CONAMA 506/2024", "normativeReference_url": "https://braziliannr.com/brazilian-environmental-legislation/conama-resolution-506-2024/" },
+    { "parametro": "O3", "limite": "100 µg/m³", "notas": ["Estándar Final (PF) - 8 horas"], "normativeReference": "CONAMA 506/2024", "normativeReference_url": "https://braziliannr.com/brazilian-environmental-legislation/conama-resolution-506-2024/" },
+    { "parametro": "CO", "limite": "9 ppm (10,000 µg/m³)", "notas": ["Estándar Final (PF) - 8 horas"], "normativeReference": "CONAMA 506/2024", "normativeReference_url": "https://braziliannr.com/brazilian-environmental-legislation/conama-resolution-506-2024/" }
   ]
 }

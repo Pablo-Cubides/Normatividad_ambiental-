@@ -1,26 +1,131 @@
 {
-  "country": "Brasil",
-  "normativeReference": "Portaria MS/GM (Brasil) y resoluciones ambientales (CONAMA)",
-  "lastUpdate": "2025-09-30",
+  "pais": "Brasil",
+  "dominio": "agua",
+  "normativeReference_es": "Portaria de Consolidação GM/MS nº 5, de 28 de setembro de 2017, Portaria GM/MS N° 888/2021, Resolução CONAMA 357/2005",
+  "normativeSources": [
+    {
+      "name": "Resolução CONAMA 357/2005",
+      "url": "https://braziliannr.com/brazilian-environmental-legislation/conama-resolution-357-05-provisions-for-the-classification-of-water-bodies/",
+      "description": "Clasificación de cuerpos de agua y criterios de calidad ambiental",
+      "type": "government",
+      "lastValidated": "2025-10-21"
+    },
+    {
+      "name": "Portaria de Consolidação GM/MS nº 5/2017",
+      "url": "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/agua-para-consumo-humano",
+      "description": "Normas de potabilidad y control sanitario del agua para consumo humano",
+      "type": "government",
+      "lastValidated": "2025-10-21"
+    }
+  ],
   "sectors": {
-    "agua-potable": {
-      "name": "Agua Potable",
-      "description": "Límites y criterios para agua para consumo humano (resumen).",
+    "agua_potable": {
+      "name": "Agua para Consumo Humano (Padrón de Potabilidad)",
+      "normativeReference": "Portaria de Consolidação GM/MS nº 5/2017",
+      "normativeReference_url": "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/agua-para-consumo-humano",
       "parameters": [
-        { "parameter": "Coliformes totales", "value": "Ausentes", "unit": "NMP/100 mL", "source": "Portaria MS" },
-        { "parameter": "Escherichia coli", "value": "0", "unit": "UFC/100 mL", "source": "Portaria MS" },
-        { "parameter": "pH", "value": "6.5 - 8.5", "unit": "unidades", "source": "Portaria MS" },
-        { "parameter": "Turbidez", "value": "\u2264 5", "unit": "NTU", "source": "Portaria MS" },
-        { "parameter": "Arsénico", "value": "\u2264 0.01", "unit": "mg/L", "source": "Portaria MS / CONAMA" }
+        { "parametro": "Turbidez para Filtração rápida", "limite": "0,5 uT en 95% de las muestras. 1,0 uT en el resto." },
+        { "parametro": "Turbidez para Filtração em Membrana", "limite": "0,1 uT en 99% de las muestras." },
+        { "parametro": "Turbidez para Filtração lenta", "limite": "1,0 uT en 95% de las muestras. 2,0 uT en el resto." },
+        { "parametro": "Turbidez para Pós-desinfecção (águas subterrâneas)", "limite": "1,0 uT en 95% de las muestras. 5,0 uT en el resto." }
       ]
     },
-    "riego": {
-      "name": "Riego Agrícola",
-      "description": "Valores guía para uso agrícola (resumen internacional aplicable a Brasil).",
+    "aguas_doces_classe_especial": {
+        "name": "Padrões de Calidad para Aguas Dulces - Clase Especial",
+    "normativeReference": "Resolução CONAMA 357/2005",
+    "normativeReference_url": "https://braziliannr.com/brazilian-environmental-legislation/conama-resolution-357-05-provisions-for-the-classification-of-water-bodies/",
+        "parameters": [
+            { "parametro": "Usos", "limite": "Abastecimiento para consumo humano con desinfección; preservación del equilibrio natural de comunidades acuáticas."}
+        ]
+    },
+    "aguas_doces_classe_1": {
+      "name": "Padrões de Calidad para Aguas Dulces - Clase 1",
+      "normativeReference": "Resolução CONAMA 357/2005",
+      "normativeReference_url": "https://braziliannr.com/brazilian-environmental-legislation/conama-resolution-357-05-provisions-for-the-classification-of-water-bodies/",
       "parameters": [
-        { "parameter": "pH", "value": "5.5 - 8.5", "unit": "unidades", "source": "Guías FAO / Portaria técnica" },
-        { "parameter": "Coliformes fecales", "value": "\u2264 1000", "unit": "NMP/100 mL", "source": "Guía FAO" }
+        { "parametro": "Coliformes termotolerantes", "limite": "200 NMP/100 mL" },
+        { "parametro": "DBO (5 dias a 20°C)", "limite": "3 mg/L" },
+        { "parametro": "Oxígeno Disuelto (OD)", "limite": "No inferior a 6 mg/L" },
+        { "parametro": "Turbidez", "limite": "40 UNT" },
+        { "parametro": "pH", "limite": "6,0 a 9,0" },
+        { "parametro": "Clorofila a", "limite": "10 µg/L" },
+        { "parametro": "Densidad de cianobacterias", "limite": "20.000 cel/mL" },
+        { "parametro": "Sólidos disueltos totales", "limite": "500 mg/L" },
+        { "parametro": "Arsénico total", "limite": "0,01 mg/L" },
+        { "parametro": "Cádmio total", "limite": "0,001 mg/L" },
+        { "parametro": "Chumbo total (Plomo)", "limite": "0,01 mg/L" },
+        { "parametro": "Cromo total", "limite": "0,05 mg/L" },
+        { "parametro": "Mercurio total", "limite": "0,0002 mg/L" },
+        { "parametro": "Níquel total", "limite": "0,025 mg/L" },
+        { "parametro": "Fósforo total (ambiente lêntico)", "limite": "0,020 mg/L" },
+        { "parametro": "Fósforo total (ambiente lótico)", "limite": "0,050 mg/L" }
       ]
+    },
+    "aguas_doces_classe_2": {
+      "name": "Padrões de Calidad para Aguas Dulces - Clase 2",
+      "normativeReference": "Resolução CONAMA 357/2005",
+      "normativeReference_url": "https://braziliannr.com/brazilian-environmental-legislation/conama-resolution-357-05-provisions-for-the-classification-of-water-bodies/",
+      "parameters": [
+        { "parametro": "Coliformes termotolerantes", "limite": "1.000 NMP/100 mL" },
+        { "parametro": "DBO (5 dias a 20°C)", "limite": "5 mg/L" },
+        { "parametro": "Oxígeno Disuelto (OD)", "limite": "No inferior a 5 mg/L" },
+        { "parametro": "Turbidez", "limite": "100 UNT" },
+        { "parametro": "pH", "limite": "6,0 a 9,0" },
+        { "parametro": "Fósforo total (ambiente lêntico)", "limite": "0,030 mg/L" },
+        { "parametro": "Fósforo total (ambiente lótico)", "limite": "0,075 mg/L" },
+        { "parametro": "Nitrógeno amoniacal total", "limite": "3,7 mg/L (para pH 7,5)" }
+      ]
+    },
+    "aguas_doces_classe_3": {
+    "name": "Padrões de Calidad para Aguas Dulces - Clase 3",
+  "normativeReference": "Resolução CONAMA 357/2005",
+  "normativeReference_url": "https://braziliannr.com/brazilian-environmental-legislation/conama-resolution-357-05-provisions-for-the-classification-of-water-bodies/",
+        "parameters": [
+            { "parametro": "Coliformes termotolerantes", "limite": "4.000 NMP/100 mL" },
+            { "parametro": "DBO (5 dias a 20°C)", "limite": "10 mg/L" },
+            { "parametro": "Oxígeno Disuelto (OD)", "limite": "No inferior a 4 mg/L" },
+            { "parametro": "pH", "limite": "6,0 a 9,0" },
+            { "parametro": "Fósforo total (ambiente lêntico)", "limite": "0,050 mg/L" },
+            { "parametro": "Fósforo total (ambiente lótico)", "limite": "0,150 mg/L" },
+            { "parametro": "Nitrógeno amoniacal total", "limite": "13,3 mg/L (para pH 7,5)" }
+        ]
+    },
+    "aguas_doces_classe_4": {
+    "name": "Padrões de Calidad para Aguas Dulces - Clase 4",
+  "normativeReference": "Resolução CONAMA 357/2005",
+  "normativeReference_url": "https://braziliannr.com/brazilian-environmental-legislation/conama-resolution-357-05-provisions-for-the-classification-of-water-bodies/",
+        "parameters": [
+            { "parametro": "Oxígeno Disuelto (OD)", "limite": "No inferior a 2 mg/L" },
+            { "parametro": "pH", "limite": "6,0 a 9,0" }
+        ]
+    },
+    "aguas_salinas_classe_1": {
+      "name": "Padrões de Calidad Seleccionados para Aguas Salinas - Clase 1",
+      "normativeReference": "Resolução CONAMA 357/2005",
+      "normativeReference_url": "https://braziliannr.com/brazilian-environmental-legislation/conama-resolution-357-05-provisions-for-the-classification-of-water-bodies/",
+      "parameters": [
+        { "parametro": "Coliformes termotolerantes", "limite": "1.000 NMP/100 mL" },
+        { "parametro": "Oxígeno Disuelto (OD)", "limite": "No inferior a 6 mg/L" },
+        { "parametro": "pH", "limite": "6,5 a 8,5" },
+        { "parametro": "Fósforo total", "limite": "0,062 mg/L" },
+        { "parametro": "Cobre dissolvido", "limite": "5 µg/L" },
+        { "parametro": "Cromo total", "limite": "4,3 µg/L" },
+        { "parametro": "Mercurio total", "limite": "0,14 µg/L" }
+      ]
+    },
+    "aguas_salobras_classe_1": {
+    "name": "Padrões de Calidad Seleccionados para Aguas Salobras - Clase 1",
+  "normativeReference": "Resolução CONAMA 357/2005",
+  "normativeReference_url": "https://braziliannr.com/brazilian-environmental-legislation/conama-resolution-357-05-provisions-for-the-classification-of-water-bodies/",
+        "parameters": [
+            { "parametro": "Coliformes termotolerantes", "limite": "1.000 NMP/100 mL" },
+            { "parametro": "Oxígeno Disuelto (OD)", "limite": "No inferior a 5 mg/L" },
+            { "parametro": "pH", "limite": "6,5 a 8,5" },
+            { "parametro": "Fósforo total", "limite": "0,124 mg/L" },
+            { "parametro": "Cobre dissolvido", "limite": "5 µg/L" },
+            { "parametro": "Cromo total", "limite": "4,3 µg/L" },
+            { "parametro": "Mercurio total", "limite": "0,14 µg/L" }
+        ]
     }
   }
 }

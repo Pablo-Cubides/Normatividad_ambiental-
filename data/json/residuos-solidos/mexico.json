@@ -1,45 +1,65 @@
 {
   "pais": "México",
-  "paisCodigo": "mexico",
   "dominio": "residuos-solidos",
-  "version": "2.0.0",
-  "fuentePrincipal": "Ley General para la Prevención y Gestión Integral de los Residuos (LGPGIR), NOM-052-SEMARNAT-2005",
+  "normativeReference_es": "LGPGIR, NOM-052-SEMARNAT-2005, NOM-083-SEMARNAT-2003",
+  "normativeSources": [
+    {
+      "name": "LGPGIR",
+      "url": "https://www.gob.mx/semarnat/acciones-y-programas/ley-general-para-la-prevencion-y-gestion-integral-de-los-residuos",
+      "description": "Ley General para la Prevención y Gestión Integral de Residuos",
+      "type": "government",
+      "lastValidated": "2025-10-21"
+    }
+  ],
   "registros": [
     {
-      "categoria": "Clasificación de Residuos Peligrosos (CRETIB)",
-      "parametro": "Corrosividad",
-      "limite": "pH ≤ 2.0 o ≥ 12.5",
-      "referencia": { "norma": "NOM-052-SEMARNAT-2005" }
+      "categoria": "Peligrosos",
+      "parametro": "Jurisdicción",
+      "limite": "Federal. Clasificación por características CRETIB y listados.",
+      "referencia": { "norma": "LGPGIR; NOM-052-SEMARNAT-2005" },
+      "notas": ["Autoridad: SEMARNAT (Federal)"]
     },
     {
-      "categoria": "Clasificación de Residuos Peligrosos (CRETIB)",
-      "parametro": "Reactividad",
-      "limite": "Reactivo a agua, explota, etc.",
-      "referencia": { "norma": "NOM-052-SEMARNAT-2005" }
+      "categoria": "Peligrosos",
+      "parametro": "Control",
+      "limite": "Registro de generadores y sistema de manifiesto.",
+      "referencia": { "norma": "LGPGIR; NOM-052-SEMARNAT-2005" },
+      "notas": ["Autoridad: SEMARNAT (Federal)"]
     },
     {
-      "categoria": "Clasificación de Residuos Peligrosos (CRETIB)",
-      "parametro": "Explosividad",
-      "limite": "Capaz de producir una reacción detonante",
-      "referencia": { "norma": "NOM-052-SEMARNAT-2005" }
+      "categoria": "Sólidos Urbanos (RSU)",
+      "parametro": "Jurisdicción",
+      "limite": "Municipal. Incluye residuos domésticos.",
+      "referencia": { "norma": "LGPGIR; NOM-083-SEMARNAT-2003" },
+      "notas": ["Autoridad: Gobiernos Municipales"]
     },
     {
-      "categoria": "Clasificación de Residuos Peligrosos (CRETIB)",
-      "parametro": "Toxicidad Ambiental",
-      "limite": "Concentración de lixiviado supera límites de la NOM-052",
-      "referencia": { "norma": "NOM-052-SEMARNAT-2005" }
+      "categoria": "Sólidos Urbanos (RSU)",
+      "parametro": "Gestión",
+      "limite": "Municipios responsables de recolección y disposición. Separación obligatoria (orgánicos/inorgánicos).",
+      "referencia": { "norma": "LGPGIR; NOM-083-SEMARNAT-2003" },
+      "notas": ["Autoridad: Gobiernos Municipales"]
     },
     {
-      "categoria": "Clasificación de Residuos Peligrosos (CRETIB)",
-      "parametro": "Inflamabilidad",
-      "limite": "Punto de inflamación < 60°C",
-      "referencia": { "norma": "NOM-052-SEMARNAT-2005" }
+      "categoria": "Manejo Especial (RME)",
+      "parametro": "Jurisdicción",
+      "limite": "Estatal. Incluye residuos industriales, comerciales y de servicios no peligrosos.",
+      "referencia": { "norma": "LGPGIR; Leyes estatales" },
+      "notas": ["Autoridad: Gobiernos Estatales"]
     },
     {
-      "categoria": "Clasificación de Residuos Peligrosos (CRETIB)",
-      "parametro": "Biológico-Infeccioso",
-      "limite": "Contiene patógenos",
-      "referencia": { "norma": "NOM-087-SEMARNAT-SSA1-2002" }
+      "categoria": "RCD",
+      "parametro": "Regulación",
+      "limite": "Regulados como Residuos de Manejo Especial. Responsabilidad estatal para planes de manejo y autorización de instalaciones.",
+      "referencia": { "norma": "LGPGIR (como RME)" },
+      "notas": ["Autoridad: Gobiernos Estatales"]
+    },
+    {
+      "categoria": "Orgánicos",
+      "parametro": "Gestión",
+      "limite": "Obliga a la separación de RSU. La valorización (compostaje) es responsabilidad municipal.",
+      "referencia": { "norma": "LGPGIR" },
+      "notas": ["Autoridad: Gobiernos Municipales"]
     }
   ]
 }

@@ -1,28 +1,51 @@
 {
   "pais": "Chile",
   "dominio": "residuos-solidos",
-  "version": "2025-09-28",
-  "referencia": {
-    "norma": "Ley 20.920/2016 (REP), DS 148/2003, Ley 19.300"
-  },
+  "normativeReference_es": "Ley N° 20.920 (Ley REP), DS N° 148/2003 (MINSAL), DS N° 594/1999 (MINSAL)",
+  "normativeSources": [
+    {
+      "name": "Ley N° 20.920 - Economía Circular",
+      "url": "https://economiacircular.mma.gob.cl/ley-rep/",
+      "description": "Residuos sólidos - Ley REP",
+      "type": "government",
+      "lastValidated": "2025-10-21"
+    }
+  ],
   "registros": [
     {
-      "parametro": "Marco General",
-      "limite": "Jerarquía: prevención, reutilización, reciclaje, valorización, eliminación",
-      "unidad": "N/A",
-      "notas": ["Principio 'el que contamina paga'", "Establece Responsabilidad Extendida del Productor (REP)"]
+      "categoria": "Productos Prioritarios (REP)",
+      "parametro": "Regulación",
+      "limite": "REP para 6 productos. Obligación de organizar y financiar la recolección y valorización a través de Sistemas de Gestión. Metas por decreto.",
+      "referencia": { "norma": "Ley N° 20.920 (Ley REP)" },
+      "notas": ["Autoridad: Ministerio del Medio Ambiente"]
     },
     {
-      "parametro": "Residuos Peligrosos",
-      "limite": "Regidos por Ley 19.300 y reglamentos específicos",
-      "unidad": "N/A",
-      "notas": ["Generadores deben clasificarlos y contratar gestores autorizados"]
+      "categoria": "Peligrosos",
+      "parametro": "Clasificación y Manejo",
+      "limite": "Clasificación por toxicidad, inflamabilidad, reactividad, corrosividad. Plan de Manejo para grandes generadores. Requisitos estrictos de almacenamiento y eliminación.",
+      "referencia": { "norma": "DS N° 148/2003 (MINSAL)" },
+      "notas": ["Autoridad: SEREMI de Salud"]
     },
     {
-      "parametro": "RSU (domiciliarios)",
-      "limite": "Reglamento DS 148/2003 exige segregación básica",
-      "unidad": "N/A",
-      "notas": ["Disposición final en rellenos sanitarios certificados"]
+      "categoria": "Sólidos no Peligrosos",
+      "parametro": "Disposición Final",
+      "limite": "Requiere autorización sanitaria para la acumulación y disposición final de residuos industriales. Gestión municipal para domiciliarios.",
+      "referencia": { "norma": "DS N° 594/1999 (MINSAL)" },
+      "notas": ["Autoridad: SEREMI de Salud; Municipalidades"]
+    },
+    {
+      "categoria": "RCD",
+      "parametro": "Responsabilidad",
+      "limite": "Responsabilidad del generador. Disposición en sitios autorizados.",
+      "referencia": { "norma": "Regulados como residuos no peligrosos" },
+      "notas": ["Autoridad: SEREMI de Salud"]
+    },
+    {
+      "categoria": "Orgánicos (Lodos PTAS)",
+      "parametro": "Manejo y Aplicación",
+      "limite": "Regula el manejo y aplicación agrícola de lodos de plantas de tratamiento de aguas servidas. Establece criterios de calidad.",
+      "referencia": { "norma": "DS N° 4/2009 (MINSEGPRES)" },
+      "notas": ["Autoridad: SEREMI de Salud; Servicio Agrícola y Ganadero (SAG)"]
     }
   ]
 }

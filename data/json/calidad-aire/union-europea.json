@@ -1,46 +1,24 @@
 {
   "pais": "Unión Europea",
   "dominio": "calidad-aire",
-  "version": "2025-09-28",
-  "referencia": {
-    "norma": "Directiva 2008/50/CE, RD 102/2011 (España)"
-  },
+  "normativeReference_es": "Directiva 2008/50/CE",
   "registros": [
+    { "parametro": "SO2", "limite": "350 µg/m³", "notas": ["1 hora (no debe superarse más de 24 veces al año)"] },
+    { "parametro": "SO2", "limite": "125 µg/m³", "notas": ["24 horas (no debe superarse más de 3 veces al año)"] },
+    { "parametro": "NO2", "limite": "200 µg/m³", "notas": ["1 hora (no debe superarse más de 18 veces al año)"] },
+    { "parametro": "NO2", "limite": "40 µg/m³", "notas": ["Anual"] },
+    { "parametro": "PM10", "limite": "50 µg/m³", "notas": ["24 horas (no debe superarse más de 35 veces al año)"] },
+    { "parametro": "PM10", "limite": "40 µg/m³", "notas": ["Anual"] },
+    { "parametro": "PM2.5", "limite": "25 µg/m³", "notas": ["Anual (Valor Límite)"] },
+    { "parametro": "CO", "limite": "10 mg/m³", "notas": ["Máximo diario de 8 horas"] }
+  ]
+  ,
+  "normativeSources": [
     {
-      "parametro": "PM10",
-      "limite": "50 (24 h, máx 35 excedencias/año); 40 (anual)",
-      "unidad": "µg/m³",
-      "notas": ["Aire ambiente"]
-    },
-    {
-      "parametro": "PM2.5",
-      "limite": "25 (anual, valor objetivo 2020)",
-      "unidad": "µg/m³",
-      "notas": []
-    },
-    {
-      "parametro": "NO2",
-      "limite": "200 (1 h, máx 18 excedencias/año); 40 (anual)",
-      "unidad": "µg/m³",
-      "notas": []
-    },
-    {
-      "parametro": "SO2",
-      "limite": "125 (24 h, máx 3 excedencias/año); 20 (anual)",
-      "unidad": "µg/m³",
-      "notas": []
-    },
-    {
-      "parametro": "CO",
-      "limite": "10000 (8 h, máx 25 excedencias/año)",
-      "unidad": "µg/m³",
-      "notas": []
-    },
-    {
-      "parametro": "Benceno",
-      "limite": "5 (anual)",
-      "unidad": "µg/m³",
-      "notas": []
+      "name": "Air Quality Directive 2008/50/EC",
+      "url": "https://ec.europa.eu/environment/air/quality/standards.htm",
+      "description": "Calidad del Aire - Directiva 2008/50/EC",
+      "type": "official"
     }
   ]
 }

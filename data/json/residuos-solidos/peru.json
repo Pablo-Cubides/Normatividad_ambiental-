@@ -1,0 +1,42 @@
+{
+  "pais": "Perú",
+  "dominio": "residuos-solidos",
+  "normativeReference_es": "DL N° 1278 (Ley de Gestión Integral); DS N° 014-2017-MINAM",
+  "registros": [
+    {
+      "categoria": "Peligrosos",
+      "parametro": "Responsabilidad y Manejo",
+      "limite": "Responsabilidad del generador. Manejo a través de EO-RS autorizadas. Control estricto desde la generación hasta la disposición final.",
+      "referencia": { "norma": "DL N° 1278 (Ley de Gestión Integral); DS N° 014-2017-MINAM" },
+      "notas": ["Autoridad: MINAM (rectoría); OEFA (fiscalización); Generador (responsabilidad)"]
+    },
+    {
+      "categoria": "Municipales",
+      "parametro": "Gestión",
+      "limite": "Competencia municipal. Obligación de segregar en la fuente. Planificación a través de PIGARS.",
+      "referencia": { "norma": "DL N° 1278; DS N° 014-2017-MINAM" },
+      "notas": ["Autoridad: Municipalidades (gestión); MINAM (rectoría)"]
+    },
+    {
+      "categoria": "No Municipales",
+      "parametro": "Responsabilidad",
+      "limite": "Responsabilidad del generador (industrial, comercial, etc.). Deben gestionar sus residuos a través de EO-RS.",
+      "referencia": { "norma": "DL N° 1278; DS N° 014-2017-MINAM" },
+      "notas": ["Autoridad: Generador (responsabilidad); MINAM; OEFA"]
+    },
+    {
+      "categoria": "RCD",
+      "parametro": "Gestión",
+      "limite": "Responsabilidad del generador de la obra. Disposición en escombreras o plantas de valorización autorizadas.",
+      "referencia": { "norma": "Regulados como residuos no municipales" },
+      "notas": ["Autoridad: Generador (responsabilidad); Municipalidades (control y autorización)"]
+    },
+    {
+      "categoria": "Orgánicos",
+      "parametro": "Fomento",
+      "limite": "Fomento a la valorización (compostaje). Implementación a través de programas de segregación y recolección selectiva municipal.",
+      "referencia": { "norma": "Enmarcado en DL N° 1278" },
+      "notas": ["Autoridad: Municipalidades"]
+    }
+  ]
+}

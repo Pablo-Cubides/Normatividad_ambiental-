@@ -1,0 +1,60 @@
+{
+  "pais": "México",
+  "dominio": "vertimientos",
+  "version": "2025-10-23",
+  "normativeReference_es": "NOM-001-SEMARNAT-2021 (límites generales de vertimiento por cuerpo receptor), NOM-143-SEMARNAT-2003 (agua congénita sector petrolero).",
+  "normativeSources": [
+    {
+      "name": "NOM-001-SEMARNAT-2021",
+      "url": "https://www.dof.gob.mx/nota_detalle.php?codigo=5645374&fecha=11/03/2022",
+      "description": "Límites máximos permisibles de contaminantes en las descargas de aguas residuales en cuerpos receptores",
+      "type": "official",
+      "lastValidated": "2025-10-23"
+    }
+  ],
+  "sectors": {
+    "nom001_parametros_basicos": {
+      "name": "Límites permisibles por cuerpo receptor (promedios mensuales)",
+      "normativeReference": "NOM-001-SEMARNAT-2021",
+      "normativeReference_url": "https://www.dof.gob.mx/nota_detalle.php?codigo=5645374&fecha=11/03/2022",
+      "parameters": [
+        { "parametro": "Temperatura", "limite": "Ríos/Arroyos/Canales: 35 °C; Embalses/Lagos/Lagunas: 35 °C; Zonas marinas: 35 °C; Suelo: 35 °C" },
+        { "parametro": "Grasas y aceites", "limite": "Ríos: 15 mg/L; Embalses: 18 mg/L; Mar: 15 mg/L; Suelo: 15 mg/L" },
+        { "parametro": "SST", "limite": "Ríos: 60 mg/L; Embalses: 72 mg/L; Mar: 20–28 mg/L; Suelo: 30 mg/L" },
+        { "parametro": "DQO", "limite": "Ríos: 150 mg/L; Embalses: 180 mg/L; Mar: 100–140 mg/L; Suelo: 60 mg/L" },
+        { "parametro": "COT", "limite": "Ríos: 38 mg/L; Embalses: 45 mg/L; Mar: 25–35 mg/L; Suelo: 15 mg/L" },
+        { "parametro": "Nitrógeno total", "limite": "Ríos: 25 mg/L; Embalses: 30 mg/L; Mar: 15–30 mg/L; Suelo: N/A" },
+        { "parametro": "Fósforo total", "limite": "Ríos: 15 mg/L; Embalses: 18 mg/L; Mar: 5–15 mg/L; Suelo: N/A" },
+        { "parametro": "E. coli", "limite": "Ríos/Embalses/Mar: 250–600 NMP/100 mL (según uso); Suelo: N/A" },
+        { "parametro": "Huevos de helminto", "limite": "Suelo: 1 huevo/L; otros cuerpos: N/A" }
+      ]
+    },
+    "nom001_metales_cianuros": {
+      "name": "Metales y cianuros por cuerpo receptor (promedios mensuales)",
+      "normativeReference": "NOM-001-SEMARNAT-2021",
+      "normativeReference_url": "https://www.dof.gob.mx/nota_detalle.php?codigo=5645374&fecha=11/03/2022",
+      "parameters": [
+        { "parametro": "Arsénico", "limite": "Ríos: 0.2; Embalses: 0.3; Mar: 0.4; Suelo: 0.1 mg/L" },
+        { "parametro": "Cadmio", "limite": "Ríos: 0.2; Embalses: 0.3; Mar: 0.4; Suelo: 0.05 mg/L" },
+        { "parametro": "Cianuro", "limite": "Ríos: 1.0; Embalses: 2.0; Mar: 3.0; Suelo: 1.0 mg/L" },
+        { "parametro": "Cobre", "limite": "Ríos: 4.0; Embalses: 5.0; Mar: 6.0; Suelo: 4.0 mg/L" },
+        { "parametro": "Cromo total", "limite": "Ríos: 1.0; Embalses: 1.25; Mar: 1.5; Suelo: 0.5 mg/L" },
+        { "parametro": "Mercurio", "limite": "Ríos: 0.01; Embalses: 0.015; Mar: 0.02; Suelo: 0.005 mg/L" },
+        { "parametro": "Níquel", "limite": "Ríos: 2.0; Embalses: 3.0; Mar: 4.0; Suelo: 2.0 mg/L" },
+        { "parametro": "Plomo", "limite": "Ríos: 0.2; Embalses: 0.3; Mar: 1.0; Suelo: 0.2 mg/L" },
+        { "parametro": "Zinc", "limite": "Ríos: 10.0; Embalses: 15.0; Mar: 20.0; Suelo: 10.0 mg/L" }
+      ]
+    },
+    "nom143_agua_congenita": {
+      "name": "Sector petrolero – Agua congénita",
+      "normativeReference": "NOM-143-SEMARNAT-2003",
+      "normativeReference_url": "https://biblioteca.semarnat.gob.mx/janium/Documentos/Ciga/agenda/PPD02/DO561.pdf",
+      "parameters": [
+        { "parametro": "Hidrocarburos totales (agua dulce)", "limite": "15 mg/L" },
+        { "parametro": "Hidrocarburos totales (costera/marina)", "limite": "40 mg/L" },
+        { "parametro": "Sólidos disueltos totales (SDT, agua dulce)", "limite": "500 mg/L" },
+        { "parametro": "Sólidos disueltos totales (costera >2 km mar adentro)", "limite": "32,000 mg/L" }
+      ]
+    }
+  }
+}

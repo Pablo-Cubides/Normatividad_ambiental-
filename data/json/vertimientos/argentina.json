@@ -1,0 +1,50 @@
+{
+  "pais": "Argentina",
+  "dominio": "vertimientos",
+  "version": "2025-10-23",
+  "normativeReference_es": "ACUMAR Resolución 46/2017 (tabla consolidada de límites) y su texto ordenado/modificaciones.",
+  "normativeSources": [
+    {
+      "name": "Resolución ACUMAR 46/2017",
+      "url": "https://www.argentina.gob.ar/normativa/nacional/resolución-46-2017-273042",
+      "description": "Límites admisibles de vertido de efluentes líquidos a cuerpos receptores",
+      "type": "government",
+      "lastValidated": "2025-10-23"
+    }
+  ],
+  "sectors": {
+    "vertidos_multinivel_acumar": {
+      "name": "Límites admisibles de vertido de efluentes líquidos (multicuerpo receptor)",
+      "normativeReference": "Resolución ACUMAR 46/2017",
+      "normativeReference_url": "https://www.argentina.gob.ar/normativa/nacional/resolución-46-2017-273042",
+      "parameters": [
+        { "parametro": "Cianuros destructibles por cloración", "limite": "Colectora: ≤0.1 mg CN⁻/L; Pluvial/Superficial: ≤0.1 mg CN⁻/L; Absorción suelo: Ausente" },
+        { "parametro": "Cianuros totales", "limite": "Colectora: ≤1.0 mg CN⁻/L; Pluvial/Superficial: ≤1.0 mg CN⁻/L; Absorción suelo: Ausente" },
+        { "parametro": "DBO5 (muestra bruta)", "limite": "Colectora: ≤200 mg O₂/L; Pluvial/Superficial: ≤30 mg O₂/L; Absorción suelo: ≤200 mg O₂/L" },
+        { "parametro": "Detergentes (SAAM)", "limite": "Colectora: ≤10 mg/L; Pluvial/Superficial: ≤2.0 mg/L; Absorción suelo: ≤2.0 mg/L" },
+        { "parametro": "DQO", "limite": "Colectora: ≤700 mg O₂/L; Pluvial/Superficial: ≤125 mg O₂/L; Absorción suelo: ≤500 mg O₂/L" },
+        { "parametro": "Fósforo total", "limite": "Colectora: ≤10 mg P/L; Pluvial/Superficial: ≤5.0 mg P/L; Absorción suelo: ≤10 mg P/L" },
+        { "parametro": "SST", "limite": "Colectora: NE; Pluvial/Superficial: ≤35 mg/L; Absorción suelo: NE" },
+        { "parametro": "Nitrógeno amoniacal", "limite": "Colectora: ≤75 mg NH4⁺/L; Pluvial/Superficial: ≤25 mg NH4⁺/L; Absorción suelo: ≤75 mg NH4⁺/L" },
+        { "parametro": "NTK", "limite": "Colectora: ≤105 mg/L; Pluvial/Superficial: ≤35 mg/L; Absorción suelo: ≤105 mg/L" },
+        { "parametro": "pH", "limite": "Colectora: 5.5–10.0; Pluvial/Superficial: 6.5–9.0; Absorción suelo: 6.5–9.0" },
+        { "parametro": "Sólidos sedimentables 10 min", "limite": "≤0.1 mL/L (todas)" },
+        { "parametro": "Sólidos sedimentables 2 h", "limite": "Colectora: ≤5.0 mL/L; Pluvial/Superficial: ≤1.0 mL/L; Absorción suelo: ≤5.0 mL/L" },
+        { "parametro": "SSEE", "limite": "Colectora: ≤100 mg/L; Pluvial/Superficial: ≤50 mg/L; Absorción suelo: ≤50 mg/L" },
+        { "parametro": "Temperatura", "limite": "≤45 °C (todas)" },
+        { "parametro": "Arsénico", "limite": "Colectora: ≤0.5 mg/L; Pluvial/Superficial: ≤0.5 mg/L; Absorción suelo: ≤0.1 mg/L" },
+        { "parametro": "Cadmio", "limite": "Colectora: ≤0.1 mg/L; Pluvial/Superficial: ≤0.1 mg/L; Absorción suelo: Ausente" },
+        { "parametro": "Cromo total", "limite": "Colectora: ≤2.0 mg/L; Pluvial/Superficial: ≤2.0 mg/L; Absorción suelo: Ausente" },
+        { "parametro": "Cromo hexavalente", "limite": "Colectora: ≤0.2 mg/L; Pluvial/Superficial: ≤0.2 mg/L; Absorción suelo: Ausente" },
+        { "parametro": "Mercurio", "limite": "Colectora/Pluvial: ≤0.005 mg/L; Absorción suelo: Ausente" },
+        { "parametro": "Níquel", "limite": "Colectora/Pluvial: ≤2.0 mg/L; Absorción suelo: ≤1.0 mg/L" },
+        { "parametro": "Plomo", "limite": "≤0.1 mg/L (todas)" },
+        { "parametro": "Sulfuros", "limite": "Colectora/Pluvial: ≤1.0 mg S²⁻/L; Absorción suelo: ≤5.0 mg S²⁻/L" },
+        { "parametro": "Sustancias fenólicas", "limite": "Colectora/Pluvial: ≤0.5 mg/L; Absorción suelo: ≤0.1 mg/L" },
+        { "parametro": "Coliformes fecales", "limite": "Pluvial/Superficial: ≤500 UFC/100 mL; Absorción suelo: ≤500 UFC/100 mL" },
+        { "parametro": "Hidrocarburos totales", "limite": "Colectora/Pluvial: ≤30 mg/L; Absorción suelo: Ausente" },
+        { "parametro": "Hidrocarburos volátiles", "limite": "≤1 mg/L (todas)" }
+      ]
+    }
+  }
+}

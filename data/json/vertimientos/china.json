@@ -1,0 +1,46 @@
+{
+  "pais": "China",
+  "dominio": "vertimientos",
+  "version": "2025-10-23",
+  "normativeReference_es": "GB 8978-1996 (estándares integrados de vertimiento), GB 31570-2015 (refinación de petróleo – efluentes).",
+  "normativeSources": [
+    {
+      "name": "GB 8978-1996",
+      "url": "https://english.mee.gov.cn/Resources/standards/water_environment/Discharge_standard/200710/t20071024_111803.shtml",
+      "description": "Integrated Wastewater Discharge Standard",
+      "type": "official",
+      "lastValidated": "2025-10-23"
+    }
+  ],
+  "sectors": {
+    "gb8978_integrado": {
+      "name": "Estándares integrados de vertimiento",
+      "normativeReference": "GB 8978-1996",
+      "normativeReference_url": "https://english.mee.gov.cn/Resources/standards/water_environment/Discharge_standard/200710/t20071024_111803.shtml",
+      "parameters": [
+        { "parametro": "pH", "limite": "Clase I: 6–9; Clase II: 6–9; Clase III: 6–9" },
+        { "parametro": "Sólidos suspendidos (SS)", "limite": "I: 70 mg/L; II: 150 mg/L; III: 400 mg/L" },
+        { "parametro": "DBO5", "limite": "I: 20 mg/L; II: 30 mg/L; III: 300 mg/L" },
+        { "parametro": "DQO", "limite": "I: 100 mg/L; II: 150 mg/L; III: 500 mg/L" },
+        { "parametro": "Hidrocarburos de petróleo", "limite": "I: 5 mg/L; II: 10 mg/L; III: 20 mg/L" },
+        { "parametro": "Fenoles volátiles", "limite": "I: 0.5 mg/L; II: 0.5 mg/L; III: 2.0 mg/L" },
+        { "parametro": "Cianuros totales", "limite": "I: 0.5 mg/L; II: 0.5 mg/L; III: 1.0 mg/L" },
+        { "parametro": "Sulfuros", "limite": "I/II/III: 1.0 mg/L" }
+      ]
+    },
+    "gb31570_refino": {
+      "name": "Refinación de petróleo – límites clave",
+      "normativeReference": "GB 31570-2015",
+      "normativeReference_url": "https://www.mee.gov.cn/ywgz/fgbz/bz//bzwb/dqhjbh/dqgdwrywrwpfbz/201505/W020240612354021941968.pdf",
+      "parameters": [
+        { "parametro": "pH", "limite": "6–9" },
+        { "parametro": "DQO", "limite": "60 mg/L" },
+        { "parametro": "SS", "limite": "20 mg/L" },
+        { "parametro": "Hidrocarburos de petróleo", "limite": "5 mg/L" },
+        { "parametro": "Nitrógeno amoniacal", "limite": "15 mg/L" },
+        { "parametro": "Fenoles volátiles", "limite": "0.35 mg/L" },
+        { "parametro": "Cianuro total", "limite": "0.20 mg/L" }
+      ]
+    }
+  }
+}

@@ -1,39 +1,45 @@
 {
   "pais": "México",
-  "paisCodigo": "mexico",
   "dominio": "agua",
-  "version": "2.0.0",
-  "fuentePrincipal": "NOM-127-SSA1-2021 (Agua para uso y consumo humano), NOM-001-SEMARNAT-2021 (Descargas), NOM-003-SEMARNAT-1997 (Reúso)",
+  "normativeReference_es": "NOM-127-SSA1-2021, NOM-003-SEMARNAT-1997",
   "sectors": {
-    "agua-potable": {
-      "name": "Agua para Uso y Consumo Humano",
-      "description": "Límites permisibles de calidad del agua para uso y consumo humano, según la NOM-127-SSA1-2021.",
+    "agua_consumo_humano": {
+      "name": "Agua para Uso y Consumo Humano (NOM-127-SSA1-2021)",
+      "normativeReference": "NOM-127-SSA1-2021",
+      "normativeReference_url": "https://www.dof.gob.mx/nota_detalle_popup.php?codigo=5650705",
       "parameters": [
-        { "parameter": "Arsénico Total", "value": "≤0.01", "unit": "mg/L", "source": "NOM-127", "notes": "Límite actualizado para alinearse con la OMS" },
-        { "parameter": "Coliformes Fecales", "value": "0", "unit": "NMP/100 mL", "source": "NOM-127" },
-        { "parameter": "Turbiedad", "value": "≤5", "unit": "NTU", "source": "NOM-127" },
-        { "parameter": "pH", "value": "6.5 - 8.5", "source": "NOM-127" }
+        { "parametro": "Turbiedad", "limite": "4.0 UNT" },
+        { "parametro": "pH", "limite": "6.5 a 8.5" },
+        { "parametro": "Color Verdadero", "limite": "15 UC" },
+        { "parametro": "Cianuros totales", "limite": "0.07 mg/L" },
+        { "parametro": "Dureza total como CaCO3", "limite": "500.00 mg/L" },
+        { "parametro": "Fluoruros como F-", "limite": "1.50 mg/L" },
+        { "parametro": "Nitrógeno de nitratos (N-NO3-)", "limite": "11.00 mg/L" },
+        { "parametro": "Sólidos disueltos totales", "limite": "1000.00 mg/L" },
+        { "parametro": "Aluminio", "limite": "0.20 mg/L" },
+        { "parametro": "Arsénico", "limite": "0.025 mg/L" },
+        { "parametro": "Cadmio", "limite": "0.005 mg/L" },
+        { "parametro": "Cromo total", "limite": "0.05 mg/L" },
+        { "parametro": "Plomo", "limite": "0.01 mg/L" },
+        { "parametro": "Escherichia coli", "limite": "<1.1 ó No detectable /<1/ Ausencia" },
+        { "parametro": "Giardia lamblia", "limite": "Ausencia" },
+        { "parametro": "Cloro residual libre", "limite": "0.2 a 1.5 mg/L" }
       ]
     },
-    "riego": {
-      "name": "Riego Agrícola con Agua Residual Tratada",
-      "description": "Límites para el riego de cultivos de consumo crudo con aguas residuales tratadas.",
+    "reuso_servicios_publicos": {
+      "name": "Reutilización de Aguas Residuales Tratadas para Servicios al Público (NOM-003-SEMARNAT-1997)",
+      "normativeReference": "NOM-002-SEMARNAT-1996",
+      "normativeReference_url": "https://www.dof.gob.mx/nota_detalle.php?codigo=5645374&fecha=11/03/2022#gsc.tab=0",
       "parameters": [
-        { "parameter": "Coliformes Fecales", "value": "≤1000", "unit": "NMP/100 mL", "source": "NOM-001" }
-      ]
-    },
-    "vertimiento": {
-      "name": "Descarga a Cuerpos de Agua Nacionales",
-      "description": "Límites de contaminantes para las descargas de aguas residuales en cuerpos receptores propiedad de la Nación.",
-      "parameters": [
-        { "parameter": "Fósforo Total", "value": "≤10", "unit": "mg/L", "source": "NOM-001", "notes": "Para cuerpos de agua que se destinan a riego agrícola" }
-      ]
-    },
-    "reuso": {
-      "name": "Reúso en Servicios al Público",
-      "description": "Límites máximos permisibles de contaminantes para las aguas residuales tratadas que se reusen en servicios al público con contacto directo.",
-      "parameters": [
-        { "parameter": "Coliformes Fecales", "value": "≤240", "unit": "NMP/100 mL", "source": "NOM-003" }
+        { "parametro": "Coliformes Fecales (Contacto directo)", "limite": "240 NMP/100 ml" },
+        { "parametro": "Coliformes Fecales (Contacto indirecto)", "limite": "1,000 NMP/100 ml" },
+        { "parametro": "Huevos de Helminto (Contacto directo)", "limite": "<1 h/l" },
+        { "parametro": "Huevos de Helminto (Contacto indirecto)", "limite": "<5 h/l" },
+        { "parametro": "Grasas y Aceites", "limite": "15 mg/l" },
+        { "parametro": "DBO5 (Contacto directo)", "limite": "20 mg/l" },
+        { "parametro": "DBO5 (Contacto indirecto)", "limite": "30 mg/l" },
+        { "parametro": "SST (Contacto directo)", "limite": "20 mg/l" },
+        { "parametro": "SST (Contacto indirecto)", "limite": "30 mg/l" }
       ]
     }
   }

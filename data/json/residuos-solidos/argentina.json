@@ -1,27 +1,56 @@
 {
   "pais": "Argentina",
-  "paisCodigo": "argentina",
   "dominio": "residuos-solidos",
-  "version": "2.0.0",
-  "fuentePrincipal": "Ley 25.916/2004 (Gestión de RSU), Ley 24.051/1991 (Residuos Peligrosos)",
+  "normativeReference_es": "Ley N° 24.051, Ley N° 25.916, Ley N° 25.612",
   "registros": [
     {
-      "categoria": "Gestión Integral de Residuos Sólidos Urbanos (RSU)",
-      "parametro": "Jerarquía de Gestión",
-      "limite": "Prevención > Reciclaje > Disposición final",
-      "referencia": { "norma": "Ley 25.916/2004" }
+      "categoria": "Peligrosos",
+      "parametro": "Jurisdicción",
+      "limite": "Aplica a movimiento interjurisdiccional.",
+      "referencia": { "norma": "Ley N° 24.051" },
+      "notas": ["Autoridad: Ministerio de Ambiente (Nacional); Autoridades Provinciales"]
     },
     {
-      "categoria": "Residuos Peligrosos",
-      "parametro": "Manejo 'Cradle-to-Grave'",
-      "limite": "El generador es responsable del residuo desde su creación hasta su disposición final",
-      "referencia": { "norma": "Ley 24.051/1991" }
+      "categoria": "Peligrosos",
+      "parametro": "Control",
+      "limite": "Clasificación por Anexos I y II. Registro de generadores y operadores. Manifiesto de transporte obligatorio.",
+      "referencia": { "norma": "Ley N° 24.051" },
+      "notas": ["Autoridad: Ministerio de Ambiente (Nacional); Autoridades Provinciales"]
     },
     {
-      "categoria": "Residuos Peligrosos",
-      "parametro": "Prohibición de Importación",
-      "limite": "Prohibida la importación de residuos peligrosos",
-      "referencia": { "norma": "Ley 24.051/1991" }
+      "categoria": "Domiciliarios (RSU)",
+      "parametro": "Marco Legal",
+      "limite": "Marco para la Gestión Integral (GIRSU). Jerarquía de gestión.",
+      "referencia": { "norma": "Ley N° 25.916 (Presupuestos Mínimos); Estrategia Nacional GIRSU" },
+      "notas": ["Autoridad: Municipios; Provincias"]
+    },
+    {
+      "categoria": "Domiciliarios (RSU)",
+      "parametro": "Responsabilidad",
+      "limite": "Responsabilidad municipal para la implementación de planes GIRSU.",
+      "referencia": { "norma": "Ley N° 25.916" },
+      "notas": ["Autoridad: Municipios; Provincias"]
+    },
+    {
+      "categoria": "Industriales",
+      "parametro": "Responsabilidad",
+      "limite": "Responsabilidad del generador por tratamiento y disposición final. No aplica a residuos peligrosos, domiciliarios o biopatogénicos.",
+      "referencia": { "norma": "Ley N° 25.612 (Presupuestos Mínimos)" },
+      "notas": ["Autoridad: Autoridades Provinciales"]
+    },
+    {
+      "categoria": "Orgánicos",
+      "parametro": "Gestión",
+      "limite": "Se gestiona a través de planes GIRSU municipales. Iniciativas nacionales para promover el compostaje institucional.",
+      "referencia": { "norma": "Enmarcado en Ley 25.916; Resolución 104/2023" },
+      "notas": ["Autoridad: Municipios; Ministerio de Ambiente (promoción)"]
+    },
+    {
+      "categoria": "RCD",
+      "parametro": "Gestión",
+      "limite": "Se gestiona bajo el marco de residuos domiciliarios (Ley 25.916) o industriales (Ley 25.612) según su origen y características, o por normativas provinciales.",
+      "referencia": { "norma": "No hay ley nacional específica" },
+      "notas": ["Autoridad: Provincias y Municipios"]
     }
   ]
 }

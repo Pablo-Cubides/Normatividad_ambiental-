@@ -1,27 +1,26 @@
-// Simple structured logger used by both server and client code.
+// Minimal logger shim used across API routes and server-side code.
+// Keeps the same shape used in the codebase (info/warn/error) and
+// avoids coupling to external logging libraries so the dev server can run.
+
+type Meta = Record<string, unknown> | undefined;
+
 export const logger = {
-  info: (message: string, meta: Record<string, unknown> = {}) => {
-    try {
-      console.info(JSON.stringify({ level: 'info', message, ts: new Date().toISOString(), ...meta }));
-    } catch {
-      // fallback
-      console.info(message, meta);
-    }
-  },
-  warn: (message: string, meta: Record<string, unknown> = {}) => {
-    try {
-      console.warn(JSON.stringify({ level: 'warn', message, ts: new Date().toISOString(), ...meta }));
-    } catch {
-      console.warn(message, meta);
-    }
-  },
-  error: (message: string, meta: Record<string, unknown> = {}) => {
-    try {
-      console.error(JSON.stringify({ level: 'error', message, ts: new Date().toISOString(), ...meta }));
-    } catch {
-      console.error(message, meta);
-    }
-  }
+	info(message: string, meta?: Meta) {
+		if (meta) console.info('[info]', message, meta);
+		else console.info('[info]', message);
+	},
+	warn(message: string, meta?: Meta) {
+		if (meta) console.warn('[warn]', message, meta);
+		else console.warn('[warn]', message);
+	},
+	error(message: string, meta?: Meta) {
+		if (meta) console.error('[error]', message, meta);
+		else console.error('[error]', message);
+	},
+	debug(message: string, meta?: Meta) {
+		if (meta) console.debug('[debug]', message, meta);
+		else console.debug('[debug]', message);
+	}
 };
 
 export default logger;

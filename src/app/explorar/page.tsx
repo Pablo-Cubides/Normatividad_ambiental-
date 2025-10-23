@@ -1,437 +1,620 @@
-'use client';
+"use client";
 
-import { useState, useEffect, Suspense, useCallback, useMemo } from 'react';
-import { useSearchParams, useRouter } from 'next/navigation';
+import { Suspense } from 'react';
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
-import { ArrowLeft, Search, Download, AlertTriangle, ExternalLink } from 'lucide-react';
-import { SECTORES_USO, WaterUseType } from '@/lib/types';
-import { getFlagEmoji } from '@/lib/constants';
-import type { UnifiedNorm, SectorNorm, RecordNorm } from '@/lib/schemas';
-import { logger } from '@/lib/logger';
+import { ArrowLeft, Search, Filter, Download, AlertTriangle, ExternalLink, Droplet, Wind, Trash2, Waves, Home } from 'lucide-react';
+import { LoadingSkeleton, TableSkeleton } from '@/components/LoadingSkeleton';
+import { useExplorarState } from '@/lib/hooks';
+import { DOMINIOS, REGULATORY_SOURCES } from '@/lib/constants';
 
-// Type definitions for the component
-interface ApiCountry { code: string; name: string; }
-interface Country extends ApiCountry { flag: string; }
+type AnyRecord = Record<string, unknown>;
 
-// Minimal shapes for the API responses used by this UI.
-interface SectorData { name?: string; description?: string; parameters?: RecordNorm[] }
-interface CountryData { sectors?: Record<string, SectorData>; records?: RecordNorm[]; registros?: RecordNorm[]; normativeReference?: string; reference?: unknown; lastUpdate?: string }
+// ========================================
+// ICONOS DE SECTORES - TODO EN UN SOLO LUGAR
+// ========================================
+const SECTOR_ICON_PATTERNS = [
+  {
+    keywords: ['agua_potable', 'agua_consumo_humano', 'produccion_agua_potable'],
+    icon: <Droplet className="w-full h-full" />,
+  },
+  {
+    keywords: ['ganado', 'uso_pecuario', 'bebida_animales', 'pecuario'],
+    icon: <span className="text-2xl">🐄</span>,
+  },
+  {
+    keywords: ['industrial', 'torres_enfriamiento'],
+    icon: <span className="text-2xl">🏭</span>,
+  },
+  {
+    keywords: ['recreacion', 'actividades_recreativas', 'reco1', 'reco2', 'kayak'],
+    icon: <span className="text-2xl">🏊</span>,
+  },
+  {
+    keywords: ['reuso', 'reutilizacion'],
+    icon: <span className="text-2xl">♻️</span>,
+  },
+  {
+    keywords: ['riego', 'uso_agricola', 'agricola'],
+    icon: <span className="text-2xl">🌾</span>,
+  },
+  {
+    keywords: ['vida_acuatica', 'proteccion_vida_acuatica', 'conservacion_ambiente_acuatico'],
+    icon: <span className="text-2xl">🐟</span>,
+  },
+  {
+    keywords: ['aguas_superficiales', 'aguas_doces', 'classe'],
+    icon: <span className="text-2xl">💧</span>,
+  },
+  {
+    keywords: ['aguas_salinas', 'aguas_salobras'],
+    icon: <span className="text-2xl">🌊</span>,
+  },
+  {
+    keywords: ['descarga', 'vertimientos', 'aguas_residuales'],
+    icon: <Waves className="w-full h-full" />,
+  },
+  {
+    keywords: ['calidad_ambiental'],
+    icon: <span className="text-2xl">🌿</span>,
+  },
+  {
+    keywords: ['calidad_aire'],
+    icon: <Wind className="w-full h-full" />,
+  },
+  {
+    keywords: ['residuos_solidos'],
+    icon: <Trash2 className="w-full h-full" />,
+  },
+];
 
-function ExploreContent() {
-  const searchParams = useSearchParams();
-  const router = useRouter();
-
-  // Component State
-  const [countries, setCountries] = useState<Country[]>([]);
-  const [isLoadingCountries, setIsLoadingCountries] = useState(true);
-  const [selectedCountry, setSelectedCountry] = useState<string>('');
-  const [selectedSector, setSelectedSector] = useState<string>('todos');
-  const [searchQuery, setSearchQuery] = useState<string>('');
-  const [data, setData] = useState<UnifiedNorm | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string>('');
-  // Start with no domain selected so user chooses which dataset to explore first
-  const [domain, setDomain] = useState<'agua' | 'calidad-aire' | 'residuos-solidos' | ''>( '');
-
-  // Initialize domain from URL params immediately so selections persist when
-  // navigating from the homepage (e.g. /explorar?dominio=agua&pais=CO)
-  useEffect(() => {
-    const domainParam = searchParams.get('dominio');
-    if (domainParam && ['agua', 'calidad-aire', 'residuos-solidos'].includes(domainParam)) {
-      setDomain(domainParam as 'agua' | 'calidad-aire' | 'residuos-solidos' | '');
-    }
-  }, [searchParams]);
-
-  // Initialize sector selection from URL if present (so links like
-  // /explorar?dominio=agua&pais=CO&sector=industria pre-select the sector)
-  useEffect(() => {
-    const sectorParam = searchParams.get('sector');
-    if (sectorParam && SECTORES_USO.find((s: WaterUseType) => s.id === sectorParam)) {
-      setSelectedSector(sectorParam);
-    }
-  }, [searchParams]);
-
-  // When data is loaded and a sector is selected from the URL, scroll to and highlight it
-  useEffect(() => {
-    if (!data || !selectedSector || selectedSector === 'todos') return;
-    const tableId = `sector-table-${selectedSector}`;
-    // Small delay to ensure DOM rendered, then scroll to the table
-    const t = setTimeout(() => {
-      const el = document.getElementById(tableId);
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }, 80);
-    return () => clearTimeout(t);
-  }, [data, selectedSector]);
-
-  // Fetch countries when the component mounts or the domain changes
-  useEffect(() => {
-    // Only fetch countries after the user has selected a domain
-    if (!domain) return;
-
-    async function fetchCountries() {
-      setIsLoadingCountries(true);
-      setCountries([]);
-      try {
-        const response = await fetch(`/api/paises?dominio=${domain}`);
-        if (!response.ok) throw new Error('No se pudieron cargar los países');
-        const data: { countries: ApiCountry[] } = await response.json();
-  const enhancedCountries = data.countries.map((c: ApiCountry) => ({ ...c, flag: getFlagEmoji(c.code, c.name) }));
-        setCountries(enhancedCountries);
-      } catch (err) {
-        const msg = err instanceof Error ? err.message : 'Error desconocido';
-        logger.warn('explore:fetchCountries:failed', { domain, message: msg });
-        setError('No fue posible cargar la lista de países. Intenta recargar la página.');
-      } finally { setIsLoadingCountries(false); }
-    }
-    fetchCountries();
-  }, [domain]);
-
-  // Function to load data for a specific country
-  const loadCountryData = useCallback(async (countryCode: string) => {
-    if (!countryCode) return;
-    setLoading(true);
-    setError('');
-    try {
-      const response = await fetch(`/api/normas?pais=${countryCode}&dominio=${domain}`);
-      if (!response.ok) {
-        const text = await response.text().catch(() => '');
-        throw new Error(`Servidor respondió con ${response.status}: ${text}`);
-      }
-  const countryData: UnifiedNorm = await response.json();
-  setData(countryData);
-      try { localStorage.setItem(`selected-country-${domain}`, countryCode); } catch { /* ignore */ }
-    } catch (err) {
-      const msg = err instanceof Error ? err.message : 'Error desconocido cargando datos del país';
-      logger.error('explore:loadCountryData:failed', { domain, countryCode, message: msg });
-      setError('No fue posible cargar los datos del país seleccionado. Intenta nuevamente.');
-      setData(null);
-    } finally {
-      setLoading(false);
-    }
-  }, [domain]);
-
-  // Effect to initialize component state from URL parameters
-  useEffect(() => {
-    if (countries.length > 0) {
-      const countryParam = searchParams.get('pais');
-      const sectorParam = searchParams.get('sector');
-      const domainParam = searchParams.get('dominio');
-
-      // Do not auto-apply domain from URL unless it's present and non-empty
-        if (domainParam && ['agua', 'calidad-aire', 'residuos-solidos'].includes(domainParam)) {
-          setDomain(domainParam as 'agua' | 'calidad-aire' | 'residuos-solidos' | '');
-        }      // Only consider auto-loading a country if a domain is set and the countries list is populated
-      const countryToLoad = (countryParam || (domain ? localStorage.getItem(`selected-country-${domain}`) : null));
-
-      if (domain && countryToLoad && countries.find(c => c.code === countryToLoad)) {
-        setSelectedCountry(countryToLoad);
-        loadCountryData(countryToLoad);
-      }
-
-      if (sectorParam && SECTORES_USO.find((s: WaterUseType) => s.id === sectorParam)) {
-        setSelectedSector(sectorParam);
+function getSectorIcon(sectorKey: string, fallbackIcon: React.ReactNode): React.ReactNode {
+  const normalized = sectorKey.toLowerCase().replace(/-/g, '_');
+  
+  for (const pattern of SECTOR_ICON_PATTERNS) {
+    for (const keyword of pattern.keywords) {
+      if (normalized.includes(keyword)) {
+        return pattern.icon;
       }
     }
-  }, [searchParams, countries, loadCountryData, domain]);
-
-  const handleDomainChange = (d: typeof domain) => {
-    setDomain(d);
-    setSelectedCountry('');
-    setData(null);
-    router.push(`/explorar?dominio=${d}`);
   }
+  
+  return fallbackIcon;
+}
 
-  const handleCountryChange = (countryCode: string) => {
-    setSelectedCountry(countryCode);
-    setSelectedSector('todos');
-    setSearchQuery('');
-    router.push(`/explorar?dominio=${domain}&pais=${countryCode}`);
-    loadCountryData(countryCode);
-  };
+function ExplorarContent() {
+  // Use the custom hook for all state management
+  const {
+    selectedDomain,
+    selectedCountry,
+    selectedSector,
+    availableCountries,
+    availableSectors,
+    data,
+    loading,
+    error,
+    searchQuery,
+    debouncedSearchQuery,
+    currentDominio,
+    countryInfo,
+    records,
+    filteredRecords,
+    sectionsToDisplay,
+    handleDomainChange,
+    handleCountryChange,
+    handleSectorChange,
+    setSearchQuery,
+  } = useExplorarState();
 
-  // Logic to filter data for the water sector
-  const sectors = data?.sectors as Record<string, SectorNorm> | undefined;
-  const filteredSectors: [string, SectorNorm][] = sectors ? Object.entries(sectors).filter(([sectorId, sectorData]) => {
-    if (selectedSector !== 'todos' && sectorId !== selectedSector) return false;
-    if (searchQuery) {
-      const query = searchQuery.toLowerCase();
-      const matchesSector = (sectorData.name || '').toLowerCase().includes(query) || (sectorData.description || '').toLowerCase().includes(query);
-      const matchesParam = Array.isArray(sectorData.parameters) && sectorData.parameters.some((p: RecordNorm) => ((p.parameter ?? p.parametro) || '').toLowerCase().includes(query));
-      return matchesSector || matchesParam;
-    }
-    return true;
-  }) : [];
-
-  // Compute which sectors actually have data (non-empty parameters) so we only
-  // show those in the sector selector. This prevents showing a sector that
-  // would render an empty table.
-  const availableSectorIds: string[] = useMemo(() => {
-    const s = data?.sectors as Record<string, SectorNorm> | undefined;
-    if (!s) return [];
-    return Object.entries(s)
-      .filter(([, sd]) => Array.isArray(sd?.parameters) && sd.parameters.length > 0)
-      .map(([id]) => id);
-  }, [data?.sectors]);
-
-  // If the currently selected sector is no longer available (e.g. user changed
-  // country) reset it to 'todos' to avoid selecting an empty sector.
-  useEffect(() => {
-    if (!data) return;
-    if (selectedSector && selectedSector !== 'todos' && !availableSectorIds.includes(selectedSector)) {
-      setSelectedSector('todos');
-      // also remove sector param from URL
-      try { router.replace(`/explorar?dominio=${domain}&pais=${selectedCountry}`); } catch (_) { /* ignore */ }
-    }
-  }, [data, availableSectorIds, selectedSector, domain, selectedCountry, router]);
-
-  const getSectorInfo = (sectorId: string) => SECTORES_USO.find(s => s.id === sectorId) || { id: sectorId, nombre: sectorId, descripcion: '', icon: '📊' };
-  const countryInfo = countries.find(c => c.code === selectedCountry);
-
-  const getRefStandard = (ref?: unknown): string | undefined => {
-    if (!ref || typeof ref !== 'object') return undefined;
-    const r = ref as Record<string, unknown>;
-    if (typeof r.standard === 'string') return r.standard;
-    if (typeof r.norma === 'string') return r.norma;
-    return undefined;
-  };
-
-  // Helpers to robustly extract limit/value fields from records that may
-  // come in different shapes (value, valor, limit, limite, etc.)
-  const asRecord = (v: unknown): Record<string, unknown> => (typeof v === 'object' && v !== null) ? (v as Record<string, unknown>) : {};
-  const getParamLimit = (param: RecordNorm): string => {
-    const p = asRecord(param);
-    // Common variants we've seen in data
-    const candidates = ['value', 'valor', 'valor_value', 'limit', 'limite', 'valor_limite', 'valor_string', 'val', 'valor_val'];
-    for (const k of candidates) {
-      const v = p[k];
-      if (typeof v === 'string' || typeof v === 'number') return String(v);
-      // sometimes value is wrapped in an object like { text: '...' }
-      if (v && typeof v === 'object') {
-        const vv = (v as Record<string, unknown>)['text'] ?? (v as Record<string, unknown>)['value'];
-        if (typeof vv === 'string' || typeof vv === 'number') return String(vv);
+  // ========================================
+  // LÓGICA DE URLS - SIMPLIFICADA Y CONSOLIDADA
+  // ========================================
+  
+  /**
+   * Obtiene la URL oficial de la normativa
+   * ESTRATEGIA SIMPLIFICADA:
+   * 1. Si el JSON tiene URL directa (normativeReference_url) → usarla
+   * 2. Si data.sources tiene la fuente → usarla
+   * 3. Fallback: REGULATORY_SOURCES de constants.ts (primera fuente del país/dominio)
+   */
+  const getNormativeUrl = (normativeRef: string, dataContext?: AnyRecord): string | null => {
+    if (!normativeRef) return null;
+    
+    const dataToUse = dataContext || data;
+    
+    // 1. Buscar URL directa en el JSON del sector
+    const allSectors = (dataToUse as AnyRecord)?._sectors || (dataToUse as AnyRecord)?.sectors;
+    if (allSectors && typeof allSectors === 'object') {
+      for (const sectorKey in allSectors) {
+        const sectorObj = (allSectors as Record<string, AnyRecord>)[sectorKey];
+        if (sectorObj) {
+          const sectorNormRef = sectorObj.normativeReference ?? sectorObj.normativeReference_es;
+          if (sectorNormRef === normativeRef) {
+            const directUrl = sectorObj.normativeUrl ?? sectorObj.normativeReference_url;
+            if (directUrl) {
+              return String(directUrl);
+            }
+          }
+        }
       }
     }
-    return '';
-  };
-  const getRecordLimit = (r: RecordNorm): string => {
-    const rec = asRecord(r);
-    const candidates = ['limit', 'limite', 'valor', 'value', 'valor_limite', 'valor_string'];
-    for (const k of candidates) {
-      const v = rec[k];
-      if (typeof v === 'string' || typeof v === 'number') return String(v);
+
+    // 2. Buscar en data.sources (si existe en el JSON)
+    if (dataToUse?.sources && Array.isArray(dataToUse.sources)) {
+      const normalize = (str: string) => str.toLowerCase().trim()
+        .replace(/á/g, 'a').replace(/é/g, 'e').replace(/í/g, 'i')
+        .replace(/ó/g, 'o').replace(/ú/g, 'u').replace(/ñ/g, 'n')
+        .replace(/\s+/g, ' ');
+      
+      const normalizedRef = normalize(normativeRef);
+      
+      for (const source of dataToUse.sources) {
+        const sourceName = String(source.name ?? '');
+        if (normalize(sourceName) === normalizedRef || 
+            normalize(sourceName).includes(normalizedRef) ||
+            normalizedRef.includes(normalize(sourceName))) {
+          return String(source.url ?? '');
+        }
+      }
     }
-    return '';
+
+    // 3. Fallback: REGULATORY_SOURCES (primera fuente del país/dominio)
+    if (selectedCountry && selectedDomain) {
+      const countrySources = REGULATORY_SOURCES[selectedCountry]?.[selectedDomain];
+      if (countrySources && Array.isArray(countrySources) && countrySources.length > 0) {
+        return countrySources[0].url;
+      }
+    }
+
+    return null;
   };
-  const getRecordNotes = (r: RecordNorm): string[] => {
-    const rec = asRecord(r);
-    const notes = rec['notes'] ?? rec['notas'] ?? rec['observaciones'];
-    return Array.isArray(notes) ? (notes as unknown[]).map(String) : [];
-  };
 
-  const renderWaterContent = () => (
-    <>
-      <Card className="mb-6"><CardContent className="p-6"><div className="flex items-center justify-between">
-                  <div className="flex items-center gap-4"><span className="inline-flex w-10 h-10 text-3xl items-center justify-center leading-none flag-emoji">{countryInfo?.flag}</span><div><h2 className="text-2xl font-bold text-gray-900">{countryInfo?.name}</h2><p className="text-gray-600">{filteredSectors.length} sectores de agua encontrados</p></div></div>
-        <Button variant="outline" className="no-print" onClick={() => window.print()}><Download className="w-4 h-4 mr-2" />Imprimir/PDF</Button>
-      </div></CardContent></Card>
-
-      <div className="space-y-6">
-        {filteredSectors.map(([sectorId, sectorData]) => {
-          const sectorInfo = getSectorInfo(sectorId);
-          return (
-            <Card id={`sector-${sectorId}`} key={sectorId} className="print-friendly">
-              <CardHeader className="border-b bg-gray-50/50"><div className="flex items-center justify-between">
-                <div className="flex items-center gap-3"><span className="text-2xl">{sectorInfo.icon}</span><div><CardTitle className="text-xl text-gray-900">{sectorData.name}</CardTitle><p className="text-sm text-gray-600">{sectorData.description}</p></div></div>
-                <Badge variant="outline" className="text-xs">{Array.isArray(sectorData.parameters) ? sectorData.parameters.length : 0} parámetros</Badge>
-              </div></CardHeader>
-              <CardContent className="p-0">
-                <div className="p-4 border-b bg-blue-50/50"><div className="flex items-center gap-2 text-sm">
-                  <ExternalLink className="w-4 h-4 text-blue-600" /><span className="font-semibold text-blue-900">{data?.normativeReference}</span><span className="text-gray-600"> - Actualizado: {data?.lastUpdate}</span>
-                </div></div>
-                <div id={`sector-table-${sectorId}`} className="overflow-x-auto"><table>
-                  <thead className="bg-gray-50"><tr>
-                    <th className="p-4 font-semibold text-left text-gray-900">Parámetro</th><th className="p-4 font-semibold text-left text-gray-900">Valor Límite</th>
-                    <th className="p-4 font-semibold text-left text-gray-900">Unidad</th><th className="p-4 font-semibold text-left text-gray-900">Fuente</th>
-                  </tr></thead>
-                  <tbody className="divide-y divide-gray-200">
-                    {Array.isArray(sectorData.parameters) ? sectorData.parameters.map((param: RecordNorm, paramIndex: number) => {
-                      const limit = getParamLimit(param);
-                      const refStd = getRefStandard(param.reference ?? (param as unknown && (asRecord(param)['reference'] ?? asRecord(param)['referencia'])));
-                      return (
-                        <tr key={paramIndex} className="hover:bg-gray-50">
-                          <td className="p-4 font-medium text-gray-900">{param.parameter ?? param.parametro}</td>
-                          <td className="p-4 font-mono text-blue-700">{limit}</td>
-                          <td className="p-4 text-gray-600">{param.unit ?? param.unidad ?? '-'}</td>
-                          <td className="p-4 text-sm text-gray-600">{refStd ?? ''}</td>
-                        </tr>
-                      );
-                    }) : null}
-                  </tbody>
-                </table></div>
-              </CardContent>
-            </Card>
-          );
-        })}
-      </div>
-      <div className="mt-4">
-        <Button variant="ghost" size="sm" onClick={() => { setSelectedSector('todos'); router.push(`/explorar?dominio=${domain}&pais=${selectedCountry}`); }}>Mostrar todos</Button>
-      </div>
-      {/* Only show the 'no sectors' warning when the country actually provides sectors
-          and the applied filters/search produce zero results. If the country does not
-          divide standards into sectors (no `data.sectors`) we should not display an
-          error — the table or other content (records) will be shown elsewhere. */}
-      {data?.sectors && filteredSectors.length === 0 && (
-        <Card>
-          <CardContent className="p-8 text-center">
-            <AlertTriangle className="w-12 h-12 mx-auto mb-4 text-gray-400" />
-            <h3 className="mb-2 text-lg font-semibold text-gray-900">No se encontraron sectores</h3>
-            <p className="text-gray-600">Intenta cambiar los filtros o el término de búsqueda.</p>
-          </CardContent>
-        </Card>
-      )}
-    </>
-  );
-
-  const renderRecordsContent = () => {
-  const records = (data?.records ?? data?.registros ?? []) as RecordNorm[];
-  type MutableData = Partial<UnifiedNorm> & { reference?: unknown; referencia?: unknown; version?: string; lastUpdate?: string };
-  const mutable = (data as MutableData | null) ?? null;
-  const reference = mutable ? (mutable.reference ?? mutable.referencia) : undefined;
-    const version = (mutable?.version ?? mutable?.lastUpdate ?? '') as string;
-
+  // Renderiza una referencia normativa con su enlace
+  const renderNormativeReference = (normRef: string, data?: AnyRecord): React.ReactNode => {
+    if (!normRef) return null;
+    const url = getNormativeUrl(normRef, data);
+    
     return (
-      <Card className="print-friendly">
-        <CardHeader className="border-b bg-gray-50/50"><div className="flex items-center justify-between">
-          <div><CardTitle className="text-xl text-gray-900">{countryInfo?.name} — {String((data.domain || '').replace?.('-', ' ') ?? '')}</CardTitle><p className="text-sm text-gray-600">Tabla de parámetros normativos</p></div>
-          <Badge variant="outline" className="text-xs">{records.length} registros</Badge>
-        </div></CardHeader>
-        <CardContent className="p-0">
-          <div className="p-4 border-b bg-blue-50/50"><div className="flex items-center gap-2 text-sm">
-            <ExternalLink className="w-4 h-4 text-blue-600" /><span className="font-semibold text-blue-900">Fuente: {getRefStandard(reference) ?? 'N/A'}</span><span className="text-gray-600"> - Extraído: {version}</span>
-          </div></div>
-          <div className="overflow-x-auto"><table>
-            <thead className="bg-gray-50"><tr>
-              <th className="p-4 font-semibold text-left text-gray-900">Parámetro</th><th className="p-4 font-semibold text-left text-gray-900">Límite</th>
-              <th className="p-4 font-semibold text-left text-gray-900">Unidad</th><th className="p-4 font-semibold text-left text-gray-900">Notas</th>
-            </tr></thead>
-              <tbody className="divide-y divide-gray-200">
-                {records.map((r: RecordNorm, idx: number) => {
-                const param = r.parameter ?? r.parametro ?? '';
-                const lim = getRecordLimit(r);
-                const unit = r.unit ?? r.unidad ?? '-';
-                const notes = getRecordNotes(r);
-                return (
-                  <tr key={idx} className="align-top hover:bg-gray-50">
-                    <td className="p-4 font-medium text-gray-900">{param}</td><td className="p-4 font-mono text-blue-700">{lim}</td>
-                    <td className="p-4 text-gray-600">{unit || '-'}</td><td className="p-4 text-sm text-gray-700">{(notes || []).join('; ')}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table></div>
-        </CardContent>
-      </Card>
+      <span>
+        {url ? (
+          <a
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold underline transition-all text-amber-700 hover:text-amber-900 hover:no-underline"
+            title="Ir a fuente oficial"
+          >
+            {normRef}
+          </a>
+        ) : (
+          <span>{normRef}</span>
+        )}
+      </span>
     );
   };
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Page Header */}
-      <div className="py-8 text-white bg-gradient-to-r from-blue-600 to-green-600">
-        <div className="container px-4 mx-auto">
-          <div className="flex items-center gap-4 mb-4">
-            <Button variant="secondary" size="sm" asChild><Link href="/" className="inline-flex items-center gap-2"><ArrowLeft className="w-4 h-4" /> Inicio</Link></Button>
-            <h1 className="text-3xl font-bold">Explorar Estándares</h1>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-emerald-50">
+      {/* Header - Modern gradient */}
+      <div className="relative overflow-hidden border-b shadow-lg border-slate-200/50 bg-gradient-to-r from-slate-900 via-blue-900 to-emerald-900">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 right-0 bg-blue-400 rounded-full w-96 h-96 mix-blend-multiply filter blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 rounded-full w-96 h-96 bg-emerald-400 mix-blend-multiply filter blur-3xl"></div>
+        </div>
+        <div className="container relative px-4 py-6 mx-auto">
+          <div className="flex items-center justify-between mb-4">
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              asChild
+              className="text-white hover:bg-white/10"
+            >
+              <Link href="/" className="inline-flex items-center gap-2">
+                <ArrowLeft className="w-4 h-4" />
+                Volver
+              </Link>
+            </Button>
           </div>
-          <p className="text-lg text-blue-100">Consulta y compara normativas ambientales por país y dominio.</p>
+          <h1 className="mb-2 text-4xl font-bold text-white">Explorador de Normas</h1>
+          <p className="text-lg text-blue-100">Consulta estándares ambientales internacionales</p>
         </div>
       </div>
 
-      <div className="container px-4 py-8 mx-auto">
-        <div className="max-w-6xl mx-auto">
-          {/* Control Panel */}
-          <Card className="mb-8">
-            <CardHeader><CardTitle>Seleccionar Dominio y País</CardTitle></CardHeader>
-            <CardContent>
-              <div className="grid gap-4 mb-6 md:grid-cols-3">
-                {/* Domain Selection Tabs: occupy two columns on md+ so country selector can sit beside them */}
-                <div className="md:col-span-2">
-                  <div className="flex items-center gap-2 mb-3 flex-wrap">
-                    <button className={`px-3 py-1 rounded ${domain === 'agua' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-700'}`} onClick={() => handleDomainChange('agua')}>💧 Agua</button>
-                    <button className={`px-3 py-1 rounded ${domain === 'calidad-aire' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-700'}`} onClick={() => handleDomainChange('calidad-aire')}>💨 Calidad del Aire</button>
-                    <button className={`px-3 py-1 rounded ${domain === 'residuos-solidos' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-700'}`} onClick={() => handleDomainChange('residuos-solidos')}>🗑️ Residuos Sólidos</button>
-                  </div>
-                </div>
-
-                {/* Country Selector Dropdown: placed in the 3rd column on md+ so it appears beside the domain buttons */}
-                <div className="md:col-span-1 flex items-center">
-                  <div className="w-full">
-                    <label className="block mb-2 text-sm font-medium text-gray-700 md:mb-0">País:</label>
-                    <Select value={selectedCountry} onValueChange={handleCountryChange} disabled={isLoadingCountries}>
-                      <SelectTrigger className="w-full"><SelectValue placeholder={isLoadingCountries ? "Cargando..." : "Selecciona un país"} /></SelectTrigger>
-                      <SelectContent>
-                        {countries.map((country) => (
-                          <SelectItem key={country.code} value={country.code}>
-                            <span>{country.name}</span>
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
-                </div>
-
-                {/* Conditional Sector/Filter Controls */}
-                {domain === 'agua' && (
-                  <>
-                    <div>
-                      <label className="block mb-2 text-sm font-medium text-gray-700">Sector de Uso:</label>
-                      <Select value={selectedSector} onValueChange={setSelectedSector} disabled={!selectedCountry || availableSectorIds.length === 0}>
-                        <SelectTrigger><SelectValue placeholder={availableSectorIds.length === 0 ? "No hay sectores con datos" : "Todos los sectores"} /></SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="todos">Todos los sectores</SelectItem>
-                          {SECTORES_USO.filter((sector: WaterUseType) => availableSectorIds.includes(sector.id)).map((sector: WaterUseType) => (
-                            <SelectItem key={sector.id} value={sector.id}>
-                              <span className="flex items-center gap-2"><span>{sector.icon}</span><span>{sector.nombre}</span></span>
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </div>
-                    <div>
-                      <label className="block mb-2 text-sm font-medium text-gray-700">Buscar parámetro:</label>
-                      <div className="relative">
-                        <Search className="absolute w-4 h-4 text-gray-400 transform -translate-y-1/2 left-3 top-1/2" />
-                        <Input type="text" placeholder="Ej: coliformes, pH..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="pl-10" disabled={!selectedCountry} />
+      <div className="container px-4 py-10 mx-auto">
+        <div className="mx-auto max-w-7xl">
+          
+          {/* Controls Card - Modern Design */}
+          <Card className="mb-8 border-0 shadow-lg bg-white/80 backdrop-blur-sm">
+            <CardContent className="p-6">
+              {/* Domain Selector - Grid of buttons */}
+              <div className="mb-8">
+                <label className="block mb-4 text-sm font-semibold tracking-wide text-gray-900 uppercase">Dominio Ambiental</label>
+                <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+                  {DOMINIOS.map(dominio => (
+                    <button
+                      key={dominio.id}
+                      onClick={() => handleDomainChange(dominio.id)}
+                      className={`group relative p-4 rounded-lg transition-all duration-200 overflow-hidden ${
+                        selectedDomain === dominio.id
+                          ? 'bg-gradient-to-br from-blue-600 to-blue-700 text-white shadow-lg scale-105'
+                          : 'bg-gray-50 border-2 border-gray-200 text-gray-900 hover:border-blue-400 hover:bg-blue-50'
+                      }`}
+                    >
+                      <div className={`text-3xl mb-2 transition-transform group-hover:scale-110`}>
+                        {dominio.icon}
                       </div>
-                    </div>
-                  </>
+                      <div className={`text-sm font-semibold line-clamp-2 ${selectedDomain === dominio.id ? 'text-white' : 'text-gray-900'}`}>
+                        {dominio.label}
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Country and Sector Grid */}
+              <div className={`grid gap-6 ${((availableSectors?.length) || 0) > 1 ? 'md:grid-cols-3' : 'md:grid-cols-2'}`}>
+                {/* Country Selector - Dropdown */}
+                <div>
+                  <label className="block mb-3 text-sm font-semibold tracking-wide text-gray-900 uppercase">País</label>
+                  <select 
+                    value={selectedCountry}
+                    onChange={(e) => {
+                      handleCountryChange(e.target.value);
+                    }}
+                    className="w-full px-4 py-3 text-sm font-medium text-gray-900 transition-all bg-white border-2 border-gray-300 rounded-lg appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    style={{
+                      backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3E%3C/svg%3E")`,
+                      backgroundPosition: 'right 0.5rem center',
+                      backgroundRepeat: 'no-repeat',
+                      backgroundSize: '1.5em 1.5em',
+                      paddingRight: '2.5rem'
+                    }}
+                  >
+                    <option value="">-- Selecciona un país --</option>
+                    {availableCountries.map(country => (
+                      <option key={country.code} value={country.code}>
+                        {country.flag} {country.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Sector Selector - show if sectors exist (even if just 1) */}
+                {availableSectors && availableSectors.length >= 1 && (
+                  <div>
+                    <label className="block mb-3 text-sm font-semibold tracking-wide text-gray-900 uppercase">Sector</label>
+                    {availableSectors && availableSectors.length === 1 ? (
+                      // If only 1 sector, show as read-only display
+                      <div className="w-full px-4 py-3 text-sm font-medium text-gray-900 bg-gray-100 border border-gray-300 rounded-lg">
+                        {String(availableSectors[0]).replace(/_/g, ' ').replace(/-/g, ' ')}
+                      </div>
+                    ) : (
+                      // If multiple sectors, show dropdown
+                      <select 
+                        value={selectedSector}
+                        onChange={(e) => handleSectorChange(e.target.value)}
+                        className="w-full px-4 py-3 pr-10 text-sm font-medium text-gray-900 transition-all bg-white bg-right bg-no-repeat border border-gray-300 rounded-lg appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        style={{
+                          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3E%3C/svg%3E")`,
+                          backgroundPosition: 'right 0.5rem center',
+                          backgroundSize: '1.5em 1.5em'
+                        }}
+                      >
+                        <option value="">-- Seleccionar Sector --</option>
+                        {availableSectors.map(sector => {
+                          const sectorLabel = String(sector).replace(/_/g, ' ').replace(/-/g, ' ');
+                          return (
+                            <option key={sector} value={sector}>
+                              {sectorLabel}
+                            </option>
+                          );
+                        })}
+                      </select>
+                    )}
+                  </div>
                 )}
+
+                {/* Search */}
+                <div>
+                  <label className="block mb-3 text-sm font-semibold tracking-wide text-gray-900 uppercase">Buscar</label>
+                  <div className="relative">
+                    <Search className="absolute w-5 h-5 text-gray-400 transform -translate-y-1/2 left-3 top-1/2" />
+                    <Input
+                      type="text"
+                      placeholder="Parámetro, límite..."
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      className="py-3 pl-10 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    />
+                  </div>
+                </div>
               </div>
             </CardContent>
           </Card>
 
-          {/* UI States: Loading, Error, No Selection */}
-          {loading && <Card><CardContent className="p-8 text-center"><div className="w-8 h-8 mx-auto mb-4 border-b-2 border-blue-600 rounded-full animate-spin"></div><p className="text-gray-600">Cargando datos...</p></CardContent></Card>}
-          {error && <Card className="border-red-200 bg-red-50"><CardContent className="p-6"><div className="flex items-center gap-3"><AlertTriangle className="w-5 h-5 text-red-600" /><p className="text-red-800">{error}</p></div></CardContent></Card>}
-          {!selectedCountry && !loading && <Card><CardContent className="p-8 text-center"><div className="mb-4 text-6xl">🌍</div><h3 className="mb-2 text-xl font-semibold text-gray-900">Selecciona un país para comenzar</h3><p className="text-gray-600">Elige un país para consultar sus estándares.</p></CardContent></Card>}
+          {/* Loading State */}
+          {loading && (
+            <div className="space-y-6">
+              <LoadingSkeleton type="card" rows={3} />
+              <TableSkeleton rows={5} columns={4} />
+            </div>
+          )}
 
-          {/* Results Display */}
+          {/* Error State */}
+          {error && (
+            <Card className="border-red-200 bg-red-50">
+              <CardContent className="p-6">
+                <div className="flex items-center gap-3">
+                  <AlertTriangle className="w-5 h-5 text-red-600" />
+                  <p className="text-red-800">{error}</p>
+                </div>
+              </CardContent>
+            </Card>
+          )}
+
+          {/* Results */}
           {data && countryInfo && !loading && (
             <>
-              {domain === 'agua' && data.sectors && renderWaterContent()}
-              {(data.records || data.registros) && renderRecordsContent()}
-              
-              <Card className="mt-8 border-yellow-200 bg-yellow-50"><CardContent className="p-6"><div className="flex items-start gap-3">
-                <AlertTriangle className="h-5 w-5 text-yellow-600 mt-0.5" /><div><h3 className="mb-2 font-semibold text-yellow-900">Aviso de Vigencia</h3><p className="text-sm text-yellow-800">Esta información es referencial. Siempre verifica la vigencia de las normas consultando las autoridades competentes.</p></div>
-              </div></CardContent></Card>
+              {/* Country Info Header - Modern Design */}
+              <div className="p-6 mb-8 text-white shadow-lg rounded-xl bg-gradient-to-r from-blue-600 to-blue-700">
+                <div className="flex items-center justify-between gap-6">
+                  <div className="flex items-center flex-1 gap-4">
+                    <div className="text-5xl">{countryInfo.flag}</div>
+                    <div className="flex-1">
+                      <h2 className="mb-1 text-3xl font-bold">{countryInfo.name}</h2>
+                      <div className="flex items-center gap-3 text-blue-100">
+                        <span className="text-lg">{currentDominio.icon}</span>
+                        <span className="font-semibold">{currentDominio.label}</span>
+                        {filteredRecords.length > 0 && (
+                          <>
+                            <span>•</span>
+                            <span>{filteredRecords.length} parámetro{filteredRecords.length !== 1 ? 's' : ''}</span>
+                            {searchQuery && <span>• Búsqueda: &quot;{searchQuery}&quot;</span>}
+                          </>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                  <Button 
+                    variant="secondary" 
+                    className="text-blue-600 bg-white no-print hover:bg-blue-50" 
+                    size="lg" 
+                    onClick={() => window.print()}
+                  >
+                    <Download className="w-4 h-4 mr-2" />
+                    Exportar PDF
+                  </Button>
+                </div>
+              </div>
+
+              {/* Sections Display - Modern Cards */}
+              <div className="space-y-6">
+                {Object.entries(sectionsToDisplay).length > 0 ? (
+                  Object.entries(sectionsToDisplay).map(([sectionKey, records], index) => {
+                    // Use smart icon matching instead of direct lookup
+                    const sectionIcon = getSectorIcon(sectionKey, currentDominio.icon);
+                    const sectionLabel = sectionKey === 'general' 
+                      ? currentDominio.label 
+                      : sectionKey.replace(/_/g, ' ').replace('-', ' ');
+                    
+                    return (
+                      <Card key={index} className="overflow-hidden border-0 shadow-lg print-friendly">
+                        <CardHeader className="pb-4 border-b bg-gradient-to-r from-slate-100 to-slate-50 border-slate-200">
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-4">
+                              <div className="flex items-center justify-center w-12 h-12 text-blue-600 bg-blue-100 rounded-lg">
+                                {sectionIcon}
+                              </div>
+                              <div>
+                                <CardTitle className="text-xl text-gray-900 capitalize">
+                                  {sectionLabel}
+                                </CardTitle>
+                                <p className="mt-1 text-sm text-gray-600">
+                                  {records.length} {records.length === 1 ? 'parámetro' : 'parámetros'}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </CardHeader>
+                        
+                        <CardContent className="p-0">
+                          {/* Normativa Info */}
+                          <div className="p-4 border-b bg-amber-50 border-amber-200">
+                            <div className="flex items-start gap-3">
+                              <ExternalLink className="flex-shrink-0 w-4 h-4 mt-1 text-amber-600" />
+                              <div>
+                                <div className="text-sm font-semibold text-amber-900">
+                                    {(() => {
+                                    // Prefer sector-specific normative URL/name when provided by the API
+                                    // Accept either internal `_sectors` (API normalized) or original `sectors`
+                                    const allSectors = (data as AnyRecord)?._sectors || (data as AnyRecord)?.sectors;
+                                    const sectorObj = allSectors ? (allSectors as Record<string, AnyRecord>)[sectionKey] as AnyRecord | undefined : undefined;
+
+                                    // 1. If the sector has normativeSources, render them
+                                    if (Array.isArray(sectorObj?.normativeSources) && sectorObj?.normativeSources.length > 0) {
+                                      return (
+                                        <div className="flex flex-col gap-1">
+                                          {sectorObj.normativeSources.map((s: AnyRecord, idx: number) => (
+                                            <a
+                                              key={idx}
+                                              href={String(s.url ?? '')}
+                                              target="_blank"
+                                              rel="noopener noreferrer"
+                                              className="text-sm font-semibold underline transition-all text-amber-700 hover:text-amber-900 hover:no-underline"
+                                              title={String(s.description ?? s.name ?? '')}
+                                            >
+                                              {String(s.name ?? '')}
+                                            </a>
+                                          ))}
+                                        </div>
+                                      );
+                                    }
+
+                                    // 2. If data has general normativeSources (not per sector), use those
+                                    const generalSources = (data as AnyRecord)?.normativeSources;
+                                    if (Array.isArray(generalSources) && generalSources.length > 0) {
+                                      return (
+                                        <div className="flex flex-col gap-1">
+                                          {generalSources.map((s: AnyRecord, idx: number) => (
+                                            <a
+                                              key={idx}
+                                              href={String(s.url ?? '')}
+                                              target="_blank"
+                                              rel="noopener noreferrer"
+                                              className="text-sm font-semibold underline transition-all text-amber-700 hover:text-amber-900 hover:no-underline"
+                                              title={String(s.description ?? s.name ?? '')}
+                                            >
+                                              {String(s.name ?? '')}
+                                            </a>
+                                          ))}
+                                        </div>
+                                      );
+                                    }
+
+                                    // 3. If API provided a direct URL and source name, render that
+                                    const directUrl = sectorObj?.normativeUrl ?? sectorObj?.normativeReference_url;
+                                    if (directUrl) {
+                                      const label = String(sectorObj?.normativeSourceName ?? sectorObj?.normativeReference ?? sectorObj?.normativeReference_es ?? sectorObj?.name ?? 'Fuente normativa');
+                                      return (
+                                        <a
+                                          href={String(directUrl)}
+                                          target="_blank"
+                                          rel="noopener noreferrer"
+                                          className="font-semibold underline transition-all text-amber-700 hover:text-amber-900 hover:no-underline"
+                                          title="Ir a fuente oficial"
+                                        >
+                                          {label}
+                                        </a>
+                                      );
+                                    }
+
+                                    // 4. Fallback: try to resolve link via REGULATORY_SOURCES or data.sources
+                                    const sectorNorm = sectorObj?.normativeReference ?? sectorObj?.normativeReference_es;
+                                    const fallback = (data as AnyRecord)?.normativeReference ?? (data as AnyRecord)?.normativeReference_es;
+
+                                    // If API didn't provide per-sector normativeSources, split combined references
+                                    // (like "GB 5749-2022, GB 3838-2002") into separate links using the same matching helper.
+                                    const textToUse = sectorNorm ?? fallback;
+                                    if (!sectorObj?.normativeSources && typeof textToUse === 'string' && /,|;| y | and /i.test(textToUse)) {
+                                      const parts = String(textToUse).split(/,|;| y | and /i).map(p => p.trim()).filter(Boolean);
+                                      return (
+                                        <div className="flex flex-col gap-1">
+                                          {parts.map((part, idx) => (
+                                            <span key={idx} className="text-sm">
+                                              {renderNormativeReference(part, data)}
+                                            </span>
+                                          ))}
+                                        </div>
+                                      );
+                                    }
+
+                                    return renderNormativeReference(textToUse as string, data);
+                                  })()}
+                                </div>
+                                {data.lastUpdate && (
+                                  <p className="mt-1 text-xs text-amber-700">
+                                    Actualizado: {data.lastUpdate}
+                                  </p>
+                                )}
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Parameters Table - Modern styling */}
+                          <div className="overflow-x-auto">
+                            <table className="w-full text-sm">
+                              <thead className="border-b bg-slate-50 border-slate-200">
+                                <tr>
+                                  <th className="px-4 py-3 text-xs font-semibold tracking-wide text-left text-gray-900 uppercase">Parámetro</th>
+                                  <th className="px-4 py-3 text-xs font-semibold tracking-wide text-left text-gray-900 uppercase">Valor Límite</th>
+                                  <th className="px-4 py-3 text-xs font-semibold tracking-wide text-left text-gray-900 uppercase">Unidad</th>
+                                  <th className="px-4 py-3 text-xs font-semibold tracking-wide text-left text-gray-900 uppercase">Notas</th>
+                                </tr>
+                              </thead>
+                              <tbody className="divide-y divide-slate-200">
+                                {records.map((record: AnyRecord, paramIndex: number) => (
+                                  <tr key={paramIndex} className="transition-colors hover:bg-blue-50">
+                                    <td className="px-4 py-3 font-medium text-gray-900">
+                                      {String(record.parameter ?? record.parametro ?? '-')}
+                                    </td>
+                                    <td className="px-4 py-3 font-mono font-semibold text-blue-700">
+                                      {String(record.limit ?? record.limite ?? '-')}
+                                    </td>
+                                    <td className="px-4 py-3 text-gray-600">
+                                      {String(record.unit ?? record.unidad ?? '-')}
+                                    </td>
+                                    <td className="px-4 py-3 text-xs text-gray-600">
+                                      {Array.isArray(record.notes) ? record.notes.join('; ') : (Array.isArray(record.notas) ? record.notas.join('; ') : '')}
+                                    </td>
+                                  </tr>
+                                ))}
+                              </tbody>
+                            </table>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    );
+                  })
+                ) : (
+                  <Card className="border-0 shadow-lg bg-gradient-to-br from-slate-50 to-blue-50">
+                    <CardContent className="p-12 text-center">
+                      <Filter className="w-16 h-16 mx-auto mb-4 text-slate-300" />
+                      <h3 className="mb-2 text-2xl font-semibold text-gray-900">
+                        No se encontraron parámetros
+                      </h3>
+                      <p className="max-w-md mx-auto text-gray-600">
+                        Intenta cambiar los filtros, dominio o el término de búsqueda para encontrar los estándares que buscas.
+                      </p>
+                    </CardContent>
+                  </Card>
+                )}
+              </div>
+
+              {/* Footer Info - Warning Card */}
+              <Card className="mt-8 border-0 shadow-lg bg-gradient-to-r from-amber-50 to-orange-50">
+                <CardContent className="p-6">
+                  <div className="flex items-start gap-4">
+                    <div className="p-2 rounded-lg bg-amber-100">
+                      <AlertTriangle className="w-5 h-5 text-amber-600" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="mb-2 text-lg font-semibold text-amber-900">
+                        ⚠️ Importante: Verifica la Vigencia
+                      </h3>
+                      <p className="text-sm text-amber-800">
+                        Esta información se basa en normatividad disponible. Siempre verifica la vigencia actual consultando los diarios oficiales o autoridades competentes de cada país, ya que las regulaciones pueden cambiar.
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
             </>
+          )}
+
+          {/* No Country Selected - Modern Empty State */}
+          {!selectedCountry && !loading && (
+            <div className="py-12">
+              <Card className="border-0 shadow-lg bg-gradient-to-br from-blue-50 via-white to-emerald-50">
+                <CardContent className="p-12 text-center">
+                  <div className="text-7xl animate-bounce">🌍</div>
+                  <h3 className="mb-3 text-2xl font-bold text-gray-900">
+                    Comienza tu búsqueda de normas ambientales
+                  </h3>
+                    <p className="max-w-md mx-auto mb-6 text-gray-600">
+                    Selecciona un dominio ambiental, elige un país{((availableSectors?.length) || 0) > 1 ? ' y un sector ' : ' '}y explora los estándares vigentes.
+                  </p>
+                  <div className="flex flex-wrap justify-center gap-2">
+                    <Badge variant="outline" className="text-blue-900 bg-blue-100">💧 Agua</Badge>
+                    <Badge variant="outline" className="bg-emerald-100 text-emerald-900">💨 Aire</Badge>
+                    <Badge variant="outline" className="text-orange-900 bg-orange-100">♻️ Residuos</Badge>
+                    <Badge variant="outline" className="bg-cyan-100 text-cyan-900">🌊 Vertimientos</Badge>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
           )}
         </div>
       </div>
@@ -441,8 +624,8 @@ function ExploreContent() {
 
 export default function ExplorarPage() {
   return (
-    <Suspense fallback={<div>Cargando...</div>}>
-      <ExploreContent />
+    <Suspense fallback={<div className="p-8 text-center">Cargando...</div>}>
+      <ExplorarContent />
     </Suspense>
   );
 }

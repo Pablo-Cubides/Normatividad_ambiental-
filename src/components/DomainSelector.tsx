@@ -1,5 +1,6 @@
 'use client';
 
+
 type Domain = 'agua' | 'calidad-aire' | 'residuos-solidos' | '';
 
 interface DomainSelectorProps {

@@ -1,31 +1,17 @@
 {
   "pais": "Colombia",
   "dominio": "calidad-aire",
-  "version": "2025-09-28",
+  "normativeReference_es": "Resolución 2254/2017",
   "registros": [
-    {
-      "parametro": "Material Particulado (PM10)",
-      "limite": "50 μg/m3 (24h)",
-      "unidad": "μg/m³",
-      "notas": ["Valor límite de corto plazo", "Monitoreo con estaciones fijas"],
-      "referencia": { "norma": "Decreto 1077 de 2015 (compila criterios)", "entidad": "Ministerio de Ambiente y Desarrollo Sostenible", "anio": 2015 },
-      "categoria": "otros"
-    },
-    {
-      "parametro": "Material Particulado (PM2.5)",
-      "limite": "25 μg/m3 (24h)",
-      "unidad": "μg/m³",
-      "notas": ["Considerado para salud respiratoria"],
-      "referencia": { "norma": "Decreto 1077 de 2015", "entidad": "Ministerio de Ambiente", "anio": 2015 },
-      "categoria": "otros"
-    },
-    {
-      "parametro": "Dióxido de Azufre (SO2)",
-      "limite": "350 μg/m3 (1h)",
-      "unidad": "μg/m³",
-      "notas": ["Protege contra irritación respiratoria"],
-      "referencia": { "norma": "Decreto 1077 de 2015", "entidad": "Ministerio de Ambiente", "anio": 2015 },
-      "categoria": "otros"
-    }
+    { "parametro": "PM10", "limite": "30 µg/m³", "notas": ["Límite a partir de 2030 (Anual)"] },
+    { "parametro": "PM10", "limite": "50 µg/m³", "notas": ["Límite a partir de 2030 (24 horas)"] },
+    { "parametro": "PM2.5", "limite": "15 µg/m³", "notas": ["Límite a partir de 2030 (Anual)"] },
+    { "parametro": "PM2.5", "limite": "25 µg/m³", "notas": ["Límite a partir de 2030 (24 horas)"] },
+    { "parametro": "SO2", "limite": "50 µg/m³", "notas": ["Límite a partir de 2030 (24 horas)"] },
+    { "parametro": "SO2", "limite": "100 µg/m³", "notas": ["Límite a partir de 2030 (1 hora)"] },
+    { "parametro": "NO2", "limite": "40 µg/m³", "notas": ["Límite a partir de 2030 (Anual)"] },
+    { "parametro": "NO2", "limite": "100 µg/m³", "notas": ["Límite a partir de 2030 (1 hora)"] },
+    { "parametro": "O3", "limite": "100 µg/m³", "notas": ["Límite a partir de 2030 (8 horas)"] },
+    { "parametro": "CO", "limite": "5,000 µg/m³", "notas": ["Límite a partir de 2030 (8 horas)"] }
   ]
 }

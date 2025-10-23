@@ -1,0 +1,42 @@
+{
+  "pais": "Unión Europea",
+  "dominio": "vertimientos",
+  "version": "2025-10-23",
+  "normativeReference_es": "Directiva 91/271/CEE (aguas residuales urbanas), BREF Refino de Petróleo y Gas (NE-MTD).",
+  "normativeSources": [
+    {
+      "name": "Directiva 91/271/CEE",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:01991L0271-20140101",
+      "description": "Tratamiento de aguas residuales urbanas",
+      "type": "official",
+      "lastValidated": "2025-10-23"
+    }
+  ],
+  "sectors": {
+    "municipal_urban_wastewater": {
+      "name": "PTAR urbanas – Tratamiento secundario",
+      "normativeReference": "Directiva 91/271/CEE, Anexo I, Tabla 1",
+      "normativeReference_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:01991L0271-20140101",
+      "parameters": [
+        { "parametro": "DBO5", "limite": "25 mg/L O2 o reducción 70–90%" },
+        { "parametro": "DQO", "limite": "125 mg/L O2 o reducción 75%" },
+        { "parametro": "SST", "limite": "35 mg/L o reducción 90%" }
+      ]
+    },
+    "refinerias_ne_mtd": {
+      "name": "Refino de petróleo – NE-MTD (vertido directo)",
+      "normativeReference": "REF BREF (Niveles de Emisión – Mejores Técnicas Disponibles)",
+      "normativeReference_url": "https://eippcb.jrc.ec.europa.eu/sites/default/files/2019-11/REF_BREF_2015.pdf",
+      "parameters": [
+        { "parametro": "DQO (promedio anual)", "limite": "19 – 125 mg/L" },
+        { "parametro": "SST (promedio anual)", "limite": "4 – 35 mg/L" },
+        { "parametro": "Hidrocarburos de petróleo (HOI)", "limite": "0.3 – 5 mg/L" },
+        { "parametro": "Nitrógeno total", "limite": "3 – 22 mg/L" },
+        { "parametro": "Amoníaco-N", "limite": "0.3 – 15 mg/L" },
+        { "parametro": "Fenoles", "limite": "0.01 – 0.4 mg/L" },
+        { "parametro": "Sulfuros", "limite": "0.005 – 0.2 mg/L" },
+        { "parametro": "Benceno", "limite": "<0.001 – 0.1 mg/L" }
+      ]
+    }
+  }
+}

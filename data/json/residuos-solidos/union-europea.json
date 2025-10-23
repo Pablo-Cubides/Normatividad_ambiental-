@@ -1,27 +1,51 @@
 {
   "pais": "Unión Europea",
-  "paisCodigo": "union-europea",
   "dominio": "residuos-solidos",
-  "version": "2.0.0",
-  "fuentePrincipal": "Directiva 2008/98/CE (Directiva Marco de Residuos)",
+  "normativeReference_es": "Directiva Marco de Residuos (2008/98/EC), Directiva de Vertederos (1999/31/EC)",
+  "normativeSources": [
+    {
+      "name": "Directiva Marco de Residuos (2008/98/EC)",
+      "url": "https://eur-lex.europa.eu/legal-content/ES/TXT/?uri=celex%3A32008L0098",
+      "description": "Marco legal de residuos en la UE",
+      "type": "official",
+      "lastValidated": "2025-10-21"
+    }
+  ],
   "registros": [
     {
-      "categoria": "Jerarquía de Residuos",
-      "parametro": "Orden de Prioridad",
-      "limite": "1. Prevención, 2. Preparación para la reutilización, 3. Reciclaje, 4. Outro tipo de valorización (ej. energética), 5. Eliminación",
-      "referencia": { "norma": "Directiva 2008/98/CE" }
+      "categoria": "Peligrosos",
+      "parametro": "Gestión",
+      "limite": "Define los residuos peligrosos. Exige trazabilidad. Los Estados miembros deben garantizar una gestión segura.",
+      "referencia": { "norma": "Directiva Marco de Residuos (2008/98/EC)" },
+      "notas": ["Autoridad: Comisión Europea (establece el marco); Autoridades de los Estados Miembros (implementan)"]
     },
     {
-      "categoria": "Responsabilidad Ampliada del Productor (RAP)",
-      "parametro": "Obligación de los Productores",
-      "limite": "Los productores de determinados productos (ej. envases, aparatos electrónicos) deben financiar la gestión de sus residuos post-consumo.",
-      "notas": ["Implementado a nivel de cada Estado miembro"]
+      "categoria": "Municipales/Ordinarios",
+      "parametro": "Jerarquía y Recolección",
+      "limite": "Establece la jerarquía de residuos. Recolección separada obligatoria (papel, plástico, metal, vidrio). REP obligatoria para todos los envases para 2024. Metas de reciclaje.",
+      "referencia": { "norma": "Directiva Marco de Residuos; Reglamento sobre Envases y Residuos de Envases" },
+      "notas": ["Autoridad: Comisión Europea; Autoridades de los Estados Miembros"]
     },
     {
-      "categoria": "Clasificación de Residuos",
-      "parametro": "Lista Europea de Residuos (LER)",
-      "limite": "Todos los residuos se clasifican según un código LER armonizado, que determina si son peligrosos o no.",
-      "referencia": { "norma": "Decisión 2000/532/CE" }
+      "categoria": "RCD",
+      "parametro": "Valorización",
+      "limite": "Meta del 70% de valorización para 2020. Promoción de la clasificación en origen. Los detalles se manejan a nivel de Estado miembro.",
+      "referencia": { "norma": "Directiva Marco de Residuos" },
+      "notas": ["Autoridad: Comisión Europea; Autoridades de los Estados Miembros"]
+    },
+    {
+      "categoria": "Orgánicos",
+      "parametro": "Reducción",
+      "limite": "Obliga a la reducción progresiva de los residuos municipales biodegradables enviados a vertederos, impulsando la recolección y el tratamiento por separado.",
+      "referencia": { "norma": "Directiva de Vertederos (1999/31/EC)" },
+      "notas": ["Autoridad: Comisión Europea; Autoridades de los Estados Miembros"]
+    },
+    {
+      "categoria": "Todos los Residuos (en Vertederos)",
+      "parametro": "Clasificación y Tratamiento",
+      "limite": "Clasifica los vertederos (peligrosos, no peligrosos, inertes). Exige tratamiento de residuos previo al vertido. Establece una meta de vertido del 10% para 2035.",
+      "referencia": { "norma": "Directiva de Vertederos (1999/31/EC)" },
+      "notas": ["Autoridad: Comisión Europea; Autoridades de los Estados Miembros"]
     }
   ]
 }

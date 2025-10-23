@@ -1,40 +1,17 @@
 {
   "pais": "Argentina",
   "dominio": "calidad-aire",
-  "version": "2025-09-28",
-  "referencia": {
-    "norma": "Ley 20.284/1973 (PEN) Anexo II"
-  },
+  "normativeReference_es": "Ley General del Ambiente 25.675 - Decreto Reglamentario 831/2023",
   "registros": [
-    {
-      "parametro": "CO",
-      "limite": "10 (8 h, norma base); 50 (1 h, prevención)",
-      "unidad": "ppm",
-      "notas": ["Valores para estado normal (prevención), alerta, alarma y emergencia"]
-    },
-    {
-      "parametro": "NOx (principalmente NO2)",
-      "limite": "0.45 (1 h), 0.15 (24 h)",
-      "unidad": "ppm",
-      "notas": ["Plan de prevención de situaciones críticas"]
-    },
-    {
-      "parametro": "SO2",
-      "limite": "0.03 (promedio mensual); 1 (1 h alerta)",
-      "unidad": "ppm",
-      "notas": ["Incluye niveles de alerta, alarma, emergencia"]
-    },
-    {
-      "parametro": "O3",
-      "limite": "0.10 (1 h); 0.15 (alerta)",
-      "unidad": "ppm",
-      "notas": ["Valores de plan de emergencia (alerta/alarma)"]
-    },
-    {
-      "parametro": "Partículas en suspensión (total)",
-      "limite": "150 (promedio mensual)",
-      "unidad": "mg/m³",
-      "notas": ["Material particulado total; basada en promedios mensuales"]
-    }
+    { "parametro": "SO2", "limite": "70 µg/m³", "notas": ["Promedio mensual - Nacional (Ley 20.284/1973)"] },
+    { "parametro": "CO", "limite": "11,400 µg/m³ (10 ppm)", "notas": ["8 horas - Nacional"] },
+    { "parametro": "Partículas en Suspensión", "limite": "150 µg/m³", "notas": ["Promedio mensual - Nacional"] },
+    { "parametro": "PM2.5", "limite": "65 µg/m³", "notas": ["24 horas - Buenos Aires (Ley 1356)"] },
+    { "parametro": "PM2.5", "limite": "15 µg/m³", "notas": ["Anual - Buenos Aires"] },
+    { "parametro": "PM10", "limite": "150 µg/m³", "notas": ["24 horas - Buenos Aires"] },
+    { "parametro": "PM10", "limite": "50 µg/m³", "notas": ["Anual - Buenos Aires"] },
+    { "parametro": "O3", "limite": "157 µg/m³", "notas": ["8 horas - Buenos Aires"] },
+    { "parametro": "NO2", "limite": "100 µg/m³", "notas": ["Anual - Buenos Aires"] },
+    { "parametro": "SO2", "limite": "365 µg/m³", "notas": ["24 horas - Buenos Aires"] }
   ]
 }

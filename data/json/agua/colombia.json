@@ -1,74 +1,94 @@
 {
   "pais": "Colombia",
-  "paisCodigo": "colombia",
   "dominio": "agua",
-  "version": "2.0.0",
-  "fuentePrincipal": "Decreto 1594 de 1984, Resolución 2115 de 2007, Resolución 0631 de 2015",
-  "registros": [
-    {
-      "categoria": "Consumo humano y doméstico (fuente de agua cruda)",
-      "parametro": "Coliformes Totales",
-      "limite": "≤1000",
-      "unidad": "NMP/100 mL",
-      "notas": ["Agua cruda que requiere tratamiento convencional para ser potable"]
-    },
-    {
-      "categoria": "Consumo humano y doméstico (agua tratada)",
-      "parametro": "Coliformes Fecales (E. coli)",
-      "limite": "0",
-      "unidad": "NMP/100 mL",
-      "referencia": { "norma": "Resolución 2115 de 2007" }
-    },
-    {
-      "categoria": "Uso agrícola (riego)",
-      "parametro": "Coliformes Fecales",
-      "limite": "≤1000",
-      "unidad": "NMP/100 mL",
-      "notas": ["Para riego de cultivos de consumo crudo"]
-    },
-    {
-      "categoria": "Uso pecuario (bebida de animales)",
-      "parametro": "Nitratos + Nitritos",
-      "limite": "≤100",
-      "unidad": "mg/L como N"
-    },
-    {
-      "categoria": "Uso recreativo (contacto primario)",
-      "parametro": "Coliformes Fecales",
-      "limite": "≤200",
-      "unidad": "NMP/100 mL"
-    },
-    {
-      "categoria": "Preservación de Flora y Fauna",
-      "parametro": "Oxígeno Disuelto",
-      "limite": "≥5",
-      "unidad": "mg/L",
-      "notas": ["Para aguas dulces frías"]
-    },
-    {
-      "categoria": "Preservación de Flora y Fauna",
-      "parametro": "Mercurio (Hg)",
-      "limite": "≤0.00001",
-      "unidad": "mg/L",
-      "notas": ["Valor extremadamente bajo para protección de vida acuática"]
-    }
-  ],
+  "normativeReference_es": "Resolución 2115 de 2007, Decreto 1594 de 1984, Resolución 1256 de 2021",
   "sectors": {
-    "agua-potable": {
-      "name": "Agua Potable",
-      "description": "Parámetros para agua destinada al consumo humano",
+    "agua_potable": {
+      "name": "Agua para Consumo Humano (Resolución 2115 de 2007)",
+      "normativeReference": "Resolucion 2115 de 2007",
       "parameters": [
-        { "parameter": "pH", "value": "6.5 - 9.0", "unit": "Unidades de pH", "source": "Resolución 2115/2007" },
-        { "parameter": "Turbiedad", "value": "≤2", "unit": "NTU", "source": "Resolución 2115/2007" },
-        { "parameter": "Coliformes Fecales", "value": "0", "unit": "NMP/100 mL", "source": "Resolución 2115/2007" }
+        { "parametro": "Color aparente", "limite": "15 UPC" },
+        { "parametro": "Olor y sabor", "limite": "Aceptable" },
+        { "parametro": "Turbiedad", "limite": "2 UNT" },
+        { "parametro": "pH", "limite": "6,5 a 9,0" },
+        { "parametro": "Arsénico", "limite": "0,01 mg/L" },
+        { "parametro": "Cadmio", "limite": "0,003 mg/L" },
+        { "parametro": "Cianuro libre y disociable", "limite": "0,05 mg/L" },
+        { "parametro": "Cromo total", "limite": "0,05 mg/L" },
+        { "parametro": "Mercurio", "limite": "0,001 mg/L" },
+        { "parametro": "Níquel", "limite": "0,02 mg/L" },
+        { "parametro": "Plomo", "limite": "0,01 mg/L" },
+        { "parametro": "Trihalometanos Totales", "limite": "0,2 mg/L" },
+        { "parametro": "Cloruros", "limite": "250 mg/L" },
+        { "parametro": "Dureza total", "limite": "300 mg/L" },
+        { "parametro": "Hierro total", "limite": "0,3 mg/L" },
+        { "parametro": "Manganeso", "limite": "0,1 mg/L" },
+        { "parametro": "Sulfatos", "limite": "250 mg/L" },
+        { "parametro": "Zinc", "limite": "3 mg/L" },
+        { "parametro": "Aluminio", "limite": "0,2 mg/L" },
+        { "parametro": "Coliformes totales", "limite": "0 UFC/100 cm³" },
+        { "parametro": "Escherichia coli", "limite": "0 UFC/100 cm³" },
+        { "parametro": "Giardia", "limite": "0 Quistes" },
+        { "parametro": "Cryptosporidium", "limite": "0 Ooquistes" }
       ]
     },
-    "riego": {
-      "name": "Riego Agrícola",
-      "description": "Parámetros para agua utilizada en riego",
+    "uso_agricola": {
+      "name": "Criterios de Calidad para Uso Agrícola (Decreto 1594 de 1984, Art. 41)",
+      "normativeReference": "Decreto 1594 de 1984",
       "parameters": [
-        { "parameter": "Coliformes Fecales", "value": "≤1000", "unit": "NMP/100 mL", "notas": ["Para cultivos de consumo crudo"] },
-        { "parameter": "pH", "value": "4.5 - 9.0", "unit": "unidades" }
+        { "parametro": "Coliformes totales", "limite": "(para riego de frutas y hortalizas)" },
+        { "parametro": "Coliformes fecales", "limite": "(para riego de frutas y hortalizas)" },
+        { "parametro": "Arsénico", "limite": "0,1 mg/L" },
+        { "parametro": "Cadmio", "limite": "0,01 mg/L" },
+        { "parametro": "Cromo", "limite": "0,1 mg/L" },
+        { "parametro": "Plomo", "limite": "5,0 mg/L" },
+        { "parametro": "Mercurio", "limite": "0,001 mg/L" },
+        { "parametro": "Selenio", "limite": "0,02 mg/L" },
+        { "parametro": "Boro", "limite": "0,3 - 4,0 mg/L (depende del cultivo)" }
+      ]
+    },
+    "uso_pecuario": {
+      "name": "Criterios de Calidad para Uso Pecuario (Decreto 1594 de 1984, Art. 42)",
+      "normativeReference": "Decreto 1594 de 1984",
+      "parameters": [
+        { "parametro": "Coliformes totales", "limite": "5.000 NMP/100 ml" },
+        { "parametro": "Arsénico", "limite": "0,2 mg/L" },
+        { "parametro": "Cadmio", "limite": "0,05 mg/L" },
+        { "parametro": "Plomo", "limite": "0,1 mg/L" },
+        { "parametro": "Cromo", "limite": "1,0 mg/L" },
+        { "parametro": "Mercurio", "limite": "0,002 mg/L" },
+        { "parametro": "Nitratos + Nitritos", "limite": "100 mg/L" },
+        { "parametro": "Sólidos disueltos totales", "limite": "3.000 mg/L" }
+      ]
+    },
+    "recreacion": {
+        "name": "Criterios de Calidad para Fines Recreativos (Contacto Primario) (Decreto 1594 de 1984, Art. 43)",
+        "normativeReference": "Decreto 1594 de 1984",
+        "parameters": [
+            { "parametro": "Coliformes totales", "limite": "NMP/100 ml" },
+            { "parametro": "Coliformes fecales", "limite": "NMP/100 ml" },
+            { "parametro": "pH", "limite": "5,0 - 9,0" },
+            { "parametro": "Oxígeno Disuelto", "limite": "mg/L" },
+            { "parametro": "Grasas y aceites", "limite": "Ausencia de película visible" }
+        ]
+    },
+    "reuso_agricola": {
+      "name": "Criterios de Calidad para el Reúso de Aguas Residuales en Uso Agrícola (Resolución 1256 de 2021)",
+      "normativeReference": "Resolucion 1256 de 2021",
+      "parameters": [
+        { "parametro": "Escherichia coli", "limite": "1000 UFC/100 mL" },
+        { "parametro": "Huevos de Helmintos", "limite": "1 Huevos/L" },
+        { "parametro": "pH", "limite": "5,0 - 9,0" },
+        { "parametro": "Sólidos Suspendidos Totales", "limite": "30 mg/L" },
+        { "parametro": "DBO5", "limite": "30 mg/L" },
+        { "parametro": "Arsénico", "limite": "0,1 mg/L" },
+        { "parametro": "Cadmio", "limite": "0,01 mg/L" },
+        { "parametro": "Cromo", "limite": "0,1 mg/L" },
+        { "parametro": "Mercurio", "limite": "0,001 mg/L" },
+        { "parametro": "Níquel", "limite": "0,2 mg/L" },
+        { "parametro": "Plomo", "limite": "0,01 mg/L" },
+        { "parametro": "Conductividad Eléctrica", "limite": "2 dS/m" },
+        { "parametro": "Razón de Adsorción de Sodio (RAS)", "limite": "10" }
       ]
     }
   }

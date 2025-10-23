@@ -1,47 +1,274 @@
 {
   "pais": "Estados Unidos",
-  "paisCodigo": "estados-unidos",
   "dominio": "agua",
-  "version": "2.0.0",
-  "fuentePrincipal": "EPA - Safe Drinking Water Act (SDWA), Clean Water Act (CWA)",
-  "registros": [
-    {
-      "categoria": "Agua Potable (Consumo Humano)",
-      "parametro": "Plomo (Pb)",
-      "limite": "≤15",
-      "unidad": "µg/L",
-      "referencia": { "norma": "EPA - Lead and Copper Rule" },
-      "notas": ["Nivel de acción en el grifo"]
-    },
-    {
-      "categoria": "Aguas Recreativas (Contacto Primario)",
-      "parametro": "E. coli",
-      "limite": "126",
-      "unidad": "UFC/100 mL",
-      "referencia": { "norma": "EPA - Recreational Water Quality Criteria" },
-      "notas": ["Promedio geométrico (media de 30 días)"]
-    },
-    {
-      "categoria": "Reúso de Aguas Residuales (California Title 22)",
-      "parametro": "Coliformes Totales",
-      "limite": "≤2.2",
-      "unidad": "NMP/100 mL",
-      "notas": ["Para riego de cultivos de consumo humano crudo (tratamiento terciario)"]
-    },
-    {
-      "categoria": "Protección de Vida Acuática de Agua Dulce",
-      "parametro": "Amoníaco (no ionizado)",
-      "limite": "<0.02",
-      "unidad": "mg/L",
-      "referencia": { "norma": "EPA - Aquatic Life Criteria" }
-    }
-  ],
+  "normativeReference_es": "Ley de Agua Potable Segura (SDWA). Estándares Nacionales Primarios de Agua Potable (NPDWRs) y Estándares Nacionales Secundarios (NSDWRs).",
   "sectors": {
-    "agua-potable": {
-      "name": "Agua Potable",
+    "agua_potable": {
+      "name": "Agua Potable - SDWA (NPDWRs y NSDWRs)",
+      "normativeReference": "NPDWRs (primarios) y NSDWRs (secundarios)",
+      "normativeReference_url": "https://www.gvsu.edu/cms4/asset/E1327343-09F0-03FF-AA9032F47AD1EB9C/standards.pdf",
       "parameters": [
-        { "parameter": "Arsénico", "value": "≤10", "unit": "µg/L" },
-        { "parameter": "pH", "value": "6.5 - 8.5" }
+        { "parametro": "Cryptosporidium", "limite": "TT; MCLG = 0" },
+        { "parametro": "Giardia lamblia", "limite": "TT; MCLG = 0" },
+        { "parametro": "Bacterias heterotróficas (HPC)", "limite": "TT; MCLG = N/A" },
+        { "parametro": "Legionella", "limite": "TT; MCLG = 0" },
+        { "parametro": "Coliformes totales", "limite": "TT; MCLG = 0" },
+        { "parametro": "Virus entéricos", "limite": "TT; MCLG = 0" },
+        { "parametro": "Cloro (desinfectante)", "limite": "MRDL = 4.0 mg/L; MRDLG = 4 mg/L" },
+        { "parametro": "Cloraminas (desinfectante)", "limite": "MRDL = 4.0 mg/L; MRDLG = 4 mg/L" },
+        { "parametro": "Dióxido de cloro (desinfectante)", "limite": "MRDL = 0.8 mg/L; MRDLG = 0.8 mg/L" },
+        { "parametro": "Bromato (subproducto)", "limite": "MCL = 0.010 mg/L; MCLG = 0" },
+        { "parametro": "Clorito (subproducto)", "limite": "MCL = 1.0 mg/L; MCLG = 0.8 mg/L" },
+        { "parametro": "Ácidos haloacéticos (HAA5)", "limite": "MCL = 0.060 mg/L" },
+        { "parametro": "Trihalometanos totales (TTHM)", "limite": "MCL = 0.080 mg/L" },
+        { "parametro": "Antimonio", "limite": "MCL = 0.006 mg/L; MCLG = 0.006 mg/L" },
+        { "parametro": "Arsénico", "limite": "MCL = 0.010 mg/L; MCLG = 0 mg/L" },
+        { "parametro": "Asbesto (>10 µm)", "limite": "MCL = 7 MFL; MCLG = 7 MFL" },
+        { "parametro": "Bario", "limite": "MCL = 2 mg/L; MCLG = 2 mg/L" },
+        { "parametro": "Berilio", "limite": "MCL = 0.004 mg/L; MCLG = 0.004 mg/L" },
+        { "parametro": "Cadmio", "limite": "MCL = 0.005 mg/L; MCLG = 0.005 mg/L" },
+        { "parametro": "Cromo (total)", "limite": "MCL = 0.1 mg/L; MCLG = 0.1 mg/L" },
+        { "parametro": "Cobre", "limite": "Nivel de Acción = 1.3 mg/L; MCLG = 1.3 mg/L" },
+        { "parametro": "Cianuro (libre)", "limite": "MCL = 0.2 mg/L; MCLG = 0.2 mg/L" },
+        { "parametro": "Fluoruro", "limite": "MCL = 4.0 mg/L; MCLG = 4.0 mg/L" },
+        { "parametro": "Plomo", "limite": "Nivel de Acción = 0.015 mg/L; MCLG = 0 mg/L" },
+        { "parametro": "Mercurio (inorgánico)", "limite": "MCL = 0.002 mg/L; MCLG = 0.002 mg/L" },
+        { "parametro": "Nitrato (como N)", "limite": "MCL = 10 mg/L; MCLG = 10 mg/L" },
+        { "parametro": "Nitrito (como N)", "limite": "MCL = 1 mg/L; MCLG = 1 mg/L" },
+        { "parametro": "Selenio", "limite": "MCL = 0.05 mg/L; MCLG = 0.05 mg/L" },
+        { "parametro": "Talio", "limite": "MCL = 0.002 mg/L; MCLG = 0.0005 mg/L" },
+        { "parametro": "Acrilamida", "limite": "TT; MCLG = 0" },
+        { "parametro": "Alacloro", "limite": "MCL = 0.002 mg/L; MCLG = 0" },
+        { "parametro": "Atrazina", "limite": "MCL = 0.003 mg/L; MCLG = 0.003 mg/L" },
+        { "parametro": "Benceno", "limite": "MCL = 0.005 mg/L; MCLG = 0" },
+        { "parametro": "Benzo(a)pireno (PAH)", "limite": "MCL = 0.0002 mg/L; MCLG = 0" },
+        { "parametro": "Carbofurano", "limite": "MCL = 0.04 mg/L; MCLG = 0.04 mg/L" },
+        { "parametro": "Tetracloruro de carbono", "limite": "MCL = 0.005 mg/L; MCLG = 0" },
+        { "parametro": "Clordano", "limite": "MCL = 0.002 mg/L; MCLG = 0" },
+        { "parametro": "Clorobenceno", "limite": "MCL = 0.1 mg/L; MCLG = 0.1 mg/L" },
+        { "parametro": "2,4-D", "limite": "MCL = 0.07 mg/L; MCLG = 0.07 mg/L" },
+        { "parametro": "Dalapon", "limite": "MCL = 0.2 mg/L; MCLG = 0.2 mg/L" },
+        { "parametro": "1,2-Dibromo-3-cloropropano (DBCP)", "limite": "MCL = 0.0002 mg/L; MCLG = 0" },
+        { "parametro": "o-Diclorobenceno", "limite": "MCL = 0.6 mg/L; MCLG = 0.6 mg/L" },
+        { "parametro": "p-Diclorobenceno", "limite": "MCL = 0.075 mg/L; MCLG = 0.075 mg/L" },
+        { "parametro": "1,2-Dicloroetano", "limite": "MCL = 0.005 mg/L; MCLG = 0" },
+        { "parametro": "1,1-Dicloroetileno", "limite": "MCL = 0.007 mg/L; MCLG = 0.007 mg/L" },
+        { "parametro": "cis-1,2-Dicloroetileno", "limite": "MCL = 0.07 mg/L; MCLG = 0.07 mg/L" },
+        { "parametro": "trans-1,2-Dicloroetileno", "limite": "MCL = 0.1 mg/L; MCLG = 0.1 mg/L" },
+        { "parametro": "Diclorometano (cloruro de metileno)", "limite": "MCL = 0.005 mg/L; MCLG = 0" },
+        { "parametro": "1,2-Dicloropropano", "limite": "MCL = 0.005 mg/L; MCLG = 0" },
+        { "parametro": "Di(2-etilhexil) adipato", "limite": "MCL = 0.4 mg/L; MCLG = 0.4 mg/L" },
+        { "parametro": "Di(2-etilhexil) ftalato", "limite": "MCL = 0.006 mg/L; MCLG = 0" },
+        { "parametro": "Dinoseb", "limite": "MCL = 0.007 mg/L; MCLG = 0.007 mg/L" },
+        { "parametro": "Dioxina (2,3,7,8-TCDD)", "limite": "MCL no especificado en tabla; MCLG = 0" },
+        { "parametro": "Diquat", "limite": "MCL = 0.02 mg/L; MCLG = 0.02 mg/L" },
+        { "parametro": "Endotal (Endothall)", "limite": "MCL = 0.1 mg/L; MCLG = 0.1 mg/L" },
+        { "parametro": "Endrin", "limite": "MCL = 0.002 mg/L; MCLG = 0.002 mg/L" },
+        { "parametro": "Epiclorhidrina", "limite": "TT; MCLG = 0" },
+        { "parametro": "Etilbenceno", "limite": "MCL = 0.7 mg/L; MCLG = 0.7 mg/L" },
+        { "parametro": "Dibromuro de etileno (EDB)", "limite": "MCL = 0.00005 mg/L; MCLG = 0" },
+        { "parametro": "Glifosato", "limite": "MCL = 0.7 mg/L; MCLG = 0.7 mg/L" },
+        { "parametro": "Heptacloro", "limite": "MCL = 0.0004 mg/L; MCLG = 0" },
+        { "parametro": "Epóxido de heptacloro", "limite": "MCL = 0.0002 mg/L; MCLG = 0" },
+        { "parametro": "Hexaclorobenceno", "limite": "MCL = 0.001 mg/L; MCLG = 0" },
+        { "parametro": "Hexaclorociclopentadieno", "limite": "MCL = 0.05 mg/L; MCLG = 0.05 mg/L" },
+        { "parametro": "Lindano", "limite": "MCL = 0.0002 mg/L; MCLG = 0.0002 mg/L" },
+        { "parametro": "Metoxicloro", "limite": "MCL = 0.04 mg/L; MCLG = 0.04 mg/L" },
+        { "parametro": "Oxamilo (Vydate)", "limite": "MCL = 0.2 mg/L; MCLG = 0.2 mg/L" },
+        { "parametro": "Bifenilos policlorados (PCB)", "limite": "MCL = 0.0005 mg/L; MCLG = 0" },
+        { "parametro": "Pentaclorofenol", "limite": "MCL = 0.001 mg/L; MCLG = 0" },
+        { "parametro": "Picloram", "limite": "MCL = 0.5 mg/L; MCLG = 0.5 mg/L" },
+        { "parametro": "Simazina", "limite": "MCL = 0.004 mg/L; MCLG = 0.004 mg/L" },
+        { "parametro": "Estireno", "limite": "MCL = 0.1 mg/L; MCLG = 0.1 mg/L" },
+        { "parametro": "Tetracloroetileno (PCE)", "limite": "MCL = 0.005 mg/L; MCLG = 0" },
+        { "parametro": "Tolueno", "limite": "MCL = 1 mg/L; MCLG = 1 mg/L" },
+        { "parametro": "Toxafeno", "limite": "MCL = 0.003 mg/L; MCLG = 0" },
+        { "parametro": "2,4,5-TP (Silvex)", "limite": "MCL = 0.05 mg/L; MCLG = 0.05 mg/L" },
+        { "parametro": "1,2,4-Triclorobenceno", "limite": "MCL = 0.07 mg/L; MCLG = 0.07 mg/L" },
+        { "parametro": "1,1,1-Tricloroetano", "limite": "MCL = 0.2 mg/L; MCLG = 0.2 mg/L" },
+        { "parametro": "1,1,2-Tricloroetano", "limite": "MCL = 0.005 mg/L; MCLG = 0.003 mg/L" },
+        { "parametro": "Tricloroetileno (TCE)", "limite": "MCL = 0.005 mg/L; MCLG = 0" },
+        { "parametro": "Cloruro de vinilo", "limite": "MCL = 0.002 mg/L; MCLG = 0" },
+        { "parametro": "Xilenos (totales)", "limite": "MCL = 10 mg/L; MCLG = 10 mg/L" },
+        { "parametro": "Emisores beta/fotones", "limite": "MCL = 4 mrem/año; MCLG = 0" },
+        { "parametro": "Emisores alfa (bruto)", "limite": "MCL = 15 pCi/L; MCLG = 0" },
+        { "parametro": "Radio-226 + Radio-228 (combinados)", "limite": "MCL = 5 pCi/L; MCLG = 0" },
+        { "parametro": "Uranio", "limite": "MCL = 30 µg/L; MCLG = 0" },
+        { "parametro": "Aluminio (secundario)", "limite": "SMCL = 0.05–0.2 mg/L" },
+        { "parametro": "Cloruro (secundario)", "limite": "SMCL = 250 mg/L" },
+        { "parametro": "Color (secundario)", "limite": "SMCL = 15 U. de color" },
+        { "parametro": "Cobre (secundario)", "limite": "SMCL = 1.0 mg/L" },
+        { "parametro": "Corrosividad (secundario)", "limite": "SMCL = No corrosivo" },
+        { "parametro": "Fluoruro (secundario)", "limite": "SMCL = 2.0 mg/L" },
+        { "parametro": "Agentes espumantes (MBAS)", "limite": "SMCL = 0.5 mg/L" },
+        { "parametro": "Hierro (secundario)", "limite": "SMCL = 0.3 mg/L" },
+        { "parametro": "Manganeso (secundario)", "limite": "SMCL = 0.05 mg/L" },
+        { "parametro": "Olor (secundario)", "limite": "SMCL = 3 TON" },
+        { "parametro": "pH (secundario)", "limite": "SMCL = 6.5–8.5" },
+        { "parametro": "Plata (secundario)", "limite": "SMCL = 0.1 mg/L" },
+        { "parametro": "Sulfato (secundario)", "limite": "SMCL = 250 mg/L" },
+        { "parametro": "Sólidos disueltos totales (TDS) (secundario)", "limite": "SMCL = 500 mg/L" },
+        { "parametro": "Zinc (secundario)", "limite": "SMCL = 5 mg/L" }
+      ]
+    },
+    "vida_acuatica": {
+      "name": "Criterios para Protección de la Vida Acuática (Acuicultura y Pesca)",
+      "normativeReference": "EPA Water Quality Criteria (CMC/CCC)",
+      "normativeReference_url": "https://www.epa.gov/wqc/national-recommended-water-quality-criteria-aquatic-life-criteria-table",
+      "parameters": [
+        { "parametro": "Aldrin (P) (CAS 309-00-2)", "limite": "CMC AD: 3.0 µg/L; CCC AD: —; CMC AS: 1.3 µg/L; CCC AS: —" },
+        { "parametro": "Alcalinidad", "limite": "AD: CCC = 20,000 µg/L; CMC/CCC AS: —" },
+        { "parametro": "Amoníaco (CAS 7664-41-7)", "limite": "Dependiente de pH y temperatura (AD/AS), usar fórmulas EPA" },
+        { "parametro": "Arsénico (CAS 7440-38-2)", "limite": "CMC AD: 340 µg/L; CCC AD: 150 µg/L; CMC AS: 69 µg/L; CCC AS: 36 µg/L" },
+        { "parametro": "Atrazina (CAS 1912-24-9)", "limite": "CMC AD: 330 µg/L; CCC AD: 12 µg/L; AS: —" },
+        { "parametro": "Cadmio (P) (CAS 7440-43-9)", "limite": "AD dependiente de dureza; AS: CMC 33 µg/L; CCC 7.9 µg/L" },
+        { "parametro": "Clordano (P) (CAS 57-74-9)", "limite": "CMC AD: 2.4 µg/L; CCC AD: 0.0043 µg/L; CMC AS: 0.09 µg/L; CCC AS: 0.004 µg/L" },
+        { "parametro": "Cloruro (CAS 16887-00-6)", "limite": "CMC AD: 860,000 µg/L; CCC AD: 230,000 µg/L; AS: —" },
+        { "parametro": "Cloro (CAS 7782-50-5)", "limite": "CMC AD: 19 µg/L; CCC AD: 11 µg/L; CMC AS: 13 µg/L; CCC AS: 7.5 µg/L" },
+        { "parametro": "Clorpirifos (CAS 2921-88-2)", "limite": "CMC AD: 0.083 µg/L; CCC AD: 0.041 µg/L; CMC AS: 0.011 µg/L; CCC AS: 0.0056 µg/L" },
+        { "parametro": "Cromo (VI) (P) (CAS 18540-29-9)", "limite": "CMC AD: 16 µg/L; CCC AD: 11 µg/L; CMC AS: 1100 µg/L; CCC AS: 50 µg/L" },
+        { "parametro": "Cobre (P) (CAS 7440-50-8)", "limite": "AD: Modelo de Ligando Biótico (BLM); AS: CMC 4.8 µg/L; CCC 3.1 µg/L" },
+        { "parametro": "Cianuro (P) (CAS 57-12-5)", "limite": "CMC AD: 22 µg/L; CCC AD: 5.2 µg/L; CMC/CCC AS: 1 µg/L" },
+        { "parametro": "DDT (P) (CAS 50-29-3)", "limite": "CMC AD: 1.1 µg/L; CCC AD: 0.001 µg/L; CMC AS: 0.13 µg/L; CCC AS: 0.001 µg/L" },
+        { "parametro": "Dieldrin (P) (CAS 60-57-1)", "limite": "CMC AD: 0.24 µg/L; CCC AD: 0.056 µg/L; CMC AS: 0.71 µg/L; CCC AS: 0.0019 µg/L" },
+        { "parametro": "Endrin (P) (CAS 72-20-8)", "limite": "CMC AD: 0.086 µg/L; CCC AD: 0.036 µg/L; CMC AS: 0.037 µg/L; CCC AS: 0.0023 µg/L" },
+        { "parametro": "Heptacloro (P) (CAS 76-44-8)", "limite": "CMC AD: 0.52 µg/L; CCC AD: 0.0038 µg/L; CMC AS: 0.053 µg/L; CCC AS: 0.0036 µg/L" },
+        { "parametro": "Plomo (P) (CAS 7439-92-1)", "limite": "AD dependiente de dureza; CMC AS: 210 µg/L; CCC AS: 8.1 µg/L" },
+        { "parametro": "Lindano (gamma-BHC) (P) (CAS 58-89-9)", "limite": "CMC AD: 0.95 µg/L; CCC AD: —; CMC AS: 0.16 µg/L; CCC AS: —" },
+        { "parametro": "Mercurio (P) (CAS 7439-97-6)", "limite": "CMC AD: 1.4 µg/L; CCC AD: 0.77 µg/L; CMC AS: 1.8 µg/L; CCC AS: 0.94 µg/L" },
+        { "parametro": "Níquel (P) (CAS 7440-02-0)", "limite": "AD dependiente de dureza; CMC AS: 74 µg/L; CCC AS: 8.2 µg/L" },
+        { "parametro": "Oxígeno disuelto (CAS 7782-44-7)", "limite": "Mínimos específicos por tipo de agua/etapa de vida (AD/AS)" },
+        { "parametro": "Pentaclorofenol (P) (CAS 87-86-5)", "limite": "AD dependiente de pH; AS: CMC 13 µg/L; CCC 7.9 µg/L" },
+        { "parametro": "pH", "limite": "AD: 6.5–9.0; AS: 6.5–8.5 (CMC/CCC)" },
+        { "parametro": "PCBs (P) (CAS varios)", "limite": "CCC AD: 0.014 µg/L; CCC AS: 0.03 µg/L; CMC: —" },
+        { "parametro": "Selenio (P) (CAS 7782-49-2)", "limite": "AD: basado en tejido de pez (bioacumulación); AS: CMC 290 µg/L; CCC 71 µg/L" },
+        { "parametro": "Plata (P) (CAS 7440-22-4)", "limite": "AD dependiente de dureza; CMC AS: 1.9 µg/L; CCC AS: —" },
+        { "parametro": "Toxafeno (P) (CAS 8001-35-2)", "limite": "CMC AD: 0.73 µg/L; CCC AD: 0.0002 µg/L; CMC AS: 0.21 µg/L; CCC AS: 0.0002 µg/L" },
+        { "parametro": "Zinc (P) (CAS 7440-66-6)", "limite": "AD dependiente de dureza; CMC AS: 90 µg/L; CCC AS: 81 µg/L" }
+      ]
+    },
+    "recreacion_reco1": {
+      "name": "Recreación – Contacto Primario (Recomendación 1)",
+      "normativeReference": "EPA Recreational Water Quality Criteria (RWQC) – Reco 1",
+      "normativeReference_url": "https://www.epa.gov/sites/default/files/2015-10/documents/rec-factsheet-2012.pdf",
+      "parameters": [
+        { "parametro": "Enterococos (dulce/salada)", "limite": "GM = 35 ufc/100 mL; STV = 130 ufc/100 mL (≤10% excedencias en 30 días)" },
+        { "parametro": "E. coli (dulce)", "limite": "GM = 126 ufc/100 mL; STV = 410 ufc/100 mL (≤10% excedencias en 30 días)" }
+      ]
+    },
+    "recreacion_reco2": {
+      "name": "Recreación – Contacto Primario (Recomendación 2)",
+      "normativeReference": "EPA Recreational Water Quality Criteria (RWQC) – Reco 2",
+      "normativeReference_url": "https://www.epa.gov/sites/default/files/2015-10/documents/rec-factsheet-2012.pdf",
+      "parameters": [
+        { "parametro": "Enterococos (dulce/salada)", "limite": "GM = 30 ufc/100 mL; STV = 110 ufc/100 mL (≤10% excedencias en 30 días)" },
+        { "parametro": "E. coli (dulce)", "limite": "GM = 100 ufc/100 mL; STV = 320 ufc/100 mL (≤10% excedencias en 30 días)" }
+      ]
+    },
+    "recreacion_contacto_secundario_kayak": {
+      "name": "Recreación – Contacto Secundario (Ejemplo: Kayak, derivado de Reco 1)",
+      "normativeReference": "Derivado (multiplicador ~2.05 sobre Enterococos Reco 1)",
+      "normativeReference_url": "https://www.epa.gov/sites/default/files/2015-10/documents/rec-factsheet-2012.pdf",
+      "parameters": [
+        { "parametro": "Enterococos (dulce/salada)", "limite": "GM = 72 ufc/100 mL; STV = 266 ufc/100 mL (ilustrativo)" }
+      ]
+    },
+    "riego_agricola_reuso": {
+      "name": "Directrices – Riego Agrícola (Basado en Reúso)",
+      "normativeReference": "Directrices de reúso adecuadas al propósito (acceso sin restricciones vs. restringido)",
+      "normativeReference_url": "https://www.epa.gov/sites/default/files/2019-08/documents/2012-guidelines-water-reuse.pdf",
+      "parameters": [
+        { "parametro": "pH", "limite": "6.0–9.0 (crudos y procesados/no alimentarios)" },
+        { "parametro": "DBO (mg/L)", "limite": "N/A" },
+        { "parametro": "Sólidos suspendidos totales, SST (mg/L)", "limite": "N/A" },
+        { "parametro": "Turbidez (NTU)", "limite": "Crudos: (valor no especificado en tabla); Procesados: N/A" },
+        { "parametro": "Coliformes fecales (NMP/100 mL)", "limite": "Crudos: No detectable; Procesados/No alimentarios: (no especificado)" },
+        { "parametro": "Cloro residual (mg/L)", "limite": "Crudos: (mínimo no especificado); Procesados: (mínimo no especificado)" }
+      ]
+    },
+    "ganado_tds": {
+      "name": "Agua para Ganado – Límites de Salinidad (TDS)",
+      "normativeReference": "Guías de TDS para agua de bebida de ganado",
+      "normativeReference_url": "https://pubs.nmsu.edu/_m/M112/index.html",
+      "parameters": [
+        { "parametro": "TDS < 1,000 mg/L", "limite": "Excelente; apto para todas las clases de ganado y aves" },
+        { "parametro": "TDS 1,000–2,999 mg/L", "limite": "Muy satisfactorio; posible diarrea leve y temporal en no habituados" },
+        { "parametro": "TDS 3,000–4,999 mg/L", "limite": "Satisfactorio para ganado; baja calidad para aves; rechazo inicial/diarrea posible" },
+        { "parametro": "TDS 5,000–6,999 mg/L", "limite": "Calidad marginal; no usar en preñadas/lactantes; inadecuado para aves" },
+        { "parametro": "TDS 7,000–10,000 mg/L", "limite": "Inadecuado para aves/cerdos; riesgo para vacas, caballos, ovejas preñadas/lactantes" },
+        { "parametro": "TDS > 10,000 mg/L", "limite": "Inutilizable; riesgos altos de salud" }
+      ]
+    },
+    "ganado_sulfatos": {
+      "name": "Agua para Ganado – Límites de Sulfatos",
+      "normativeReference": "Guías de sulfato para bovinos",
+      "normativeReference_url": "https://pubs.nmsu.edu/_m/M112/index.html",
+      "parameters": [
+        { "parametro": "SO4 < 500 mg/L", "limite": "Seguro para todas las edades y tipos" },
+        { "parametro": "SO4 500–1,499 mg/L", "limite": "Generalmente seguro; puede reducir disponibilidad de trazas" },
+        { "parametro": "SO4 1,500–2,999 mg/L", "limite": "Marginal; diarrea temporal; menor rendimiento en confinamiento" },
+        { "parametro": "SO4 3,000–4,000 mg/L", "limite": "Pobre; no recomendado para preñadas/lactantes; riesgo de PEM" },
+        { "parametro": "SO4 > 4,000 mg/L", "limite": "Peligroso; problemas de salud y gran reducción del rendimiento" }
+      ]
+    },
+    "ganado_toxicos": {
+      "name": "Agua para Ganado – Sustancias Tóxicas (límites sugeridos)",
+      "normativeReference": "Guías para elementos traza y compuestos tóxicos",
+      "normativeReference_url": "https://pubs.nmsu.edu/_m/M112/index.html",
+      "parameters": [
+        { "parametro": "Aluminio (Al)", "limite": "5.0 mg/L" },
+        { "parametro": "Arsénico (As)", "limite": "0.2 mg/L" },
+        { "parametro": "Boro (B)", "limite": "5.0 mg/L" },
+        { "parametro": "Cadmio (Cd)", "limite": "0.05 mg/L" },
+        { "parametro": "Cromo (Cr)", "limite": "1.0 mg/L" },
+        { "parametro": "Cobalto (Co)", "limite": "1.0 mg/L" },
+        { "parametro": "Cobre (Cu)", "limite": "0.5 mg/L" },
+        { "parametro": "Fluoruro (F)", "limite": "2.0 mg/L" },
+        { "parametro": "Plomo (Pb)", "limite": "0.1 mg/L" },
+        { "parametro": "Manganeso (Mn)", "limite": "0.05 mg/L" },
+        { "parametro": "Mercurio (Hg)", "limite": "0.01 mg/L" },
+        { "parametro": "Nitrato (como NO3-N)", "limite": "100 mg/L" },
+        { "parametro": "Nitrito (como NO2-N)", "limite": "10 mg/L" },
+        { "parametro": "Selenio (Se)", "limite": "0.05 mg/L" },
+        { "parametro": "Vanadio (V)", "limite": "0.1 mg/L" },
+        { "parametro": "Zinc (Zn)", "limite": "24.0 mg/L" }
+      ]
+    },
+    "industrial_torres_enfriamiento": {
+      "name": "Directrices – Agua de reposición en torres de enfriamiento (reúso)",
+      "normativeReference": "Directrices de reúso industrial (enfriamiento)",
+      "normativeReference_url": "https://www.aaees.org/assets/docs/library/NJWEA052015-13EPAGuidelines.pdf",
+      "parameters": [
+        { "parametro": "pH", "limite": "6.0–9.0" },
+        { "parametro": "DBO (mg/L)", "limite": "N/A" },
+        { "parametro": "Sólidos suspendidos totales, SST (mg/L)", "limite": "N/A" },
+        { "parametro": "Coliformes fecales (NMP/100 mL)", "limite": "N/A" },
+        { "parametro": "Cloro residual (mg/L)", "limite": "≥ 1.0 (mínimo)" }
+      ]
+    },
+    "reuso_urbano": {
+      "name": "Directrices – Reúso Urbano sin restricciones (riego de zonas con acceso público)",
+      "normativeReference": "Directrices de reúso urbano (sin restricciones)",
+      "normativeReference_url": "https://www.aaees.org/assets/docs/library/NJWEA052015-13EPAGuidelines.pdf",
+      "parameters": [
+        { "parametro": "pH", "limite": "6.0–9.0" },
+        { "parametro": "DBO (mg/L)", "limite": "N/A" },
+        { "parametro": "Turbidez (NTU)", "limite": "N/A" },
+        { "parametro": "Coliformes fecales (NMP/100 mL)", "limite": "No detectable" },
+        { "parametro": "Cloro residual (mg/L)", "limite": "≥ 1.0 (mínimo)" }
+      ]
+    },
+    "reuso_potable_indirecto": {
+      "name": "Directrices – Reúso Potable Indirecto (recarga/embalses)",
+      "normativeReference": "Requisitos de calidad para IPR (Indirect Potable Reuse)",
+      "normativeReference_url": "https://www.aaees.org/assets/docs/library/NJWEA052015-13EPAGuidelines.pdf",
+      "parameters": [
+        { "parametro": "Coliformes totales (NMP/100 mL)", "limite": "No detectable" },
+        { "parametro": "Turbidez (NTU)", "limite": "N/A" },
+        { "parametro": "Carbono Orgánico Total, TOC (mg/L)", "limite": "(de origen de aguas residuales; valor no especificado en tabla)" },
+        { "parametro": "pH", "limite": "6.5–8.5" },
+        { "parametro": "Cloro residual (mg/L)", "limite": "≥ 1.0 (mínimo)" },
+        { "parametro": "Otros contaminantes", "limite": "Cumplir todos los NPDWRs (estándares primarios de agua potable)" }
       ]
     }
   }

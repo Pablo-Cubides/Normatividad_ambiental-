@@ -1,88 +1,54 @@
-'use client';
+"use client";
 
 import { useState, useEffect } from 'react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useRouter } from 'next/navigation';
-import { getFlagEmoji } from '../lib/constants';
-import type { UnifiedNorm } from '@/lib/schemas';
 
-// Define the type for the country object we expect from the API
-interface ApiCountry {
-  code: string;
-  name: string;
-}
+const AVAILABLE_COUNTRIES = [
+  { code: 'argentina', name: 'Argentina', flag: '🇦🇷' },
+  { code: 'chile', name: 'Chile', flag: '🇨🇱' },
+  { code: 'colombia', name: 'Colombia', flag: '🇨🇴' },
+  { code: 'el-salvador', name: 'El Salvador', flag: '🇸🇻' },
+  { code: 'estados-unidos', name: 'Estados Unidos', flag: '🇺🇸' },
+  { code: 'mexico', name: 'México', flag: '🇲🇽' },
+  { code: 'peru', name: 'Perú', flag: '🇵🇪' },
+  { code: 'union-europea', name: 'Unión Europea', flag: '🇪🇺' }
+];
 
-// Enhanced type with a flag
-interface Country extends ApiCountry {
-  flag: string;
-}
-
-interface CountrySelectorProps {
-  domain?: string; // optional domain to scope country list (e.g. 'agua')
-}
-
-export function CountrySelector({ domain }: CountrySelectorProps) {
-  const [countries, setCountries] = useState<Country[]>([]);
+export function CountrySelector() {
   const [selectedCountry, setSelectedCountry] = useState<string>('');
-  const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
 
+  // Load saved country from localStorage
   useEffect(() => {
-    async function fetchCountries() {
-      try {
-        const url = domain ? `/api/paises?dominio=${encodeURIComponent(domain)}` : '/api/paises';
-        const response = await fetch(url);
-        if (!response.ok) {
-          throw new Error('Failed to fetch countries');
-        }
-        const data: { countries: ApiCountry[] } = await response.json();
-
-        const enhancedCountries = data.countries.map(country => ({
-          ...country,
-          flag: getFlagEmoji(country.code, country.name)
-        }));
-
-        setCountries(enhancedCountries);
-
-        // Load saved country from localStorage after countries are fetched
-        // Only access localStorage in the browser
-        if (typeof window !== 'undefined' && window.localStorage) {
-          const storageKey = `selected-country-${domain || 'default'}`;
-          const saved = window.localStorage.getItem(storageKey);
-          if (saved && enhancedCountries.find(c => c.code === saved)) {
-            setSelectedCountry(saved);
-          }
-        }
-      } catch (error) {
-        console.error(error);
-        // Handle error appropriately in a real app
-      } finally {
-        setIsLoading(false);
-      }
+    const saved = localStorage.getItem('selected-country');
+    if (saved && AVAILABLE_COUNTRIES.find(c => c.code === saved)) {
+      setSelectedCountry(saved);
     }
-
-    fetchCountries();
-  }, [domain]);
+  }, []);
 
   const handleCountryChange = (countryCode: string) => {
     setSelectedCountry(countryCode);
-    const storageKey = `selected-country-${domain || 'default'}`;
-    localStorage.setItem(storageKey, countryCode);
-
-    // Auto-navigate to explore page with domain if provided
-    const url = domain ? `/explorar?dominio=${encodeURIComponent(domain)}&pais=${countryCode}` : `/explorar?pais=${countryCode}`;
-    router.push(url);
+    localStorage.setItem('selected-country', countryCode);
+    
+    // Auto-navigate to explore page with selected country
+    setTimeout(() => {
+      router.push(`/explorar?pais=${countryCode}`);
+    }, 500);
   };
 
   return (
-    <Select value={selectedCountry} onValueChange={handleCountryChange} disabled={isLoading}>
+    <Select value={selectedCountry} onValueChange={handleCountryChange}>
       <SelectTrigger className="w-full">
-        <SelectValue placeholder={isLoading ? "Cargando países..." : "Selecciona un país para explorar sus estándares"} />
+        <SelectValue placeholder="Selecciona un país para explorar sus estándares de calidad del agua" />
       </SelectTrigger>
       <SelectContent>
-        {countries.map((country) => (
+        {AVAILABLE_COUNTRIES.map((country) => (
           <SelectItem key={country.code} value={country.code}>
-            <span>{country.name}</span>
+            <span className="flex items-center gap-2">
+              <span>{country.flag}</span>
+              <span>{country.name}</span>
+            </span>
           </SelectItem>
         ))}
       </SelectContent>

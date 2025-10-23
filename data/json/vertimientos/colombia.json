@@ -1,0 +1,81 @@
+{
+  "pais": "Colombia",
+  "dominio": "vertimientos",
+  "version": "2025-10-23",
+  "normativeReference_es": "Resolución 631/2015 (parámetros y valores límites máximos permisibles en vertimientos puntuales a cuerpos de agua superficiales y alcantarillado público).",
+  "normativeSources": [
+    {
+      "name": "Resolución 631/2015 MADS",
+      "url": "https://www.minambiente.gov.co/wp-content/uploads/2021/10/resolucion-631-de-2015.pdf",
+      "description": "Parámetros y valores límites máximos permisibles en los vertimientos puntuales a cuerpos de agua superficiales y a los sistemas de alcantarillado público",
+      "type": "official",
+      "lastValidated": "2025-10-23"
+    }
+  ],
+  "sectors": {
+    "urbano_alcantarillado": {
+      "name": "Aguas residuales domésticas y urbanas (alcantarillado) – Art. 8",
+      "normativeReference": "Resolución 631/2015 MADS",
+      "normativeReference_url": "https://www.minambiente.gov.co/wp-content/uploads/2021/10/resolucion-631-de-2015.pdf",
+      "parameters": [
+        { "parametro": "DQO", "limite": "Caudal <10000 m³/d: 1000 mg/L O₂; Caudal ≥10000 m³/d: 700 mg/L O₂" },
+        { "parametro": "DBO5", "limite": "Caudal <10000 m³/d: 700 mg/L O₂; Caudal ≥10000 m³/d: 400 mg/L O₂" },
+        { "parametro": "SST", "limite": "Caudal <10000 m³/d: 700 mg/L; Caudal ≥10000 m³/d: 400 mg/L" },
+        { "parametro": "Grasas y aceites", "limite": "100 mg/L" },
+        { "parametro": "Sólidos sedimentables", "limite": "20.0 mL/L" },
+        { "parametro": "pH", "limite": "6.0–9.0 unidades" }
+      ]
+    },
+    "mineria_carbon": {
+      "name": "Minería de carbón – Art. 15",
+      "normativeReference": "Resolución 631/2015 MADS",
+      "normativeReference_url": "https://www.minambiente.gov.co/wp-content/uploads/2021/10/resolucion-631-de-2015.pdf",
+      "parameters": [
+        { "parametro": "DQO", "limite": "Superficial: 400 mg/L O₂; Alcantarillado: 700 mg/L O₂" },
+        { "parametro": "DBO5", "limite": "Superficial: 150 mg/L O₂; Alcantarillado: 400 mg/L O₂" },
+        { "parametro": "SST", "limite": "Superficial: 200 mg/L; Alcantarillado: 400 mg/L" },
+        { "parametro": "Grasas y aceites", "limite": "Superficial: 10 mg/L; Alcantarillado: 100 mg/L" },
+        { "parametro": "Fenoles", "limite": "Superficial: 0.2 mg/L; Alcantarillado: 2.0 mg/L" },
+        { "parametro": "Sulfuros", "limite": "Superficial: 1.0 mg/L S; Alcantarillado: 2.0 mg/L S" },
+        { "parametro": "Hierro", "limite": "Superficial: 2.0 mg/L; Alcantarillado: Análisis y reporte" },
+        { "parametro": "Manganeso", "limite": "Superficial: 2.0 mg/L; Alcantarillado: Análisis y reporte" },
+        { "parametro": "Aluminio", "limite": "Superficial: 5.0 mg/L; Alcantarillado: Análisis y reporte" },
+        { "parametro": "pH", "limite": "Superficial: 5.0–9.0; Alcantarillado: 5.0–9.0 unidades" }
+      ]
+    },
+    "hidrocarburos": {
+      "name": "Exploración y explotación de hidrocarburos – Art. 16",
+      "normativeReference": "Resolución 631/2015 MADS",
+      "normativeReference_url": "https://www.minambiente.gov.co/wp-content/uploads/2021/10/resolucion-631-de-2015.pdf",
+      "parameters": [
+        { "parametro": "DQO", "limite": "Superficial: 400 mg/L O₂; Alcantarillado: 700 mg/L O₂" },
+        { "parametro": "DBO5", "limite": "Superficial: 150 mg/L O₂; Alcantarillado: 400 mg/L O₂" },
+        { "parametro": "SST", "limite": "Superficial: 200 mg/L; Alcantarillado: 400 mg/L" },
+        { "parametro": "Grasas y aceites", "limite": "Superficial: 20 mg/L; Alcantarillado: 100 mg/L" },
+        { "parametro": "Hidrocarburos totales", "limite": "Superficial: 10 mg/L; Alcantarillado: 20 mg/L" },
+        { "parametro": "BTEX", "limite": "Superficial: 1.0 mg/L; Alcantarillado: 2.0 mg/L" },
+        { "parametro": "HAP", "limite": "Superficial: 0.05 mg/L; Alcantarillado: 0.1 mg/L" },
+        { "parametro": "Fenoles", "limite": "Superficial: 0.2 mg/L; Alcantarillado: 2.0 mg/L" },
+        { "parametro": "Cloruros", "limite": "Superficial: Análisis y reporte; Alcantarillado: 1000 mg/L Cl⁻" },
+        { "parametro": "Cianuro total", "limite": "Superficial: 0.5 mg/L CN⁻; Alcantarillado: 1.0 mg/L CN⁻" },
+        { "parametro": "pH", "limite": "Superficial: 6.0–9.0; Alcantarillado: 5.0–9.0 unidades" }
+      ]
+    },
+    "agroindustrial_mataderos": {
+      "name": "Mataderos (ganado mayor, menor, aves) – Art. 11",
+      "normativeReference": "Resolución 631/2015 MADS",
+      "normativeReference_url": "https://www.minambiente.gov.co/wp-content/uploads/2021/10/resolucion-631-de-2015.pdf",
+      "parameters": [
+        { "parametro": "DQO", "limite": "Superficial: 600 mg/L O₂; Alcantarillado: 1500 mg/L O₂" },
+        { "parametro": "DBO5", "limite": "Superficial: 300 mg/L O₂; Alcantarillado: 1000 mg/L O₂" },
+        { "parametro": "SST", "limite": "Superficial: 300 mg/L; Alcantarillado: 500 mg/L" },
+        { "parametro": "Grasas y aceites", "limite": "Superficial: 30 mg/L; Alcantarillado: 100 mg/L" },
+        { "parametro": "Nitrógeno total", "limite": "Superficial: 30 mg/L N; Alcantarillado: Análisis y reporte" },
+        { "parametro": "Fósforo", "limite": "Superficial: 10 mg/L P; Alcantarillado: Análisis y reporte" },
+        { "parametro": "Fenoles", "limite": "Superficial: 0.2 mg/L; Alcantarillado: 2.0 mg/L" },
+        { "parametro": "pH", "limite": "Superficial: 6.0–9.0; Alcantarillado: 5.0–9.0 unidades" },
+        { "parametro": "Temperatura", "limite": "Superficial: <40 °C; Alcantarillado: <40 °C" }
+      ]
+    }
+  }
+}

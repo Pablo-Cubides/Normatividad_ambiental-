@@ -1,62 +1,76 @@
 import { NextRequest } from 'next/server';
-import { GET as getNormas } from '../src/app/api/normas/route';
-
-// Mock fs and path
-jest.mock('fs', () => ({
-  existsSync: jest.fn(),
-  readdirSync: jest.fn(),
-  readFileSync: jest.fn(),
-  appendFileSync: jest.fn(),
-}));
-
-jest.mock('path', () => ({
-  join: jest.fn(),
-}));
-
-const mockFs = require('fs');
-const mockPath = require('path');
+import { GET } from '../src/app/api/normas/route';
 
 describe('/api/normas', () => {
   beforeEach(() => {
+    // Clear cache before each test
     jest.clearAllMocks();
   });
 
-  it('returns normas data for valid country and domain', async () => {
-    // Mock file system
-    mockFs.existsSync.mockReturnValue(true);
-    mockFs.readdirSync.mockReturnValue(['colombia.json']);
-    mockFs.readFileSync.mockImplementation((path: string) => {
-      if (path.includes('colombia.json')) {
-        return JSON.stringify({
-          country: 'Colombia',
-          domain: 'agua',
-          normativeReference: 'Test Reference',
-          records: [
-            { parameter: 'pH', limit: '6.5-8.5', unit: 'pH units' }
-          ]
-        });
-      }
-      return '{}';
-    });
-    mockFs.appendFileSync.mockImplementation(() => {});
-    mockPath.join.mockImplementation((...args: string[]) => args.join('/'));
-
-    const request = new NextRequest('http://localhost:3000/api/normas?pais=colombia&dominio=agua');
-    const response = await getNormas(request);
-    const data = await response.json();
-
-    expect(response.status).toBe(200);
-    expect(data.country).toBe('Colombia');
-    expect(data.domain).toBe('agua');
-    expect(Array.isArray(data.records)).toBe(true);
+  it('should return error for missing pais parameter', async () => {
+    const req = new NextRequest('http://localhost:3000/api/normas?dominio=agua');
+    const res = await GET(req);
+    expect(res.status).toBe(400);
+    const data = await res.json();
+    expect(data.error).toContain('País');
   });
 
-  it('returns 404 for invalid country', async () => {
-    mockFs.existsSync.mockReturnValue(false);
+  it('should use default dominio when not specified', async () => {
+    const req = new NextRequest('http://localhost:3000/api/normas?pais=argentina');
+    const res = await GET(req);
+    // API uses default dominio='agua' when not specified
+    expect(res.status).toBe(200);
+    const data = await res.json();
+    expect(data).toHaveProperty('domain');
+    expect(data.domain).toBe('agua');
+  });
 
-    const request = new NextRequest('http://localhost:3000/api/normas?pais=invalid&dominio=agua');
-    const response = await getNormas(request);
+  it('should return error for invalid dominio', async () => {
+    const req = new NextRequest('http://localhost:3000/api/normas?dominio=invalid&pais=argentina');
+    const res = await GET(req);
+    expect(res.status).toBe(400);
+    const data = await res.json();
+    expect(data.error).toContain('Dominio no válido');
+  });
 
-    expect(response.status).toBe(404);
+  it('should return error for invalid pais', async () => {
+    const req = new NextRequest('http://localhost:3000/api/normas?dominio=agua&pais=nonexistent');
+    const res = await GET(req);
+    expect(res.status).toBe(400);
+    const data = await res.json();
+    expect(data.error).toContain('País');
+  });
+
+  it('should return data for valid dominio and pais', async () => {
+    const req = new NextRequest('http://localhost:3000/api/normas?dominio=agua&pais=argentina');
+    const res = await GET(req);
+    expect(res.status).toBe(200);
+    const data = await res.json();
+    // API returns full JSON structure with registros/records, not wrapped in 'normas'
+    expect(data).toHaveProperty('registros'); // Spanish version
+    expect(data).toHaveProperty('pais');
+    expect(data).toHaveProperty('domain');
+    expect(Array.isArray(data.registros)).toBe(true);
+  });
+
+  it('should include cache headers', async () => {
+    const req = new NextRequest('http://localhost:3000/api/normas?dominio=agua&pais=argentina');
+    const res = await GET(req);
+    expect(res.headers.get('Cache-Control')).toContain('public');
+    expect(res.headers.has('X-Cache-Status')).toBe(true);
+  });
+
+  it('should return cache HIT on second request', async () => {
+    const url = 'http://localhost:3000/api/normas?dominio=agua&pais=chile';
+    
+    // First request - should be MISS
+    const req1 = new NextRequest(url);
+    const res1 = await GET(req1);
+    expect(res1.headers.get('X-Cache-Status')).toBe('MISS');
+
+    // Second request - should be HIT
+    const req2 = new NextRequest(url);
+    const res2 = await GET(req2);
+    expect(res2.headers.get('X-Cache-Status')).toBe('HIT');
   });
 });

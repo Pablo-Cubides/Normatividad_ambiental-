@@ -1,32 +1,65 @@
 {
   "pais": "El Salvador",
-  "paisCodigo": "el-salvador",
   "dominio": "agua",
-  "version": "2.0.0",
-  "fuentePrincipal": "Norma Salvadoreña Obligatoria (NSO) 13.07.01:08 (Agua Potable), RTS 13.05.01:18 (Descargas), Ley General de Recursos Hídricos (2022)",
+  "normativeReference_es": "RTS 13.02.01:14, RTS 13.05.01:24",
   "sectors": {
-    "agua-potable": {
-      "name": "Agua Potable",
-      "description": "Requisitos para agua potable según la Norma Salvadoreña Obligatoria (NSO).",
+    "agua_potable": {
+      "name": "Agua de Consumo Humano. Requisitos de Calidad e Inocuidad - RTS 13.02.01:14",
+      "normativeReference": "Norma Salvadoreña NSO 13.49.1:07",
+      "normativeReference_url": "https://ampeid.org/static/b3cc7d88c8ea9c8f7bb421e07a43dfa7/els190977..pdf",
       "parameters": [
-        { "parameter": "Coliformes Fecales (E. coli)", "value": "0", "unit": "NMP/100 mL", "source": "NSO 13.07.01:08" },
-        { "parameter": "pH", "value": "6.5 - 8.5", "source": "NSO 13.07.01:08" },
-        { "parameter": "Turbiedad", "value": "≤5", "unit": "NTU", "source": "NSO 13.07.01:08" }
+        { "parametro": "Bacterias coliformes totales", "limite": "< 1,1 NMP/100 mL" },
+        { "parametro": "Bacterias coliformes fecales", "limite": "< 1,1 NMP/100 mL" },
+        { "parametro": "Escherichia coli", "limite": "Ausencia" },
+        { "parametro": "Color aparente", "limite": "15 (Pt-Co)" },
+        { "parametro": "Turbidez", "limite": "5 UNT" },
+        { "parametro": "pH", "limite": "6,0 - 8,5" },
+        { "parametro": "Cianuro", "limite": "0,07 mg/L" },
+        { "parametro": "Dureza", "limite": "500 mg/L" },
+        { "parametro": "Nitratos", "limite": "50 mg/L" },
+        { "parametro": "Nitritos", "limite": "3 mg/L" },
+        { "parametro": "Sólidos totales disueltos", "limite": "1000 mg/L" },
+        { "parametro": "Sulfatos", "limite": "250 mg/L" },
+        { "parametro": "Cloro residual libre", "limite": "0,3 - 1,1 mg/L" },
+        { "parametro": "Arsénico", "limite": "0,01 mg/L" },
+        { "parametro": "Cadmio", "limite": "0,003 mg/L" },
+        { "parametro": "Cromo", "limite": "0,05 mg/L" },
+        { "parametro": "Mercurio", "limite": "0,006 mg/L" },
+        { "parametro": "Níquel", "limite": "0,07 mg/L" },
+        { "parametro": "Plomo", "limite": "0,01 mg/L" },
+        { "parametro": "Selenio", "limite": "0,04 mg/L" },
+        { "parametro": "Actividad Alfa Global", "limite": "0,5 Bq/L" },
+        { "parametro": "Actividad Beta total", "limite": "1 Bq/L" },
+        { "parametro": "Uranio", "limite": "30 µg/L" }
       ]
     },
-    "riego": {
-      "name": "Riego Agrícola",
-      "description": "Guías técnicas para el uso de agua en riego sin restricciones, basadas en recomendaciones de la OMS.",
+    "descarga_aguas_residuales_ordinario": {
+      "name": "Límites Permisibles para Descarga de Aguas Residuales de Tipo Ordinario a un Medio Receptor - RTS 13.05.01:24",
       "parameters": [
-        { "parameter": "Coliformes Fecales", "value": "≤1000", "unit": "NMP/100 mL", "notes": "Guía técnica" }
+        { "parametro": "Demanda Química de Oxígeno (DQO)", "limite": "150 mg/L" },
+        { "parametro": "Demanda Bioquímica de Oxígeno (DBO5)", "limite": "60 mg/L" },
+        { "parametro": "Sólidos Suspendidos Totales (SST)", "limite": "60 mg/L" },
+        { "parametro": "Sólidos Sedimentables (SS)", "limite": "1 mL/L" },
+        { "parametro": "Aceites y Grasas", "limite": "20 mg/L" },
+        { "parametro": "Potencial de Hidrógeno (pH)", "limite": "6,0 - 9,0" }
       ]
     },
-    "vertimiento": {
-      "name": "Vertido de Efluentes",
-      "description": "Límites para la descarga de efluentes ordinarios a cuerpos receptores, según el Reglamento Técnico Salvadoreño (RTS).",
-      "parameters": [
-        { "parameter": "DBO5", "value": "≤60", "unit": "mg/L", "source": "RTS 13.05.01:18" }
-      ]
+    "descarga_aguas_residuales_especial": {
+        "name": "Límites Permisibles de Parámetros Específicos para Descarga de Aguas Residuales de Tipo Especial a un Medio Receptor - RTS 13.05.01:24",
+        "parameters": [
+            { "parametro": "Arsénico", "limite": "0,1 mg/L" },
+            { "parametro": "Cadmio", "limite": "0,1 mg/L" },
+            { "parametro": "Cianuro total", "limite": "0,5 mg/L" },
+            { "parametro": "Cobre", "limite": "3 mg/L" },
+            { "parametro": "Cromo hexavalente", "limite": "0,5 mg/L" },
+            { "parametro": "Fósforo total", "limite": "15 mg/L" },
+            { "parametro": "Mercurio", "limite": "0,01 mg/L" },
+            { "parametro": "Níquel", "limite": "3 mg/L" },
+            { "parametro": "Nitrógeno total", "limite": "50 mg/L" },
+            { "parametro": "Plomo", "limite": "0,5 mg/L" },
+            { "parametro": "Selenio", "limite": "0,05 mg/L" },
+            { "parametro": "Zinc", "limite": "5 mg/L" }
+        ]
     }
   }
 }

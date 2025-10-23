@@ -1,0 +1,17 @@
+{
+  "pais": "OMS",
+  "dominio": "calidad-aire",
+  "normativeReference_es": "Directrices Globales de Calidad del Aire de la OMS (2021)",
+  "registros": [
+    { "parametro": "PM2.5", "limite": "5 µg/m³", "notas": ["Nivel de Referencia Anual"] },
+    { "parametro": "PM2.5", "limite": "15 µg/m³", "notas": ["Nivel de Referencia 24 horas"] },
+    { "parametro": "PM10", "limite": "15 µg/m³", "notas": ["Nivel de Referencia Anual"] },
+    { "parametro": "PM10", "limite": "45 µg/m³", "notas": ["Nivel de Referencia 24 horas"] },
+    { "parametro": "NO2", "limite": "10 µg/m³", "notas": ["Nivel de Referencia Anual"] },
+    { "parametro": "NO2", "limite": "25 µg/m³", "notas": ["Nivel de Referencia 24 horas"] },
+    { "parametro": "O3", "limite": "60 µg/m³", "notas": ["Nivel de Referencia Pico estacional"] },
+    { "parametro": "O3", "limite": "100 µg/m³", "notas": ["Nivel de Referencia 8 horas"] },
+    { "parametro": "SO2", "limite": "40 µg/m³", "notas": ["Nivel de Referencia 24 horas"] },
+    { "parametro": "CO", "limite": "4 mg/m³", "notas": ["Nivel de Referencia 24 horas"] }
+  ]
+}

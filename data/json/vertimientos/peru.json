@@ -1,0 +1,88 @@
+{
+  "pais": "Perú",
+  "dominio": "vertimientos",
+  "version": "2025-10-23",
+  "normativeReference_es": "D.S. N° 003-2010-MINAM (PTAR municipales), D.S. N° 037-2008-PCM (hidrocarburos), D.S. N° 010-2010-MINAM (minero-metalúrgico), D.S. N° 003-2002-PRODUCE (manufactura seleccionada).",
+  "normativeSources": [
+    {
+      "name": "D.S. 003-2010-MINAM",
+      "url": "https://www.minam.gob.pe/disposiciones/decreto-supremo-n-003-2010-minam/",
+      "description": "Límites Máximos Permisibles para Efluentes de Plantas de Tratamiento de Aguas Residuales Domésticas o Municipales",
+      "type": "government",
+      "lastValidated": "2025-10-23"
+    }
+  ],
+  "sectors": {
+    "ptar_municipales": {
+      "name": "Efluentes municipales (LMP a cuerpos de agua)",
+      "normativeReference": "D.S. 003-2010-MINAM",
+      "normativeReference_url": "https://www.minam.gob.pe/disposiciones/decreto-supremo-n-003-2010-minam/",
+      "parameters": [
+        { "parametro": "Aceites y grasas", "limite": "20 mg/L" },
+        { "parametro": "Coliformes termotolerantes", "limite": "10,000 NMP/100 mL" },
+        { "parametro": "DBO", "limite": "100 mg/L" },
+        { "parametro": "DQO", "limite": "200 mg/L" },
+        { "parametro": "SST", "limite": "150 mg/L" },
+        { "parametro": "pH", "limite": "6.5 – 8.5" },
+        { "parametro": "Temperatura", "limite": "< 35 °C" }
+      ]
+    },
+    "hidrocarburos": {
+      "name": "Sector hidrocarburos (todas las actividades)",
+      "normativeReference": "D.S. 037-2008-PCM, Tabla 01",
+      "normativeReference_url": "https://www.minam.gob.pe/calidadambiental/wp-content/uploads/sites/22/2015/01/DS-N%C2%B0-037-2008-LMP-Efluente-para-Subsector-Hidrocarburos.pdf",
+      "parameters": [
+        { "parametro": "TPH (hidrocarburos totales de petróleo)", "limite": "20 mg/L" },
+        { "parametro": "Cloruro", "limite": "500 mg/L (ríos/lagos); 2000 mg/L (estuarios)" },
+        { "parametro": "Cr total", "limite": "0.5 mg/L" },
+        { "parametro": "Cr VI", "limite": "0.1 mg/L" },
+        { "parametro": "Hg", "limite": "0.02 mg/L" },
+        { "parametro": "Cd", "limite": "0.1 mg/L" },
+        { "parametro": "As", "limite": "0.2 mg/L" },
+        { "parametro": "Fenoles (refinerías)", "limite": "0.5 mg/L" },
+        { "parametro": "Sulfuros (refinerías)", "limite": "1.0 mg/L" },
+        { "parametro": "DBO", "limite": "50 mg/L" },
+        { "parametro": "DQO", "limite": "250 mg/L" },
+        { "parametro": "Pb", "limite": "0.1 mg/L" },
+        { "parametro": "pH", "limite": "6.0 – 9.0" },
+        { "parametro": "ΔT en cuerpo receptor", "limite": "< 3 °C (a 100 m del punto de descarga)" }
+      ]
+    },
+    "minero_metalurgico": {
+      "name": "Actividades minero-metalúrgicas (límites instantáneos y promedio anual)",
+      "normativeReference": "D.S. 010-2010-MINAM",
+      "normativeReference_url": "https://www.minam.gob.pe/disposiciones/decreto-supremo-n-010-2010-minam/",
+      "parameters": [
+        { "parametro": "pH", "limite": "6 – 9 (cualquier momento y promedio anual)" },
+        { "parametro": "SST", "limite": "50 mg/L (cualquier momento); 25 mg/L (promedio anual)" },
+        { "parametro": "Aceites y grasas", "limite": "20 mg/L (cualquier momento); 16 mg/L (promedio anual)" },
+        { "parametro": "Cianuro total", "limite": "1.0 mg/L (cualquier momento); 0.8 mg/L (promedio anual)" },
+        { "parametro": "As total", "limite": "0.1 mg/L; 0.08 mg/L (promedio anual)" },
+        { "parametro": "Cd total", "limite": "0.05 mg/L; 0.04 mg/L (promedio anual)" },
+        { "parametro": "Cu total", "limite": "0.5 mg/L; 0.4 mg/L (promedio anual)" },
+        { "parametro": "Pb total", "limite": "0.2 mg/L; 0.16 mg/L (promedio anual)" },
+        { "parametro": "Hg total", "limite": "0.002 mg/L; 0.0016 mg/L (promedio anual)" },
+        { "parametro": "Zn total", "limite": "1.2 mg/L; 0.96 mg/L (promedio anual)" }
+      ]
+    },
+    "manufactura_seleccionada": {
+      "name": "Manufactura (cerveza, curtiembre, papel, cemento) – selección",
+      "normativeReference": "D.S. 003-2002-PRODUCE, Anexo 1",
+      "normativeReference_url": "https://faolex.fao.org/docs/pdf/per35705.pdf",
+      "parameters": [
+        { "parametro": "Cerveza – SST (a alcantarillado)", "limite": "Inst. en curso: 500 mg/L; Nueva: 350 mg/L" },
+        { "parametro": "Cerveza – SST (a aguas superficiales)", "limite": "Inst. en curso: 50 mg/L; Nueva: 30 mg/L" },
+        { "parametro": "Curtiembre – SST (a alcantarillado)", "limite": "Inst. en curso: 500 mg/L; Nueva: 250 mg/L" },
+        { "parametro": "Curtiembre – SST (a aguas superficiales)", "limite": "Inst. en curso: 50 mg/L; Nueva: 30 mg/L" },
+        { "parametro": "Cerveza – DQO (a alcantarillado)", "limite": "Inst. en curso: 1500 mg/L; Nueva: 1000 mg/L" },
+        { "parametro": "Cerveza – DQO (a aguas superficiales)", "limite": "Inst. en curso: 250 mg/L; Nueva: 50 mg/L" },
+        { "parametro": "Curtiembre – DQO (a alcantarillado)", "limite": "Inst. en curso: 1500 mg/L; Nueva: 1000 mg/L" },
+        { "parametro": "Curtiembre – DQO (a aguas superficiales)", "limite": "Inst. en curso: 250 mg/L; Nueva: 50 mg/L" },
+        { "parametro": "Curtiembre – Cromo total (alcantarillado)", "limite": "Inst. en curso: 5.0 mg/L; Nueva: 2.0 mg/L" },
+        { "parametro": "Curtiembre – Cromo total (aguas superficiales)", "limite": "Inst. en curso: 2.5 mg/L; Nueva: 0.5 mg/L" },
+        { "parametro": "Curtiembre – Sulfuros (alcantarillado)", "limite": "Inst. en curso: 10.0 mg/L; Nueva: 3.0 mg/L" },
+        { "parametro": "Curtiembre – Sulfuros (aguas superficiales)", "limite": "Inst. en curso: 2.5 mg/L; Nueva: 0.5 mg/L" }
+      ]
+    }
+  }
+}

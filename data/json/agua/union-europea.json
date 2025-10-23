@@ -1,39 +1,56 @@
 {
   "pais": "Unión Europea",
-  "paisCodigo": "union-europea",
   "dominio": "agua",
-  "version": "2.0.0",
-  "fuentePrincipal": "Directiva (UE) 2020/2184 (Agua Potable), Directiva 2006/7/CE (Aguas de Baño), Reglamento (UE) 2020/741 (Reutilización de Aguas), Directiva 2013/39/UE (Normas de Calidad Ambiental)",
+  "normativeReference_es": "Directiva (UE) 2020/2184, Directiva Marco del Agua (2000/60/CE), Reglamento (UE) 2020/741",
   "sectors": {
-    "agua-potable": {
-      "name": "Agua Potable",
-      "description": "Agua para consumo humano directo, conforme a la Directiva (UE) 2020/2184.",
+    "agua_potable": {
+      "name": "Directiva sobre el Agua Potable (UE) 2020/2184",
+      "normativeReference": "DIRECTIVA (UE) 2020/2184",
+      "normativeReference_url": "https://eur-lex.europa.eu/eli/dir/2020/2184/oj/spa",
       "parameters": [
-        { "parameter": "Arsénico", "value": "≤10", "unit": "µg/L", "source": "2020/2184" },
-        { "parameter": "pH", "value": "6.5 - 9.5", "source": "2020/2184" },
-        { "parameter": "Plomo (Pb)", "value": "≤5", "unit": "µg/L", "source": "2020/2184", "notes": "Valor paramétrico que se reducirá progresivamente" }
+        { "parametro": "Enterococos intestinales", "limite": "0 número/100 ml" },
+        { "parametro": "Escherichia coli (E. coli)", "limite": "0 número/100 ml" },
+        { "parametro": "Acrilamida", "limite": "0,10 µg/l" },
+        { "parametro": "Arsénico", "limite": "10 µg/l" },
+        { "parametro": "Benceno", "limite": "1,0 µg/l" },
+        { "parametro": "Boro", "limite": "1,5 mg/l" },
+        { "parametro": "Cadmio", "limite": "5,0 µg/l" },
+        { "parametro": "Cromo", "limite": "25 µg/l" },
+        { "parametro": "Cobre", "limite": "2,0 mg/l" },
+        { "parametro": "Plomo", "limite": "5 µg/l" },
+        { "parametro": "Níquel", "limite": "20 µg/l" },
+        { "parametro": "Nitrato", "limite": "50 mg/l" },
+        { "parametro": "Nitrito", "limite": "0,50 mg/l" },
+        { "parametro": "Plaguicidas Totales", "limite": "0,50 µg/l" },
+        { "parametro": "Selenio", "limite": "20 µg/l" },
+        { "parametro": "Trihalometanos Totales", "limite": "100 µg/l" },
+        { "parametro": "Uranio", "limite": "30 µg/l" },
+        { "parametro": "Cloruro de vinilo", "limite": "0,50 µg/l" }
       ]
     },
-    "recreacion": {
-      "name": "Aguas de Baño (Contacto Primario)",
-      "description": "Calidad para aguas de baño interiores según la Directiva 2006/7/CE.",
+    "calidad_ambiental_superficiales": {
+      "name": "Estándares de Calidad Ambiental (EQS) para Aguas Superficiales",
+      "normativeReference": "Water Framework Directive 2000/60/EC",
+      "normativeReference_url": "https://environment.ec.europa.eu/topics/water/water-framework-directive_en",
       "parameters": [
-        { "parameter": "Enterococos intestinales", "value": "≤330", "unit": "UFC/100 mL", "source": "2006/7/CE", "notes": "Percentil 90" }
+        { "parametro": "Alacloro", "limite": "0,3 µg/l (CMA)" },
+        { "parametro": "Antraceno", "limite": "0,1 µg/l (CMA)" },
+        { "parametro": "Atrazina", "limite": "0,6 µg/l (CMA)" },
+        { "parametro": "Benceno", "limite": "10 µg/l (CMA)" },
+        { "parametro": "Cadmio y sus compuestos", "limite": "≤ 0,08 µg/l (Clase 1, CMA)" },
+        { "parametro": "Cipermetrina", "limite": "8x10^-5 µg/l (CMA)" }
       ]
     },
-    "reuso": {
-      "name": "Reutilización en Agricultura",
-      "description": "Requisitos para la reutilización de aguas depuradas en riego agrícola (Clase A) según el Reglamento (UE) 2020/741.",
-      "parameters": [
-        { "parameter": "E. coli", "value": "≤10", "unit": "UFC/100 mL", "source": "2020/741" }
-      ]
-    },
-    "conservacion": {
-      "name": "Calidad Ambiental en Aguas Superficiales",
-      "description": "Normas de calidad ambiental para sustancias prioritarias en aguas superficiales interiores, según la Directiva 2013/39/UE.",
-      "parameters": [
-        { "parameter": "Mercurio (Hg)", "value": "≤0.05", "unit": "µg/L", "source": "2013/39/UE", "notes": "Valor medio anual" }
-      ]
+    "reutilizacion_riego_agricola": {
+        "name": "Reutilización del Agua para Riego Agrícola (UE) 2020/741",
+    "normativeReference": "Reglamento (UE) 2020/741",
+    "normativeReference_url": "https://www.boe.es/doue/2020/177/L00032-00055.pdf",
+        "parameters": [
+            { "parametro": "E. coli (Clase A)", "limite": "≤ 10 número/100 ml" },
+            { "parametro": "E. coli (Clase B)", "limite": "≤ 100 número/100 ml" },
+            { "parametro": "E. coli (Clase C)", "limite": "≤ 1000 número/100 ml" },
+            { "parametro": "E. coli (Clase D)", "limite": "≤ 10 000 número/100 ml" }
+        ]
     }
   }
 }

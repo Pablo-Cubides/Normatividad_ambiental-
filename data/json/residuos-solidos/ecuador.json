@@ -1,0 +1,35 @@
+{
+  "pais": "Ecuador",
+  "dominio": "residuos-solidos",
+  "normativeReference_es": "Código Orgánico del Ambiente (COA); Acuerdo Ministerial 061",
+  "registros": [
+    {
+      "categoria": "Peligrosos y Especiales",
+      "parametro": "Principios y Obligaciones",
+      "limite": "Principio 'Quien Contamina, Paga'. REP. Obligaciones del generador. Requisitos estrictos para almacenamiento y disposición final.",
+      "referencia": { "norma": "Código Orgánico del Ambiente (COA); Acuerdo Ministerial 061" },
+      "notas": ["Autoridad: Ministerio del Ambiente, Agua y Transición Ecológica (MAATE)"]
+    },
+    {
+      "categoria": "Sólidos no Peligrosos (Municipales)",
+      "parametro": "Competencia y Normativa",
+      "limite": "Competencia de los GAD Municipales. El MAATE establece normas técnicas. Regulación de estaciones de transferencia.",
+      "referencia": { "norma": "Código Orgánico del Ambiente (COA)" },
+      "notas": ["Autoridad: GAD Municipales (gestión); MAATE (rectoría y normativa técnica)"]
+    },
+    {
+      "categoria": "RCD",
+      "parametro": "Gestión",
+      "limite": "Gestión bajo la competencia de los GAD Municipales a través de ordenanzas y planes locales.",
+      "referencia": { "norma": "Regulados como residuos no peligrosos" },
+      "notas": ["Autoridad: GAD Municipales"]
+    },
+    {
+      "categoria": "Orgánicos",
+      "parametro": "Gestión",
+      "limite": "Gestión bajo la competencia de los GAD Municipales, quienes deben promover su valorización (compostaje) en sus planes locales.",
+      "referencia": { "norma": "Regulados como residuos no peligrosos" },
+      "notas": ["Autoridad: GAD Municipales"]
+    }
+  ]
+}

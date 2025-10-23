@@ -1,0 +1,51 @@
+{
+  "pais": "China",
+  "dominio": "residuos-solidos",
+  "normativeReference_es": "Ley de Residuos Sólidos (Enmienda 2020)",
+    "normativeSources": [
+      {
+        "name": "Ley de Residuos Sólidos (Enmienda 2020)",
+        "url": "https://english.mee.gov.cn/",
+        "description": "Marco legal de residuos sólidos en China",
+        "type": "government",
+        "lastValidated": "2025-10-21"
+      }
+    ],
+  "registros": [
+    {
+      "categoria": "Peligrosos",
+      "parametro": "Gestión",
+      "limite": "Sistema de gestión de 'todo el proceso'. Responsabilidad estricta del generador (solidaria y mancomunada). Prohibición de importación.",
+      "referencia": { "norma": "Ley de Residuos Sólidos (Enmienda 2020)" },
+      "notas": ["Autoridad: Ministerio de Ecología y Medio Ambiente (MEE)"]
+    },
+    {
+      "categoria": "Domésticos (Municipales)",
+      "parametro": "Gestión",
+      "limite": "Clasificación obligatoria de residuos domésticos. Responsabilidad del gobierno local. Restricciones a plásticos de un solo uso.",
+      "referencia": { "norma": "Ley de Residuos Sólidos (Enmienda 2020)" },
+      "notas": ["Autoridad: Gobiernos Locales"]
+    },
+    {
+      "categoria": "Industriales",
+      "parametro": "Responsabilidad",
+      "limite": "Los generadores deben establecer un sistema de responsabilidad de ciclo de vida completo y mantener registros detallados.",
+      "referencia": { "norma": "Ley de Residuos Sólidos (Enmienda 2020)" },
+      "notas": ["Autoridad: MEE; Oficinas Ambientales Locales"]
+    },
+    {
+      "categoria": "RCD",
+      "parametro": "Gestión",
+      "limite": "Gestionados como una categoría distinta con reglas específicas.",
+      "referencia": { "norma": "Ley de Residuos Sólidos (Enmienda 2020)" },
+      "notas": ["Autoridad: Gobiernos Locales"]
+    },
+    {
+      "categoria": "Todos los Residuos Sólidos",
+      "parametro": "Importación",
+      "limite": "Prohibición total de importación de todos los residuos sólidos a partir del 1 de enero de 2021.",
+      "referencia": { "norma": "Ley de Residuos Sólidos (Enmienda 2020); Anuncio N° 53" },
+      "notas": ["Autoridad: MEE; Administración General de Aduanas"]
+    }
+  ]
+}

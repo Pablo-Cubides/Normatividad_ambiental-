@@ -1,0 +1,26 @@
+{
+  "pais": "China",
+  "dominio": "calidad-aire",
+  "normativeReference_es": "GB 3095-2012",
+  "registros": [
+    { "parametro": "SO2", "limite": "60 µg/m³", "notas": ["Límite Clase 2 (Anual)"] },
+    { "parametro": "SO2", "limite": "150 µg/m³", "notas": ["Límite Clase 2 (24 horas)"] },
+    { "parametro": "NO2", "limite": "40 µg/m³", "notas": ["Límite Clase 2 (Anual)"] },
+    { "parametro": "NO2", "limite": "80 µg/m³", "notas": ["Límite Clase 2 (24 horas)"] },
+    { "parametro": "PM10", "limite": "70 µg/m³", "notas": ["Límite Clase 2 (Anual)"] },
+    { "parametro": "PM10", "limite": "150 µg/m³", "notas": ["Límite Clase 2 (24 horas)"] },
+    { "parametro": "PM2.5", "limite": "35 µg/m³", "notas": ["Límite Clase 2 (Anual)"] },
+    { "parametro": "PM2.5", "limite": "75 µg/m³", "notas": ["Límite Clase 2 (24 horas)"] },
+    { "parametro": "O3", "limite": "160 µg/m³", "notas": ["Límite Clase 2 (Máximo diario de 8 horas)"] },
+    { "parametro": "CO", "limite": "4,000 µg/m³ (4 mg/m³)", "notas": ["Límite Clase 2 (24 horas)"] }
+  ]
+  ,
+  "normativeSources": [
+    {
+      "name": "Ambient air quality standards GB 3095-2012",
+      "url": "https://english.mee.gov.cn/Resources/standards/Air_Environment/quality_standard1/201605/t20160511_337502.shtml",
+      "description": "Calidad del Aire - GB 3095-2012",
+      "type": "official"
+    }
+  ]
+}

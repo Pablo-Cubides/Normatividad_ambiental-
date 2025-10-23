@@ -1,47 +1,111 @@
 {
   "pais": "Chile",
-  "paisCodigo": "chile",
   "dominio": "agua",
-  "version": "2.0.0",
-  "fuentePrincipal": "NCh 1333 Of. 1978 (Requisitos de calidad del agua para diferentes usos), NCh 409/1:2005 (Agua potable), D.S. 90/2000 (Descarga de efluentes)",
+  "normativeReference_es": "Norma Chilena NCh 409/1.Of2005, Norma Chilena NCh 1333.Of78 (Mod. 1987), Ley Nº 21.075, Decreto 40 de 2022",
   "sectors": {
-    "agua-potable": {
-      "name": "Agua Potable",
-      "description": "Requisitos de calidad para agua potable según la norma NCh 409/1:2005.",
+    "agua_potable": {
+      "name": "Agua Potable - NCh 409/1.Of2005",
+      "normativeReference": "Norma Chilena oficial NCh409/1",
+      "normativeReference_url": "https://ciperchile.cl/pdfs/11-2013/norovirus/NCh409.pdf",
       "parameters": [
-        { "parameter": "Arsénico (As)", "value": "≤0.01", "unit": "mg/L", "source": "NCh 409/1" },
-        { "parameter": "E. coli", "value": "0", "unit": "NMP/100 mL", "source": "NCh 409/1" },
-        { "parameter": "Turbiedad", "value": "≤2-5", "unit": "NTU", "source": "NCh 409/1" },
-        { "parameter": "pH", "value": "6.5 - 8.5", "source": "NCh 409/1" }
+        { "parametro": "Escherichia coli", "limite": "Ausencia en 100 mL" },
+        { "parametro": "Bacterias coliformes totales", "limite": "Se acepta presencia en 10% de las muestras mensuales (si se analizan 10)" },
+        { "parametro": "Turbiedad", "limite": "Media mensual 2 UNT" },
+        { "parametro": "Arsénico", "limite": "0,01 mg/L" },
+        { "parametro": "Cadmio", "limite": "0,01 mg/L" },
+        { "parametro": "Cianuro", "limite": "0,05 mg/L" },
+        { "parametro": "Cobre", "limite": "2,0 mg/L" },
+        { "parametro": "Cromo total", "limite": "0,05 mg/L" },
+        { "parametro": "Hierro", "limite": "0,30 mg/L" },
+        { "parametro": "Manganeso", "limite": "0,10 mg/L" },
+        { "parametro": "Mercurio", "limite": "0,001 mg/L" },
+        { "parametro": "Nitrato", "limite": "50 mg/L" },
+        { "parametro": "Nitrito", "limite": "3,00 mg/L" },
+        { "parametro": "Plomo", "limite": "0,05 mg/L" },
+        { "parametro": "Selenio", "limite": "0,01 mg/L" },
+        { "parametro": "Zinc", "limite": "3,00 mg/L" },
+        { "parametro": "Benceno", "limite": "10 µg/L" },
+        { "parametro": "Tetracloroeteno", "limite": "40 µg/L" },
+        { "parametro": "Tolueno", "limite": "700 µg/L" },
+        { "parametro": "Xileno", "limite": "500 µg/L" },
+        { "parametro": "2,4 - D", "limite": "30 µg/L" },
+        { "parametro": "Lindano", "limite": "2 µg/L" },
+        { "parametro": "Metoxicloro", "limite": "20 µg/L" },
+        { "parametro": "Pentaclorofenol", "limite": "9 µg/L" },
+        { "parametro": "Color verdadero", "limite": "20 Unidad Pt-Co" },
+        { "parametro": "Olor", "limite": "Inodora" },
+        { "parametro": "Sabor", "limite": "Insípida" },
+        { "parametro": "pH", "limite": "6,5 - 8,5" },
+        { "parametro": "Cloruro", "limite": "400 mg/L" },
+        { "parametro": "Sulfato", "limite": "500 mg/L" },
+        { "parametro": "Sólidos disueltos totales", "limite": "1500 mg/L" },
+        { "parametro": "Cloro libre residual (mínimo en red)", "limite": "0,2 mg/L" },
+        { "parametro": "Cloro libre residual (máximo en red)", "limite": "2,0 mg/L" }
       ]
     },
     "riego": {
-      "name": "Riego Agrícola",
-      "description": "Requisitos de calidad para riego agrícola, especialmente para vegetales consumidos crudos.",
+      "name": "Requisitos de Calidad para Agua de Riego - NCh 1333.Of78",
+      "normativeReference": "Norma Chilena oficial NCh409/1",
+      "normativeReference_url": "https://ciperchile.cl/pdfs/11-2013/norovirus/NCh409.pdf",
       "parameters": [
-        { "parameter": "Coliformes Fecales", "value": "≤1000", "unit": "NMP/100 mL", "source": "NCh 1333" },
-        { "parameter": "pH", "value": "5.5 - 9.0", "source": "NCh 1333" }
+        { "parametro": "pH", "limite": "5,5 - 9,0" },
+        { "parametro": "Coliformes fecales", "limite": "1.000 NMP/100 mL" },
+        { "parametro": "Aluminio (Al)", "limite": "5,0 mg/L" },
+        { "parametro": "Arsénico (As)", "limite": "0,10 mg/L" },
+        { "parametro": "Boro (B)", "limite": "0,75 mg/L" },
+        { "parametro": "Cadmio (Cd)", "limite": "0,01 mg/L" },
+        { "parametro": "Cobre (Cu)", "limite": "0,20 mg/L" },
+        { "parametro": "Cromo (Cr)", "limite": "0,10 mg/L" },
+        { "parametro": "Manganeso (Mn)", "limite": "0,20 mg/L" },
+        { "parametro": "Mercurio (Hg)", "limite": "0,001 mg/L" },
+        { "parametro": "Níquel (Ni)", "limite": "0,20 mg/L" },
+        { "parametro": "Plomo (Pb)", "limite": "5,00 mg/L" },
+        { "parametro": "Selenio (Se)", "limite": "0,02 mg/L" },
+        { "parametro": "Zinc (Zn)", "limite": "2,00 mg/L" },
+        { "parametro": "Sodio Porcentual (Na)", "limite": "35,00 %" }
       ]
     },
-    "ganaderia": {
-      "name": "Bebida de Animales",
-      "description": "El agua para bebida de animales debe cumplir con los requisitos de la norma de agua potable.",
+    "bebida_animales": {
+      "name": "Requisitos de Calidad para Bebida de Animales - NCh 1333",
+      "normativeReference": "Norma Chilena oficial NCh409/1",
+      "normativeReference_url": "https://ciperchile.cl/pdfs/11-2013/norovirus/NCh409.pdf",
       "parameters": [
-        { "parameter": "Calidad General", "value": "Cumplir NCh 409", "unit": "N/A", "source": "NCh 1333" }
+        { "parametro": "Cumplimiento", "limite": "El agua para la bebida de animales debe cumplir con la Norma Chilena NCH 409 (agua potable)."}
       ]
     },
     "recreacion": {
-      "name": "Recreación con Contacto Directo",
-      "description": "Límites para aguas de baño y recreación con contacto primario.",
+      "name": "Requisitos de Calidad para Recreación con Contacto Directo",
+      "normativeReference": "Decreto 327 Reglamento de piscinas",
+      "normativeReference_url": "https://www.bcn.cl/leychile/navegar?idNorma=178272",
       "parameters": [
-        { "parameter": "Coliformes Fecales", "value": "≤1000", "unit": "NMP/100 mL", "source": "NCh 1333" }
+        { "parametro": "pH", "limite": "6,5 - 8,3" },
+        { "parametro": "Coliformes fecales", "limite": "Máximo 1.000 NMP/100 mL" },
+        { "parametro": "Claridad", "limite": "Visualización de disco Secchi a 1,20 m" },
+        { "parametro": "Sólidos flotantes y espumas", "limite": "Ausentes" },
+        { "parametro": "Aceites y grasas", "limite": "Máximo 5 mg/L" },
+        { "parametro": "Temperatura", "limite": "Máximo 30 °C" }
       ]
     },
-    "conservacion": {
-      "name": "Conservación de la Vida Acuática",
-      "description": "Requisitos para la protección de la vida acuática en aguas superficiales.",
+    "vida_acuatica": {
+      "name": "Requisitos de Calidad para Vida Acuática (Aguas Dulces)",
+      "normativeReference": "Norma Chilena oficial NCh409/1",
+      "normativeReference_url": "https://ciperchile.cl/pdfs/11-2013/norovirus/NCh409.pdf",
       "parameters": [
-        { "parameter": "Oxígeno Disuelto", "value": "≥5", "unit": "mg/L", "source": "NCh 1333" }
+        { "parametro": "Oxígeno disuelto", "limite": "Mínimo 5 mg/L" },
+        { "parametro": "pH", "limite": "6,0 - 9,0" },
+        { "parametro": "Alcalinidad total", "limite": "Mínimo 20 mg/L de" },
+        { "parametro": "Temperatura", "limite": "No debe aumentar el valor natural en más de 3°C" },
+        { "parametro": "Sólidos flotantes y espumas", "limite": "Ausentes" },
+        { "parametro": "Petróleo o hidrocarburos", "limite": "Sin detección visual ni olor perceptible" }
+      ]
+    },
+    "reutilizacion_aguas_grises": {
+      "name": "Reutilización de Aguas Grises - Ley Nº 21.075, Decreto 40 de 2022",
+      "normativeReference": "Ley 21075 Regula la recolección, reutilización y disposición de aguas grises",
+      "normativeReference_url": "https://www.bcn.cl/leychile/navegar?idNorma=1115066",
+      "parameters": [
+        { "parametro": "Usos Urbanos", "limite": "Riego de jardines, descarga de aparatos sanitarios. Parámetros regulados: Escherichia coli, Turbiedad, pH, Cloro Libre Residual, entre otros." },
+        { "parametro": "Usos Recreativos y Ornamentales", "limite": "Riego de áreas verdes públicas, campos deportivos, jardines ornamentales. Parámetros regulados: Similares al uso urbano, pero con límites potencialmente más estrictos." }
       ]
     }
   }

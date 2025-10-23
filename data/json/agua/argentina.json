@@ -1,59 +1,124 @@
 {
   "pais": "Argentina",
-  "paisCodigo": "argentina",
   "dominio": "agua",
-  "version": "2.0.0",
-  "fuentePrincipal": "Código Alimentario Argentino (CAA), Guías de Calidad de Agua para Riego y Bebida de Animales (SENASA), Directrices para Aguas Recreativas (MSAL)",
-  "registros": [
-    {
-      "categoria": "Agua Potable",
-      "parametro": "Arsénico (As)",
-      "limite": "≤0.01",
-      "unidad": "mg/L",
-      "referencia": { "norma": "Código Alimentario Argentino (CAA)" }
-    },
-    {
-      "categoria": "Agua Potable",
-      "parametro": "E. coli",
-      "limite": "0",
-      "unidad": "NMP/100 mL",
-      "referencia": { "norma": "CAA" }
-    },
-    {
-      "categoria": "Riego Agrícola",
-      "parametro": "Coliformes Fecales",
-      "limite": "≤1000",
-      "unidad": "NMP/100 mL",
-      "notas": ["Guía para riego de hortalizas consumidas crudas"]
-    },
-    {
-      "categoria": "Bebida de Animales (Ganadería)",
-      "parametro": "Nitratos (NO3)",
-      "limite": "<100",
-      "unidad": "mg/L",
-      "notas": ["Para evitar metahemoglobinemia en bovinos"]
-    },
-    {
-      "categoria": "Aguas Recreativas",
-      "parametro": "Enterococos",
-      "limite": "<200",
-      "unidad": "UFC/100 mL",
-      "referencia": { "norma": "Directrices Sanitarias MSAL 2017" }
-    }
-  ],
+  "normativeReference_es": "Código Alimentario Argentino (CAA), Niveles Guía Nacionales de Calidad de Agua Ambiente (COFEMA), Ley 12.257 de la Provincia de Buenos Aires",
   "sectors": {
-    "agua-potable": {
-      "name": "Agua Potable y Uso Alimentario",
+    "agua_potable": {
+      "name": "Agua para Consumo Humano (Agua Potable)",
+      "normativeReference": "Codigo Alimentario Argentino (CAA)",
       "parameters": [
-        { "parameter": "pH", "value": "6.5 - 8.5" },
-        { "parameter": "Arsénico", "value": "≤0.01", "unit": "mg/L" },
-        { "parameter": "E. coli", "value": "0", "unit": "UFC/100 mL" }
+        { "parametro": "Turbiedad", "limite": "3 NTU" },
+        { "parametro": "Color", "limite": "5 escala Pt-Co" },
+        { "parametro": "Olor", "limite": "Sin olores extraños" },
+        { "parametro": "pH", "limite": "6,5 - 8,5" },
+        { "parametro": "pH de saturación", "limite": "pH 0,2" },
+        { "parametro": "Amoníaco", "limite": "0,20 mg/L" },
+        { "parametro": "Antimonio (Sb)", "limite": "0,02 mg/L" },
+        { "parametro": "Aluminio residual (Al)", "limite": "0,20 mg/L" },
+        { "parametro": "Arsénico (As)", "limite": "0,01 mg/L" },
+        { "parametro": "Boro (B)", "limite": "2,4 mg/L" },
+        { "parametro": "Bromato", "limite": "0,01 mg/L" },
+        { "parametro": "Cadmio (Cd)", "limite": "0,005 mg/L" },
+        { "parametro": "Cianuro", "limite": "0,10 mg/L" },
+        { "parametro": "Cinc (Zn)", "limite": "5,0 mg/L" },
+        { "parametro": "Cloruro", "limite": "350 mg/L" },
+        { "parametro": "Cobre (Cu)", "limite": "1,00 mg/L" },
+        { "parametro": "Cromo (Cr)", "limite": "0,05 mg/L" },
+        { "parametro": "Dureza total", "limite": "400 mg/L" },
+        { "parametro": "Hierro total (Fe)", "limite": "0,30 mg/L" },
+        { "parametro": "Manganeso (Mn)", "limite": "0,10 mg/L" },
+        { "parametro": "Mercurio (Hg)", "limite": "0,001 mg/L" },
+        { "parametro": "Níquel (Ni)", "limite": "0,02 mg/L" },
+        { "parametro": "Nitrato", "limite": "45 mg/L" },
+        { "parametro": "Nitrito", "limite": "0,10 mg/L" },
+        { "parametro": "Plata (Ag)", "limite": "0,05 mg/L" },
+        { "parametro": "Plomo (Pb)", "limite": "0,05 mg/L" },
+        { "parametro": "Selenio (Se)", "limite": "0,01 mg/L" },
+        { "parametro": "Sólidos disueltos totales", "limite": "1500 mg/L" },
+        { "parametro": "Sulfatos", "limite": "400 mg/L" },
+        { "parametro": "Cloro activo residual (Cl)", "limite": "mín.: 0,2 mg/L" },
+        { "parametro": "Trihalometanos (THM)", "limite": "100 µg/L" },
+        { "parametro": "Aldrin + Dieldrin", "limite": "0,03 µg/L" },
+        { "parametro": "Clordano", "limite": "0,30 µg/L" },
+        { "parametro": "DDT (Total + Isómeros)", "limite": "1,00 µg/L" },
+        { "parametro": "Detergentes", "limite": "500 (0,50 mg/L) µg/L" },
+        { "parametro": "Heptacloro + Heptacloroepóxido", "limite": "0,10 µg/L" },
+        { "parametro": "Lindano", "limite": "3,00 µg/L" },
+        { "parametro": "Metoxicloro", "limite": "30,0 µg/L" },
+        { "parametro": "2,4 D", "limite": "100 µg/L" },
+        { "parametro": "Benceno", "limite": "10 µg/L" },
+        { "parametro": "Hexacloro benceno", "limite": "0,01 µg/L" },
+        { "parametro": "Monocloro benceno", "limite": "3,0 µg/L" },
+        { "parametro": "1,2 Dicloro benceno", "limite": "0,5 µg/L" },
+        { "parametro": "1,4 Dicloro benceno", "limite": "0,4 µg/L" },
+        { "parametro": "Pentaclorofenol", "limite": "10 µg/L" },
+        { "parametro": "2, 4, 6 Triclorofenol", "limite": "10 µg/L" },
+        { "parametro": "Tetracloruro de carbono", "limite": "3,00 µg/L" },
+        { "parametro": "1,1 Dicloroeteno", "limite": "0,30 µg/L" },
+        { "parametro": "Tricloro etileno", "limite": "30,0 µg/L" },
+        { "parametro": "1,2 Dicloro etano", "limite": "10 µg/L" },
+        { "parametro": "Cloruro de vinilo", "limite": "2,00 µg/L" },
+        { "parametro": "Benzopireno", "limite": "0,01 µg/L" },
+        { "parametro": "Tetra cloro eteno", "limite": "10 µg/L" },
+        { "parametro": "MetilParatión", "limite": "7 µg/L" },
+        { "parametro": "Paratión", "limite": "35 µg/L" },
+        { "parametro": "Malatión", "limite": "35 µg/L" },
+        { "parametro": "Bacterias coliformes /100 ml", "limite": "Ausencia" },
+        { "parametro": "Escherichia coli /100 ml", "limite": "Ausencia" },
+        { "parametro": "Pseudomonas aeruginosa /100 ml", "limite": "Ausencia" }
       ]
     },
-    "riego": {
-      "name": "Riego Agrícola",
+    "uso_agricola": {
+      "name": "Niveles Guía de Calidad de Agua para Irrigación (Uso Agrícola)",
+      "normativeReference": "Niveles Guia Nacionales de Calidad de Agua Ambiente - Metodologia para Riego",
       "parameters": [
-        { "parameter": "Coliformes fecales", "value": "≤1000", "unit": "NMP/100 mL" }
+        { "parametro": "Coliformes fecales", "limite": "1000 NMP/100 ml" },
+        { "parametro": "pH", "limite": "6,0 - 9,0" },
+        { "parametro": "Arsénico (As)", "limite": "0,1 mg/L" },
+        { "parametro": "Boro (B)", "limite": "0,5 mg/L" },
+        { "parametro": "Cadmio (Cd)", "limite": "0,01 mg/L" },
+        { "parametro": "Cobalto (Co)", "limite": "0,05 mg/L" },
+        { "parametro": "Cobre (Cu)", "limite": "0,2 mg/L" },
+        { "parametro": "Cromo (Cr)", "limite": "0,1 mg/L" },
+        { "parametro": "Manganeso (Mn)", "limite": "0,2 mg/L" },
+        { "parametro": "Mercurio (Hg)", "limite": "0,002 mg/L" },
+        { "parametro": "Níquel (Ni)", "limite": "0,2 mg/L" },
+        { "parametro": "Plomo (Pb)", "limite": "0,01 mg/L" },
+        { "parametro": "Selenio (Se)", "limite": "0,02 mg/L" },
+        { "parametro": "Vanadio (V)", "limite": "0,1 mg/L" },
+        { "parametro": "Zinc (Zn)", "limite": "2,0 mg/L" }
+      ]
+    },
+    "actividades_recreativas": {
+      "name": "Niveles Guía de Calidad de Agua para Actividades Recreativas con Contacto Directo",
+      "normativeReference": "Cuidado del agua de las piletas",
+      "parameters": [
+        { "parametro": "Coliformes fecales", "limite": "200 NMP/100 ml" },
+        { "parametro": "pH", "limite": "6,5 - 8,5" },
+        { "parametro": "Oxígeno Disuelto", "limite": "> 5 mg/L" },
+        { "parametro": "Fenoles", "limite": "0,002 mg/L" },
+        { "parametro": "Detergentes (SAAM)", "limite": "0,2 mg/L" },
+        { "parametro": "Sustancias Flotantes", "limite": "Ausentes" }
+      ]
+    },
+    "proteccion_vida_acuatica": {
+      "name": "Niveles Guía de Calidad de Agua para Protección de Vida Acuática (Agua Dulce Superficial)",
+      "normativeReference": "Sistema Nacional de Areas Marinas Protegidas",
+      "parameters": [
+        { "parametro": "Amonio no ionizable", "limite": "20 µg/L" },
+        { "parametro": "Arsénico (Total)", "limite": "50 µg/L" },
+        { "parametro": "Cadmio (Total)", "limite": "0,2 µg/L" },
+        { "parametro": "Cianuro (Libre)", "limite": "5 µg/L" },
+        { "parametro": "Cinc (Total)", "limite": "30 µg/L" },
+        { "parametro": "Cobre (Total)", "limite": "2 µg/L" },
+        { "parametro": "Cromo (Hexavalente)", "limite": "10 µg/L" },
+        { "parametro": "Cromo (Total)", "limite": "50 µg/L" },
+        { "parametro": "Mercurio (Total)", "limite": "0,1 µg/L" },
+        { "parametro": "Níquel (Total)", "limite": "25 µg/L" },
+        { "parametro": "Nitrito", "limite": "60 µg/L" },
+        { "parametro": "Plomo (Total)", "limite": "4 µg/L" },
+        { "parametro": "Selenio (Total)", "limite": "5 µg/L" },
+        { "parametro": "BHC-GAMA (Lindano)", "limite": "0,01 µg/L" }
       ]
     }
   }

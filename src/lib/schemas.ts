@@ -26,6 +26,7 @@ export const SectorSchema = z.object({
 	name: z.string().optional(),
 	descripcion: z.string().optional(),
 	description: z.string().optional(),
+	normativeReference: z.string().optional(),
 	parameters: z.array(RecordSchema).optional(),
 });
 

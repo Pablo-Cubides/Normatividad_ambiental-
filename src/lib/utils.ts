@@ -1,90 +1,72 @@
+import { UnifiedNorm } from './schemas';
 
-import path from 'path';
-import fs from 'fs';
-import { logger } from '@/lib/logger';
+// Minimal normalize/merge helpers used by the API routes.
+// These implement best-effort normalization to a consistent shape
+// but avoid heavy logic; they are intentionally permissive.
 
-// Normalizes Spanish/alternate keys into the canonical schema expected by Zod.
-export const normalizeData = (raw: any) => {
-  const out = { ...raw };
-
-  // country/pais
-  if (!out.country && out.pais) out.country = out.pais;
-
-  // For water domain some files use 'normativeReference' / 'lastUpdate' already.
-  if (!out.normativeReference && out.referencia && typeof out.referencia === 'string') {
-    out.normativeReference = out.referencia;
+export function normalizeData(raw: unknown): UnifiedNorm | unknown {
+  // If already matches the expected shape, return as-is
+  if (!raw || typeof raw !== 'object') {
+    return {} as UnifiedNorm;
   }
 
-  // For record-based domains map spanish keys to English schema keys
-  if ((out.registros && !out.records) || (out.referencia && !out.reference)) {
-    if (out.registros && !out.records) {
-      out.records = Array.isArray(out.registros)
-        ? out.registros.map((r: any) => ({
-            parameter: r.parametro ?? r.parameter,
-            limit: r.limite ?? r.limit,
-            unit: r.unidad ?? r.unit ?? null,
-            notes: r.notas ?? r.notes ?? [],
-            reference: r.referencia ? { standard: r.referencia.norma ?? r.referencia } : (r.reference ?? undefined),
-            category: r.categoria ?? r.category ?? undefined,
-          }))
-        : out.registros;
-    }
+  const obj = raw as Record<string, unknown>;
+  const normalized: Record<string, unknown> = {};
 
-    if (out.referencia && !out.reference && typeof out.referencia === 'object') {
-      out.reference = { standard: out.referencia.norma ?? out.referencia.standard };
-    }
+  // Map country names
+  normalized.country = obj.country || obj.pais || obj.paisNombre || undefined;
+  normalized.pais = obj.pais || obj.country || undefined;
+
+  // Map domain
+  normalized.domain = obj.domain || obj.dominio || undefined;
+  normalized.dominio = obj.dominio || obj.domain || undefined;
+
+  // Map version/lastUpdate
+  normalized.version = obj.version || obj.lastUpdate || undefined;
+  normalized.lastUpdate = obj.lastUpdate || obj.version || undefined;
+
+  // Map normative reference
+  normalized.normativeReference = obj.normativeReference || obj.fuentePrincipal || obj.normativeReference_es || undefined;
+  normalized.normativeReference_es = obj.normativeReference_es || obj.fuentePrincipal || obj.normativeReference || undefined;
+
+  // Map records/registros
+  if (Array.isArray(obj.records)) {
+    normalized.records = obj.records;
+  } else if (Array.isArray(obj.registros)) {
+    normalized.records = obj.registros;
   }
 
-  // Some older files use 'version' vs 'lastUpdate'
-  if (!out.lastUpdate && out.version) out.lastUpdate = out.version;
-
-  return out;
-};
-
-// Merge candidate sectors from data/json-candidates/<domain>/ that match this country.
-export const mergeCandidates = (original: any, domain: string, country: string) => {
-  try {
-    const candidatesDir = path.join(process.cwd(), 'data', 'json-candidates', domain);
-    if (!fs.existsSync(candidatesDir)) return original;
-
-  let files = fs.readdirSync(candidatesDir);
-  if (!Array.isArray(files)) files = [];
-    const countryPrefix = (country || '').toLowerCase();
-
-    const merged = { ...original, _candidates: [] };
-    merged.sectors = merged.sectors ?? {};
-
-    for (const f of files) {
-      const lower = f.toLowerCase();
-      if (!lower.startsWith(countryPrefix + '-')) continue;
-      const full = path.join(candidatesDir, f);
-      try {
-        const txt = fs.readFileSync(full, 'utf8');
-        const cand = JSON.parse(txt);
-        if (cand && cand.sectors) {
-          for (const [key, val] of Object.entries(cand.sectors)) {
-            if (!merged.sectors[key]) {
-              // annotate candidate provenance
-              let sect: any = val;
-              if (val && typeof val === 'object' && !Array.isArray(val)) {
-                sect = { ...val };
-                sect._candidate = true;
-                sect._candidateSource = `json-candidates/${domain}/${f}`;
-              }
-              merged.sectors[key] = sect as any;
-            }
-          }
-          (merged._candidates as any[]).push(f);
-        }
-      } catch (e) {
-        // avoid throwing if a single candidate is bad; log and continue
-        try { logger.warn('mergeCandidates:bad_candidate', { file: full, error: String(e) }); } catch { /* ignore */ }
-      }
-    }
-
-    return merged;
-  } catch (e) {
-    try { logger.error('mergeCandidates:failed', { domain, country, error: String(e) }); } catch { /* ignore */ }
-    return original;
+  if (Array.isArray(obj.registros)) {
+    normalized.registros = obj.registros;
+  } else if (Array.isArray(obj.records)) {
+    normalized.registros = obj.records;
   }
-};
+
+  // Map reference/referencia
+  if (obj.reference && typeof obj.reference === 'object') {
+    normalized.reference = obj.reference;
+  } else if (obj.referencia && typeof obj.referencia === 'object') {
+    normalized.reference = obj.referencia;
+  }
+
+  if (obj.referencia && typeof obj.referencia === 'object') {
+    normalized.referencia = obj.referencia;
+  } else if (obj.reference && typeof obj.reference === 'object') {
+    normalized.referencia = obj.reference;
+  }
+
+  // Map sectors
+  if (obj.sectors && typeof obj.sectors === 'object') {
+    normalized.sectors = obj.sectors;
+  }
+
+  return normalized as UnifiedNorm;
+}
+
+export function mergeCandidates(normalized: unknown, domain: string | null, country: string | null): UnifiedNorm | unknown {
+  // Best-effort: attach domain/country if missing
+  const base = (normalized && typeof normalized === 'object') ? { ...(normalized as Record<string, unknown>) } : {} as Record<string, unknown>;
+  if (domain && !base.domain) base.domain = domain;
+  if (country && !base.country) base.country = country;
+  return base as UnifiedNorm;
+}

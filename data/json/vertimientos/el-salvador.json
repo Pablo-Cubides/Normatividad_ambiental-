@@ -1,0 +1,96 @@
+{
+  "pais": "El Salvador",
+  "dominio": "vertimientos",
+  "version": "2025-10-23",
+  "normativeReference_es": "NSO 13.05.01:24 (Aguas residuales descargadas a medio ambiente. Especificaciones y Método de muestreo). Decreto 253/2021 (calidad del agua). Decreto 136/2023 (abroga parte del decreto 253/2021).",
+  "normativeSources": [
+    {
+      "name": "Decreto 253/2021",
+      "url": "https://www.diariooficial.gob.sv/seleccion/36078",
+      "description": "Decreto ejecutivo que contiene disposiciones relativas a la calidad del agua",
+      "type": "government",
+      "lastValidated": "2025-10-23"
+    },
+    {
+      "name": "NSO 13.05.01:24",
+      "url": "https://www.osartec.gob.sv/normas-tecnicas/nso-13-05-01-24",
+      "description": "Aguas residuales descargadas a medio ambiente. Especificaciones y Método de muestreo",
+      "type": "technical",
+      "lastValidated": "2025-10-23"
+    },
+    {
+      "name": "Decreto 136/2023",
+      "url": "https://www.diariooficial.gob.sv/seleccion/37912",
+      "description": "Decreto ejecutivo que abroga el Decreto 39/2000 y adiciona el D.L. 233/2021",
+      "type": "government",
+      "lastValidated": "2025-10-23"
+    }
+  ],
+  "sectors": {
+    "rts_ordinarias": {
+      "name": "Aguas residuales ordinarias (domésticas e industriales)",
+      "normativeReference": "NSO 13.05.01:24",
+      "normativeReference_url": "https://www.osartec.gob.sv/normas-tecnicas/nso-13-05-01-24",
+      "parameters": [
+        { "parametro": "pH", "limite": "6.0–9.0 unidades" },
+        { "parametro": "Temperatura", "limite": "≤ 40 °C" },
+        { "parametro": "DBO5", "limite": "≤ 100 mg/L" },
+        { "parametro": "DQO", "limite": "≤ 400 mg/L" },
+        { "parametro": "SST", "limite": "≤ 100 mg/L" },
+        { "parametro": "Sólidos sedimentables", "limite": "≤ 1.0 mL/L" },
+        { "parametro": "Aceites y grasas", "limite": "≤ 30 mg/L" },
+        { "parametro": "SAAM (detergentes)", "limite": "≤ 10 mg/L" },
+        { "parametro": "Nitrógeno total", "limite": "≤ 50 mg/L N" },
+        { "parametro": "Fósforo total", "limite": "≤ 15 mg/L P" },
+        { "parametro": "Sulfuros", "limite": "≤ 2.0 mg/L S²⁻" },
+        { "parametro": "Fenoles totales", "limite": "≤ 0.20 mg/L" },
+        { "parametro": "Cianuro total", "limite": "≤ 1.0 mg/L CN⁻" },
+        { "parametro": "Coliformes fecales", "limite": "≤ 10000 NMP/100 mL" }
+      ]
+    },
+    "rts_especial_basicos": {
+      "name": "Aguas residuales especiales – Parámetros básicos",
+      "normativeReference": "NSO 13.05.01:24",
+      "normativeReference_url": "https://www.osartec.gob.sv/normas-tecnicas/nso-13-05-01-24",
+      "parameters": [
+        { "parametro": "pH", "limite": "6.0–9.0 unidades" },
+        { "parametro": "Temperatura", "limite": "≤ 40 °C" },
+        { "parametro": "DBO5", "limite": "≤ 100 mg/L" },
+        { "parametro": "DQO", "limite": "≤ 400 mg/L" },
+        { "parametro": "SST", "limite": "≤ 100 mg/L" },
+        { "parametro": "Sólidos sedimentables", "limite": "≤ 1.0 mL/L" },
+        { "parametro": "Aceites y grasas", "limite": "≤ 30 mg/L" },
+        { "parametro": "SAAM (detergentes)", "limite": "≤ 10 mg/L" },
+        { "parametro": "Nitrógeno total", "limite": "≤ 50 mg/L N" },
+        { "parametro": "Fósforo total", "limite": "≤ 15 mg/L P" },
+        { "parametro": "Sulfuros", "limite": "≤ 2.0 mg/L S²⁻" },
+        { "parametro": "Fenoles totales", "limite": "≤ 0.20 mg/L" },
+        { "parametro": "Cianuro total", "limite": "≤ 1.0 mg/L CN⁻" },
+        { "parametro": "Coliformes fecales", "limite": "≤ 10000 NMP/100 mL" }
+      ]
+    },
+    "rts_especial_especificos": {
+      "name": "Aguas residuales especiales – Parámetros específicos adicionales",
+      "normativeReference": "NSO 13.05.01:24",
+      "normativeReference_url": "https://www.osartec.gob.sv/normas-tecnicas/nso-13-05-01-24",
+      "parameters": [
+        { "parametro": "Arsénico", "limite": "≤ 0.20 mg/L" },
+        { "parametro": "Cadmio", "limite": "≤ 0.10 mg/L" },
+        { "parametro": "Cobre", "limite": "≤ 0.50 mg/L" },
+        { "parametro": "Cromo hexavalente", "limite": "≤ 0.10 mg/L" },
+        { "parametro": "Mercurio", "limite": "≤ 0.01 mg/L" },
+        { "parametro": "Níquel", "limite": "≤ 1.0 mg/L" },
+        { "parametro": "Plomo", "limite": "≤ 0.50 mg/L" },
+        { "parametro": "Zinc", "limite": "≤ 3.0 mg/L" },
+        { "parametro": "Hidrocarburos totales", "limite": "≤ 20 mg/L" },
+        { "parametro": "Color real", "limite": "≤ 1000 unid Pt-Co" },
+        { "parametro": "Sulfatos", "limite": "≤ 1000 mg/L SO₄²⁻" },
+        { "parametro": "Aluminio", "limite": "≤ 3.0 mg/L" },
+        { "parametro": "Bario", "limite": "≤ 5.0 mg/L" },
+        { "parametro": "Boro", "limite": "≤ 2.0 mg/L" },
+        { "parametro": "Hierro", "limite": "≤ 5.0 mg/L" },
+        { "parametro": "Manganeso", "limite": "≤ 2.0 mg/L" }
+      ]
+    }
+  }
+}
