@@ -22,11 +22,11 @@ function SectorCard({ sector, domain = 'agua', country }: { sector: WaterUseSect
   
   return (
     <Link href={href}>
-      <Card className="hover:shadow-xl transition-all duration-200 cursor-pointer border-0 bg-white hover:bg-blue-50 group h-full">
+      <Card className="h-full transition-all duration-200 bg-white border-0 cursor-pointer hover:shadow-xl hover:bg-blue-50 group">
         <CardHeader className="pb-3">
           <div className="flex items-start gap-3">
-            <span className="text-3xl group-hover:scale-110 transition-transform">{sector.icon}</span>
-            <div className="min-w-0 flex-1">
+            <span className="text-3xl transition-transform group-hover:scale-110">{sector.icon}</span>
+            <div className="flex-1 min-w-0">
               <CardTitle className="text-base line-clamp-2 group-hover:text-blue-700">{sector.nombre}</CardTitle>
               <CardDescription className="text-xs line-clamp-2">{sector.descripcion}</CardDescription>
             </div>
@@ -95,27 +95,27 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-emerald-50">
       {/* Hero Section - Modern gradient background */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-slate-900 via-blue-900 to-emerald-900 text-white py-20">
+      <section className="relative py-20 overflow-hidden text-white bg-gradient-to-r from-slate-900 via-blue-900 to-emerald-900">
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-emerald-400 rounded-full mix-blend-multiply filter blur-3xl"></div>
+          <div className="absolute top-0 right-0 bg-blue-400 rounded-full w-96 h-96 mix-blend-multiply filter blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 rounded-full w-96 h-96 bg-emerald-400 mix-blend-multiply filter blur-3xl"></div>
         </div>
-        <div className="relative container mx-auto px-4 z-10">
+        <div className="container relative z-10 px-4 mx-auto">
           <div className="max-w-3xl mx-auto text-center">
-            <div className="mb-4 flex justify-center gap-2">
+            <div className="flex justify-center gap-2 mb-4">
               <span className="text-4xl">🌍</span>
             </div>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+            <h1 className="mb-6 text-5xl font-bold leading-tight md:text-6xl">
               Normatividad Ambiental Internacional
             </h1>
-            <p className="text-xl md:text-2xl text-blue-100 mb-8 leading-relaxed">
+            <p className="mb-8 text-xl leading-relaxed text-blue-100 md:text-2xl">
               Explora y compara estándares ambientales de múltiples países para agua, aire, residuos y vertimientos
             </p>
             <div className="flex flex-wrap justify-center gap-3">
-              <Badge className="bg-blue-500 text-white border-0">💧 Agua</Badge>
-              <Badge className="bg-emerald-500 text-white border-0">💨 Aire</Badge>
-              <Badge className="bg-orange-500 text-white border-0">♻️ Residuos</Badge>
-              <Badge className="bg-cyan-500 text-white border-0">🌊 Vertimientos</Badge>
+              <Badge className="text-white bg-blue-500 border-0">💧 Agua</Badge>
+              <Badge className="text-white border-0 bg-emerald-500">💨 Aire</Badge>
+              <Badge className="text-white bg-orange-500 border-0">♻️ Residuos</Badge>
+              <Badge className="text-white border-0 bg-cyan-500">🌊 Vertimientos</Badge>
             </div>
           </div>
         </div>
@@ -123,22 +123,22 @@ export default function HomePage() {
 
       {/* Main Content */}
       <section className="py-16">
-        <div className="container mx-auto px-4">
+        <div className="container px-4 mx-auto">
           <div className="max-w-6xl mx-auto">
             {/* Step 1: Select Domain */}
             <div className="mb-16">
-              <div className="text-center mb-10">
-                <div className="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-semibold mb-4">
+              <div className="mb-10 text-center">
+                <div className="inline-block px-4 py-2 mb-4 text-sm font-semibold text-blue-700 bg-blue-100 rounded-full">
                   Paso 1
                 </div>
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+                <h2 className="mb-3 text-3xl font-bold text-gray-900 md:text-4xl">
                   Elige un Dominio Ambiental
                 </h2>
-                <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                <p className="max-w-2xl mx-auto text-lg text-gray-600">
                   Selecciona el área temática que deseas explorar y descubre los estándares disponibles
                 </p>
               </div>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+              <div className="grid max-w-4xl grid-cols-2 gap-4 mx-auto md:grid-cols-4">
                 {DOMINIOS.map(dominio => (
                   <button
                     key={dominio.id}
@@ -168,25 +168,25 @@ export default function HomePage() {
             {/* Step 2: Select Country (shown only after domain selected) */}
             {selectedDomain && (
               <div className="mb-16 animate-in fade-in slide-in-from-top-4">
-                <div className="text-center mb-10">
-                  <div className="inline-block bg-amber-100 text-amber-700 px-4 py-2 rounded-full text-sm font-semibold mb-4">
+                <div className="mb-10 text-center">
+                  <div className="inline-block px-4 py-2 mb-4 text-sm font-semibold rounded-full bg-amber-100 text-amber-700">
                     Paso 2
                   </div>
-                  <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+                  <h2 className="mb-3 text-3xl font-bold text-gray-900 md:text-4xl">
                     Elige un País
                   </h2>
-                  <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                  <p className="max-w-2xl mx-auto text-lg text-gray-600">
                     Selecciona el país para ver los estándares disponibles en el dominio de {currentDominio?.label.toLowerCase()}
                   </p>
                 </div>
-                <div className="max-w-2xl mx-auto bg-white rounded-xl shadow-lg p-6 border border-gray-200">
-                  <label className="block text-sm font-bold text-gray-900 mb-4 uppercase tracking-wide">País:</label>
+                <div className="max-w-2xl p-6 mx-auto bg-white border border-gray-200 shadow-lg rounded-xl">
+                  <label className="block mb-4 text-sm font-bold tracking-wide text-gray-900 uppercase">País:</label>
                   <div className="relative">
                     <select 
                       value={selectedCountry} 
                       onChange={(e) => selectCountry(e.target.value)}
                       disabled={isLoadingCountries}
-                      className="w-full border-2 border-gray-300 p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent font-medium text-gray-900 text-base hover:border-blue-400 transition-colors appearance-none cursor-pointer"
+                      className="w-full p-4 text-base font-medium text-gray-900 transition-colors border-2 border-gray-300 rounded-lg appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent hover:border-blue-400"
                       style={{
                         backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3E%3C/svg%3E")`,
                         backgroundPosition: 'right 0.5rem center',
@@ -204,7 +204,7 @@ export default function HomePage() {
                     </select>
                   </div>
                   {isLoadingCountries && (
-                    <p className="text-sm text-gray-500 mt-3 flex items-center gap-2">
+                    <p className="flex items-center gap-2 mt-3 text-sm text-gray-500">
                       <span className="animate-spin">⏳</span> Cargando países...
                     </p>
                   )}
@@ -215,24 +215,24 @@ export default function HomePage() {
             {/* Step 3: Show Sectors (shown only after country selected and for agua or vertimientos domains) */}
             {selectedCountry && (selectedDomain === 'agua' || selectedDomain === 'vertimientos') && (
               <div className="mb-16 animate-in fade-in slide-in-from-top-4">
-                <div className="text-center mb-10">
-                  <div className="inline-block bg-emerald-100 text-emerald-700 px-4 py-2 rounded-full text-sm font-semibold mb-4">
+                <div className="mb-10 text-center">
+                  <div className="inline-block px-4 py-2 mb-4 text-sm font-semibold rounded-full bg-emerald-100 text-emerald-700">
                     Paso 3
                   </div>
-                  <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+                  <h2 className="mb-3 text-3xl font-bold text-gray-900 md:text-4xl">
                     {selectedDomain === 'agua' ? 'Elige un Sector de Uso' : 'Elige un Sector Industrial'}
                   </h2>
-                  <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                  <p className="max-w-2xl mx-auto text-lg text-gray-600">
                     {currentDominio?.label} • {domainCountries.find(c => c.code === selectedCountry)?.name}
                   </p>
                 </div>
                 {isLoadingSectors ? (
-                  <div className="text-center py-12">
-                    <div className="animate-spin text-4xl mb-3 inline-block">⏳</div>
-                    <p className="text-gray-600 font-medium">Cargando sectores...</p>
+                  <div className="py-12 text-center">
+                    <div className="inline-block mb-3 text-4xl animate-spin">⏳</div>
+                    <p className="font-medium text-gray-600">Cargando sectores...</p>
                   </div>
                 ) : availableSectors.length > 0 ? (
-                  <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4">
+                  <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-3">
                     {availableSectors.map(sectorId => {
                       // Use smart icon matching instead of static WATER_USE_SECTORS
                       const sectorInfo = WATER_USE_SECTORS.find(s => s.id === sectorId) || {
@@ -252,10 +252,10 @@ export default function HomePage() {
                     })}
                   </div>
                 ) : (
-                  <Card className="border-0 bg-yellow-50 shadow-md">
+                  <Card className="border-0 shadow-md bg-yellow-50">
                     <CardContent className="p-8 text-center">
-                      <div className="text-4xl mb-4">⚠️</div>
-                      <p className="text-gray-700 font-medium">No hay sectores disponibles para este país en este dominio.</p>
+                      <div className="mb-4 text-4xl">⚠️</div>
+                      <p className="font-medium text-gray-700">No hay sectores disponibles para este país en este dominio.</p>
                     </CardContent>
                   </Card>
                 )}
@@ -265,20 +265,20 @@ export default function HomePage() {
             {/* For non-water and non-vertimientos domains: show direct link to explorer */}
             {selectedCountry && selectedDomain !== 'agua' && selectedDomain !== 'vertimientos' && (
               <div className="mb-16 animate-in fade-in slide-in-from-top-4">
-                <div className="text-center mb-10">
-                  <div className="inline-block bg-purple-100 text-purple-700 px-4 py-2 rounded-full text-sm font-semibold mb-4">
+                <div className="mb-10 text-center">
+                  <div className="inline-block px-4 py-2 mb-4 text-sm font-semibold text-purple-700 bg-purple-100 rounded-full">
                     Paso 3
                   </div>
-                  <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+                  <h2 className="mb-3 text-3xl font-bold text-gray-900 md:text-4xl">
                     Ver Estándares
                   </h2>
-                  <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                  <p className="max-w-2xl mx-auto text-lg text-gray-600">
                     {currentDominio?.label} • {domainCountries.find(c => c.code === selectedCountry)?.name}
                   </p>
                 </div>
                 <div className="flex justify-center">
                   <Link href={`/explorar?dominio=${selectedDomain}&pais=${selectedCountry}`}>
-                    <Button size="lg" className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 shadow-lg text-lg px-8 py-6">
+                    <Button size="lg" className="px-8 py-6 text-lg shadow-lg bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800">
                       <Zap className="w-5 h-5 mr-2" />
                       Explorar Estándares Completos
                     </Button>
@@ -292,17 +292,17 @@ export default function HomePage() {
 
       {/* Info Footer */}
       <section className="py-16 bg-white border-t border-gray-200">
-        <div className="container mx-auto px-4">
+        <div className="container px-4 mx-auto">
           <div className="max-w-6xl mx-auto">
             <Card className="border-0 shadow-lg bg-gradient-to-r from-blue-50 to-emerald-50">
               <CardContent className="p-8">
                 <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-lg bg-blue-100">
-                    <Info className="h-6 w-6 text-blue-600 flex-shrink-0" />
+                  <div className="p-3 bg-blue-100 rounded-lg">
+                    <Info className="flex-shrink-0 w-6 h-6 text-blue-600" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="font-bold text-gray-900 mb-2 text-lg">¿Necesitas ayuda para entender la normativa?</h3>
-                    <p className="text-gray-700 mb-4">Aprende los conceptos básicos sobre normatividad ambiental internacional y cómo interpretar correctamente los estándares de calidad.</p>
+                    <h3 className="mb-2 text-lg font-bold text-gray-900">¿Necesitas ayuda para entender la normativa?</h3>
+                    <p className="mb-4 text-gray-700">Aprende los conceptos básicos sobre normatividad ambiental internacional y cómo interpretar correctamente los estándares de calidad.</p>
                     <Button variant="outline" asChild className="border-2 border-blue-300 hover:bg-blue-50">
                       <Link href="/fundamentos" className="font-semibold">
                         Ver Fundamentos

@@ -38,18 +38,18 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
       }
 
       return (
-        <div className="min-h-screen bg-gradient-to-br from-red-50 to-orange-50 flex items-center justify-center p-4">
-          <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-6 text-center">
-            <div className="text-6xl mb-4">⚠️</div>
-            <h2 className="text-xl font-bold text-gray-900 mb-2">
+        <div className="flex items-center justify-center min-h-screen p-4 bg-gradient-to-br from-red-50 to-orange-50">
+          <div className="w-full max-w-md p-6 text-center bg-white rounded-lg shadow-lg">
+            <div className="mb-4 text-6xl">⚠️</div>
+            <h2 className="mb-2 text-xl font-bold text-gray-900">
               Algo salió mal
             </h2>
-            <p className="text-gray-600 mb-4">
+            <p className="mb-4 text-gray-600">
               Ha ocurrido un error inesperado. Por favor, intenta recargar la página.
             </p>
             <button
               onClick={this.resetError}
-              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+              className="px-4 py-2 text-white transition-colors bg-blue-600 rounded-lg hover:bg-blue-700"
             >
               Intentar de nuevo
             </button>
