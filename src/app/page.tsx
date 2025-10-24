@@ -112,10 +112,10 @@ export default function HomePage() {
               Explora y compara estándares ambientales de múltiples países para agua, aire, residuos y vertimientos
             </p>
             <div className="flex flex-wrap justify-center gap-3">
-              <Badge className="text-white bg-blue-500 border-0">💧 Agua</Badge>
-              <Badge className="text-white border-0 bg-emerald-500">💨 Aire</Badge>
-              <Badge className="text-white bg-orange-500 border-0">♻️ Residuos</Badge>
-              <Badge className="text-white border-0 bg-cyan-500">🌊 Vertimientos</Badge>
+              <Badge className="bg-blue-500 border-0">💧 Agua</Badge>
+              <Badge className="bg-emerald-500 border-0">💨 Aire</Badge>
+              <Badge className="bg-orange-500 border-0">♻️ Residuos</Badge>
+              <Badge className="bg-cyan-500 border-0">🌊 Vertimientos</Badge>
             </div>
           </div>
         </div>
@@ -294,7 +294,7 @@ export default function HomePage() {
       <section className="py-16 bg-white border-t border-gray-200">
         <div className="container px-4 mx-auto">
           <div className="max-w-6xl mx-auto">
-            <Card className="border-0 shadow-lg bg-gradient-to-r from-blue-50 to-emerald-50">
+            <Card className="shadow-lg bg-gradient-to-r from-blue-50 to-emerald-50">
               <CardContent className="p-8">
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-blue-100 rounded-lg">
@@ -303,8 +303,8 @@ export default function HomePage() {
                   <div className="flex-1">
                     <h3 className="mb-2 text-lg font-bold text-gray-900">¿Necesitas ayuda para entender la normativa?</h3>
                     <p className="mb-4 text-gray-700">Aprende los conceptos básicos sobre normatividad ambiental internacional y cómo interpretar correctamente los estándares de calidad.</p>
-                    <Button variant="outline" asChild className="border-2 border-blue-300 hover:bg-blue-50">
-                      <Link href="/fundamentos" className="font-semibold">
+                    <Button variant="outline" asChild className="border-2 border-blue-300 hover:bg-blue-50 font-semibold">
+                      <Link href="/fundamentos">
                         Ver Fundamentos
                       </Link>
                     </Button>
