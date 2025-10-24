@@ -2,14 +2,6 @@ import { renderHook, act } from '@testing-library/react';
 import { useDebouncedSearch, useMemoizedValue, useDebouncedCallback } from '@/lib/hooks';
 
 describe('Custom Hooks', () => {
-  beforeEach(() => {
-    jest.useFakeTimers();
-  });
-
-  afterEach(() => {
-    jest.useRealTimers();
-  });
-
   describe('useDebouncedSearch', () => {
     it('should return initial value immediately', () => {
       const { result } = renderHook(() => useDebouncedSearch('initial', 100));
@@ -17,7 +9,7 @@ describe('Custom Hooks', () => {
       expect(result.current.debouncedValue).toBe('initial');
     });
 
-    it('should update value immediately but debounce debouncedValue', () => {
+    it('should update value immediately but debounce debouncedValue', async () => {
       const { result } = renderHook(() => useDebouncedSearch('', 100));
 
       act(() => {
@@ -27,11 +19,8 @@ describe('Custom Hooks', () => {
       expect(result.current.value).toBe('test');
       expect(result.current.debouncedValue).toBe('');
 
-      // Advance timers to trigger debounce
-      act(() => {
-        jest.advanceTimersByTime(100);
-      });
-
+      // Wait for debounce
+      await new Promise(resolve => setTimeout(resolve, 150));
       expect(result.current.debouncedValue).toBe('test');
     });
   });
@@ -64,7 +53,7 @@ describe('Custom Hooks', () => {
   });
 
   describe('useDebouncedCallback', () => {
-    it('should debounce callback execution', () => {
+    it('should debounce callback execution', async () => {
       const mockCallback = jest.fn();
       const { result } = renderHook(() => useDebouncedCallback(mockCallback, 100));
 
@@ -74,11 +63,8 @@ describe('Custom Hooks', () => {
 
       expect(mockCallback).not.toHaveBeenCalled();
 
-      // Advance timers to trigger callback
-      act(() => {
-        jest.advanceTimersByTime(100);
-      });
-
+      // Wait for debounce
+      await new Promise(resolve => setTimeout(resolve, 150));
       expect(mockCallback).toHaveBeenCalledTimes(1);
     });
   });

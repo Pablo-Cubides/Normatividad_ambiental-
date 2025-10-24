@@ -25,9 +25,7 @@ export function useDebouncedSearch(initialValue: string, delay: number) {
 }
 
 // Memoization hook for expensive computations
-// Note: ESLint prefers inline functions and array literals for useMemo
 export function useMemoizedValue<T>(factory: () => T, deps: React.DependencyList): T {
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   return useMemo(factory, deps);
 }
 
@@ -37,14 +35,13 @@ export function useDebouncedCallback<T extends (...args: any[]) => any>(
   delay: number
 ): T {
   const callbackRef = useRef(callback);
-
+  
   useEffect(() => {
     callbackRef.current = callback;
   }, [callback]);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   return useCallback(
-    ((...args: any[]) => {
+    ((...args) => {
       const timeoutId = setTimeout(() => callbackRef.current(...args), delay);
       return () => clearTimeout(timeoutId);
     }) as T,

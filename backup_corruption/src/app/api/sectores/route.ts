@@ -5,10 +5,6 @@ import path from 'path';
 import fs from 'fs';
 import { validateDomain, validateCountry, sanitizeFilename } from '@/lib/constants';
 
-// Global declarations for Node.js environment
-declare const URL: typeof globalThis.URL;
-declare const process: typeof globalThis.process;
-
 // Enhanced in-memory cache
 interface CacheEntry {
   ts: number;

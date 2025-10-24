@@ -4,10 +4,6 @@ import fs from 'fs';
 import { logger } from '@/lib/logger';
 import { validateDomain } from '@/lib/constants';
 
-// Global declarations for Node.js environment
-declare const URL: typeof globalThis.URL;
-declare const process: typeof globalThis.process;
-
 // Enhanced in-memory cache with LRU-like behavior
 interface CacheEntry {
   ts: number;

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useRouter } from 'next/navigation';
 
@@ -16,16 +16,15 @@ const AVAILABLE_COUNTRIES = [
 ];
 
 export function CountrySelector() {
-  const [selectedCountry, setSelectedCountry] = useState<string>('');
-  const router = useRouter();
-
-  // Load saved country from localStorage
-  useEffect(() => {
-    const saved = localStorage.getItem('selected-country');
-    if (saved && AVAILABLE_COUNTRIES.find(c => c.code === saved)) {
-      setSelectedCountry(saved);
+  // Initialize state with saved country from localStorage
+  const [selectedCountry, setSelectedCountry] = useState<string>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('selected-country');
+      return (saved && AVAILABLE_COUNTRIES.find(c => c.code === saved)) ? saved : '';
     }
-  }, []);
+    return '';
+  });
+  const router = useRouter();
 
   const handleCountryChange = (countryCode: string) => {
     setSelectedCountry(countryCode);

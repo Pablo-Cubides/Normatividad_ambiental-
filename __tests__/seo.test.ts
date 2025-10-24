@@ -6,7 +6,7 @@
 describe('SEO Configuration', () => {
   describe('Sitemap', () => {
     it('should generate sitemap with all domain/country combinations', async () => {
-      const { default: sitemap } = await import('../src/app/sitemap.ts');
+      const { default: sitemap } = await import('../src/app/sitemap');
       const urls = await sitemap();
 
       expect(Array.isArray(urls)).toBe(true);
@@ -33,7 +33,7 @@ describe('SEO Configuration', () => {
     });
 
     it('should include homepage with highest priority', async () => {
-      const { default: sitemap } = await import('../src/app/sitemap.ts');
+      const { default: sitemap } = await import('../src/app/sitemap');
       const urls = await sitemap();
 
       const homepage = urls.find(entry => 
@@ -45,7 +45,7 @@ describe('SEO Configuration', () => {
     });
 
     it('should include explorar pages for all combinations', async () => {
-      const { default: sitemap } = await import('../src/app/sitemap.ts');
+      const { default: sitemap } = await import('../src/app/sitemap');
       const urls = await sitemap();
 
       const domains = ['agua', 'calidad-aire', 'residuos-solidos', 'vertimientos'];
@@ -64,7 +64,7 @@ describe('SEO Configuration', () => {
     });
 
     it('should have reasonable lastModified dates', async () => {
-      const { default: sitemap } = await import('../src/app/sitemap.ts');
+      const { default: sitemap } = await import('../src/app/sitemap');
       const urls = await sitemap();
 
       const now = new Date();
@@ -82,7 +82,7 @@ describe('SEO Configuration', () => {
 
   describe('Robots.txt', () => {
     it('should export robots configuration', async () => {
-      const { default: robots } = await import('../src/app/robots.ts');
+      const { default: robots } = await import('../src/app/robots');
       const config = robots();
 
       expect(config).toBeDefined();
@@ -90,24 +90,24 @@ describe('SEO Configuration', () => {
       expect(config).toHaveProperty('sitemap');
     });
 
-    it('should allow general crawling', async () => {
-      const { default: robots } = await import('../src/app/robots.ts');
+    it('should allow general access', async () => {
+      const { default: robots } = await import('../src/app/robots');
       const config = robots();
 
       const rules = Array.isArray(config.rules) ? config.rules : [config.rules];
       expect(rules.length).toBeGreaterThan(0);
       
-      const generalRule = rules.find((rule: any) => rule.userAgent === '*');
+      const generalRule = rules.find((rule) => rule.userAgent === '*');
       expect(generalRule).toBeDefined();
       expect(generalRule?.allow).toBeDefined();
     });
 
     it('should block sensitive paths', async () => {
-      const { default: robots } = await import('../src/app/robots.ts');
+      const { default: robots } = await import('../src/app/robots');
       const config = robots();
 
       const rules = Array.isArray(config.rules) ? config.rules : [config.rules];
-      const generalRule = rules.find((rule: any) => rule.userAgent === '*');
+      const generalRule = rules.find((rule) => rule.userAgent === '*');
       expect(generalRule?.disallow).toBeDefined();
       
       // Check that admin and api are blocked
@@ -120,7 +120,7 @@ describe('SEO Configuration', () => {
     });
 
     it('should reference sitemap', async () => {
-      const { default: robots } = await import('../src/app/robots.ts');
+      const { default: robots } = await import('../src/app/robots');
       const config = robots();
 
       expect(config.sitemap).toBeDefined();
@@ -131,14 +131,14 @@ describe('SEO Configuration', () => {
 
   describe('Layout Metadata', () => {
     it('should export metadata configuration', async () => {
-      const layout = await import('../src/app/layout.tsx');
+      const layout = await import('../src/app/layout');
       
       expect(layout.metadata).toBeDefined();
       expect(typeof layout.metadata).toBe('object');
     });
 
     it('should have comprehensive metadata', async () => {
-      const { metadata } = await import('../src/app/layout.tsx');
+      const { metadata } = await import('../src/app/layout');
 
       // Basic metadata
       expect(metadata.title).toBeDefined();
@@ -157,7 +157,7 @@ describe('SEO Configuration', () => {
     });
 
     it('should have SEO-friendly keywords', async () => {
-      const { metadata } = await import('../src/app/layout.tsx');
+      const { metadata } = await import('../src/app/layout');
 
       if (metadata.keywords) {
         const keywords = Array.isArray(metadata.keywords) 
@@ -174,7 +174,7 @@ describe('SEO Configuration', () => {
     });
 
     it('should have proper locale configuration', async () => {
-      const { metadata } = await import('../src/app/layout.tsx');
+      const { metadata } = await import('../src/app/layout');
 
       expect(metadata.openGraph?.locale).toBe('es_ES');
       // alternates is optional metadata

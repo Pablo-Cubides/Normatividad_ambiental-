@@ -9,7 +9,7 @@ export const logger = {
       console.log(`[info] ${message}`);
     }
   },
-
+  
   warn: (message: string, meta?: Record<string, unknown>) => {
     if (meta) {
       console.warn(`[warn] ${message}`, meta);
@@ -17,7 +17,7 @@ export const logger = {
       console.warn(`[warn] ${message}`);
     }
   },
-
+  
   error: (message: string, meta?: Record<string, unknown>) => {
     if (meta) {
       console.error(`[error] ${message}`, meta);
@@ -25,7 +25,7 @@ export const logger = {
       console.error(`[error] ${message}`);
     }
   },
-
+  
   debug: (message: string, meta?: Record<string, unknown>) => {
     if (process.env.NODE_ENV === 'development') {
       if (meta) {

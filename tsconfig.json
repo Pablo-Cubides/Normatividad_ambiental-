@@ -7,6 +7,7 @@
       "DOM",
       "ES2020"
     ],
+    "types": ["jest", "@types/jest"],
     "jsx": "preserve",
     "moduleResolution": "bundler",
     "esModuleInterop": true,
@@ -32,6 +33,7 @@
   "include": [
     "next-env.d.ts",
     "src/**/*",
+    "__tests__/**/*",
     ".next/types/**/*.ts"
   ],
   "exclude": [

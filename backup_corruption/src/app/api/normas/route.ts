@@ -6,13 +6,8 @@ import { ZodError } from 'zod';
 import { appendFileSync } from 'fs';
 import { normalizeData, mergeCandidates } from '../../../lib/utils';
 import { logger } from '@/lib/logger';
-import { REGULATORY_SOURCES, validateDomain, validateCountry, validateSector, sanitizeFilename } from '@/lib/constants';
-import type { RegulatorySource } from '@/lib/constants';
+import { REGULATORY_SOURCES, RegulatorySource, validateDomain, validateCountry, validateSector, sanitizeFilename } from '@/lib/constants';
 import { SECTOR_NORMALIZATION_MAP } from '@/lib/types';
-
-// Global declarations for Node.js types
-declare const URL: typeof globalThis.URL;
-declare const process: typeof globalThis.process;
 
 // Narrower types to avoid `any` throughout this file
 type AnyRecord = Record<string, unknown>;
@@ -192,15 +187,15 @@ export function normalizeResponseFormat(data: AnyRecord, domain: string, country
   const countryDomainSources: RegulatorySource[] = (REGULATORY_SOURCES[countryKey] && REGULATORY_SOURCES[countryKey][domain]) ? REGULATORY_SOURCES[countryKey][domain] : [];
     result.sources = countryDomainSources;
     if (Array.isArray(result.sources) && (result.sources as RegulatorySource[]).length > 0) {
-      // Sources are available, continue processing
+      
     } else {
-      // No sources available, continue without them
+      
     }
 
     // Enrich each sector with normativeSources by matching its normativeReference, name or other text against the country-domain sources
     try {
       const normalizeText = (t: unknown) => (t ? String(t).toLowerCase().trim() : '');
-      for (const [_sId, sData] of Object.entries(result._sectors || {})) {
+      for (const [sId, sData] of Object.entries(result._sectors || {})) {
         const s = (sData || {}) as AnyRecord;
         const candidates: string[] = [];
         if (!s) continue;
@@ -261,9 +256,8 @@ export function normalizeResponseFormat(data: AnyRecord, domain: string, country
           
         }
       }
-    } catch (_e) {
-      // Error already handled above
-      void _e;
+    } catch (e) {
+      
     }
 
     // Use the captured normative reference (and attempt to attach a URL)
@@ -323,9 +317,8 @@ export function normalizeResponseFormat(data: AnyRecord, domain: string, country
             }
           }
         }
-      } catch (_e) {
-        // Error already handled above
-        void _e;
+      } catch (e) {
+        
       }
 
       // Additional explicit mapping: if the top-level normative reference contains known standard codes
@@ -392,9 +385,8 @@ export function normalizeResponseFormat(data: AnyRecord, domain: string, country
             }
           }
         }
-      } catch (_e) {
-        // Error already handled above
-        void _e;
+      } catch (e) {
+        
       }
   } else if (sectorFilter && sectorFilter !== 'todos' && Array.isArray(data.records)) {
     // For other domains with sector filter
